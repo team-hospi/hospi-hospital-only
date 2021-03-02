@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospital_Setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,12 @@
     <Compile Include="Office.Designer.cs">
       <DependentUpon>Office.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prescription.Designer.cs">
+      <DependentUpon>Prescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reception.cs">
@@ -80,12 +92,21 @@
     <Compile Include="Receptionist.Designer.cs">
       <DependentUpon>Receptionist.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReceptionUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceptionUpdate.Designer.cs">
+      <DependentUpon>ReceptionUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception_First.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reception_First.Designer.cs">
       <DependentUpon>Reception_First.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hospital_Setting.resx">
       <DependentUpon>Hospital_Setting.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Office.resx">
       <DependentUpon>Office.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prescription.resx">
+      <DependentUpon>Prescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Receptionist.resx">
       <DependentUpon>Receptionist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceptionUpdate.resx">
+      <DependentUpon>ReceptionUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception_First.resx">
       <DependentUpon>Reception_First.cs</DependentUpon>

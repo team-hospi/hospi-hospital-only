@@ -36,8 +36,10 @@ namespace hospi_hospital_only
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxHospitalID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxSubjectID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button3
@@ -49,7 +51,6 @@ namespace hospi_hospital_only
             this.button3.TabIndex = 13;
             this.button3.Text = "병원정보 설정";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -109,7 +110,7 @@ namespace hospi_hospital_only
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(131, 230);
+            this.button4.Location = new System.Drawing.Point(223, 221);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 45);
             this.button4.TabIndex = 14;
@@ -117,30 +118,49 @@ namespace hospi_hospital_only
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox1
+            // textBoxHospitalID
             // 
-            this.textBox1.Location = new System.Drawing.Point(96, 188);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.Text = "1";
+            this.textBoxHospitalID.Location = new System.Drawing.Point(25, 194);
+            this.textBoxHospitalID.Name = "textBoxHospitalID";
+            this.textBoxHospitalID.Size = new System.Drawing.Size(100, 21);
+            this.textBoxHospitalID.TabIndex = 15;
+            this.textBoxHospitalID.Text = "1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 173);
+            this.label2.Location = new System.Drawing.Point(34, 179);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 16;
             this.label2.Text = "접속병원코드";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(221, 179);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "과목코드";
+            // 
+            // textBoxSubjectID
+            // 
+            this.textBoxSubjectID.Location = new System.Drawing.Point(212, 194);
+            this.textBoxSubjectID.Name = "textBoxSubjectID";
+            this.textBoxSubjectID.Size = new System.Drawing.Size(100, 21);
+            this.textBoxSubjectID.TabIndex = 17;
+            this.textBoxSubjectID.Text = "1";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 437);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxSubjectID);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxHospitalID);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
@@ -165,8 +185,10 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxHospitalID;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxSubjectID;
     }
 }
 

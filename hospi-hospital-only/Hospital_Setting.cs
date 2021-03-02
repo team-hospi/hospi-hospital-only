@@ -196,6 +196,7 @@ namespace hospi_hospital_only
         {
             if (comboBox1.Enabled == false)
             {
+                button2.Focus();
                 // 수정클릭
                 button2.Text = "저장 후 종료";
                 button3.Enabled = false;
@@ -208,6 +209,7 @@ namespace hospi_hospital_only
                 comboBox7.Enabled = true;
                 comboBox8.Enabled = true;
                 comboBox9.Enabled = true;
+                
             }
         }
     }
