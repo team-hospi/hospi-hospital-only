@@ -356,8 +356,8 @@ namespace hospi_hospital_only
             DBGrid.Columns[0].Visible = false;
             DBGrid.Columns[4].Visible = false;
             DBGrid.Columns[5].Visible = false;
-            DBGrid.Columns[6].Visible = false;
-            DBGrid.Columns[7].Visible = false;
+            //DBGrid.Columns[6].Visible = false;
+            //DBGrid.Columns[7].Visible = false;
         }
 
         // 수진자 조회 셀 더블클릭    ( 조회된 수진자의 수가 1보다 많을경우 )      

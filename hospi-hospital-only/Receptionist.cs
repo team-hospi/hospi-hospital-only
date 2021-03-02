@@ -37,11 +37,11 @@ namespace hospi_hospital_only
             dbc.Receptionist_Open(hospitalID);
             dbc.ReceptionistTable = dbc.DS.Tables["Receptionist"];
 
-            for(int i=1; i<dbc.ReceptionistTable.Columns.Count; i++)     // comboBox1에 접수자 추가
+            for(int i=0; i<dbc.ReceptionistTable.Columns.Count; i++)     // comboBox1에 접수자 추가
             {
                 if(dbc.ReceptionistTable.Rows[0][i].ToString() != "")
                 {
-                    comboBox1.Items.Add(dbc.ReceptionistTable.Rows[0][i]);
+                    comboBox1.Items.Add(dbc.ReceptionistTable.Rows[i][1]);
                 }
             }
             comboBox1.Text = receptionistName;
