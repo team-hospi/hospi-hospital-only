@@ -193,9 +193,9 @@ namespace hospi_hospital_only
             dbc.Hospital_Open(hospitalID);
             dbc.HospitalTable = dbc.DS.Tables["hospital"];
             DataRow subjectRow = dbc.HospitalTable.Rows[0];
-            int subjectCount = Convert.ToInt32(subjectRow["subjectCount"]);  // 해당 병원정보의 SubjectCount를 가져와서 SubjectCount만큼 반목문으로 query생성
+            int subjectCount = Convert.ToInt32(subjectRow["subjectcode"]);  // 해당 병원정보의 SubjectCount를 가져와서 SubjectCount만큼 반목문으로 query생성
 
-            for (int i = 1; i <= subjectCount; i++)
+            /*for (int i = 1; i <= subjectCount; i++)
             {
                 if (i != subjectCount)
                 {
@@ -205,21 +205,21 @@ namespace hospi_hospital_only
                 {
                     test += "subject" + i;
                 }
-            }
+            } ---> 기존에 오류나던 코드 삭제*/
 
-            string query = "select " + test + " from SubjectName where hospitalID = " + hospitalID;  // ex) select subject1, subject2, subject3 from SubjectName where hospitalID = 1; 
+            string query = "select s.subjectname from hospisub hs join subjectname s where hs.subjectcode = s.subjectcode and hospitalID = " + hospitalID;// "select " + test + " from SubjectName where hospitalID = " + hospitalID;  // ex) select subject1, subject2, subject3 from SubjectName where hospitalID = 1; 
             dbc.Hopital_Subject(query);                                                                                              // 위 query 문자열 자체를 commandString 으로 대입
             dbc.SubjectTable = dbc.DS.Tables["subjectName"];
 
-            for(int i=0; i<dbc.SubjectTable.Columns.Count; i++)     // comboBox1에 과목명 추가
+            for(int i=0; i<dbc.SubjectTable.Rows.Count; i++)     // comboBox1에 과목명 추가
             {
-                comboBox1.Items.Add(dbc.SubjectTable.Rows[0][i]);
+                comboBox1.Items.Add(dbc.SubjectTable.Rows[i][0]);
             }
             comboBox1.Text = dbc.SubjectTable.Rows[0][0].ToString();    // 최상위 과목명을 기본 텍스트로 지정
 
             ReceptionUpdate(); // 접수로드
         }
-
+        
         // 초진등록
         private void button7_Click(object sender, EventArgs e)
         {
@@ -347,9 +347,9 @@ namespace hospi_hospital_only
             }
             // 컬럼 속성
             DBGrid.Columns[0].HeaderText = "상품 번호";
-            DBGrid.Columns[1].HeaderText = "차트번호";
-            DBGrid.Columns[2].HeaderText = "수진자명";
-            DBGrid.Columns[3].HeaderText = "주민등록번호";
+            DBGrid.Columns[1].HeaderText = "수진자명";
+            DBGrid.Columns[2].HeaderText = "주민등록번호";
+            DBGrid.Columns[3].HeaderText = "전화번호";
             DBGrid.Columns[1].Width = 85;
             DBGrid.Columns[2].Width = 85;
             DBGrid.Columns[3].Width = 105;
@@ -385,6 +385,18 @@ namespace hospi_hospital_only
 
         private void button11_Click(object sender, EventArgs e)
         {
+            int subjectcode = 0;
+
+            switch(comboBox1.Text)
+            {
+                case "한방과":
+                    subjectcode = 1;
+                    break;
+                case "정형외과":
+                    subjectcode = 2;
+                    break;
+                
+            }
             if(textBox24.Text == "")
             {
                 MessageBox.Show("수진자 정보를 확인하세요.", "알림");
@@ -403,8 +415,9 @@ namespace hospi_hospital_only
                 newRow["PatientID"] = textBox24.Text;
                 newRow["ReceptionTime"] = comboBox2.Text + comboBox3.Text;
                 newRow["ReceptionDate"] = dateTimePicker1.Value.ToString("yy/MM/dd");
-                newRow["SubjectName"] = comboBox1.Text;
-                newRow["Receptionist"] = textBox1.Text;
+                newRow["Subjectcode"] = subjectcode;
+                //newRow["Receptionistcode"] = textBox1.Text;
+                newRow["Receptionistcode"] = 1; //--> receptionist의 의미를 모름 일단 1로 설정
                 newRow["ReceptionInfo"] = textBox19.Text;
                 newRow["ReceptionType"] = 1;
 
