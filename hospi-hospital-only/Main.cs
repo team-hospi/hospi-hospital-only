@@ -35,5 +35,10 @@ namespace hospi_hospital_only
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

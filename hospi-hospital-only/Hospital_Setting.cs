@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
+using MySql.Data.MySqlClient;
 
 namespace hospi_hospital_only
 {
@@ -95,19 +95,19 @@ namespace hospi_hospital_only
             textBox3.Text = hosRow["hospitalTypeName"].ToString();
             textBox4.Text = hosRow["hospitalAddress"].ToString();
             textBox5.Text = hosRow["hospitalTell"].ToString();
-            comboBox1.Text = hosRow["openTime"].ToString().Substring(0,2);
-            comboBox2.Text = hosRow["openTime"].ToString().Substring(2,2);
-            comboBox3.Text = hosRow["closeTime"].ToString().Substring(0,2);
-            comboBox4.Text = hosRow["closeTime"].ToString().Substring(2,2);
-            comboBox9.Text = hosRow["weekendOpenTime"].ToString().Substring(0,2);
-            comboBox8.Text = hosRow["weekendOpenTime"].ToString().Substring(2,2);
-            comboBox7.Text = hosRow["weekendCloseTime"].ToString().Substring(0,2);
-            comboBox6.Text = hosRow["weekendCloseTime"].ToString().Substring(2,2);
+            comboBox1.Text = hosRow["openTime"].ToString().Substring(0, 2);
+            comboBox2.Text = hosRow["openTime"].ToString().Substring(2, 2);
+            comboBox3.Text = hosRow["closeTime"].ToString().Substring(0, 2);
+            comboBox4.Text = hosRow["closeTime"].ToString().Substring(2, 2);
+            comboBox9.Text = hosRow["weekendOpenTime"].ToString().Substring(0, 2);
+            comboBox8.Text = hosRow["weekendOpenTime"].ToString().Substring(2, 2);
+            comboBox7.Text = hosRow["weekendCloseTime"].ToString().Substring(0, 2);
+            comboBox6.Text = hosRow["weekendCloseTime"].ToString().Substring(2, 2);
             if (Convert.ToInt32(hosRow["sundayopen"]) == 0)
             {
                 comboBox5.Text = "휴원";
             }
-            else if(Convert.ToInt32(hosRow["sundayopen"]) == 1)
+            else if (Convert.ToInt32(hosRow["sundayopen"]) == 1)
             {
                 comboBox5.Text = "개원";
             }
@@ -115,7 +115,7 @@ namespace hospi_hospital_only
             {
                 button18_Click(sender, e);
             }
-            else if(Convert.ToInt32(hosRow["Reservation"]) == 0)
+            else if (Convert.ToInt32(hosRow["Reservation"]) == 0)
             {
                 button17_Click(sender, e);
             }

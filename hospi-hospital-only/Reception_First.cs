@@ -72,7 +72,7 @@ namespace hospi_hospital_only
                         dbc.VisitorTable = dbc.DS.Tables["visitor"];
                         DataRow newRow = dbc.VisitorTable.NewRow();
 
-                        newRow["HospitalID"] = hospitalID;
+                        // newRow["HospitalID"] = hospitalID;
                         newRow["PatientID"] = textBox2.Text;
                         newRow["PatientName"] = textBox1.Text;
                         newRow["PatientBirthCode"] = textBoxB1.Text +"-"+ textBoxB2.Text;
