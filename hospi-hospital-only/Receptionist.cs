@@ -13,14 +13,10 @@ namespace hospi_hospital_only
     public partial class Receptionist : Form
     {
         DBClass dbc = new DBClass();
-        int hospitalID;
+        string hospitalID;
         string receptionistName;
 
-        public int HospitalID
-        {
-            get { return hospitalID; }
-            set { hospitalID = value; }
-        }
+       
         public string ReceptionistName
         {
             get { return receptionistName; }
@@ -34,12 +30,12 @@ namespace hospi_hospital_only
 
         private void Receptionist_Load(object sender, EventArgs e)
         {
-            dbc.Receptionist_Open(hospitalID);
+            dbc.Receptionist_Open();
             dbc.ReceptionistTable = dbc.DS.Tables["Receptionist"];
 
             for(int i=0; i<dbc.ReceptionistTable.Columns.Count; i++)     // comboBox1에 접수자 추가
             {
-                if(dbc.ReceptionistTable.Rows[0][i].ToString() != "")
+                if(dbc.ReceptionistTable.Rows[i][1].ToString() != "")
                 {
                     comboBox1.Items.Add(dbc.ReceptionistTable.Rows[i][1]);
                 }
@@ -52,6 +48,11 @@ namespace hospi_hospital_only
         {
             receptionistName = comboBox1.Text;
             Dispose();
+        }
+
+        private void settingLabel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("접수자 추가용 <미구현>");
         }
     }
 }

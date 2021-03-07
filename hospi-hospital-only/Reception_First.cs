@@ -14,17 +14,18 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         int hospitalID; // 병원코드
+        string visitorName; // 수진자명번호 ( Reception 폼으로 넘겨줌 )
 
         public Reception_First()
         {
             InitializeComponent();
         }
 
-        // 병원코드 받아오기위한 프로퍼티
-        public int HospitalID
+        // 차트번호 Reception으로 넘겨주기 위한 프로퍼티
+        public string VisitorName
         {
-            get { return hospitalID; }
-            set { hospitalID = value; }
+            get { return visitorName; }
+            set { visitorName = value; }
         }
 
         private void Receipt_First_Load(object sender, EventArgs e)
@@ -32,11 +33,8 @@ namespace hospi_hospital_only
              // 폼 로드시 수신자명 포커스
             this.ActiveControl = textBox1;
 
-            //  접수 시간
-            textBox5.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-
             // 차트번호 DB오픈
-            dbc.Visitor_Chart(hospitalID);
+            dbc.Visitor_Chart();
             dbc.VisitorTable = dbc.DS.Tables["visitor"];
             DataRow chartRow = dbc.VisitorTable.Rows[0];
             textBox2.Text = (Convert.ToInt32(chartRow["count(*)"])+1).ToString();
@@ -72,7 +70,6 @@ namespace hospi_hospital_only
                         dbc.VisitorTable = dbc.DS.Tables["visitor"];
                         DataRow newRow = dbc.VisitorTable.NewRow();
 
-                        // newRow["HospitalID"] = hospitalID;
                         newRow["PatientID"] = textBox2.Text;
                         newRow["PatientName"] = textBox1.Text;
                         newRow["PatientBirthCode"] = textBoxB1.Text +"-"+ textBoxB2.Text;
@@ -91,9 +88,16 @@ namespace hospi_hospital_only
                     {
                         MessageBox.Show(DE.Message);
                     }
+
+                    visitorName = textBox1.Text;
                     Dispose();
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
     }
 }

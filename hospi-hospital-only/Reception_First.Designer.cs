@@ -43,21 +43,15 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.button11);
             this.groupBox4.Controls.Add(this.textBoxADD);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.phone3);
@@ -75,7 +69,7 @@
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(317, 220);
+            this.groupBox4.Size = new System.Drawing.Size(317, 259);
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "인적사항";
@@ -210,111 +204,33 @@
             this.label20.Text = "차트번호";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.button11);
-            this.groupBox7.Controls.Add(this.checkBox1);
-            this.groupBox7.Controls.Add(this.comboBox1);
-            this.groupBox7.Controls.Add(this.textBox6);
-            this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Controls.Add(this.textBox5);
-            this.groupBox7.Controls.Add(this.label16);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox7.Location = new System.Drawing.Point(15, 238);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(317, 199);
-            this.groupBox7.TabIndex = 30;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "진료 정보";
-            // 
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button11.Location = new System.Drawing.Point(172, 155);
+            this.button11.Location = new System.Drawing.Point(110, 215);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(130, 33);
-            this.button11.TabIndex = 21;
-            this.button11.Text = "접수";
+            this.button11.Size = new System.Drawing.Size(192, 33);
+            this.button11.TabIndex = 44;
+            this.button11.Text = "등록 완료";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // checkBox1
+            // button1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(16, 169);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(150, 19);
-            this.checkBox1.TabIndex = 32;
-            this.checkBox1.Text = "응급 환자 ( 우선 접수 )";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(111, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(191, 23);
-            this.comboBox1.TabIndex = 27;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(111, 94);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(192, 55);
-            this.textBox6.TabIndex = 26;
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.Location = new System.Drawing.Point(16, 94);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(88, 55);
-            this.label21.TabIndex = 25;
-            this.label21.Text = "당일내원메모\r\n(내원 목적)";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(111, 65);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(192, 23);
-            this.textBox5.TabIndex = 24;
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label16.Location = new System.Drawing.Point(16, 65);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 23);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "접수 시간";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(16, 36);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 23);
-            this.label15.TabIndex = 21;
-            this.label15.Text = "진료 과목";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(16, 215);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 33);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "취소";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Reception_First
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 449);
-            this.Controls.Add(this.groupBox7);
+            this.ClientSize = new System.Drawing.Size(344, 278);
             this.Controls.Add(this.groupBox4);
             this.Name = "Reception_First";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -322,8 +238,6 @@
             this.Load += new System.EventHandler(this.Receipt_First_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -343,16 +257,9 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        internal System.Windows.Forms.TextBox textBox6;
-        internal System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxADD;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button1;
     }
 }
