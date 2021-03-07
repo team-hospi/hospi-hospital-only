@@ -29,145 +29,151 @@ namespace hospi_hospital_only
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
             this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxHospitalID = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.labelPW = new System.Windows.Forms.Label();
+            this.textBoxPW = new System.Windows.Forms.TextBox();
+            this.labelID = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LoginLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(239, 333);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 45);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "병원정보 설정";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(12, 381);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(330, 49);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "앱 사용자가 확인할 수 있도록 하기 위함\r\n";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(107, 333);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 45);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "영업 종료";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(12, 333);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 45);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "영업 시작";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(12, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(330, 147);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "접수메뉴,\r\n진료실메뉴 구분\r\n\r\n각각 고유번호 사용으로 \r\n접수자, 진료자 확인할 수 있도록 함";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button6.Location = new System.Drawing.Point(36, 230);
+            this.button6.Location = new System.Drawing.Point(133, 92);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 45);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Reception";
+            this.button6.Size = new System.Drawing.Size(110, 32);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "접속";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button4
+            // textBoxHospitalID
             // 
-            this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(131, 230);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 45);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "Office";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.textBoxHospitalID.Location = new System.Drawing.Point(93, 19);
+            this.textBoxHospitalID.Name = "textBoxHospitalID";
+            this.textBoxHospitalID.Size = new System.Drawing.Size(150, 23);
+            this.textBoxHospitalID.TabIndex = 1;
             // 
-            // textBox1
+            // groupBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(96, 188);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.Text = "1";
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.labelPW);
+            this.groupBox1.Controls.Add(this.textBoxPW);
+            this.groupBox1.Controls.Add(this.textBoxHospitalID);
+            this.groupBox1.Controls.Add(this.labelID);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Location = new System.Drawing.Point(13, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(257, 137);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
             // 
-            // label2
+            // button5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(105, 173);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 12);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "접속병원코드";
+            this.button5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Location = new System.Drawing.Point(15, 92);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(110, 32);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "진료실";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // labelPW
+            // 
+            this.labelPW.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelPW.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelPW.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelPW.Location = new System.Drawing.Point(16, 53);
+            this.labelPW.Name = "labelPW";
+            this.labelPW.Size = new System.Drawing.Size(71, 23);
+            this.labelPW.TabIndex = 6;
+            this.labelPW.Text = "PW";
+            this.labelPW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxPW
+            // 
+            this.textBoxPW.Location = new System.Drawing.Point(93, 53);
+            this.textBoxPW.Name = "textBoxPW";
+            this.textBoxPW.PasswordChar = '●';
+            this.textBoxPW.Size = new System.Drawing.Size(150, 23);
+            this.textBoxPW.TabIndex = 2;
+            // 
+            // labelID
+            // 
+            this.labelID.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelID.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelID.Location = new System.Drawing.Point(16, 19);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(71, 23);
+            this.labelID.TabIndex = 4;
+            this.labelID.Text = "ID";
+            this.labelID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(321, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 67);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "병원ID,PW 변경용\r\n";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LoginLabel
+            // 
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.Location = new System.Drawing.Point(89, 163);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(61, 12);
+            this.LoginLabel.TabIndex = 36;
+            this.LoginLabel.Text = "로그인 중.";
+            this.LoginLabel.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 437);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(483, 381);
+            this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Main_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxHospitalID;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelPW;
+        private System.Windows.Forms.TextBox textBoxPW;
+        private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label LoginLabel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -33,47 +35,107 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
+    <Reference Include="Google.Api.CommonProtos, Version=2.2.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.CommonProtos.2.2.0\lib\net461\Google.Api.CommonProtos.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Api.Gax, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.3.2.0\lib\net461\Google.Api.Gax.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Api.Gax.Grpc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.Grpc.3.2.0\lib\net461\Google.Api.Gax.Grpc.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Api.Gax.Grpc.GrpcCore, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.Grpc.GrpcCore.3.2.0\lib\net461\Google.Api.Gax.Grpc.GrpcCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.48.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.48.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.48.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.48.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.48.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.48.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.48.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.48.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.48.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.48.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Cloud.Firestore, Version=2.3.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Cloud.Firestore.2.3.0\lib\net461\Google.Cloud.Firestore.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Cloud.Firestore.V1, Version=2.2.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Cloud.Firestore.V1.2.2.0\lib\net461\Google.Cloud.Firestore.V1.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.LongRunning, Version=2.1.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.LongRunning.2.1.0\lib\net461\Google.LongRunning.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.13.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.13.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Auth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Auth.2.31.0\lib\net45\Grpc.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.2.31.0\lib\net45\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core.Api, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.Api.2.31.0\lib\net45\Grpc.Core.Api.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
     </Reference>
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\MySql.Data.8.0.22\lib\net452\MySql.Data.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.DataAccess, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64" />
-    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Async.4.0.0\lib\net461\System.Linq.Async.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -86,14 +148,20 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\MySql.Data.8.0.22\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\Desktop\졸작\packages\MySql.Data.8.0.22\lib\net452\Zstandard.Net.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\Zstandard.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
+    <Compile Include="Main2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main2.Designer.cs">
+      <DependentUpon>Main2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospital_Setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +180,12 @@
     <Compile Include="Office.Designer.cs">
       <DependentUpon>Office.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prescription.Designer.cs">
+      <DependentUpon>Prescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reception.cs">
@@ -126,12 +200,21 @@
     <Compile Include="Receptionist.Designer.cs">
       <DependentUpon>Receptionist.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReceptionUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceptionUpdate.Designer.cs">
+      <DependentUpon>ReceptionUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception_First.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reception_First.Designer.cs">
       <DependentUpon>Reception_First.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Main2.resx">
+      <DependentUpon>Main2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hospital_Setting.resx">
       <DependentUpon>Hospital_Setting.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Office.resx">
       <DependentUpon>Office.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prescription.resx">
+      <DependentUpon>Prescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -156,9 +242,15 @@
     <EmbeddedResource Include="Receptionist.resx">
       <DependentUpon>Receptionist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReceptionUpdate.resx">
+      <DependentUpon>ReceptionUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reception_First.resx">
       <DependentUpon>Reception_First.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -174,4 +266,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Grpc.Core.2.31.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.31.0\build\net45\Grpc.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Grpc.Core.2.31.0\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.2.31.0\build\net45\Grpc.Core.targets'))" />
+  </Target>
 </Project>
