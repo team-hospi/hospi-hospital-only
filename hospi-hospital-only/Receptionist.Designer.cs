@@ -33,7 +33,6 @@
             this.settingLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,22 +88,12 @@
             this.comboBox1.Size = new System.Drawing.Size(162, 23);
             this.comboBox1.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(25, 161);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(283, 223);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "접수자 삭제시 등록된 접수중 접수자코드가\r\n 한자리씩 당역지는 문제 수정해야함\r\n\r\n삭제한 접수자 데이터를 null로 치환하고 \r\n접수자 선택폼에" +
-    "서 null 제외하고 띄워주는 방법으로 수정\r\n";
-            // 
             // Receptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 282);
+            this.ClientSize = new System.Drawing.Size(346, 133);
             this.ControlBox = false;
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox11);
             this.Name = "Receptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -122,6 +111,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label settingLabel;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
     }
 }

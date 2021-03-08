@@ -35,9 +35,12 @@ namespace hospi_hospital_only
 
             for(int i=0; i<dbc.ReceptionistTable.Rows.Count; i++)     // comboBox1에 접수자 추가
             {
-                if(dbc.ReceptionistTable.Rows[i][1].ToString() != "")
+                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                int length = name.Length;
+
+                if (name.Substring(length - 1) != ")")
                 {
-                    comboBox1.Items.Add(dbc.ReceptionistTable.Rows[i][1]);
+                    comboBox1.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
                 }
             }
             comboBox1.Text = receptionistName;
@@ -59,11 +62,18 @@ namespace hospi_hospital_only
             {
                 comboBox1.Items.Clear();
                 dbc.Receptionist_Open();
-                dbc.ReceptionTable = dbc.DS.Tables["receptionist"];
-                for(int i=0; i<dbc.ReceptionTable.Rows.Count; i++)
+                dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+                for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)     // comboBox1에 접수자 추가
                 {
-                    comboBox1.Items.Add(dbc.ReceptionTable.Rows[i]["receptionistName"]);
+                    string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                    int length = name.Length;
+
+                    if (name.Substring(length - 1) != ")")
+                    {
+                        comboBox1.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+                    }
                 }
+                comboBox1.Text = receptionistName;
             }
         }
 

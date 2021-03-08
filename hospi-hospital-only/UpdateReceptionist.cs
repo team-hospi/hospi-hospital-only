@@ -13,22 +13,77 @@ namespace hospi_hospital_only
     public partial class UpdateReceptionist : Form
     {
         DBClass dbc = new DBClass();
+        string selectedString; // 접수자 삭제, 복구시 선택한 접수자명 받아옴
 
         public UpdateReceptionist()
         {
             InitializeComponent();
         }
 
+        // 리스트박스 새로고침
+        public void RefreshListBox()
+        {
+            listBoxReceptionist.Items.Clear();
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                int length = name.Length;
+
+                if (name.Substring(length - 1) != ")")
+                {
+                    listBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+
+                }
+            }
+
+            listBoxDelete.Items.Clear();
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                int length = name.Length;
+
+                if (name.Substring(length - 1) == ")")
+                {
+                    listBoxDelete.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+                }
+            }
+
+            for(int i=0; i<listBoxReceptionist.Items.Count; i++)
+            {
+                if(listBoxReceptionist.Items[i].ToString() == selectedString)
+                {
+                    listBoxReceptionist.SelectedIndex = i;
+                }
+            }
+
+            for (int i = 0; i < listBoxDelete.Items.Count; i++)
+            {
+                if (listBoxDelete.Items[i].ToString() == selectedString)
+                {
+                    listBoxDelete.SelectedIndex = i;
+                }
+            }
+
+            textBoxName.Clear();
+        }
+
         // 폼 로드
         private void UpdateReceptionist_Load(object sender, EventArgs e)
         {
+            this.Width = 410;
             try
             {
                 dbc.Receptionist_Open();
                 dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
                 for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                 {
-                    listBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+                    string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                    int length = name.Length;
+
+                    if(name.Substring(length - 1) != ")")
+                    {
+                        listBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+                    }
                 }
             }
             catch (DataException DE)
@@ -73,7 +128,7 @@ namespace hospi_hospital_only
                     try
                     {
                         DataRow newRow = dbc.ReceptionistTable.NewRow();
-                        newRow["receptionistCode"] = listBoxReceptionist.Items.Count + 1;
+                        newRow["receptionistCode"] = dbc.ReceptionistTable.Rows.Count+  1;
                         newRow["receptionistName"] = textBoxName.Text;
                         dbc.ReceptionistTable.Rows.Add(newRow);
                         dbc.DBAdapter.Update(dbc.DS, "receptionist");
@@ -99,7 +154,10 @@ namespace hospi_hospital_only
         // 리스트박스 아이템 클릭
         private void listBoxReceptionist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxName.Text = listBoxReceptionist.SelectedItem.ToString();
+            if(listBoxReceptionist.SelectedIndex != -1)
+            {
+                textBoxName.Text = listBoxReceptionist.SelectedItem.ToString();
+            }
         }
 
         // 삭제 버튼
@@ -117,34 +175,36 @@ namespace hospi_hospital_only
                 {
                     try
                     {
-                        DataColumn[] PrimaryKey = new DataColumn[1];
-                        PrimaryKey[0] = dbc.ReceptionistTable.Columns["receptionistCode"];
-                        dbc.ReceptionistTable.PrimaryKey = PrimaryKey;
-                        DataRow currRow = dbc.ReceptionistTable.Rows.Find(listBoxReceptionist.SelectedIndex+1);
-                        int rowCount = dbc.ReceptionistTable.Rows.Count;  // 전체 행의 개수 (삭제전)
-                        currRow.Delete();
-                        int select = Convert.ToInt32(listBoxReceptionist.SelectedIndex+1 );  //  SelectedIndex + 1를 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
+                        dbc.Receptionist_Open();
+                        dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+                        DataRow upRow = null;
 
-                        for (int i = 0; i < (rowCount - Convert.ToInt32(listBoxReceptionist.SelectedIndex+1 )); i++)  //  행 하나가 삭제될 경우 행의 인덱스가 상제 대상보다 높은경우 모두 +1 해줌
+                        for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                         {
-                            currRow = dbc.ReceptionistTable.Rows[rowCount - (rowCount - select)];
-                            currRow.BeginEdit();
-                            currRow["receptionistCode"] = Convert.ToInt32(currRow["receptionistCode"]) - 1;
-                            currRow.EndEdit();
-                            select += 1;
+                            if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == listBoxReceptionist.SelectedItem.ToString())
+                            {
+                                upRow = dbc.ReceptionistTable.Rows[i];
+                            }
                         }
-                       
-                        dbc.DBAdapter.Update(dbc.DS, "receptionist");   // 삭제내역 커밋
+
+                        upRow.BeginEdit();
+                        upRow["receptionistName"] = upRow["receptionistName"].ToString() + "(삭제)";
+                        upRow.EndEdit();
+                        dbc.DBAdapter.Update(dbc.DS, "receptionist");
                         dbc.DS.AcceptChanges();
-                        
-                        listBoxReceptionist.Items.Clear();  // 리스트박스, 텍스트박스 비우기
-                        textBoxName.Clear();
 
-                        dbc.ReceptionTable = dbc.DS.Tables["receptionist"]; // 변경된 내역으로 새로 띄우기
-                        for (int i=0; i<dbc.ReceptionTable.Rows.Count; i++)
+                        listBoxReceptionist.Items.Clear();
+                        for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                         {
-                            listBoxReceptionist.Items.Add(dbc.ReceptionTable.Rows[i]["receptionistName"]);
+                            string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                            int length = name.Length;
+
+                            if (name.Substring(length - 1) != ")")
+                            {
+                                listBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+                            }
                         }
+                        RefreshListBox(); // 리스트박스 새로고침
                     }
                     catch (DataException DE)
                     {
@@ -184,6 +244,82 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show("검색결과 없음,", "알림");
             }
+        }
+
+        // 삭제기록 버튼
+        private void buttonHistory_Click(object sender, EventArgs e)
+        {
+            this.Width = 673;
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                int length = name.Length;
+                if (name.Substring(length - 1) == ")")
+                {
+                    listBoxDelete.Items.Add(name);
+                }
+            }
+        }
+        // 삭제내역 닫기
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Width = 410;
+        }
+
+        // 복구 버튼
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBoxDelete.SelectedIndex == -1)
+            {
+                MessageBox.Show("복구할 정보가 선택되지 않았습니다.", "알림");
+            }
+            else
+            {
+                DialogResult ok = MessageBox.Show("접수자 '" + listBoxDelete.Items[listBoxDelete.SelectedIndex].ToString() + "' 을/를 복구합니다.", "알림", MessageBoxButtons.YesNo);
+
+                if (ok == DialogResult.Yes)
+                {
+                    try
+                    {
+                        dbc.Receptionist_Open();
+                        dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+                        DataRow upRow = null;
+
+                        for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                        {
+                            if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == listBoxDelete.SelectedItem.ToString())
+                            {
+                                upRow = dbc.ReceptionistTable.Rows[i];
+                            }
+                        }
+                        upRow.BeginEdit();
+                        int dLength = Convert.ToInt32(upRow["receptionistName"].ToString().Length);
+                        upRow["receptionistName"] = upRow["receptionistName"].ToString().Substring(0, dLength - 4);
+                        upRow.EndEdit();
+                        dbc.DBAdapter.Update(dbc.DS, "receptionist");
+                        dbc.DS.AcceptChanges();
+
+                        RefreshListBox(); // 리스트박스 새로고침
+
+                    }
+                    catch (DataException DE)
+                    {
+                        MessageBox.Show(DE.Message);
+                    }
+                    catch (Exception DE)
+                    {
+                        MessageBox.Show(DE.Message);
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(selectedString);
         }
     }
 }

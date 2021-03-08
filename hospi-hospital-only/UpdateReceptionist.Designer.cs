@@ -29,18 +29,25 @@
         private void InitializeComponent()
         {
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.buttonHistory = new System.Windows.Forms.Button();
+            this.labelID = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.listBoxReceptionist = new System.Windows.Forms.ListBox();
             this.buttonFinish = new System.Windows.Forms.Button();
-            this.labelID = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.listBoxDelete = new System.Windows.Forms.ListBox();
             this.groupBox11.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.buttonHistory);
             this.groupBox11.Controls.Add(this.labelID);
             this.groupBox11.Controls.Add(this.buttonSearch);
             this.groupBox11.Controls.Add(this.textBoxName);
@@ -55,6 +62,28 @@
             this.groupBox11.TabIndex = 33;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "접수자 편집";
+            // 
+            // buttonHistory
+            // 
+            this.buttonHistory.Location = new System.Drawing.Point(251, 120);
+            this.buttonHistory.Name = "buttonHistory";
+            this.buttonHistory.Size = new System.Drawing.Size(102, 25);
+            this.buttonHistory.TabIndex = 36;
+            this.buttonHistory.Text = "삭제 기록";
+            this.buttonHistory.UseVisualStyleBackColor = true;
+            this.buttonHistory.Click += new System.EventHandler(this.buttonHistory_Click);
+            // 
+            // labelID
+            // 
+            this.labelID.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelID.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelID.Location = new System.Drawing.Point(15, 28);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(68, 23);
+            this.labelID.TabIndex = 37;
+            this.labelID.Text = "접수자명";
+            this.labelID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonSearch
             // 
@@ -115,23 +144,55 @@
             this.buttonFinish.UseVisualStyleBackColor = true;
             this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
             // 
-            // labelID
+            // groupBox1
             // 
-            this.labelID.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelID.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelID.Location = new System.Drawing.Point(15, 28);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(68, 23);
-            this.labelID.TabIndex = 37;
-            this.labelID.Text = "접수자명";
-            this.labelID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.listBoxDelete);
+            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Location = new System.Drawing.Point(399, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(245, 216);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "삭제 내역";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(125, 176);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 25);
+            this.button2.TabIndex = 36;
+            this.button2.Text = "닫기";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(15, 176);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(102, 25);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "복구";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // listBoxDelete
+            // 
+            this.listBoxDelete.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.listBoxDelete.FormattingEnabled = true;
+            this.listBoxDelete.ItemHeight = 17;
+            this.listBoxDelete.Location = new System.Drawing.Point(15, 28);
+            this.listBoxDelete.Name = "listBoxDelete";
+            this.listBoxDelete.Size = new System.Drawing.Size(212, 140);
+            this.listBoxDelete.TabIndex = 34;
             // 
             // UpdateReceptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 240);
+            this.ClientSize = new System.Drawing.Size(657, 239);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox11);
             this.Name = "UpdateReceptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -139,6 +200,7 @@
             this.Load += new System.EventHandler(this.UpdateReceptionist_Load);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -153,5 +215,10 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.Button buttonHistory;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox listBoxDelete;
     }
 }
