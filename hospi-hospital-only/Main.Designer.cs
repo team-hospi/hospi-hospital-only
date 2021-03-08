@@ -57,6 +57,7 @@ namespace hospi_hospital_only
             this.textBoxHospitalID.Name = "textBoxHospitalID";
             this.textBoxHospitalID.Size = new System.Drawing.Size(150, 23);
             this.textBoxHospitalID.TabIndex = 1;
+            this.textBoxHospitalID.Text = "1";
             // 
             // groupBox1
             // 
@@ -103,6 +104,7 @@ namespace hospi_hospital_only
             this.textBoxPW.PasswordChar = '●';
             this.textBoxPW.Size = new System.Drawing.Size(150, 23);
             this.textBoxPW.TabIndex = 2;
+            this.textBoxPW.Text = "1234";
             // 
             // labelID
             // 
@@ -131,12 +133,12 @@ namespace hospi_hospital_only
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 381);
+            this.ClientSize = new System.Drawing.Size(483, 168);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -56,6 +56,8 @@ namespace hospi_hospital_only
             }
             else
             {
+                dbc.Receptionist_Open();
+                dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
                 for (int i = 0; i < listBoxReceptionist.Items.Count; i++)
                 {
                     if (listBoxReceptionist.Items[i].ToString() == textBoxName.Text)
@@ -121,23 +123,28 @@ namespace hospi_hospital_only
                         DataRow currRow = dbc.ReceptionistTable.Rows.Find(listBoxReceptionist.SelectedIndex+1);
                         int rowCount = dbc.ReceptionistTable.Rows.Count;  // 전체 행의 개수 (삭제전)
                         currRow.Delete();
-                        int select = Convert.ToInt32(listBoxReceptionist.SelectedIndex+1 );  //  SelectedIndex - 1를 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
+                        int select = Convert.ToInt32(listBoxReceptionist.SelectedIndex+1 );  //  SelectedIndex + 1를 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
 
-                        for (int i = 0; i < (rowCount - Convert.ToInt32(listBoxReceptionist.SelectedIndex+1 )); i++)  //  행 하나가 삭제될 경우 행의 인덱스가 상제 대상보다 높은경우 모두 -1 해줌
+                        for (int i = 0; i < (rowCount - Convert.ToInt32(listBoxReceptionist.SelectedIndex+1 )); i++)  //  행 하나가 삭제될 경우 행의 인덱스가 상제 대상보다 높은경우 모두 +1 해줌
                         {
                             currRow = dbc.ReceptionistTable.Rows[rowCount - (rowCount - select)];
-                            MessageBox.Show(currRow["receptionistName"].ToString());
                             currRow.BeginEdit();
                             currRow["receptionistCode"] = Convert.ToInt32(currRow["receptionistCode"]) - 1;
                             currRow.EndEdit();
                             select += 1;
                         }
-
-                        dbc.DBAdapter.Update(dbc.DS, "receptionist");
+                       
+                        dbc.DBAdapter.Update(dbc.DS, "receptionist");   // 삭제내역 커밋
                         dbc.DS.AcceptChanges();
-
-                        listBoxReceptionist.Items.Remove(textBoxName.Text);
+                        
+                        listBoxReceptionist.Items.Clear();  // 리스트박스, 텍스트박스 비우기
                         textBoxName.Clear();
+
+                        dbc.ReceptionTable = dbc.DS.Tables["receptionist"]; // 변경된 내역으로 새로 띄우기
+                        for (int i=0; i<dbc.ReceptionTable.Rows.Count; i++)
+                        {
+                            listBoxReceptionist.Items.Add(dbc.ReceptionTable.Rows[i]["receptionistName"]);
+                        }
                     }
                     catch (DataException DE)
                     {

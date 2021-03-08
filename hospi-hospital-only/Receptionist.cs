@@ -54,6 +54,17 @@ namespace hospi_hospital_only
         {
             UpdateReceptionist updateReceptionist = new UpdateReceptionist();
             updateReceptionist.ShowDialog();
+
+            if (updateReceptionist == null || updateReceptionist.IsDisposed)
+            {
+                comboBox1.Items.Clear();
+                dbc.Receptionist_Open();
+                dbc.ReceptionTable = dbc.DS.Tables["receptionist"];
+                for(int i=0; i<dbc.ReceptionTable.Rows.Count; i++)
+                {
+                    comboBox1.Items.Add(dbc.ReceptionTable.Rows[i]["receptionistName"]);
+                }
+            }
         }
 
         // 취소 버튼

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 namespace hospi_hospital_only
 {
@@ -502,7 +503,8 @@ namespace hospi_hospital_only
                             newRow["SubjectCode"] = i + 1;
                         }
                     }
-                    for (int i = 0; i < dbc.SubjectTable.Rows.Count; i++)
+
+                    for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                     {
                         if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == textBoxReceptionist.Text)
                         {
@@ -511,9 +513,8 @@ namespace hospi_hospital_only
                     }
                     newRow["ReceptionInfo"] = textBoxPurpose.Text;
                     newRow["ReceptionType"] = 1;
-
                     dbc.ReceptionTable.Rows.Add(newRow);
-                    dbc.DBAdapter.Update(dbc.DS, "Reception");
+                    dbc.DBAdapter.Update(dbc.DS, "Reception");  
                     dbc.DS.AcceptChanges();
 
                     MessageBox.Show("접수 완료.", "알림");
@@ -550,6 +551,9 @@ namespace hospi_hospital_only
             receptionist.ReceptionistName = textBoxReceptionist.Text;
             receptionist.ShowDialog();
             textBoxReceptionist.Text = receptionist.ReceptionistName;
+
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
         }
 
         // 날짜정보 금일 버튼
