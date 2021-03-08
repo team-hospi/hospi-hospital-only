@@ -33,7 +33,7 @@ namespace hospi_hospital_only
             dbc.Receptionist_Open();
             dbc.ReceptionistTable = dbc.DS.Tables["Receptionist"];
 
-            for(int i=0; i<dbc.ReceptionistTable.Columns.Count; i++)     // comboBox1에 접수자 추가
+            for(int i=0; i<dbc.ReceptionistTable.Rows.Count; i++)     // comboBox1에 접수자 추가
             {
                 if(dbc.ReceptionistTable.Rows[i][1].ToString() != "")
                 {
@@ -52,7 +52,14 @@ namespace hospi_hospital_only
 
         private void settingLabel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("접수자 추가용 <미구현>");
+            UpdateReceptionist updateReceptionist = new UpdateReceptionist();
+            updateReceptionist.ShowDialog();
+        }
+
+        // 취소 버튼
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
     }
 }
