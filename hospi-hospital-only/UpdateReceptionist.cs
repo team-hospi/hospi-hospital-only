@@ -32,7 +32,6 @@ namespace hospi_hospital_only
                 if (name.Substring(length - 1) != ")")
                 {
                     listBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
-
                 }
             }
 
@@ -63,14 +62,14 @@ namespace hospi_hospital_only
                     listBoxDelete.SelectedIndex = i;
                 }
             }
-
+            textBoxName2.Clear();
             textBoxName.Clear();
         }
 
         // 폼 로드
         private void UpdateReceptionist_Load(object sender, EventArgs e)
         {
-            this.Width = 410;
+            this.Height = 353;
             try
             {
                 dbc.Receptionist_Open();
@@ -249,24 +248,27 @@ namespace hospi_hospital_only
         // 삭제기록 버튼
         private void buttonHistory_Click(object sender, EventArgs e)
         {
-            this.Width = 673;
-            dbc.Receptionist_Open();
-            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
-
-            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            this.Height= 550;
+            if(listBoxDelete.Items.Count == 0)
             {
-                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
-                int length = name.Length;
-                if (name.Substring(length - 1) == ")")
+                dbc.Receptionist_Open();
+                dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+
+                for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                 {
-                    listBoxDelete.Items.Add(name);
+                    string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                    int length = name.Length;
+                    if (name.Substring(length - 1) == ")")
+                    {
+                        listBoxDelete.Items.Add(name);
+                    }
                 }
             }
         }
         // 삭제내역 닫기
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Width = 410;
+            this.Height = 353;
         }
 
         // 복구 버튼
@@ -320,6 +322,25 @@ namespace hospi_hospital_only
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(selectedString);
+        }
+
+        // 삭제결과 검색 버튼
+        private void buttonSearch2_Click(object sender, EventArgs e)
+        {
+            int search = 0;
+
+            for (int i = 0; i < listBoxDelete.Items.Count; i++)
+            {
+                if (textBoxName2.Text + "(삭제)"== listBoxDelete.Items[i].ToString())
+                {
+                    listBoxDelete.SelectedIndex = i;
+                    search = 1;
+                }
+            }
+            if (search == 0)
+            {
+                MessageBox.Show("검색결과 없음,", "알림");
+            }
         }
     }
 }
