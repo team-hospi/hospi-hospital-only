@@ -69,7 +69,6 @@ namespace hospi_hospital_only
         // 폼 로드
         private void UpdateReceptionist_Load(object sender, EventArgs e)
         {
-            this.Height = 353;
             try
             {
                 dbc.Receptionist_Open();
@@ -248,7 +247,7 @@ namespace hospi_hospital_only
         // 삭제기록 버튼
         private void buttonHistory_Click(object sender, EventArgs e)
         {
-            this.Height= 550;
+            this.Width= 796;
             if(listBoxDelete.Items.Count == 0)
             {
                 dbc.Receptionist_Open();
@@ -268,7 +267,7 @@ namespace hospi_hospital_only
         // 삭제내역 닫기
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Height = 353;
+            this.Width = 409;
         }
 
         // 복구 버튼
