@@ -202,18 +202,20 @@ namespace hospi_hospital_only
                 // 이전 진료 기록
                 dbc.Visitor_Chart(Convert.ToInt32(vRow["patientID"]));
                 hisTable = dbc.DS.Tables["visitor"];
-                for(int i=0; i<hisTable.Rows.Count; i++)
+                if(hisTable.Rows.Count != 0)
                 {
-                    ListViewItem item = new ListViewItem();
-                    item.Text = hisTable.Rows[i]["receptionDate"].ToString();
-                    item.SubItems.Add(hisTable.Rows[i]["receptionTime"].ToString().Substring(0,2) +" : "+ hisTable.Rows[i]["receptionTime"].ToString().Substring(2, 2));
-                    item.SubItems.Add(hisTable.Rows[i]["subjectName"].ToString());
-                    item.SubItems.Add(hisTable.Rows[i]["receptionInfo"].ToString());
-                    listView2.Items.Add(item);
+                    for (int i = 0; i < hisTable.Rows.Count; i++)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = hisTable.Rows[i]["receptionDate"].ToString();
+                        item.SubItems.Add(hisTable.Rows[i]["receptionTime"].ToString().Substring(0, 2) + " : " + hisTable.Rows[i]["receptionTime"].ToString().Substring(2, 2));
+                        item.SubItems.Add(hisTable.Rows[i]["subjectName"].ToString());
+                        item.SubItems.Add(hisTable.Rows[i]["receptionInfo"].ToString());
+                        listView2.Items.Add(item);
+                    }
+                    textBoxFirst.Text = "20" + hisTable.Rows[hisTable.Rows.Count - 1]["receptionDate"].ToString();
+                    textBoxLast.Text = "20" + hisTable.Rows[0]["receptionDate"].ToString();
                 }
-                textBoxFirst.Text = "20"+hisTable.Rows[hisTable.Rows.Count -1]["receptionDate"].ToString();
-                textBoxLast.Text = "20"+hisTable.Rows[0]["receptionDate"].ToString();
-
             }
             catch (DataException DE)
             {
@@ -824,7 +826,13 @@ namespace hospi_hospital_only
             {
                 Reception_HistoryInfo reception_HistoryInfo = new Reception_HistoryInfo();
                 reception_HistoryInfo.ReceptionInfo = hisTable.Rows[selectedListViewItemIndex]["receptionInfo"].ToString();
-                reception_HistoryInfo.Show();
+                reception_HistoryInfo.ShowDialog();
+                string history = reception_HistoryInfo.ReceptionInfo;
+                if(history != "")
+                {
+                    textBoxPurpose.Text = history;
+                }
+
             }
             selectedListViewItemIndex = -1;
         }

@@ -90,10 +90,11 @@
             this.buttonToday = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.labelGenderAge = new System.Windows.Forms.Label();
             this.textBoxReceptionCount = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
-            this.labelGenderAge = new System.Windows.Forms.Label();
+            this.buttonReceptionList = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -306,6 +307,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonReceptionList);
             this.groupBox2.Controls.Add(this.labelPresctiptionEnd);
             this.groupBox2.Controls.Add(this.buttonNextReception);
             this.groupBox2.Controls.Add(this.buttonReceptionEnd);
@@ -322,7 +324,7 @@
             this.labelPresctiptionEnd.AutoSize = true;
             this.labelPresctiptionEnd.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelPresctiptionEnd.ForeColor = System.Drawing.Color.Red;
-            this.labelPresctiptionEnd.Location = new System.Drawing.Point(327, 31);
+            this.labelPresctiptionEnd.Location = new System.Drawing.Point(337, 31);
             this.labelPresctiptionEnd.Name = "labelPresctiptionEnd";
             this.labelPresctiptionEnd.Size = new System.Drawing.Size(91, 17);
             this.labelPresctiptionEnd.TabIndex = 42;
@@ -790,6 +792,16 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "진료 대기 인원";
             // 
+            // labelGenderAge
+            // 
+            this.labelGenderAge.AutoSize = true;
+            this.labelGenderAge.Location = new System.Drawing.Point(105, 36);
+            this.labelGenderAge.Name = "labelGenderAge";
+            this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
+            this.labelGenderAge.TabIndex = 35;
+            this.labelGenderAge.Text = "명";
+            this.labelGenderAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBoxReceptionCount
             // 
             this.textBoxReceptionCount.Location = new System.Drawing.Point(15, 29);
@@ -819,15 +831,16 @@
             this.textBoxSubjectName.TabIndex = 30;
             this.textBoxSubjectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelGenderAge
+            // buttonReceptionList
             // 
-            this.labelGenderAge.AutoSize = true;
-            this.labelGenderAge.Location = new System.Drawing.Point(105, 36);
-            this.labelGenderAge.Name = "labelGenderAge";
-            this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
-            this.labelGenderAge.TabIndex = 35;
-            this.labelGenderAge.Text = "명";
-            this.labelGenderAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonReceptionList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonReceptionList.Location = new System.Drawing.Point(206, 22);
+            this.buttonReceptionList.Name = "buttonReceptionList";
+            this.buttonReceptionList.Size = new System.Drawing.Size(89, 32);
+            this.buttonReceptionList.TabIndex = 43;
+            this.buttonReceptionList.Text = "대기 목록";
+            this.buttonReceptionList.UseVisualStyleBackColor = true;
+            this.buttonReceptionList.Click += new System.EventHandler(this.buttonReceptionList_Click);
             // 
             // Office
             // 
@@ -939,5 +952,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Label labelPresctiptionEnd;
         private System.Windows.Forms.Label labelGenderAge;
+        private System.Windows.Forms.Button buttonReceptionList;
     }
 }
