@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxSubName = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -39,17 +38,18 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.labelGenderAge = new System.Windows.Forms.Label();
             this.textBoxReceptionCount = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.labelGenderAge);
             this.groupBox4.Controls.Add(this.textBoxSubName);
+            this.groupBox4.Controls.Add(this.textBoxReceptionCount);
             this.groupBox4.Controls.Add(this.listView1);
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
@@ -133,22 +133,10 @@
             this.columnHeader19.Text = "접수고유번호";
             this.columnHeader19.Width = 0;
             // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.labelGenderAge);
-            this.groupBox9.Controls.Add(this.textBoxReceptionCount);
-            this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox9.Location = new System.Drawing.Point(436, 12);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(136, 68);
-            this.groupBox9.TabIndex = 35;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "진료 대기 인원";
-            // 
             // labelGenderAge
             // 
             this.labelGenderAge.AutoSize = true;
-            this.labelGenderAge.Location = new System.Drawing.Point(105, 36);
+            this.labelGenderAge.Location = new System.Drawing.Point(242, 32);
             this.labelGenderAge.Name = "labelGenderAge";
             this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
             this.labelGenderAge.TabIndex = 35;
@@ -157,32 +145,36 @@
             // 
             // textBoxReceptionCount
             // 
-            this.textBoxReceptionCount.Location = new System.Drawing.Point(15, 29);
+            this.textBoxReceptionCount.Location = new System.Drawing.Point(152, 25);
             this.textBoxReceptionCount.Name = "textBoxReceptionCount";
             this.textBoxReceptionCount.ReadOnly = true;
             this.textBoxReceptionCount.Size = new System.Drawing.Size(88, 23);
             this.textBoxReceptionCount.TabIndex = 7;
             this.textBoxReceptionCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // timer1
+            // button1
             // 
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(310, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 28);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "종료";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Office_WaitingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 541);
-            this.Controls.Add(this.groupBox9);
+            this.ClientSize = new System.Drawing.Size(448, 541);
             this.Controls.Add(this.groupBox4);
             this.Name = "Office_WaitingList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Office_WaitingList";
             this.Load += new System.EventHandler(this.Office_WaitingList_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -199,9 +191,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader19;
         private System.Windows.Forms.TextBox textBoxSubName;
-        private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label labelGenderAge;
         private System.Windows.Forms.TextBox textBoxReceptionCount;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
     }
 }
