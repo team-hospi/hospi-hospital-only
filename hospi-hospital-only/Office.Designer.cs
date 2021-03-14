@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -49,6 +49,7 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonReceptionList = new System.Windows.Forms.Button();
             this.labelPresctiptionEnd = new System.Windows.Forms.Label();
             this.buttonNextReception = new System.Windows.Forms.Button();
             this.buttonReceptionEnd = new System.Windows.Forms.Button();
@@ -90,10 +91,10 @@
             this.buttonToday = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.labelGenderAge = new System.Windows.Forms.Label();
             this.textBoxReceptionCount = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
-            this.labelGenderAge = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -312,17 +313,28 @@
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(447, 68);
+            this.groupBox2.Size = new System.Drawing.Size(344, 68);
             this.groupBox2.TabIndex = 30;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "진료 메뉴";
+            // 
+            // buttonReceptionList
+            // 
+            this.buttonReceptionList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonReceptionList.Location = new System.Drawing.Point(138, 22);
+            this.buttonReceptionList.Name = "buttonReceptionList";
+            this.buttonReceptionList.Size = new System.Drawing.Size(89, 32);
+            this.buttonReceptionList.TabIndex = 43;
+            this.buttonReceptionList.Text = "대기 목록";
+            this.buttonReceptionList.UseVisualStyleBackColor = true;
+            this.buttonReceptionList.Click += new System.EventHandler(this.buttonReceptionList_Click);
             // 
             // labelPresctiptionEnd
             // 
             this.labelPresctiptionEnd.AutoSize = true;
             this.labelPresctiptionEnd.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelPresctiptionEnd.ForeColor = System.Drawing.Color.Red;
-            this.labelPresctiptionEnd.Location = new System.Drawing.Point(327, 31);
+            this.labelPresctiptionEnd.Location = new System.Drawing.Point(233, 29);
             this.labelPresctiptionEnd.Name = "labelPresctiptionEnd";
             this.labelPresctiptionEnd.Size = new System.Drawing.Size(91, 17);
             this.labelPresctiptionEnd.TabIndex = 42;
@@ -391,14 +403,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(15, 102);
@@ -780,15 +792,26 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.buttonReceptionList);
             this.groupBox9.Controls.Add(this.labelGenderAge);
             this.groupBox9.Controls.Add(this.textBoxReceptionCount);
             this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox9.Location = new System.Drawing.Point(465, 12);
+            this.groupBox9.Location = new System.Drawing.Point(362, 12);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(136, 68);
+            this.groupBox9.Size = new System.Drawing.Size(239, 68);
             this.groupBox9.TabIndex = 34;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "진료 대기 인원";
+            // 
+            // labelGenderAge
+            // 
+            this.labelGenderAge.AutoSize = true;
+            this.labelGenderAge.Location = new System.Drawing.Point(105, 36);
+            this.labelGenderAge.Name = "labelGenderAge";
+            this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
+            this.labelGenderAge.TabIndex = 35;
+            this.labelGenderAge.Text = "명";
+            this.labelGenderAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxReceptionCount
             // 
@@ -818,16 +841,6 @@
             this.textBoxSubjectName.Size = new System.Drawing.Size(144, 23);
             this.textBoxSubjectName.TabIndex = 30;
             this.textBoxSubjectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGenderAge
-            // 
-            this.labelGenderAge.AutoSize = true;
-            this.labelGenderAge.Location = new System.Drawing.Point(105, 36);
-            this.labelGenderAge.Name = "labelGenderAge";
-            this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
-            this.labelGenderAge.TabIndex = 35;
-            this.labelGenderAge.Text = "명";
-            this.labelGenderAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Office
             // 
@@ -939,5 +952,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Label labelPresctiptionEnd;
         private System.Windows.Forms.Label labelGenderAge;
+        private System.Windows.Forms.Button buttonReceptionList;
     }
 }

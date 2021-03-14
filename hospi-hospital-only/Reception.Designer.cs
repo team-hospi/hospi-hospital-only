@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,11 +45,11 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button11 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.textBoxLast = new System.Windows.Forms.TextBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBoxFirst = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBoxSubjcet = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -172,6 +172,7 @@
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
             // 
             // columnHeader8
             // 
@@ -192,9 +193,9 @@
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "내원목적";
+            this.columnHeader11.Text = "목적";
             this.columnHeader11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader11.Width = 72;
+            this.columnHeader11.Width = 55;
             // 
             // groupBox7
             // 
@@ -207,11 +208,11 @@
             this.groupBox7.Controls.Add(this.checkBox2);
             this.groupBox7.Controls.Add(this.button11);
             this.groupBox7.Controls.Add(this.checkBox1);
-            this.groupBox7.Controls.Add(this.textBox20);
+            this.groupBox7.Controls.Add(this.textBoxLast);
             this.groupBox7.Controls.Add(this.textBoxPurpose);
             this.groupBox7.Controls.Add(this.label23);
             this.groupBox7.Controls.Add(this.label21);
-            this.groupBox7.Controls.Add(this.textBox17);
+            this.groupBox7.Controls.Add(this.textBoxFirst);
             this.groupBox7.Controls.Add(this.label22);
             this.groupBox7.Controls.Add(this.comboBoxSubjcet);
             this.groupBox7.Controls.Add(this.label16);
@@ -341,13 +342,13 @@
             this.checkBox1.Text = "응급 환자 ( 우선 접수 )";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox20
+            // textBoxLast
             // 
-            this.textBox20.Location = new System.Drawing.Point(429, 65);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(192, 23);
-            this.textBox20.TabIndex = 31;
+            this.textBoxLast.Location = new System.Drawing.Point(429, 65);
+            this.textBoxLast.Name = "textBoxLast";
+            this.textBoxLast.ReadOnly = true;
+            this.textBoxLast.Size = new System.Drawing.Size(192, 23);
+            this.textBoxLast.TabIndex = 31;
             // 
             // textBoxPurpose
             // 
@@ -381,13 +382,13 @@
             this.label21.Text = "당일내원메모\r\n(내원 목적)";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox17
+            // textBoxFirst
             // 
-            this.textBox17.Location = new System.Drawing.Point(429, 36);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(192, 23);
-            this.textBox17.TabIndex = 29;
+            this.textBoxFirst.Location = new System.Drawing.Point(429, 36);
+            this.textBoxFirst.Name = "textBoxFirst";
+            this.textBoxFirst.ReadOnly = true;
+            this.textBoxFirst.Size = new System.Drawing.Size(192, 23);
+            this.textBoxFirst.TabIndex = 29;
             // 
             // label22
             // 
@@ -509,14 +510,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -1290,9 +1291,9 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox textBoxLast;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBoxFirst;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox comboBoxSubjcet;
         internal System.Windows.Forms.TextBox textBoxPurpose;

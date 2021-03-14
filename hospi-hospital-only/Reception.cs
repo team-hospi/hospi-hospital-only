@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 namespace hospi_hospital_only
 {
@@ -18,19 +19,19 @@ namespace hospi_hospital_only
         string listViewIndexID1; // 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexPatientName; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수
         int listViewModeL, listViewModeR; // 리스트뷰의 현재상태를 저장한 변수     // L ( 진료대기 : 1 , 진료보류 : 2 )      // R ( 수납대기 : 1 , 수납완료 : 2 ) 
-        string hospitalID;
-        int old;
+        int hospitalID, old;
         string date; // 날짜 변수
         string[] prescriptionArr = new string[3]; // 처방전 조회에 필요한 (patientID, receptionTime, receptionDate 저장)
+        DataTable hisTable; // 수진자 정보 조회시 이전 진료기록을 담은 테이블 ( 이전 진료기록 띄울때 사용하고, 이전 진료기록중 내원목적 확인시에 재사용 )
+        int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
 
         public Reception()
         {
             InitializeComponent();
-            
         }
 
         // 프로퍼티 
-        public string HospitalID // Main폼에서 입력된 병원코드를 받아옴
+        public int HospitalID // Main폼에서 입력된 병원코드를 받아옴
         {
             get { return hospitalID; }
             set { hospitalID = value; }
@@ -77,8 +78,8 @@ namespace hospi_hospital_only
             // 진료정보
             textBoxPurpose.Clear();
             // 내원정보
-            textBox17.Clear();
-            textBox20.Clear();
+            textBoxFirst.Clear();
+            textBoxLast.Clear();
             // 출생년도
             patientBirth.Clear();
         }
@@ -105,34 +106,6 @@ namespace hospi_hospital_only
                 labelGenderAge.Text = "여/" + old.ToString() + "세";
             }
         }
-
-        // 수납현황 listView 업데이트
-
-
-        // 이전진료기록 조회 (ListVIew2), 최초/최종 내원일
-        /* public void ReceptionBefore()
-         {
-             listView2.Items.Clear();
-
-             dbc2.Reception_Before(hospitalID, textBox24.Text); // 병원코드, 차트번호
-             dbc2.ReceptionTable = dbc2.DS.Tables["Reception"];
-
-             for (int i = 0; i < dbc2.ReceptionTable.Rows.Count; i++)
-             {
-                 ListViewItem item = new ListViewItem();
-                 item.Text = dbc2.ReceptionTable.Rows[i][0].ToString();
-                 item.SubItems.Add(dbc2.ReceptionTable.Rows[i][1].ToString().Substring(0,2)+" : "+dbc2.ReceptionTable.Rows[i][1].ToString().Substring(2,2));
-                 item.SubItems.Add(dbc2.ReceptionTable.Rows[i][2].ToString());
-                 item.SubItems.Add(dbc2.ReceptionTable.Rows[i][3].ToString());
-                 listView2.Items.Add(item);
-             }
-
-             if(dbc2.ReceptionTable.Rows.Count != 0)
-             {
-                 textBox17.Text = "20"+dbc2.ReceptionTable.Rows[0]["receptionDate"].ToString();
-                 textBox20.Text = "20"+dbc2.ReceptionTable.Rows[dbc2.ReceptionTable.Rows.Count-1]["receptionDate"].ToString();
-             }
-         }*/
 
         // 접수 리스트뷰 ( listView1,3 )
         public void ReceptionUpdate(int receptionType)
@@ -225,6 +198,24 @@ namespace hospi_hospital_only
                 phone3.Text = vRow["patientPhone"].ToString().Substring(7, 4);
                 textBoxADDR.Text = vRow["patientAddress"].ToString();
                 textBox16.Text = vRow["patientMemo"].ToString();
+
+                // 이전 진료 기록
+                dbc.Visitor_Chart(Convert.ToInt32(vRow["patientID"]));
+                hisTable = dbc.DS.Tables["visitor"];
+                if(hisTable.Rows.Count != 0)
+                {
+                    for (int i = 0; i < hisTable.Rows.Count; i++)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Text = hisTable.Rows[i]["receptionDate"].ToString();
+                        item.SubItems.Add(hisTable.Rows[i]["receptionTime"].ToString().Substring(0, 2) + " : " + hisTable.Rows[i]["receptionTime"].ToString().Substring(2, 2));
+                        item.SubItems.Add(hisTable.Rows[i]["subjectName"].ToString());
+                        item.SubItems.Add(hisTable.Rows[i]["receptionInfo"].ToString());
+                        listView2.Items.Add(item);
+                    }
+                    textBoxFirst.Text = "20" + hisTable.Rows[hisTable.Rows.Count - 1]["receptionDate"].ToString();
+                    textBoxLast.Text = "20" + hisTable.Rows[0]["receptionDate"].ToString();
+                }
             }
             catch (DataException DE)
             {
@@ -245,9 +236,6 @@ namespace hospi_hospital_only
         // 폼 로드
         private void Receipt_Load(object sender, EventArgs e)
         {
-            dbc.FireConnect();
-            dbc2.FireConnect();
-            dbc3.FireConnect();
             // 폼 로드시 버튼 클릭
             button2_Click(sender, e); // 진료대기버튼
             button8_Click(sender, e); // 진료보류버튼
@@ -264,21 +252,18 @@ namespace hospi_hospital_only
                 // 병원정보 가져오고 과목명 comboBox에 추가
                 dbc.Reception_Open();
                 dbc.Hospital_Open(hospitalID);
-                dbc2.Hospital_Open(hospitalID);
-                dbc3.Hospital_Open(hospitalID);
-                dbc.Delay(200);
-            //    dbc.HospitalTable = dbc.DS.Tables["hospital"];
-            //   DataRow subjectRow = dbc.HospitalTable.Rows[0];
+                dbc.HospitalTable = dbc.DS.Tables["hospital"];
+                DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
                 dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
                 textBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
                 dbc.Subject_Open();
                 dbc.SubjectTable = dbc.DS.Tables["subjectName"]; // 과목 테이블
-                for (int i = 0; i < DBClass.hospidepartment.Length; i++)     // comboBoxSubject에 과목명 추가
+                for (int i = 0; i < dbc.SubjectTable.Columns.Count; i++)     // comboBoxSubject에 과목명 추가
                 {
-                    comboBoxSubjcet.Items.Add(DBClass.hospidepartment[i]);
+                    comboBoxSubjcet.Items.Add(dbc.SubjectTable.Rows[i][1]);
                 }
-                comboBoxSubjcet.Text = DBClass.hospidepartment[0];    // 최상위 과목명을 기본 텍스트로 지정
+                comboBoxSubjcet.Text = dbc.SubjectTable.Rows[0][1].ToString();    // 최상위 과목명을 기본 텍스트로 지정
             }
             catch (DataException DE)
             {
@@ -406,15 +391,6 @@ namespace hospi_hospital_only
                         TextBoxClear();
                         patientName.Clear();
                     }
-                    else if (dbc.VisitorTable.Rows.Count == 1)
-                    {
-                        // 재진조회 그룹박스, 특이사항
-                        VisitorText(0);
-
-                        // 성별/나이 라벨 수정
-                        GenderAgeLabel();
-                        textBoxPurpose.Focus(); // 내원목적 포커스
-                    }
 
                     // GirdView 띄우기
                     DBGrid.DataSource = dbc.DS.Tables["visitor"].DefaultView;
@@ -470,15 +446,18 @@ namespace hospi_hospital_only
         // 수진자 조회 셀 더블클릭    ( 조회된 수진자의 수가 1보다 많을경우 )      
         private void DBGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            TextBoxClear();
+            if(e.RowIndex != -1)
+            {
+                TextBoxClear();
 
-            // 재진조회 그룹박스, 특이사항 정보 넣기
-            //VisitorText(Convert.ToInt32(DBGrid.Rows[e.RowIndex].Cells[1].FormattedValue));
-            VisitorText(e.RowIndex);
+                // 재진조회 그룹박스, 특이사항 정보 넣기
+                //VisitorText(Convert.ToInt32(DBGrid.Rows[e.RowIndex].Cells[1].FormattedValue));
+                VisitorText(e.RowIndex);
 
-            // 성별/나이 라벨 수정
-            GenderAgeLabel();
-            textBoxPurpose.Focus();
+                // 성별/나이 라벨 수정
+                GenderAgeLabel();
+                textBoxPurpose.Focus();
+            }
         }
 
         // 접수 (접수등록) 버튼
@@ -503,8 +482,15 @@ namespace hospi_hospital_only
                     newRow["PatientID"] = textBoxChartNum.Text;
                     newRow["ReceptionTime"] = comboBoxTime1.Text + comboBoxTime2.Text;
                     newRow["ReceptionDate"] = dateTimePicker1.Value.ToString("yy/MM/dd");
-                    newRow["SubjectName"] = comboBoxSubjcet.Text;
                     for (int i = 0; i < dbc.SubjectTable.Rows.Count; i++)
+                    {
+                        if (dbc.SubjectTable.Rows[i]["SubjectName"].ToString() == comboBoxSubjcet.Text)
+                        {
+                            newRow["SubjectCode"] = i + 1;
+                        }
+                    }
+
+                    for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                     {
                         if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == textBoxReceptionist.Text)
                         {
@@ -513,9 +499,8 @@ namespace hospi_hospital_only
                     }
                     newRow["ReceptionInfo"] = textBoxPurpose.Text;
                     newRow["ReceptionType"] = 1;
-
                     dbc.ReceptionTable.Rows.Add(newRow);
-                    dbc.DBAdapter.Update(dbc.DS, "Reception");
+                    dbc.DBAdapter.Update(dbc.DS, "Reception");  
                     dbc.DS.AcceptChanges();
 
                     MessageBox.Show("접수 완료.", "알림");
@@ -552,6 +537,9 @@ namespace hospi_hospital_only
             receptionist.ReceptionistName = textBoxReceptionist.Text;
             receptionist.ShowDialog();
             textBoxReceptionist.Text = receptionist.ReceptionistName;
+
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
         }
 
         // 날짜정보 금일 버튼
@@ -818,6 +806,35 @@ namespace hospi_hospital_only
                 listViewIndexID1 = listView1.Items[selectRow].SubItems[7].Text;
                 listViewIndexPatientName = listView1.Items[selectRow].SubItems[3].Text;
             }
+        }
+
+        // 이전 진료기록 더블클릭
+        private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(listView2.SelectedItems.Count > 0)
+            {
+                for(int i=0; i<listView2.Items.Count-1; i++)
+                {
+                    if(listView2.Items[i].Selected == true)
+                    {
+                        selectedListViewItemIndex = i;
+                        break;
+                    }
+                }
+            }
+            if(selectedListViewItemIndex != -1)
+            {
+                Reception_HistoryInfo reception_HistoryInfo = new Reception_HistoryInfo();
+                reception_HistoryInfo.ReceptionInfo = hisTable.Rows[selectedListViewItemIndex]["receptionInfo"].ToString();
+                reception_HistoryInfo.ShowDialog();
+                string history = reception_HistoryInfo.ReceptionInfo;
+                if(history != "")
+                {
+                    textBoxPurpose.Text = history;
+                }
+
+            }
+            selectedListViewItemIndex = -1;
         }
 
         // 날짜정보 dateTimePicker 변경시

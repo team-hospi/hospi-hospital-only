@@ -41,7 +41,7 @@ namespace hospi_hospital_only
 
         private void Prescription_Load(object sender, EventArgs e)
         {
-            //dbc.Presctiption_Select(patientID, receptionDate, receptionTime);
+            dbc.Presctiption_Select(patientID, receptionDate, receptionTime);
             dbc.PrescriptionTable = dbc.DS.Tables["prescription"];
             dataGridView1.DataSource = dbc.PrescriptionTable.DefaultView;
         }
