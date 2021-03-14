@@ -13,20 +13,28 @@ namespace hospi_hospital_only
     public partial class Main2 : Form
     {
         DBClass dbc = new DBClass();
+        string hospitalID;
+
+        public string HospitalID
+        {
+            get { return hospitalID; }
+            set { hospitalID = value; }
+        }
         public Main2()
         {
+            dbc.FireConnect();
             InitializeComponent();
         }
 
         private void Main2_Load(object sender, EventArgs e)
         {
-            dbc.Subject_Open();
-            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-            for(int i=0; i<dbc.SubjectTable.Rows.Count; i++)
+            dbc.Hospital_Open(hospitalID);
+            dbc.Delay(200);
+            for(int i=0; i<DBClass.hospidepartment.Length; i++)
             {
-                comboBoxSub.Items.Add(dbc.SubjectTable.Rows[i]["subjectName"]);
+                comboBoxSub.Items.Add(DBClass.hospidepartment[i]);
             }
-            comboBoxSub.Text = dbc.SubjectTable.Rows[0]["subjectName"].ToString();
+            comboBoxSub.Text = DBClass.hospidepartment[0];
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,7 +42,7 @@ namespace hospi_hospital_only
             int a = comboBoxSub.SelectedIndex;
             Office office = new Office();
             this.Visible = false;
-            office.SubjectID = a+1;
+            office.SubjectID = comboBoxSub.Text;
             office.ShowDialog();
             this.Dispose();
         }

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
 
 namespace hospi_hospital_only
 {
@@ -19,7 +18,8 @@ namespace hospi_hospital_only
         string listViewIndexID1; // 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexPatientName; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수
         int listViewModeL, listViewModeR; // 리스트뷰의 현재상태를 저장한 변수     // L ( 진료대기 : 1 , 진료보류 : 2 )      // R ( 수납대기 : 1 , 수납완료 : 2 ) 
-        int hospitalID, old;
+        string hospitalID;
+        int old;
         string date; // 날짜 변수
         string[] prescriptionArr = new string[3]; // 처방전 조회에 필요한 (patientID, receptionTime, receptionDate 저장)
         DataTable hisTable; // 수진자 정보 조회시 이전 진료기록을 담은 테이블 ( 이전 진료기록 띄울때 사용하고, 이전 진료기록중 내원목적 확인시에 재사용 )
@@ -31,7 +31,7 @@ namespace hospi_hospital_only
         }
 
         // 프로퍼티 
-        public int HospitalID // Main폼에서 입력된 병원코드를 받아옴
+        public string HospitalID // Main폼에서 입력된 병원코드를 받아옴
         {
             get { return hospitalID; }
             set { hospitalID = value; }
@@ -236,6 +236,9 @@ namespace hospi_hospital_only
         // 폼 로드
         private void Receipt_Load(object sender, EventArgs e)
         {
+            dbc.FireConnect();
+            dbc2.FireConnect();
+            dbc3.FireConnect();
             // 폼 로드시 버튼 클릭
             button2_Click(sender, e); // 진료대기버튼
             button8_Click(sender, e); // 진료보류버튼
@@ -252,18 +255,19 @@ namespace hospi_hospital_only
                 // 병원정보 가져오고 과목명 comboBox에 추가
                 dbc.Reception_Open();
                 dbc.Hospital_Open(hospitalID);
-                dbc.HospitalTable = dbc.DS.Tables["hospital"];
-                DataRow subjectRow = dbc.HospitalTable.Rows[0];
+                dbc.Delay(200);
+                //dbc.HospitalTable = dbc.DS.Tables["hospital"];
+                //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
                 dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
                 textBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
                 dbc.Subject_Open();
                 dbc.SubjectTable = dbc.DS.Tables["subjectName"]; // 과목 테이블
-                for (int i = 0; i < dbc.SubjectTable.Columns.Count; i++)     // comboBoxSubject에 과목명 추가
+                for (int i = 0; i < DBClass.hospidepartment.Length; i++)     // comboBoxSubject에 과목명 추가
                 {
-                    comboBoxSubjcet.Items.Add(dbc.SubjectTable.Rows[i][1]);
+                    comboBoxSubjcet.Items.Add(DBClass.hospidepartment[i]);
                 }
-                comboBoxSubjcet.Text = dbc.SubjectTable.Rows[0][1].ToString();    // 최상위 과목명을 기본 텍스트로 지정
+                comboBoxSubjcet.Text = DBClass.hospidepartment[0];    // 최상위 과목명을 기본 텍스트로 지정
             }
             catch (DataException DE)
             {
@@ -482,14 +486,7 @@ namespace hospi_hospital_only
                     newRow["PatientID"] = textBoxChartNum.Text;
                     newRow["ReceptionTime"] = comboBoxTime1.Text + comboBoxTime2.Text;
                     newRow["ReceptionDate"] = dateTimePicker1.Value.ToString("yy/MM/dd");
-                    for (int i = 0; i < dbc.SubjectTable.Rows.Count; i++)
-                    {
-                        if (dbc.SubjectTable.Rows[i]["SubjectName"].ToString() == comboBoxSubjcet.Text)
-                        {
-                            newRow["SubjectCode"] = i + 1;
-                        }
-                    }
-
+                    newRow["SubjectName"] = comboBoxSubjcet.Text;
                     for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                     {
                         if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == textBoxReceptionist.Text)
@@ -499,6 +496,7 @@ namespace hospi_hospital_only
                     }
                     newRow["ReceptionInfo"] = textBoxPurpose.Text;
                     newRow["ReceptionType"] = 1;
+
                     dbc.ReceptionTable.Rows.Add(newRow);
                     dbc.DBAdapter.Update(dbc.DS, "Reception");  
                     dbc.DS.AcceptChanges();
