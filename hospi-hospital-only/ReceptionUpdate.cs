@@ -42,6 +42,13 @@ namespace hospi_hospital_only
             textBoxChartNum.Text = row["patientID"].ToString();
             comboBoxSubjcet.Text = row["subjectCode"].ToString();
             comboBoxReceptionist.Text = row["receptionistCode"].ToString();
+            // comboBoxReceptionist에 접수자명 추가
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+            for(int i =0; i<dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                comboBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+            }
             if(row["receptionType"].ToString() == "1")
             {
                 textBoxReceptionType.Text = "진료 대기중";
