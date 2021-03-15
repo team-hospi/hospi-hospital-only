@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace hospi_hospital_only
@@ -13,7 +13,7 @@ namespace hospi_hospital_only
     public partial class Main : Form
     {
         DBClass dbc = new DBClass();
-        int timeMax = 20;
+        int timeMax = 200;
         int time = 0;
 
         public Main()
@@ -35,15 +35,6 @@ namespace hospi_hospital_only
             dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
 
             LoginLabel.Visible = true;
-            timer1.Start();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            dbc.FireConnect();
-            dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
-
-            dbc.Delay(2000);
 
             if (textBoxHospitalID.Text == "")
             {
@@ -55,28 +46,45 @@ namespace hospi_hospital_only
                 MessageBox.Show("비밀번호를 입력하세요.", "알림");
                 textBoxPW.Focus();
             }
-            else if (DBClass.hospiPW != dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
+            else
             {
-                MessageBox.Show("로그인정보 불일치.", "알림");
-                TextBoxClear();
+                Thread rTh = new Thread(Login);
+                rTh.Start();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dbc.FireConnect();
+            dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
+
+            dbc.Delay(200);
+
+            if (textBoxHospitalID.Text == "")
+            {
+                MessageBox.Show("아이디를 입력하세요.", "알림");
+                textBoxHospitalID.Focus();
+            }
+            else if (textBoxPW.Text == "")
+            {
+                MessageBox.Show("비밀번호를 입력하세요.", "알림");
+                textBoxPW.Focus();
+            }
+            else if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
+            {
+                
+                dbc.FindDocument(textBoxHospitalID.Text);
+                Main2 main2 = new Main2();
+                main2.HospitalID = textBoxHospitalID.Text;
+                main2.ShowDialog();
+
+                textBoxPW.Clear();
+                
             }
             else
             {
-
-                if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
-                {
-                    dbc.FindDocument(textBoxHospitalID.Text);
-                    Main2 main2 = new Main2();
-                    main2.HospitalID = textBoxHospitalID.Text;
-                    main2.ShowDialog();
-                    
-                    textBoxPW.Clear();
-                }
-                else
-                {
-                    MessageBox.Show("로그인정보 불일치", "알림");
-                    TextBoxClear();
-                }
+                MessageBox.Show("로그인정보 불일치", "알림");
+                TextBoxClear();
             }
         }
 
@@ -88,11 +96,6 @@ namespace hospi_hospital_only
         private void timer1_Tick(object sender, EventArgs e)
         {
             time += 1;
-            if (LoginLabel.Text == "로그인 중...")
-            {
-                LoginLabel.Text = "로그인 중";
-            }
-            LoginLabel.Text += ".";
             if (time == timeMax)
             {
                 timer1.Stop();
@@ -116,21 +119,44 @@ namespace hospi_hospital_only
                 else
                 {
 
-                    if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
-                    {
-                        dbc.FindDocument(textBoxHospitalID.Text);
-                        Reception reception = new Reception();
-                        reception.HospitalID = textBoxHospitalID.Text;
-                        reception.ShowDialog();
-                        textBoxPW.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("로그인정보 불일치", "알림");
-                        TextBoxClear();
-                    }
+                    
                 }
             }
         }
+
+        public void Login()
+        {
+            int cnt = 0;
+            while(true)
+            {
+                ++cnt;
+                Thread.Sleep(200);
+
+                if (LoginLabel.Text == "로그인 중...")
+                {
+                    LoginLabel.Text = "로그인 중";
+                }
+                LoginLabel.Text += ".";
+
+                if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
+                {
+                    LoginLabel.Visible = false;
+                    dbc.FindDocument(textBoxHospitalID.Text);
+                    Reception reception = new Reception();
+                    reception.HospitalID = textBoxHospitalID.Text;
+                    reception.ShowDialog();
+                    textBoxPW.Clear();
+                    break;
+                }
+                else if(cnt > 150)
+                {
+                    MessageBox.Show("로그인정보 불일치", "알림");
+                    TextBoxClear();
+                        break;
+                }
+            }
+
+            }
+        
     }
 }

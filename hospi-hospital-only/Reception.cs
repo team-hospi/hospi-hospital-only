@@ -24,6 +24,7 @@ namespace hospi_hospital_only
         string[] prescriptionArr = new string[3]; // 처방전 조회에 필요한 (patientID, receptionTime, receptionDate 저장)
         DataTable hisTable; // 수진자 정보 조회시 이전 진료기록을 담은 테이블 ( 이전 진료기록 띄울때 사용하고, 이전 진료기록중 내원목적 확인시에 재사용 )
         int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
+        string selectedSubjectName; // 접수 수정시 과목명 저장
 
         public Reception()
         {
@@ -255,7 +256,7 @@ namespace hospi_hospital_only
                 // 병원정보 가져오고 과목명 comboBox에 추가
                 dbc.Reception_Open();
                 dbc.Hospital_Open(hospitalID);
-                dbc.Delay(200);
+                dbc.Delay(400);
                 //dbc.HospitalTable = dbc.DS.Tables["hospital"];
                 //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
@@ -694,6 +695,7 @@ namespace hospi_hospital_only
             {
                 ReceptionUpdate receptionUpdate = new ReceptionUpdate();
                 receptionUpdate.ReceptionID = Convert.ToInt32(listViewIndexID1);
+                receptionUpdate.SelectedSubjectName = selectedSubjectName;
                 receptionUpdate.ShowDialog();
 
                 if (listViewModeL == 1)
@@ -803,6 +805,8 @@ namespace hospi_hospital_only
                 int selectRow = listView1.SelectedItems[0].Index;
                 listViewIndexID1 = listView1.Items[selectRow].SubItems[7].Text;
                 listViewIndexPatientName = listView1.Items[selectRow].SubItems[3].Text;
+
+                selectedSubjectName = listView1.Items[selectRow].SubItems[5].Text;
             }
         }
 
