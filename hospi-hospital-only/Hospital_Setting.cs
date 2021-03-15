@@ -49,6 +49,8 @@ namespace hospi_hospital_only
                         DBClass.hospiweekday_close = comboBox3.Text + ":" + comboBox4.Text;
                         DBClass.hospisaturday_open = comboBox9.Text + ":" + comboBox8.Text;
                         DBClass.hospisaturday_close = comboBox7.Text + ":" + comboBox6.Text;
+                        DBClass.hospiholiday_open = comboBox14.Text + ":" + comboBox13.Text;
+                        DBClass.hospiholiday_close = comboBox12.Text + ":" + comboBox11.Text;
                         if (comboBox5.Text == "개원")
                         {
                             DBClass.hospisaturday_status = true;
@@ -56,6 +58,14 @@ namespace hospi_hospital_only
                         else if (comboBox5.Text == "휴원")
                         {
                             DBClass.hospisaturday_status = false;
+                        }
+                        if (comboBox10.Text == "개원")
+                        {
+                            DBClass.hospiholiday_status = true;
+                        }
+                        else if (comboBox10.Text == "휴원")
+                        {
+                            DBClass.hospiholiday_status = false;
                         }
 
                         dbc.Hospital_Update();
@@ -95,6 +105,10 @@ namespace hospi_hospital_only
             comboBox8.Text = DBClass.hospisaturday_open.ToString().Substring(3, 2);
             comboBox7.Text = DBClass.hospisaturday_close.ToString().Substring(0, 2);
             comboBox6.Text = DBClass.hospisaturday_close.ToString().Substring(3, 2);
+            comboBox12.Text = DBClass.hospiholiday_close.ToString().Substring(0, 2);
+            comboBox11.Text = DBClass.hospiholiday_close.ToString().Substring(3, 2);
+            comboBox14.Text = DBClass.hospiholiday_open.ToString().Substring(0, 2);
+            comboBox13.Text = DBClass.hospiholiday_open.ToString().Substring(3, 2);
             if (Convert.ToInt32(DBClass.hospisaturday_status) == 0)
             {
                 comboBox5.Text = "휴원";
@@ -110,6 +124,14 @@ namespace hospi_hospital_only
             else if (Convert.ToInt32(DBClass.hospitoday_reservation) == 0)
             {
                 button17_Click(sender, e);
+            }
+            if (Convert.ToInt32(DBClass.hospiholiday_status) == 0)
+            {
+                comboBox10.Text = "휴원";
+            }
+            else if (Convert.ToInt32(DBClass.hospiholiday_status) == 1)
+            {
+                comboBox10.Text = "개원";
             }
         }
 
@@ -183,7 +205,11 @@ namespace hospi_hospital_only
                 comboBox7.Enabled = true;
                 comboBox8.Enabled = true;
                 comboBox9.Enabled = true;
-                
+                comboBox10.Enabled = true;
+                comboBox11.Enabled = true;
+                comboBox12.Enabled = true;
+                comboBox13.Enabled = true;
+                comboBox14.Enabled = true;
             }
         }
     }
