@@ -29,6 +29,7 @@ namespace hospi_hospital_only
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button6 = new System.Windows.Forms.Button();
             this.textBoxHospitalID = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -37,6 +38,8 @@ namespace hospi_hospital_only
             this.textBoxPW = new System.Windows.Forms.TextBox();
             this.labelID = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.LoginLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,11 +132,26 @@ namespace hospi_hospital_only
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // LoginLabel
+            // 
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.Location = new System.Drawing.Point(319, 124);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(61, 12);
+            this.LoginLabel.TabIndex = 36;
+            this.LoginLabel.Text = "로그인 중.";
+            this.LoginLabel.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 168);
+            this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Main";
@@ -142,6 +160,7 @@ namespace hospi_hospital_only
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -154,6 +173,8 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label LoginLabel;
     }
 }
 

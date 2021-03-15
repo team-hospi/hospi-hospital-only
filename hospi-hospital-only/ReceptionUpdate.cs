@@ -14,11 +14,17 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         int receptionID; //  접수번호
+        string selectedSybjectName;
 
         public int ReceptionID
         {
             get { return receptionID; }
             set { receptionID = value; }
+        }
+        public string SelectedSubjectName
+        {
+            get { return selectedSybjectName; }
+            set { selectedSybjectName = value; }
         }
 
         public ReceptionUpdate()
@@ -40,7 +46,7 @@ namespace hospi_hospital_only
             comboBoxTime1.Text = row["receptionTime"].ToString().Substring(0, 2);
             comboBoxTime2.Text = row["receptionTime"].ToString().Substring(2, 2);
             textBoxChartNum.Text = row["patientID"].ToString();
-            comboBoxSubjcet.Text = row["subjectCode"].ToString();
+            comboBoxSubjcet.Text = DBClass.hospidepartment[0];
             comboBoxReceptionist.Text = row["receptionistCode"].ToString();
             // comboBoxReceptionist에 접수자명 추가
             dbc.Receptionist_Open();
@@ -66,12 +72,11 @@ namespace hospi_hospital_only
             // 과목DB
             dbc.Subject_Open();
             dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-            row = dbc.SubjectTable.Rows[Convert.ToInt32(comboBoxSubjcet.Text) - 1];
-            comboBoxSubjcet.Text = row["subjectName"].ToString();
-            // comboBoxSubject에 과목명 추가
-            for (int i = 0; i < dbc.SubjectTable.Columns.Count; i++)  
+            comboBoxSubjcet.Text = selectedSybjectName;
+            
+            for (int i = 0; i < DBClass.hospidepartment.Length; i++)  
             {
-                comboBoxSubjcet.Items.Add(dbc.SubjectTable.Rows[i][1]);
+                comboBoxSubjcet.Items.Add(DBClass.hospidepartment[i]);
             }
 
             // 접수자DB
