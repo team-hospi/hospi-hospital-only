@@ -7,22 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
 
 namespace hospi_hospital_only
 {
     public partial class Hospital_Setting : Form
     {
         DBClass dbc = new DBClass();
-        int hospitalID; // 병원코드
+        string hospitalID; // 병원코드
 
         public Hospital_Setting()
         {
             InitializeComponent();
+            dbc.FireConnect();
         }
 
         // 프로퍼티 
-        public int HospitalID // Main폼에서 입력된 병원코드를 Reception을 거쳐서 받아옴
+        public string HospitalID // Main폼에서 입력된 병원코드를 Reception을 거쳐서 받아옴
         {
             get { return hospitalID; }
             set { hospitalID = value; }
@@ -39,32 +39,26 @@ namespace hospi_hospital_only
             // 수정 상태일 경우 DB업데이트 후 종료
             else if (comboBox1.Enabled == true)
             {
+
                 try
                 {
                     DialogResult ok = MessageBox.Show("정보 수정을 완료 하시겠습니까?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (ok == DialogResult.Yes)
                     {
-                        dbc.Hospital_Update(hospitalID);
-                        dbc.HospitalTable = dbc.DS.Tables["hospital"];
-                        DataRow upRow = dbc.HospitalTable.Rows[0];
-
-                        upRow.BeginEdit();
-                        upRow["openTime"] = comboBox1.Text + comboBox2.Text;
-                        upRow["closeTime"] = comboBox3.Text + comboBox4.Text;
-                        upRow["weekendOpenTime"] = comboBox9.Text + comboBox8.Text;
-                        upRow["weekendCloseTime"] = comboBox7.Text + comboBox6.Text;
+                        DBClass.hospiweekday_open = comboBox1.Text + ":" + comboBox2.Text;
+                        DBClass.hospiweekday_close = comboBox3.Text + ":" + comboBox4.Text;
+                        DBClass.hospisaturday_open = comboBox9.Text + ":" + comboBox8.Text;
+                        DBClass.hospisaturday_close = comboBox7.Text + ":" + comboBox6.Text;
                         if (comboBox5.Text == "개원")
                         {
-                            upRow["sundayOpen"] = 1;
+                            DBClass.hospisaturday_status = true;
                         }
                         else if (comboBox5.Text == "휴원")
                         {
-                            upRow["sundayOpen"] = 0;
+                            DBClass.hospisaturday_status = false;
                         }
-                        upRow.EndEdit();
 
-                        dbc.DBAdapter.Update(dbc.DS, "hospital");
-                        dbc.DS.AcceptChanges();
+                        dbc.Hospital_Update();
 
                         Dispose();
                     }
@@ -87,35 +81,33 @@ namespace hospi_hospital_only
 
             // DB오픈
             dbc.Hospital_Open(hospitalID);
-            dbc.HospitalTable = dbc.DS.Tables["hospital"];
-            DataRow hosRow = dbc.HospitalTable.Rows[0];
 
-            textBox1.Text = hosRow["hospitalID"].ToString();
-            textBox2.Text = hosRow["hospitalName"].ToString();
-            textBox3.Text = hosRow["hospitalTypeName"].ToString();
-            textBox4.Text = hosRow["hospitalAddress"].ToString();
-            textBox5.Text = hosRow["hospitalTell"].ToString();
-            comboBox1.Text = hosRow["openTime"].ToString().Substring(0,2);
-            comboBox2.Text = hosRow["openTime"].ToString().Substring(2,2);
-            comboBox3.Text = hosRow["closeTime"].ToString().Substring(0,2);
-            comboBox4.Text = hosRow["closeTime"].ToString().Substring(2,2);
-            comboBox9.Text = hosRow["weekendOpenTime"].ToString().Substring(0,2);
-            comboBox8.Text = hosRow["weekendOpenTime"].ToString().Substring(2,2);
-            comboBox7.Text = hosRow["weekendCloseTime"].ToString().Substring(0,2);
-            comboBox6.Text = hosRow["weekendCloseTime"].ToString().Substring(2,2);
-            if (Convert.ToInt32(hosRow["sundayopen"]) == 0)
+            textBox1.Text = DBClass.hospiID;
+            textBox2.Text = DBClass.hospiname;
+            textBox3.Text = DBClass.hospikind;
+            textBox4.Text = DBClass.hospiaddress;
+            textBox5.Text = DBClass.hospitel;
+            comboBox1.Text = DBClass.hospiweekday_open.ToString().Substring(0, 2);
+            comboBox2.Text = DBClass.hospiweekday_open.ToString().Substring(3, 2);
+            comboBox3.Text = DBClass.hospiweekday_close.ToString().Substring(0, 2);
+            comboBox4.Text = DBClass.hospiweekday_close.ToString().Substring(3, 2);
+            comboBox9.Text = DBClass.hospisaturday_open.ToString().Substring(0, 2);
+            comboBox8.Text = DBClass.hospisaturday_open.ToString().Substring(3, 2);
+            comboBox7.Text = DBClass.hospisaturday_close.ToString().Substring(0, 2);
+            comboBox6.Text = DBClass.hospisaturday_close.ToString().Substring(3, 2);
+            if (Convert.ToInt32(DBClass.hospisaturday_status) == 0)
             {
                 comboBox5.Text = "휴원";
             }
-            else if(Convert.ToInt32(hosRow["sundayopen"]) == 1)
+            else if (Convert.ToInt32(DBClass.hospisaturday_status) == 1)
             {
                 comboBox5.Text = "개원";
             }
-            if (Convert.ToInt32(hosRow["Reservation"]) == 1)
+            if (Convert.ToInt32(DBClass.hospitoday_reservation) == 1)
             {
                 button18_Click(sender, e);
             }
-            else if(Convert.ToInt32(hosRow["Reservation"]) == 0)
+            else if (Convert.ToInt32(DBClass.hospitoday_reservation) == 0)
             {
                 button17_Click(sender, e);
             }
@@ -135,16 +127,7 @@ namespace hospi_hospital_only
             //DB
             try
             {
-                dbc.Hospital_Update(hospitalID);
-                dbc.HospitalTable = dbc.DS.Tables["hospital"];
-                DataRow upRow = dbc.HospitalTable.Rows[0];
-
-                upRow.BeginEdit();
-                upRow["Reservation"] = 1;
-                upRow.EndEdit();
-
-                dbc.DBAdapter.Update(dbc.DS, "hospital");
-                dbc.DS.AcceptChanges();
+                DBClass.hospitoday_reservation = true;
             }
             catch (DataException DE)
             {
@@ -170,16 +153,7 @@ namespace hospi_hospital_only
             //DB
             try
             {
-                dbc.Hospital_Update(hospitalID);
-                dbc.HospitalTable = dbc.DS.Tables["hospital"];
-                DataRow upRow = dbc.HospitalTable.Rows[0];
-
-                upRow.BeginEdit();
-                upRow["Reservation"] = 0;
-                upRow.EndEdit();
-
-                dbc.DBAdapter.Update(dbc.DS, "hospital");
-                dbc.DS.AcceptChanges();
+                DBClass.hospitoday_reservation = false;
             }
             catch (DataException DE)
             {
