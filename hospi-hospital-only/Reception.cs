@@ -847,6 +847,13 @@ namespace hospi_hospital_only
             button8_Click(sender, e); // 수납대기버튼
         }
 
+        private void inquirybutton_Click(object sender, EventArgs e)
+        {
+            InquiryCheck inquiry = new InquiryCheck();
+            inquiry.HospitalID = hospitalID;
+            inquiry.ShowDialog();
+        }
+
         // 수진자명 조회 엔터 이벤트
         private void patientName_KeyDown(object sender, KeyEventArgs e)
         {

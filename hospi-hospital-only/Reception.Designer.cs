@@ -97,7 +97,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
+            this.inquirybutton = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -165,7 +165,7 @@
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
             this.listView2.LabelWrap = false;
-            this.listView2.Location = new System.Drawing.Point(16, 22);
+            this.listView2.Location = new System.Drawing.Point(16, 28);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(286, 121);
@@ -906,7 +906,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button18);
+            this.groupBox2.Controls.Add(this.inquirybutton);
             this.groupBox2.Controls.Add(this.button17);
             this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.button7);
@@ -918,15 +918,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "진료 메뉴";
             // 
-            // button18
+            // inquirybutton
             // 
-            this.button18.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button18.Location = new System.Drawing.Point(206, 22);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(89, 32);
-            this.button18.TabIndex = 8;
-            this.button18.Text = "예약 접수";
-            this.button18.UseVisualStyleBackColor = true;
+            this.inquirybutton.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.inquirybutton.Location = new System.Drawing.Point(206, 22);
+            this.inquirybutton.Name = "inquirybutton";
+            this.inquirybutton.Size = new System.Drawing.Size(89, 32);
+            this.inquirybutton.TabIndex = 8;
+            this.inquirybutton.Text = "문의 확인";
+            this.inquirybutton.UseVisualStyleBackColor = true;
+            this.inquirybutton.Click += new System.EventHandler(this.inquirybutton_Click);
             // 
             // button17
             // 
@@ -1356,7 +1357,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button inquirybutton;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DataGridView DBGrid;

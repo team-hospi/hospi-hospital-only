@@ -156,6 +156,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
+    <Compile Include="Inquiry.cs" />
+    <Compile Include="InquiryCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InquiryCheck.Designer.cs">
+      <DependentUpon>InquiryCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +180,12 @@
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainSelect.Designer.cs">
+      <DependentUpon>MainSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
       <SubType>Form</SubType>
@@ -230,6 +243,9 @@
     <Compile Include="UpdateReceptionist.Designer.cs">
       <DependentUpon>UpdateReceptionist.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="InquiryCheck.resx">
+      <DependentUpon>InquiryCheck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main2.resx">
       <DependentUpon>Main2.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainSelect.resx">
+      <DependentUpon>MainSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Office.resx">
       <DependentUpon>Office.cs</DependentUpon>
