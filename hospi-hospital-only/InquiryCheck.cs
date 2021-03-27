@@ -17,8 +17,17 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         Inquiry inquiry = new Inquiry();
         FirestoreDb fs;
+        string patientID;
+        string patientTitle;
+        List<Inquiry> list = new List<Inquiry>(); // 문의내역 리스트
+        string Check; // 답변 여부
+        int selectIndex; // 선택된 셀 인덱스
         string hospitalID;
-        string Check;
+
+
+        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
+
+       
 
         public string HospitalID
         {
@@ -32,20 +41,20 @@ namespace hospi_hospital_only
 
         private void InquiryCheck_Load(object sender, EventArgs e)
         {
-            inquiry.FireConnect();
-
+            FireConnect();
             dbc.Delay(200);
-            inquiry.Inquiry_Open(hospitalID);
 
-            dbc.Delay(400);
+            InquiryOpen();
+            dbc.Delay(200);
 
-            for (int i = 0; i < Inquiry.list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
+
                 ListViewItem item = new ListViewItem();
-                item.Text = Inquiry.list[i].id;
-                item.SubItems.Add(Inquiry.list[i].timestamp.ToString());
-                item.SubItems.Add(Inquiry.list[i].title);
-                if (Inquiry.list[i].checkedAnswer == true)
+                item.Text = list[i].id;
+                item.SubItems.Add(list[i].timestamp.ToString());
+                item.SubItems.Add(list[i].title);
+                if (list[i].checkedAnswer == true)
                 {
                     Check = "O";
                 }
@@ -63,5 +72,37 @@ namespace hospi_hospital_only
 
         }
 
+        //폼 자체에서 파이어스토어 연결
+        public void FireConnect()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+            fs = FirestoreDb.Create("hospi-edcf9");
+
+
+        }
+
+        async public void InquiryOpen()
+        {
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalID);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                if (docsnap.Exists)
+                {
+                    Inquiry inquiry = fp;
+
+                    list.Add(inquiry);
+                }
+            }
+        }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            selectIndex = listView1.SelectedIndices[0];
+            richTextBox1.Text = list[selectIndex].content;
+        }
     }
 }
