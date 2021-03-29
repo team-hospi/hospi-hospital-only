@@ -45,5 +45,10 @@ namespace hospi_hospital_only
             dbc.PrescriptionTable = dbc.DS.Tables["prescription"];
             dataGridView1.DataSource = dbc.PrescriptionTable.DefaultView;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

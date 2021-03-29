@@ -837,6 +837,69 @@ namespace hospi_hospital_only
             selectedListViewItemIndex = -1;
         }
 
+        // 수납완료 버튼
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (listViewIndexID1 == null)
+            {
+                MessageBox.Show("보류할 항목이 선택되지 않았습니다.", "알림");
+            }
+            else
+            {
+                DialogResult ok = MessageBox.Show("선택된 접수를 보류합니다.\r\n수진자명 : " + listViewIndexPatientName, "알림", MessageBoxButtons.YesNo);
+                if (ok == DialogResult.Yes)
+                {
+                    try
+                    {
+                        dbc3.Reception_Open();
+                        dbc3.ReceptionTable = dbc3.DS.Tables["reception"];
+                        DataRow upRow = dbc3.ReceptionTable.Rows[Convert.ToInt32(listViewIndexID1) - 1];
+
+                        if (listViewModeL == 1)
+                        {
+                            upRow.BeginEdit();
+                            upRow["receptionType"] = 4;
+                            upRow.EndEdit();
+                            dbc3.DBAdapter.Update(dbc3.DS, "reception");
+                            dbc3.DS.AcceptChanges();
+
+                            button2_Click(sender, e); // 진료대기버튼
+                        }
+                        else if (listViewModeL == 2)
+                        {
+                            upRow.BeginEdit();
+                            upRow["receptionType"] = 1;
+                            upRow.EndEdit();
+                            dbc3.DBAdapter.Update(dbc3.DS, "reception");
+                            dbc3.DS.AcceptChanges();
+
+                            button5_Click(sender, e);
+                        }
+                    }
+                    catch (DataException DE)
+                    {
+                        MessageBox.Show(DE.Message);
+                    }
+                    catch (Exception DE)
+                    {
+                        MessageBox.Show(DE.Message);
+                    }
+                }
+                else
+                {
+                    if (listViewModeL == 1)
+                    {
+                        button2_Click(sender, e); // 접수내역버튼
+                    }
+                    else if (listViewModeL == 2)
+                    {
+                        button5_Click(sender, e); // 진료보류버튼
+                    }
+                }
+            }
+            listViewIndexID1 = null;
+        }
+
         // 날짜정보 dateTimePicker 변경시
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {

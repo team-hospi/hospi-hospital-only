@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -49,10 +49,10 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonReceptionList = new System.Windows.Forms.Button();
             this.labelPresctiptionEnd = new System.Windows.Forms.Label();
             this.buttonNextReception = new System.Windows.Forms.Button();
             this.buttonReceptionEnd = new System.Windows.Forms.Button();
+            this.buttonReceptionList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DBGrid = new System.Windows.Forms.DataGridView();
@@ -281,6 +281,7 @@
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
             // 
             // columnHeader8
             // 
@@ -289,21 +290,21 @@
             // 
             // columnHeader9
             // 
-            this.columnHeader9.Text = "내원일";
+            this.columnHeader9.Text = "접수시간";
             this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader9.Width = 70;
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "내원목적";
+            this.columnHeader10.Text = "과목";
             this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader10.Width = 92;
+            this.columnHeader10.Width = 70;
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "과목";
+            this.columnHeader11.Text = "목적";
             this.columnHeader11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader11.Width = 50;
+            this.columnHeader11.Width = 55;
             // 
             // groupBox2
             // 
@@ -317,17 +318,6 @@
             this.groupBox2.TabIndex = 30;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "진료 메뉴";
-            // 
-            // buttonReceptionList
-            // 
-            this.buttonReceptionList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonReceptionList.Location = new System.Drawing.Point(138, 22);
-            this.buttonReceptionList.Name = "buttonReceptionList";
-            this.buttonReceptionList.Size = new System.Drawing.Size(89, 32);
-            this.buttonReceptionList.TabIndex = 43;
-            this.buttonReceptionList.Text = "대기 목록";
-            this.buttonReceptionList.UseVisualStyleBackColor = true;
-            this.buttonReceptionList.Click += new System.EventHandler(this.buttonReceptionList_Click);
             // 
             // labelPresctiptionEnd
             // 
@@ -364,6 +354,17 @@
             this.buttonReceptionEnd.Text = "진료 완료";
             this.buttonReceptionEnd.UseVisualStyleBackColor = true;
             this.buttonReceptionEnd.Click += new System.EventHandler(this.buttonReceptionEnd_Click);
+            // 
+            // buttonReceptionList
+            // 
+            this.buttonReceptionList.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonReceptionList.Location = new System.Drawing.Point(138, 22);
+            this.buttonReceptionList.Name = "buttonReceptionList";
+            this.buttonReceptionList.Size = new System.Drawing.Size(89, 32);
+            this.buttonReceptionList.TabIndex = 43;
+            this.buttonReceptionList.Text = "대기 목록";
+            this.buttonReceptionList.UseVisualStyleBackColor = true;
+            this.buttonReceptionList.Click += new System.EventHandler(this.buttonReceptionList_Click);
             // 
             // button1
             // 
@@ -403,14 +404,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(15, 102);
