@@ -193,7 +193,7 @@ namespace hospi_hospital_only
                 item.SubItems.Add(Check);
                 listView1.Items.Add(item);
 
-                this.listView1.ListViewItemSorter = new ListviewItemComparer(2, "desc");
+                this.listView1.ListViewItemSorter = new ListviewItemComparer(1, "asc");
                 listView1.Sort();
             }
         }
@@ -244,21 +244,21 @@ namespace hospi_hospital_only
                 return;
             }
 
-            listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text.Replace(" ▼", "");
-            listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text.Replace(" ▲", "");
+            listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text.Replace("", "");
+            listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text.Replace("", "");
 
 
             if (this.listView1.Sorting == SortOrder.Ascending || listView1.Sorting == SortOrder.None)
             {
                 this.listView1.ListViewItemSorter = new ListviewItemComparer(e.Column, "desc");
                 listView1.Sorting = SortOrder.Descending;
-                listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text + " ▼";
+                listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text + "";
             }
             else
             {
                 this.listView1.ListViewItemSorter = new ListviewItemComparer(e.Column, "asc");
                 listView1.Sorting = SortOrder.Ascending;
-                listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text + " ▲";
+                listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text + "";
             }
 
             listView1.Sort();

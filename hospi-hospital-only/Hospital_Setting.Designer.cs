@@ -53,25 +53,25 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -181,7 +181,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(100, 28);
             this.label19.TabIndex = 2;
-            this.label19.Text = "고유 번호";
+            this.label19.Text = "병원ID";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox4
@@ -445,6 +445,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "토요일, 공휴일 개원 여부";
             // 
+            // comboBox10
+            // 
+            this.comboBox10.Enabled = false;
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Items.AddRange(new object[] {
+            "휴원",
+            "개원"});
+            this.comboBox10.Location = new System.Drawing.Point(126, 85);
+            this.comboBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(139, 28);
+            this.comboBox10.TabIndex = 33;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(18, 85);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 28);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "공휴일";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // comboBox5
             // 
             this.comboBox5.Enabled = false;
@@ -489,6 +514,145 @@
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "토요일 운영 시간";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(189, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(13, 20);
+            this.label6.TabIndex = 8;
+            this.label6.Text = ":";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(189, 34);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(13, 20);
+            this.label9.TabIndex = 7;
+            this.label9.Text = ":";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.Enabled = false;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "00",
+            "30"});
+            this.comboBox6.Location = new System.Drawing.Point(208, 65);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(57, 28);
+            this.comboBox6.TabIndex = 6;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.Enabled = false;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05"});
+            this.comboBox7.Location = new System.Drawing.Point(126, 65);
+            this.comboBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(57, 28);
+            this.comboBox7.TabIndex = 5;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.Enabled = false;
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Items.AddRange(new object[] {
+            "00",
+            "30"});
+            this.comboBox8.Location = new System.Drawing.Point(208, 27);
+            this.comboBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(57, 28);
+            this.comboBox8.TabIndex = 4;
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.Enabled = false;
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Items.AddRange(new object[] {
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05"});
+            this.comboBox9.Location = new System.Drawing.Point(126, 27);
+            this.comboBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(57, 28);
+            this.comboBox9.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(18, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 28);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "OPEN";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(18, 65);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 28);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "CLOSE";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox5
             // 
@@ -560,170 +724,6 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "종료";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // comboBox10
-            // 
-            this.comboBox10.Enabled = false;
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Items.AddRange(new object[] {
-            "휴원",
-            "개원"});
-            this.comboBox10.Location = new System.Drawing.Point(126, 85);
-            this.comboBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(139, 28);
-            this.comboBox10.TabIndex = 33;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.Location = new System.Drawing.Point(18, 85);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 28);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "공휴일";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(18, 65);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 28);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "CLOSE";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(18, 27);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 28);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "OPEN";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.Enabled = false;
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Items.AddRange(new object[] {
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "00",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05"});
-            this.comboBox9.Location = new System.Drawing.Point(126, 27);
-            this.comboBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(57, 28);
-            this.comboBox9.TabIndex = 3;
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.Enabled = false;
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Items.AddRange(new object[] {
-            "00",
-            "30"});
-            this.comboBox8.Location = new System.Drawing.Point(208, 27);
-            this.comboBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(57, 28);
-            this.comboBox8.TabIndex = 4;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.Enabled = false;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "01",
-            "02",
-            "03",
-            "04",
-            "05"});
-            this.comboBox7.Location = new System.Drawing.Point(126, 65);
-            this.comboBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(57, 28);
-            this.comboBox7.TabIndex = 5;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.Enabled = false;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "00",
-            "30"});
-            this.comboBox6.Location = new System.Drawing.Point(208, 65);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(57, 28);
-            this.comboBox6.TabIndex = 6;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(189, 34);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(13, 20);
-            this.label9.TabIndex = 7;
-            this.label9.Text = ":";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(189, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 20);
-            this.label6.TabIndex = 8;
-            this.label6.Text = ":";
             // 
             // groupBox7
             // 

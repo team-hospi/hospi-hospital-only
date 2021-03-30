@@ -13,8 +13,6 @@ namespace hospi_hospital_only
     public partial class Main : Form
     {
         DBClass dbc = new DBClass();
-        int timeMax = 200;
-        int time = 0;
 
         public Main()
         {
@@ -71,7 +69,7 @@ namespace hospi_hospital_only
                 {
                     ++cnt;
                     Thread.Sleep(200);
-                CheckForIllegalCrossThreadCalls = false;
+                    CheckForIllegalCrossThreadCalls = false;
                     if (LoginLabel.Text == "로그인 중...")
                     {
                         LoginLabel.Text = "로그인 중";
