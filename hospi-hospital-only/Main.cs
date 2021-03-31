@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace hospi_hospital_only
@@ -29,8 +29,10 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
-            dbc.Hospital_Open();
-            dbc.HospitalTable = dbc.DS.Tables["hospital"];
+            dbc.FireConnect();
+            dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
+
+
             if (textBoxHospitalID.Text == "")
             {
                 MessageBox.Show("아이디를 입력하세요.", "알림");
@@ -41,70 +43,63 @@ namespace hospi_hospital_only
                 MessageBox.Show("비밀번호를 입력하세요.", "알림");
                 textBoxPW.Focus();
             }
-            else if (textBoxHospitalID.Text != dbc.HospitalTable.Rows[0]["hospitalID"].ToString())
-            {
-                MessageBox.Show("로그인정보 불일치.", "알림");
-                TextBoxClear();
-            }
             else
             {
-                dbc.Hospital_Open(Convert.ToInt32(textBoxHospitalID.Text));
-                DataTable hosTable = dbc.DS.Tables["hospital"];
-                if (hosTable.Rows[0]["hospitalPW"].ToString() == textBoxPW.Text)
-                {
-                    Reception reception = new Reception();
-                    reception.HospitalID = Convert.ToInt32(textBoxHospitalID.Text);
-                    reception.ShowDialog();
-                    textBoxPW.Clear();
-                }
-                else
-                {
-                    MessageBox.Show("로그인정보 불일치", "알림");
-                    TextBoxClear();
-                }
+
+                button6.Enabled = false;
+                LoginLabel.Visible = true;
+                Thread rTh = new Thread(Login);
+                rTh.Start();
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            dbc.Hospital_Open();
-            dbc.HospitalTable = dbc.DS.Tables["hospital"];
-            if (textBoxHospitalID.Text.ToString() == "")
-            {
-                MessageBox.Show("아이디를 입력하세요.", "알림");
-                textBoxHospitalID.Focus();
-            }
-            else if (textBoxPW.Text == "")
-            {
-                MessageBox.Show("비밀번호를 입력하세요.", "알림");
-                textBoxPW.Focus();
-            }
-            else if (textBoxHospitalID.Text != dbc.HospitalTable.Rows[0]["hospitalID"].ToString())
-            {
-                MessageBox.Show("로그인정보 불일치.", "알림");
-                TextBoxClear();
-            }
-            else
-            {
-                dbc.Hospital_Open(Convert.ToInt32(textBoxHospitalID.Text));
-                DataTable hosTable = dbc.DS.Tables["hospital"];
-                if (hosTable.Rows[0]["hospitalPW"].ToString() == textBoxPW.Text)
-                {
-                    Main2 main2 = new Main2();
-                    main2.ShowDialog();
-                    textBoxPW.Clear();
-                }
-                else
-                {
-                    MessageBox.Show("로그인정보 불일치", "알림");
-                    TextBoxClear();
-                }
-            }
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("미구현");
         }
+
+        
+        public void Login()
+        {
+            int cnt = 0;
+
+                while (true)
+                {
+                    ++cnt;
+                    Thread.Sleep(200);
+                    CheckForIllegalCrossThreadCalls = false;
+                    if (LoginLabel.Text == "로그인 중...")
+                    {
+                        LoginLabel.Text = "로그인 중";
+                    }
+                    LoginLabel.Text += ".";
+
+                    if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
+                    {
+                        button6.Enabled = true;
+                        LoginLabel.Visible = false;
+                        dbc.FindDocument(textBoxHospitalID.Text);
+                        MainSelect mainselect = new MainSelect();
+                        mainselect.HospitalID = textBoxHospitalID.Text;
+                        mainselect.ShowDialog();
+                        textBoxPW.Clear();
+                        break;
+                    }
+                    else if (cnt > 150)
+                    {
+
+                        button6.Enabled = true;
+                        LoginLabel.Visible = false;
+                        MessageBox.Show("로그인정보 불일치", "알림");
+                        TextBoxClear();
+                        break;
+                    }
+                }
+
+
+            }
+        
     }
 }
