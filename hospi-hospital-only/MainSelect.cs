@@ -31,6 +31,7 @@ namespace hospi_hospital_only
             Reception reception = new Reception();
             reception.HospitalID = hospitalID;
             reception.ShowDialog();
+            this.Dispose();
         }
 
         private void MainSelect_Load(object sender, EventArgs e)
@@ -43,6 +44,7 @@ namespace hospi_hospital_only
             Main2 main2 = new Main2();
             main2.HospitalID = hospitalID;
             main2.ShowDialog();
+            this.Dispose();
         }
     }
 }
