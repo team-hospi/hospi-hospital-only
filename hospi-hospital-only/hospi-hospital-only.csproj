@@ -181,6 +181,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,12 @@
     <Compile Include="UpdateReceptionist.Designer.cs">
       <DependentUpon>UpdateReceptionist.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateSubject.Designer.cs">
+      <DependentUpon>UpdateSubject.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="InquiryCheck.resx">
       <DependentUpon>InquiryCheck.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainSelect.resx">
       <DependentUpon>MainSelect.cs</DependentUpon>
@@ -306,6 +321,9 @@
     <Content Include="hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="updateSubject.resx">
+      <DependentUpon>UpdateSubject.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

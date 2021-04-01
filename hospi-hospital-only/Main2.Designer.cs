@@ -30,8 +30,8 @@
         {
             this.comboBoxSub = new System.Windows.Forms.ComboBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.settingLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,16 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "진료 과목";
             // 
+            // settingLabel
+            // 
+            this.settingLabel.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.settingLabel.Location = new System.Drawing.Point(267, 9);
+            this.settingLabel.Name = "settingLabel";
+            this.settingLabel.Size = new System.Drawing.Size(27, 25);
+            this.settingLabel.TabIndex = 37;
+            this.settingLabel.Text = "⚙";
+            this.settingLabel.Click += new System.EventHandler(this.settingLabel_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(195, 54);
@@ -65,15 +75,6 @@
             this.button1.Text = "확인";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // settingLabel
-            // 
-            this.settingLabel.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.settingLabel.Location = new System.Drawing.Point(267, 9);
-            this.settingLabel.Name = "settingLabel";
-            this.settingLabel.Size = new System.Drawing.Size(27, 25);
-            this.settingLabel.TabIndex = 37;
-            this.settingLabel.Text = "⚙";
             // 
             // Main2
             // 

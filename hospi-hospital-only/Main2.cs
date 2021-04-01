@@ -46,5 +46,11 @@ namespace hospi_hospital_only
             office.ShowDialog();
             this.Dispose();
         }
+
+        private void settingLabel_Click(object sender, EventArgs e)
+        {
+            UpdateSubject updateSubject = new UpdateSubject();
+            updateSubject.ShowDialog();
+        }
     }
 }

@@ -13,12 +13,17 @@ namespace hospi_hospital_only
     public partial class Reception_HistoryInfo : Form
     {
         string receptionInfo; // 내원목적
-
+        string parentType; // 부모폼 종류
         public Reception_HistoryInfo()
         {
             InitializeComponent();
         }
 
+        public string ParentType
+        {
+            get { return parentType; }
+            set { parentType = value; }
+        }
         public string ReceptionInfo
         {
             get { return receptionInfo; }
@@ -27,6 +32,12 @@ namespace hospi_hospital_only
 
         private void Reception_HistoryInfo_Load(object sender, EventArgs e)
         {
+            if(parentType == "office")
+            {
+                button2.Width = 248;
+                button2.Left = 10;
+                button1.Enabled = false;
+            }
             textBox1.Text = receptionInfo;
         }
 
