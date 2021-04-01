@@ -25,6 +25,7 @@ namespace hospi_hospital_only
         DataTable hisTable; // 수진자 정보 조회시 이전 진료기록을 담은 테이블 ( 이전 진료기록 띄울때 사용하고, 이전 진료기록중 내원목적 확인시에 재사용 )
         int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
         string selectedSubjectName; // 접수 수정시 과목명 저장
+        string receptionistName; // MainMenu에서 접수자명 받아옴
 
         public Reception()
         {
@@ -36,6 +37,11 @@ namespace hospi_hospital_only
         {
             get { return hospitalID; }
             set { hospitalID = value; }
+        }
+        public string ReceptionistName
+        {
+            get { return receptionistName; }
+            set { receptionistName = value; }
         }
 
         // 진료정보의 접수일, 접수시간 초기화 & 현재 체크박스 체크
@@ -261,7 +267,7 @@ namespace hospi_hospital_only
                 //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
                 dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
-                textBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
+                textBoxReceptionist.Text = receptionistName;
                 dbc.Subject_Open();
                 dbc.SubjectTable = dbc.DS.Tables["subjectName"]; // 과목 테이블
                 for (int i = 0; i < DBClass.hospidepartment.Length; i++)     // comboBoxSubject에 과목명 추가

@@ -38,6 +38,7 @@ namespace hospi_hospital_only
             this.button1 = new System.Windows.Forms.Button();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@ namespace hospi_hospital_only
             this.groupBox1.Controls.Add(this.labelID);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 12);
+            this.groupBox1.Location = new System.Drawing.Point(17, 81);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(257, 137);
             this.groupBox1.TabIndex = 34;
@@ -110,7 +111,7 @@ namespace hospi_hospital_only
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(276, 21);
+            this.button1.Location = new System.Drawing.Point(17, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 67);
             this.button1.TabIndex = 35;
@@ -121,7 +122,7 @@ namespace hospi_hospital_only
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(319, 124);
+            this.LoginLabel.Location = new System.Drawing.Point(181, 236);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(61, 12);
             this.LoginLabel.TabIndex = 36;
@@ -131,7 +132,7 @@ namespace hospi_hospital_only
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(481, 42);
+            this.button2.Location = new System.Drawing.Point(17, 297);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(130, 67);
             this.button2.TabIndex = 37;
@@ -139,11 +140,25 @@ namespace hospi_hospital_only
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Green;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(262, 69);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Hospi";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 168);
+            this.ClientSize = new System.Drawing.Size(288, 398);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.button1);
@@ -168,6 +183,7 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

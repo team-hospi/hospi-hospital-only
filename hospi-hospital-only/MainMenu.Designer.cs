@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "공지사항 텍스트 테스트"}, -1);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -155,7 +155,7 @@
             // buttonDispose
             // 
             this.buttonDispose.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonDispose.Location = new System.Drawing.Point(698, 153);
+            this.buttonDispose.Location = new System.Drawing.Point(693, 153);
             this.buttonDispose.Name = "buttonDispose";
             this.buttonDispose.Size = new System.Drawing.Size(120, 30);
             this.buttonDispose.TabIndex = 2;
@@ -185,7 +185,7 @@
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem8});
             this.listView2.LabelWrap = false;
             this.listView2.Location = new System.Drawing.Point(16, 38);
             this.listView2.MultiSelect = false;
@@ -253,7 +253,7 @@
             this.groupBox6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox6.Location = new System.Drawing.Point(534, 104);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(150, 79);
+            this.groupBox6.Size = new System.Drawing.Size(143, 79);
             this.groupBox6.TabIndex = 34;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "병원 정보 설정";
@@ -261,7 +261,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(17, 33);
+            this.button3.Location = new System.Drawing.Point(17, 32);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(107, 25);
             this.button3.TabIndex = 35;
@@ -307,7 +307,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(136, 33);
+            this.button4.Location = new System.Drawing.Point(136, 32);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(90, 25);
             this.button4.TabIndex = 35;
