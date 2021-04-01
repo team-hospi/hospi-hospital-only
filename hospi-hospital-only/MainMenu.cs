@@ -103,6 +103,7 @@ namespace hospi_hospital_only
             {
                 Reception reception = new Reception();
                 reception.HospitalID = hospitalID;
+                reception.ReceptionistName = comboBoxReceptionist.Text;
                 this.Visible = false;
                 reception.ShowDialog();
                 this.Visible = true;
