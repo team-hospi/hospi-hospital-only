@@ -28,6 +28,5 @@ namespace hospi_hospital_only
         public long timestamp { get; set; }
         [FirestoreProperty]
         public string title { get; set; }
-
     }
 }
