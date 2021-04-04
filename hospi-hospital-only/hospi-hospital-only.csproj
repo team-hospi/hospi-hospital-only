@@ -138,6 +138,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
+    <Compile Include="Fcm.cs" />
     <Compile Include="Inquiry.cs" />
     <Compile Include="InquiryCheck.cs">
       <SubType>Form</SubType>

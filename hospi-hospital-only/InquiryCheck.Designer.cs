@@ -37,11 +37,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -72,7 +72,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "No";
-            this.columnHeader1.Width = 0;
+            this.columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
@@ -135,27 +135,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "문의 상세";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.richTextBox2);
-            this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(446, 253);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(287, 189);
-            this.groupBox2.TabIndex = 37;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "문의 답변";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.richTextBox1.Location = new System.Drawing.Point(15, 55);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(257, 166);
-            this.richTextBox1.TabIndex = 38;
-            // 
             // label19
             // 
             this.label19.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -168,6 +147,36 @@
             this.label19.Text = "작성자";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.richTextBox1.Location = new System.Drawing.Point(15, 55);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(257, 166);
+            this.richTextBox1.TabIndex = 38;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.richTextBox2);
+            this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox2.Location = new System.Drawing.Point(446, 253);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(287, 189);
+            this.groupBox2.TabIndex = 37;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "문의 답변";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.richTextBox2.Location = new System.Drawing.Point(15, 25);
+            this.richTextBox2.Multiline = true;
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(257, 152);
+            this.richTextBox2.TabIndex = 40;
+            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -178,16 +187,6 @@
             this.button2.Text = "종료";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.richTextBox2.Location = new System.Drawing.Point(15, 25);
-            this.richTextBox2.Multiline = true;
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(257, 152);
-            this.richTextBox2.TabIndex = 40;
             // 
             // InquiryCheck
             // 

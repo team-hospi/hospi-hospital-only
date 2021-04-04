@@ -15,8 +15,12 @@ namespace hospi_hospital_only
     [FirestoreData]
     public partial class InquiryCheck : Form
     {
+        
+
         DBClass dbc = new DBClass();
+        Fcm fcm = new Fcm();
         Inquiry inquiry = new Inquiry();
+
         FirestoreDb fs;
         string patientID;
         string patientTimestamp;
@@ -28,6 +32,8 @@ namespace hospi_hospital_only
         string hospitalID;
         Boolean inquiryCheck;
         int SelectRow;
+        string UserToken; // 유저 토큰
+
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
 
 
@@ -95,6 +101,8 @@ namespace hospi_hospital_only
             {
                 inquiryCheck = false;
             }
+            FindToken(listView1.Items[SelectRow].SubItems[0].Text); // 유저 토큰 가져오기
+            dbc.Delay(200);
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].id == listView1.Items[SelectRow].SubItems[0].Text && list[i].checkedAnswer == inquiryCheck && list[i].title == listView1.Items[SelectRow].SubItems[2].Text)
@@ -125,6 +133,7 @@ namespace hospi_hospital_only
                 InquiryOpen();
                 dbc.Delay(300);
                 InquiryListUpdate();
+                fcm.PushNotificationToFCM(listView1.Items[SelectRow].SubItems[2].Text, UserToken);
                 
                 MessageBox.Show("답변 완료", "알림");
             }
@@ -263,7 +272,7 @@ namespace hospi_hospital_only
 
             listView1.Sort();
         }
-
+        //답변 불러오기
         async void ListAnswer()
         {
 
@@ -281,6 +290,29 @@ namespace hospi_hospital_only
                         textBox1.Text = fp.id;
                     }
                 }
+            }
+        }
+        // 유저 토큰 가져오기
+        public async void FindToken(string patientID)
+        {
+            try
+            {
+                Query qref = fs.Collection("userList").WhereEqualTo("email", patientID);
+                QuerySnapshot snap = await qref.GetSnapshotAsync();
+
+                foreach (DocumentSnapshot docsnap in snap)
+                {
+                    Fcm fp = docsnap.ConvertTo<Fcm>();
+
+                    if (docsnap.Exists)
+                    {
+                        UserToken = fp.token;
+                    }
+                }
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
             }
         }
 

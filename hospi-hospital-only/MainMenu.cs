@@ -33,6 +33,9 @@ namespace hospi_hospital_only
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            //병원 정보 불러오기
+            dbc.Hospital_Open(hospitalID);
+            dbc.Delay(400);
             // 날짜정보
             string date = DateTime.Now.ToString("yyyy-MM-dd ddd요일 ", cultures);
             string time = DateTime.Now.ToString("tt hh:mm", cultures);
