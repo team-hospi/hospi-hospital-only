@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using Google.Cloud.Firestore;
 
 namespace hospi_hospital_only
 {
     public partial class MainMenu : Form
     {
         string hospitalID;
+        int inquiryCount; // 문의 카운트
+        List<Inquiry> list = new List<Inquiry>(); // 문의내역 리스트
+        FirestoreDb fs;
 
         DBClass dbc = new DBClass();
         Main main = new Main();
@@ -33,6 +37,9 @@ namespace hospi_hospital_only
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            //병원 정보 불러오기
+            dbc.Hospital_Open(hospitalID);
+            dbc.Delay(400);
             // 날짜정보
             string date = DateTime.Now.ToString("yyyy-MM-dd ddd요일 ", cultures);
             string time = DateTime.Now.ToString("tt hh:mm", cultures);

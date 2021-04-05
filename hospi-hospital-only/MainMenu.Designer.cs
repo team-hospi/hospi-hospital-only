@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "공지사항 텍스트 테스트"}, -1);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -185,7 +185,7 @@
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem8});
+            listViewItem1});
             this.listView2.LabelWrap = false;
             this.listView2.Location = new System.Drawing.Point(16, 38);
             this.listView2.MultiSelect = false;
@@ -301,7 +301,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 23);
             this.label6.TabIndex = 37;
-            this.label6.Text = "신규 문의";
+            this.label6.Text = "답변대기";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button4
