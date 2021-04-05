@@ -42,6 +42,7 @@ namespace hospi_hospital_only
                         body = "["+ title + "]에 대한 답변이 완료되었습니다.",
                         title = "알림"
                     }
+                   
                 };
                 var serializer = new JavaScriptSerializer();
                 var json = serializer.Serialize(data);
