@@ -138,6 +138,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,6 +157,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
+    <Compile Include="Fcm.cs" />
+    <Compile Include="Hospital_SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospital_SignUp.Designer.cs">
+      <DependentUpon>Hospital_SignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inquiry.cs" />
     <Compile Include="InquiryCheck.cs">
       <SubType>Form</SubType>
@@ -243,6 +251,11 @@
     <Compile Include="Reception_First.Designer.cs">
       <DependentUpon>Reception_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateReceptionist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +268,9 @@
     <Compile Include="UpdateSubject.Designer.cs">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Hospital_SignUp.resx">
+      <DependentUpon>Hospital_SignUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InquiryCheck.resx">
       <DependentUpon>InquiryCheck.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +306,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reception.resx">
       <DependentUpon>Reception.cs</DependentUpon>
@@ -305,6 +322,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reception_HistoryInfo.resx">
       <DependentUpon>Reception_HistoryInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateReceptionist.resx">
       <DependentUpon>UpdateReceptionist.cs</DependentUpon>
@@ -328,6 +349,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Grpc.Core.2.36.1\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.36.1\build\net45\Grpc.Core.targets')" />
