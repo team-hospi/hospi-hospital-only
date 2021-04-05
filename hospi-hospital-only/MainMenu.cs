@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using Google.Cloud.Firestore;
 
 namespace hospi_hospital_only
 {
     public partial class MainMenu : Form
     {
         string hospitalID;
+        int inquiryCount; // 문의 카운트
+        List<Inquiry> list = new List<Inquiry>(); // 문의내역 리스트
+        FirestoreDb fs;
 
         DBClass dbc = new DBClass();
         Main main = new Main();
