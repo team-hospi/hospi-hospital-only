@@ -28,5 +28,38 @@ namespace hospi_hospital_only
         public long timestamp { get; set; }
         [FirestoreProperty]
         public string title { get; set; }
+
+        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
+        FirestoreDb fs;
+        public static int count;
+
+        //Firestore 연결
+        public void FireConnect()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+            fs = FirestoreDb.Create("hospi-edcf9");
+        }
+
+
+        public async void checkinquiry(string hospitalid)
+        {
+            int i = 0;
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                if (docsnap.Exists)
+                {
+                    if(fp.checkedAnswer == false)
+                    {
+                        i++;
+                    }
+                }
+            }
+            count = i;
+        }
     }
 }

@@ -18,11 +18,13 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         Main main = new Main();
         CultureInfo cultures = CultureInfo.CreateSpecificCulture("ko-KR");
+        Inquiry inquiry = new Inquiry();
 
         public MainMenu()
         {
             InitializeComponent();
             dbc.FireConnect();
+            inquiry.FireConnect();
         }
 
         public string HospitalID
@@ -42,7 +44,6 @@ namespace hospi_hospital_only
             labelDate.Text = date;
             labelTime.Text = time;
             timer1.Start();
-
             // 접수처
             dbc.Receptionist_Open();
             dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
@@ -79,6 +80,9 @@ namespace hospi_hospital_only
         {
             string time = DateTime.Now.ToString("tt hh:mm", cultures);
             labelTime.Text = time;
+
+            inquiry.checkinquiry(hospitalID);
+            inquirycount.Text = Inquiry.count.ToString();
         }
 
         // 진료실
@@ -138,5 +142,6 @@ namespace hospi_hospital_only
             inquiry.HospitalID = hospitalID;
             inquiry.ShowDialog();
         }
+
     }
 }

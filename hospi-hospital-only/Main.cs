@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,6 +106,16 @@ namespace hospi_hospital_only
             mm.HospitalID = textBoxHospitalID.Text;
             mm.ShowDialog();
             this.Visible = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new ToastContentBuilder()
+                .AddArgument("action", "viewConversation")
+                    .AddArgument("conversationId", 9813)
+                    .AddText("Andrew sent you a picture")
+                    .AddText("Check this out, The Enchantments in Washington!")
+                    .Show();
         }
     }
 }
