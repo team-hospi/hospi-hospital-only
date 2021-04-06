@@ -251,7 +251,7 @@ namespace hospi_hospital_only
             dbc3.FireConnect();
             inquiry.FireConnect();
             incount = Inquiry.count;
-            timer1.Start();
+            //timer1.Start();   ==> 바이어베이스 용량 문제로 보류
             // 폼 로드시 버튼 클릭
             button2_Click(sender, e); // 진료대기버튼
             button8_Click(sender, e); // 진료보류버튼

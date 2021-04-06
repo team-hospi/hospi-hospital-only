@@ -81,8 +81,8 @@ namespace hospi_hospital_only
             string time = DateTime.Now.ToString("tt hh:mm", cultures);
             labelTime.Text = time;
 
-            inquiry.checkinquiry(hospitalID);
-            inquirycount.Text = Inquiry.count.ToString();
+            //inquiry.checkinquiry(hospitalID);
+            //inquirycount.Text = Inquiry.count.ToString(); ====> 파이어베이스 용량 문제로 보류
         }
 
         // 진료실
