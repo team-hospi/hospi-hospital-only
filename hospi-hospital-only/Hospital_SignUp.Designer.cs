@@ -1070,8 +1070,8 @@
             this.HospitalType.FormattingEnabled = true;
             this.HospitalType.Items.AddRange(new object[] {
             "의원",
-            "종합병원",
-            "대학병원"});
+            "종합",
+            "대학"});
             this.HospitalType.Location = new System.Drawing.Point(108, 56);
             this.HospitalType.Name = "HospitalType";
             this.HospitalType.Size = new System.Drawing.Size(178, 23);
@@ -1086,7 +1086,7 @@
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(88, 23);
             this.label24.TabIndex = 30;
-            this.label24.Text = "병원명";
+            this.label24.Text = "병원타입";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxHospitalAddress
