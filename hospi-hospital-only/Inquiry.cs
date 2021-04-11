@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Cloud.Firestore;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace hospi_hospital_only
 {
@@ -60,6 +61,39 @@ namespace hospi_hospital_only
                 }
             }
             count = i;
+        }
+
+        public void UpdateWait(string hospitalid)
+        {
+            CollectionReference citiesRef = fs.Collection("inquiryList");
+            Query query = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid).WhereEqualTo("checkedAnswer", false);
+
+            FirestoreChangeListener listener = query.Listen(async snapshot =>
+            {
+                
+                foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+                {
+                    Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
+                    QuerySnapshot snap = await qref.GetSnapshotAsync();
+                    foreach (DocumentSnapshot docsnap in snap)
+                    {
+                        Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                        if (docsnap.Exists)
+                        {
+                            if (fp.checkedAnswer == false)
+                            {
+                                new ToastContentBuilder()
+                                    .AddArgument("action", "viewConversation")
+                                    .AddArgument("conversationId", 9813)
+                                    .AddText("HOSPI")
+                                    .AddText("새로운 문의가 등록 되었습니다!!")
+                                    .Show();
+                            }
+                        }
+                    }
+                    
+                }
+            });
         }
     }
 }

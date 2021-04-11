@@ -269,6 +269,7 @@ namespace hospi_hospital_only
                 dbc.Reception_Open();
                 dbc.Hospital_Open(hospitalID);
                 dbc.Delay(400);
+                inquiry.UpdateWait(hospitalID);
                 //dbc.HospitalTable = dbc.DS.Tables["hospital"];
                 //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
