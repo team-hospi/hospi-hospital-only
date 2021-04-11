@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="DBClass.cs" />
     <Compile Include="Fcm.cs" />
+    <Compile Include="Hospital_SignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospital_SignUp.Designer.cs">
+      <DependentUpon>Hospital_SignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inquiry.cs" />
     <Compile Include="InquiryCheck.cs">
       <SubType>Form</SubType>
@@ -88,12 +94,6 @@
     </Compile>
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Newhospital.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Newhospital.Designer.cs">
-      <DependentUpon>Newhospital.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
       <SubType>Form</SubType>
@@ -145,6 +145,7 @@
     <Compile Include="Reception_First.Designer.cs">
       <DependentUpon>Reception_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="SignUp.cs" />
     <Compile Include="UpdateReceptionist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +158,9 @@
     <Compile Include="UpdateSubject.Designer.cs">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Hospital_SignUp.resx">
+      <DependentUpon>Hospital_SignUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InquiryCheck.resx">
       <DependentUpon>InquiryCheck.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,9 +175,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Newhospital.resx">
-      <DependentUpon>Newhospital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Office.resx">
       <DependentUpon>Office.cs</DependentUpon>
