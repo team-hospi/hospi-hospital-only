@@ -57,7 +57,8 @@ namespace hospi_hospital_only
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Hospital_SignUp hospital_Sign = new Hospital_SignUp();
+            hospital_Sign.ShowDialog();
         }
 
 
