@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -108,12 +109,14 @@ namespace hospi_hospital_only
             this.Visible = true;
         }
 
-
-        // test
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            PDFTest pt = new PDFTest();
-            pt.ShowDialog();
+            new ToastContentBuilder()
+                .AddArgument("action", "viewConversation")
+                    .AddArgument("conversationId", 9813)
+                    .AddText("Andrew sent you a picture")
+                    .AddText("Check this out, The Enchantments in Washington!")
+                    .Show();
         }
     }
 }

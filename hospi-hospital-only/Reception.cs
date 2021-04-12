@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass(); // hospital, visitor
         DBClass dbc2 = new DBClass(); // reception, receptionist
         DBClass dbc3 = new DBClass(); // reception 조회 삭제
+        Inquiry inquiry = new Inquiry();
         string listViewIndexID1; // 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexPatientName; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수
         int listViewModeL, listViewModeR; // 리스트뷰의 현재상태를 저장한 변수     // L ( 진료대기 : 1 , 진료보류 : 2 )      // R ( 수납대기 : 1 , 수납완료 : 2 ) 
@@ -26,6 +28,7 @@ namespace hospi_hospital_only
         int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
         string selectedSubjectName; // 접수 수정시 과목명 저장
         string receptionistName; // MainMenu에서 접수자명 받아옴
+        int incount;
 
         public Reception()
         {
@@ -246,6 +249,9 @@ namespace hospi_hospital_only
             dbc.FireConnect();
             dbc2.FireConnect();
             dbc3.FireConnect();
+            inquiry.FireConnect();
+            incount = Inquiry.count;
+            //timer1.Start();   ==> 바이어베이스 용량 문제로 보류
             // 폼 로드시 버튼 클릭
             button2_Click(sender, e); // 진료대기버튼
             button8_Click(sender, e); // 진료보류버튼
@@ -263,6 +269,7 @@ namespace hospi_hospital_only
                 dbc.Reception_Open();
                 dbc.Hospital_Open(hospitalID);
                 dbc.Delay(400);
+                inquiry.UpdateWait(hospitalID);
                 //dbc.HospitalTable = dbc.DS.Tables["hospital"];
                 //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
@@ -921,6 +928,22 @@ namespace hospi_hospital_only
             InquiryCheck inquiry = new InquiryCheck();
             inquiry.HospitalID = hospitalID;
             inquiry.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            inquiry.checkinquiry(hospitalID);
+            dbc.Delay(200);
+            if(Inquiry.count > incount)
+            {
+                new ToastContentBuilder()
+                .AddArgument("action", "viewConversation")
+                    .AddArgument("conversationId", 9813)
+                    .AddText("HOSPI")
+                    .AddText("새로운 문의가 등록 되었습니다!!")
+                    .Show();
+            }
+            incount = Inquiry.count;
         }
 
         // 수진자명 조회 엔터 이벤트
