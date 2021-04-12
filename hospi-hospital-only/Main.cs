@@ -107,5 +107,13 @@ namespace hospi_hospital_only
             mm.ShowDialog();
             this.Visible = true;
         }
+
+
+        // test
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            PDFTest pt = new PDFTest();
+            pt.ShowDialog();
+        }
     }
 }
