@@ -38,7 +38,6 @@ namespace hospi_hospital_only
             this.button1 = new System.Windows.Forms.Button();
             this.labelID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,24 +149,11 @@ namespace hospi_hospital_only
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(93, 325);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(149, 40);
-            this.button2.TabIndex = 40;
-            this.button2.Text = "신규 병원 등록";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 395);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(329, 326);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -190,7 +176,6 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
     }
 }
 
