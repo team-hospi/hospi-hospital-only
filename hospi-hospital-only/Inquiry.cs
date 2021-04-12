@@ -69,19 +69,6 @@ namespace hospi_hospital_only
             CollectionReference citiesRef = fs.Collection("inquiryList");
             Query query = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid).WhereEqualTo("checkedAnswer", false);
 
-            
-            /*if (ss < 0)
-            {
-                mm = mm - 1;
-                if (mm < 0)
-                {
-                    hh = hh - 1;
-                    mm = mm + 60;
-                }
-                ss = ss + 60;
-            }*/
-            //int timenow = Convert.ToInt32(dt.ToString("ddHHmm"+ ss));
-
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
                 DateTime dt = DateTime.Now;
