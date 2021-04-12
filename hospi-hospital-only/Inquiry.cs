@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Cloud.Firestore;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace hospi_hospital_only
 {
@@ -28,5 +29,71 @@ namespace hospi_hospital_only
         public long timestamp { get; set; }
         [FirestoreProperty]
         public string title { get; set; }
+
+        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
+        FirestoreDb fs;
+        public static int count;
+
+        //Firestore 연결
+        public void FireConnect()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+            fs = FirestoreDb.Create("hospi-edcf9");
+        }
+
+
+        public async void checkinquiry(string hospitalid)
+        {
+            int i = 0;
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                if (docsnap.Exists)
+                {
+                    if(fp.checkedAnswer == false)
+                    {
+                        i++;
+                    }
+                }
+            }
+            count = i;
+        }
+
+        public void UpdateWait(string hospitalid)
+        {
+            CollectionReference citiesRef = fs.Collection("inquiryList");
+            Query query = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid).WhereEqualTo("checkedAnswer", false);
+
+            FirestoreChangeListener listener = query.Listen(async snapshot =>
+            {
+                
+                foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+                {
+                    Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
+                    QuerySnapshot snap = await qref.GetSnapshotAsync();
+                    foreach (DocumentSnapshot docsnap in snap)
+                    {
+                        Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                        if (docsnap.Exists)
+                        {
+                            if (fp.checkedAnswer == false)
+                            {
+                                new ToastContentBuilder()
+                                    .AddArgument("action", "viewConversation")
+                                    .AddArgument("conversationId", 9813)
+                                    .AddText("HOSPI")
+                                    .AddText("새로운 문의가 등록 되었습니다!!")
+                                    .Show();
+                            }
+                        }
+                    }
+                    
+                }
+            });
+        }
     }
 }
