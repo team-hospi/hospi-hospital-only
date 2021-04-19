@@ -59,7 +59,7 @@ namespace hospi_hospital_only
             {
                 
                 Check(textBoxHospitalID.Text);
-                dbc.Delay(700);
+                dbc.Delay(1000);
                 if (iDCheck == 1)
                 {
                     MessageBox.Show("사용 가능한 ID입니다!", "알림");
@@ -160,9 +160,11 @@ namespace hospi_hospital_only
 
             
             CollectionReference coll = fs.Collection("hospitals");
-            Dictionary<string, object> data1 = new Dictionary<string, object>()
+            if (textBoxAddAddress.Text == "" && textBoxAddAddress.Text == " ")
             {
-                {"address", textBoxHospitalAddress.Text },
+                Dictionary<string, object> data1 = new Dictionary<string, object>()
+                {
+                {"address", textBoxHospitalAddress.Text},
                 {"department", department},
                 {"holidayClose", HoliClose1.Text + ":" + HoliClose2.Text },
                 {"holidayOpen",  holiOpen1.Text + ":" + holiOpen2.Text},
@@ -179,8 +181,33 @@ namespace hospi_hospital_only
                 {"todayReservation", true},
                 {"weekdayClose", DayClose1.Text + ":" + DayClose2.Text},
                 {"weekdayOpen", DayOpen1.Text + ":" + DayOpen2.Text}
-            };
-            coll.AddAsync(data1);
+                };
+                coll.AddAsync(data1);
+            }
+            else if (textBoxAddAddress.Text != "" && textBoxAddAddress.Text != " ")
+            {
+                Dictionary<string, object> data1 = new Dictionary<string, object>()
+                {
+                {"address", textBoxHospitalAddress.Text + " " + textBoxAddAddress.Text},
+                {"department", department},
+                {"holidayClose", HoliClose1.Text + ":" + HoliClose2.Text },
+                {"holidayOpen",  holiOpen1.Text + ":" + holiOpen2.Text},
+                {"holidayStatus", holistate},
+                {"id", textBoxHospitalID.Text},
+                {"kind", HospitalType.Text},
+                {"lunchTime", lunch1.Text + ":" + lunch2.Text },
+                {"name", textBoxHospitalName.Text},
+                {"saturdayClose", EndClose1.Text + ":" + EndClose2.Text},
+                {"saturdayOpen", EndOpen1.Text + ":" + EndOpen2.Text },
+                {"saturdayStatus", endState},
+                {"status", true},
+                {"tel", textBoxTell1.Text + "-" + textBoxTell2.Text + "-" + textBoxTell3.Text },
+                {"todayReservation", true},
+                {"weekdayClose", DayClose1.Text + ":" + DayClose2.Text},
+                {"weekdayOpen", DayOpen1.Text + ":" + DayOpen2.Text}
+                };
+                coll.AddAsync(data1);
+            }
         }
 
         //PW1
@@ -293,6 +320,22 @@ namespace hospi_hospital_only
         private void button3_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        //주소 검색버튼 클릭
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            SearchAddress frm = new SearchAddress();
+            frm.ShowDialog();
+
+            if(frm.Tag == null) { return; }
+            DataRow dr = (DataRow)frm.Tag;
+
+            textBoxAdCode.Text = dr["zonecode"].ToString();
+            textBoxHospitalAddress.Text = dr["ADDR1"].ToString();
+            textBoxAddAddress.Text = "";
+
+            textBoxAddAddress.Focus();
         }
     }
 }

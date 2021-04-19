@@ -145,6 +145,12 @@
     <Compile Include="Reception_First.Designer.cs">
       <DependentUpon>Reception_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchAddress.Designer.cs">
+      <DependentUpon>SearchAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignUp.cs" />
     <Compile Include="UpdateReceptionist.cs">
       <SubType>Form</SubType>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reception_HistoryInfo.resx">
       <DependentUpon>Reception_HistoryInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchAddress.resx">
+      <DependentUpon>SearchAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateReceptionist.resx">
       <DependentUpon>UpdateReceptionist.cs</DependentUpon>

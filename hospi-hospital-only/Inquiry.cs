@@ -72,7 +72,7 @@ namespace hospi_hospital_only
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
                 DateTime dt = DateTime.Now;
-                long ss = Convert.ToInt64(dt.AddSeconds(-1).ToString("yyyyMMddHHmmss"));
+                long ss = Convert.ToInt64(dt.AddSeconds(-5).ToString("yyyyMMddHHmmss"));
 
                 Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
                     QuerySnapshot snap = await qref.GetSnapshotAsync();
