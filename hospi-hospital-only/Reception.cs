@@ -383,6 +383,9 @@ namespace hospi_hospital_only
         // 접수된 예약 버튼
         private void button10_Click(object sender, EventArgs e)
         {
+            Reservation reservation = new Reservation();
+            reservation.HospitalID = hospitalID;
+            reservation.ShowDialog();
         }
 
         // 수진자 조회 버튼
