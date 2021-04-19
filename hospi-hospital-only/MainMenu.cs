@@ -73,6 +73,8 @@ namespace hospi_hospital_only
                     comboBoxOffice.Items.Add(dbc.SubjectTable.Rows[i]["subjectName"]);
                 }
             }
+
+            label2.Text = dbc.Hospiname;
         }
 
         private void buttonDispose_Click(object sender, EventArgs e)

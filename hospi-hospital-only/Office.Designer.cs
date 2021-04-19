@@ -96,6 +96,10 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxCount = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -370,7 +374,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(140, 22);
+            this.button1.Location = new System.Drawing.Point(210, 25);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 32);
             this.button1.TabIndex = 4;
@@ -503,6 +507,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.comboBoxCount);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
@@ -519,7 +526,7 @@
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(1021, 82);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 554);
+            this.groupBox1.Size = new System.Drawing.Size(394, 554);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "투약 정보";
@@ -538,9 +545,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(213, 509);
+            this.button3.Location = new System.Drawing.Point(222, 509);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 30);
+            this.button3.Size = new System.Drawing.Size(159, 30);
             this.button3.TabIndex = 41;
             this.button3.Text = "처방 등록";
             this.button3.UseVisualStyleBackColor = true;
@@ -549,7 +556,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(115, 509);
+            this.button2.Location = new System.Drawing.Point(119, 509);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 30);
             this.button2.TabIndex = 40;
@@ -560,9 +567,9 @@
             // buttonMedicineAdd
             // 
             this.buttonMedicineAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonMedicineAdd.Location = new System.Drawing.Point(220, 85);
+            this.buttonMedicineAdd.Location = new System.Drawing.Point(290, 102);
             this.buttonMedicineAdd.Name = "buttonMedicineAdd";
-            this.buttonMedicineAdd.Size = new System.Drawing.Size(90, 26);
+            this.buttonMedicineAdd.Size = new System.Drawing.Size(90, 27);
             this.buttonMedicineAdd.TabIndex = 37;
             this.buttonMedicineAdd.Text = "등록";
             this.buttonMedicineAdd.UseVisualStyleBackColor = true;
@@ -571,7 +578,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(155, 95);
+            this.label7.Location = new System.Drawing.Point(155, 122);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 15);
             this.label7.TabIndex = 11;
@@ -586,7 +593,7 @@
             "3",
             "4",
             "5"});
-            this.comboBox1Dose.Location = new System.Drawing.Point(110, 87);
+            this.comboBox1Dose.Location = new System.Drawing.Point(110, 114);
             this.comboBox1Dose.Name = "comboBox1Dose";
             this.comboBox1Dose.Size = new System.Drawing.Size(43, 23);
             this.comboBox1Dose.TabIndex = 10;
@@ -597,11 +604,11 @@
             this.label6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(16, 87);
+            this.label6.Location = new System.Drawing.Point(16, 114);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 23);
             this.label6.TabIndex = 9;
-            this.label6.Text = "1회 투약";
+            this.label6.Text = "1회 투약 량";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -639,13 +646,14 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader5,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader12});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(16, 122);
+            this.listView1.Location = new System.Drawing.Point(16, 143);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(294, 381);
+            this.listView1.Size = new System.Drawing.Size(365, 360);
             this.listView1.TabIndex = 13;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -654,25 +662,25 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "약품명";
-            this.columnHeader1.Width = 148;
+            this.columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "투약 일 수";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 77;
+            this.columnHeader2.Width = 70;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "1회 투약";
+            this.columnHeader5.Text = "일 투약";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader5.Width = 65;
+            this.columnHeader5.Width = 70;
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "약품ID";
+            this.columnHeader7.Text = "1회 투약";
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader7.Width = 0;
+            this.columnHeader7.Width = 70;
             // 
             // label4
             // 
@@ -703,7 +711,7 @@
             this.textBoxMedicineName.Location = new System.Drawing.Point(110, 29);
             this.textBoxMedicineName.Name = "textBoxMedicineName";
             this.textBoxMedicineName.ReadOnly = true;
-            this.textBoxMedicineName.Size = new System.Drawing.Size(200, 23);
+            this.textBoxMedicineName.Size = new System.Drawing.Size(271, 23);
             this.textBoxMedicineName.TabIndex = 5;
             // 
             // groupBox5
@@ -754,7 +762,7 @@
             this.groupBox7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox7.Location = new System.Drawing.Point(1102, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(241, 68);
+            this.groupBox7.Size = new System.Drawing.Size(313, 68);
             this.groupBox7.TabIndex = 31;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "시스템 메뉴";
@@ -857,11 +865,52 @@
             this.label8.Text = "Hospi";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(16, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 23);
+            this.label10.TabIndex = 42;
+            this.label10.Text = "일 투약 횟수";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBoxCount
+            // 
+            this.comboBoxCount.FormattingEnabled = true;
+            this.comboBoxCount.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxCount.Location = new System.Drawing.Point(110, 85);
+            this.comboBoxCount.Name = "comboBoxCount";
+            this.comboBoxCount.Size = new System.Drawing.Size(43, 23);
+            this.comboBoxCount.TabIndex = 43;
+            this.comboBoxCount.Text = "3";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(155, 93);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(19, 15);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "회";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "약품 ID";
+            this.columnHeader12.Width = 0;
+            // 
             // Office
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1358, 645);
+            this.ClientSize = new System.Drawing.Size(1429, 645);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox9);
@@ -970,5 +1019,9 @@
         private System.Windows.Forms.Label labelGenderAge;
         private System.Windows.Forms.Button buttonReceptionList;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBoxCount;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
     }
 }

@@ -29,6 +29,8 @@ namespace hospi_hospital_only
         string selectedSubjectName; // 접수 수정시 과목명 저장
         string receptionistName; // MainMenu에서 접수자명 받아옴
         int incount;
+        int listView3SelectedRow;// 수납현황 리스트뷰 인덱스 값 담을 변수
+        string[] prescription; // 처방정보로 넘겨줄 프로퍼티를 담을 배열
 
         public Reception()
         {
@@ -46,6 +48,7 @@ namespace hospi_hospital_only
             get { return receptionistName; }
             set { receptionistName = value; }
         }
+        
 
         // 진료정보의 접수일, 접수시간 초기화 & 현재 체크박스 체크
         public void TimeNow()
@@ -789,11 +792,23 @@ namespace hospi_hospital_only
         // 처방확인 버튼
         private void button15_Click(object sender, EventArgs e)
         {
-            Prescription prescription = new Prescription();
-            prescription.PatientID = prescriptionArr[0];
-            prescription.ReceptionDate = prescriptionArr[1];
-            prescription.ReceptionTime = prescriptionArr[2];
-            prescription.Show();
+            if(prescriptionArr[0] != null)
+            {
+                Prescription prescription = new Prescription();
+                prescription.PatientID = prescriptionArr[0];
+                prescription.ReceptionDate = prescriptionArr[1];
+                prescription.ReceptionTime = prescriptionArr[2];
+
+                prescription.Patient = listView3.Items[listView3SelectedRow].SubItems[3].Text;
+                prescription.PatientAge = listView3.Items[listView3SelectedRow].SubItems[4].Text;
+                prescription.SubjectName = listView3.Items[listView3SelectedRow].SubItems[5].Text;
+
+                prescription.Show();
+            }
+            else if(prescriptionArr[0] == null)
+            {
+                MessageBox.Show("조회할 항목이 선택되지 않았습니다", "알림");
+            }
         }
 
         // 수납현황 listView 클릭
@@ -802,10 +817,10 @@ namespace hospi_hospital_only
             // prescription배열에 ( patientID, receptionDate, receptionTime ) 넣기
             if (listView3.SelectedItems.Count != 0)
             {
-                int selectRow = listView3.SelectedItems[0].Index;
-                prescriptionArr[0] = listView3.Items[selectRow].SubItems[2].Text;
+                listView3SelectedRow = listView3.SelectedItems[0].Index;
+                prescriptionArr[0] = listView3.Items[listView3SelectedRow].SubItems[2].Text;
                 prescriptionArr[1] = dateTimePicker1.Value.ToString("yy-MM-dd");
-                prescriptionArr[2] = listView3.Items[selectRow].SubItems[1].Text.Substring(0,2)+listView3.Items[selectRow].SubItems[1].Text.Substring(5,2);
+                prescriptionArr[2] = listView3.Items[listView3SelectedRow].SubItems[1].Text.Substring(0,2)+listView3.Items[listView3SelectedRow].SubItems[1].Text.Substring(5,2);
             }
         }
 

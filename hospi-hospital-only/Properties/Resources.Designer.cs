@@ -59,5 +59,15 @@ namespace hospi_hospital_only.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] PrescriptionEX {
+            get {
+                object obj = ResourceManager.GetObject("PrescriptionEX", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
