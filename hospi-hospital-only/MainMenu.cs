@@ -60,15 +60,12 @@ namespace hospi_hospital_only
             // 진료실
             dbc.Subject_Open();
             dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-            for (int i = 0; i < dbc.SubjectTable.Rows.Count; i++)
+            for (int i = 0; i < DBClass.hospidepartment.Length; i++)
             {
-                string name = dbc.SubjectTable.Rows[i]["subjectName"].ToString();
-                int length = name.Length;
-                if (name.Substring(length - 1) != ")")
-                {
-                    comboBoxOffice.Items.Add(dbc.SubjectTable.Rows[i]["subjectName"]);
-                }
+                    comboBoxOffice.Items.Add(DBClass.hospidepartment[i]);
             }
+
+            label3.Text = dbc.Hospiname;
         }
 
         private void buttonDispose_Click(object sender, EventArgs e)
