@@ -387,6 +387,7 @@ namespace hospi_hospital_only
         {
             Reservation reservation = new Reservation();
             reservation.HospitalID = hospitalID;
+            reservation.Receptionist = receptionistName;
             reservation.ShowDialog();
         }
 

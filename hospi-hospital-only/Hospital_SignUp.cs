@@ -296,6 +296,7 @@ namespace hospi_hospital_only
                                 SHApw = dbc.SHA256Hash(textBoxPw1.Text, textBoxHospitalID.Text);
 
                                 IdAdd(textBoxHospitalID.Text, SHApw);
+                                dbc.Delay(200);
                                 AddHospital();
                                 MessageBox.Show("회원가입이 완료되었습니다.", "알림");
                                 Dispose();
@@ -332,7 +333,7 @@ namespace hospi_hospital_only
             DataRow dr = (DataRow)frm.Tag;
 
             textBoxAdCode.Text = dr["zonecode"].ToString();
-            textBoxHospitalAddress.Text = dr["ADDR1"].ToString();
+            textBoxHospitalAddress.Text = dr["ADDR1"].ToString() + " " + dr["EX"].ToString();
             textBoxAddAddress.Text = "";
 
             textBoxAddAddress.Focus();
