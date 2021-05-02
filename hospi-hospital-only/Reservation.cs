@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
+using Google.Cloud.Firestore;
 
 namespace hospi_hospital_only
 {
@@ -9,13 +12,30 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         Reserve reserve = new Reserve();
 
+
+        int SelectRow;
         string hospitalID;
+        string comment;
+        string status;
+        string receptionist;
+
+        static int ReserveCanceled = -1;
+        static int ReserveWait = 0;
+        static int ReserveAccepted = 1;
+        
 
         public string HospitalID
         {
             get { return hospitalID; }
             set { hospitalID = value; }
         }
+
+        public string Receptionist
+        {
+            get { return receptionist; }
+            set { receptionist = value; }
+        }
+
         public Reservation()
         {
             InitializeComponent();
@@ -27,12 +47,17 @@ namespace hospi_hospital_only
             reserve.ReserveOpen(hospitalID);
             dbc.Delay(400);
             ReservationListUpdate();
+            dbc.Visitor_Open();
+            dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
+
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
         }
 
         //리스트뷰 업데이트
         public void ReservationListUpdate()
         {
-            listView1.Items.Clear();
+            listViewReserve.Items.Clear();
             for (int i = 0; i < reserve.list.Count; i++)
             {
                 ListViewItem item = new ListViewItem();
@@ -40,13 +65,24 @@ namespace hospi_hospital_only
                 item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                 item.SubItems.Add(reserve.list[i].reservationDate);
                 item.SubItems.Add(reserve.list[i].reservationTime);
-                item.SubItems.Add(reserve.list[i].reservationStatus.ToString());
-                item.SubItems.Add("이름");
+                if (reserve.list[i].reservationStatus == ReserveCanceled)
+                {
+                    item.SubItems.Add("취소됨");
+                }
+                else if (reserve.list[i].reservationStatus == ReserveWait)
+                {
+                    item.SubItems.Add("대기");
+                }
+                else if (reserve.list[i].reservationStatus == ReserveAccepted)
+                {
+                    item.SubItems.Add("승인됨");
+                }
+                item.SubItems.Add(reserve.list[i].id);
                 item.SubItems.Add(reserve.list[i].department);
-                listView1.Items.Add(item);
+                listViewReserve.Items.Add(item);
 
-                this.listView1.ListViewItemSorter = new ListviewItemComparer(1, "asc");
-                listView1.Sort();
+                this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                listViewReserve.Sort();
             }
         }
 
@@ -88,5 +124,84 @@ namespace hospi_hospital_only
             }
         }
 
+
+
+
+
+        //더블클릭 이벤트
+        private void listViewReserve_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            SelectRow = listViewReserve.SelectedItems[0].Index;
+
+            //환자 이름 검색
+            reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
+            dbc.Delay(200);
+            textBoxName.Text = reserve.patientName;
+            //문서찾기(병원id, 시간, 환자id, 날짜)
+            reserve.FindDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[3].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[2].Text);
+            TextBoxComment.Text = ViewComment();
+        }
+
+        //추가 내용 확인
+        public string ViewComment()
+        {
+
+            for (int i = 0; i < listViewReserve.Items.Count; i++)
+            {
+                if (reserve.list[i].id == listViewReserve.Items[SelectRow].SubItems[0].Text && reserve.list[i].reservationDate == listViewReserve.Items[SelectRow].SubItems[2].Text && reserve.list[i].reservationTime == listViewReserve.Items[SelectRow].SubItems[3].Text)
+                {
+                    comment = reserve.list[i].additionalContent;
+                }
+            }
+            return comment;
+        }
+
+        private void buttonAccept_Click(object sender, EventArgs e)
+        {
+            if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
+            {
+                reserve.ReserveAccept();
+                dbc.Delay(200);
+                reserve.ReserveOpen(hospitalID);
+                dbc.Delay(200);
+
+                dbc.Reception_Open();
+                dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+                DataRow newRow = dbc.ReceptionTable.NewRow();
+                newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+                for (int i=0; i< dbc.VisitorTable.Rows.Count; i++)
+                {
+                    if(dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
+                    {
+                        newRow["PATIENTID"] = i+1;
+                    }
+                }
+                
+                newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0,2)+ listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
+                newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
+                newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
+                for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                {
+                    if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
+                    {
+                        newRow["ReceptionistCode"] = i + 1;
+                    }
+                }
+                newRow["ReceptionInfo"] = ViewComment();
+                newRow["ReceptionType"] = 1;
+
+                dbc.ReceptionTable.Rows.Add(newRow);
+                dbc.DBAdapter.Update(dbc.DS, "Reception");
+                dbc.DS.AcceptChanges();
+
+                MessageBox.Show("예약이 접수되었습니다.", "알림");
+
+                ReservationListUpdate();
+            }
+            else if(listViewReserve.Items[SelectRow].SubItems[4].Text =="승인됨")
+            {
+                MessageBox.Show("이미 접수가 완료된 예약입니다", "알림");
+            }
+        }
     }
 }

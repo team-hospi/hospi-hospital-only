@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewReserve = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -36,11 +36,17 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonAccept = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.TextBoxComment = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // listView1
+            // listViewReserve
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewReserve.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -48,19 +54,19 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
-            this.listView1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.LabelWrap = false;
-            this.listView1.Location = new System.Drawing.Point(12, 13);
-            this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(654, 496);
-            this.listView1.TabIndex = 12;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listViewReserve.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.listViewReserve.FullRowSelect = true;
+            this.listViewReserve.GridLines = true;
+            this.listViewReserve.HideSelection = false;
+            this.listViewReserve.LabelWrap = false;
+            this.listViewReserve.Location = new System.Drawing.Point(10, 10);
+            this.listViewReserve.MultiSelect = false;
+            this.listViewReserve.Name = "listViewReserve";
+            this.listViewReserve.Size = new System.Drawing.Size(654, 398);
+            this.listViewReserve.TabIndex = 12;
+            this.listViewReserve.UseCompatibleStateImageBehavior = false;
+            this.listViewReserve.View = System.Windows.Forms.View.Details;
+            this.listViewReserve.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewReserve_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -93,7 +99,7 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "이름";
+            this.columnHeader6.Text = "id";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 100;
             // 
@@ -103,22 +109,82 @@
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader7.Width = 100;
             // 
+            // buttonAccept
+            // 
+            this.buttonAccept.Location = new System.Drawing.Point(724, 168);
+            this.buttonAccept.Name = "buttonAccept";
+            this.buttonAccept.Size = new System.Drawing.Size(162, 23);
+            this.buttonAccept.TabIndex = 13;
+            this.buttonAccept.Text = "예약 승인";
+            this.buttonAccept.UseVisualStyleBackColor = true;
+            this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(724, 211);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(162, 23);
+            this.buttonCancel.TabIndex = 14;
+            this.buttonCancel.Text = "예약 취소";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(677, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "예약자";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(677, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "내용";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(724, 17);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(162, 21);
+            this.textBoxName.TabIndex = 17;
+            // 
+            // TextBoxComment
+            // 
+            this.TextBoxComment.Location = new System.Drawing.Point(724, 56);
+            this.TextBoxComment.Name = "TextBoxComment";
+            this.TextBoxComment.Size = new System.Drawing.Size(162, 96);
+            this.TextBoxComment.TabIndex = 18;
+            this.TextBoxComment.Text = "";
+            // 
             // Reservation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 522);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(898, 418);
+            this.Controls.Add(this.TextBoxComment);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonAccept);
+            this.Controls.Add(this.listViewReserve);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Reservation";
             this.Text = "Reservation";
             this.Load += new System.EventHandler(this.Reservation_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewReserve;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -126,5 +192,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Button buttonAccept;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.RichTextBox TextBoxComment;
     }
 }
