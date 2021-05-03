@@ -75,6 +75,16 @@ namespace hospi_hospital_only
 
         private void Prescription_Load(object sender, EventArgs e)
         {
+            // 베이스파일, 디렉토리 없으면 생성해줌
+            DirectoryInfo baseFile = new DirectoryInfo(@Properties.Resources.baseFileLocation);
+            if (baseFile.Exists == false)
+            {
+                Directory.CreateDirectory(@Properties.Resources.baseFileLocation);
+                byte[] baseFileResource = Properties.Resources.BaseFileResource;
+                string savePath = @Properties.Resources.baseFile;
+                System.IO.File.WriteAllBytes(savePath, baseFileResource);
+            }
+
             dbc.Presctiption_Select(patientID, receptionDate, receptionTime);
             dbc.PrescriptionTable = dbc.DS.Tables["prescription"];
             DBGrid.DataSource = dbc.PrescriptionTable.DefaultView;
@@ -119,17 +129,25 @@ namespace hospi_hospital_only
             DBGrid.Columns[1].Width = 80;
             DBGrid.Columns[2].Width = 80;
             DBGrid.Columns[3].Width = 80;
-
-            textBoxSaveLocation.Text = Properties.Resources.saveLocation;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            DirectoryInfo di = new DirectoryInfo(@Properties.Resources.saveLocation);
+            if(di.Exists == true)
+            {
+                Directory.Delete(@Properties.Resources.saveLocation, true);
+            }
+            DirectoryInfo dir = new DirectoryInfo(@Properties.Resources.saveLocation);
+            if (dir.Exists == false)
+            {
+                Directory.CreateDirectory(@Properties.Resources.saveLocation);
+            }
             string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8, 2);
             int patientN = Convert.ToInt32(dbc.VisitorTable.Rows[0]["patientID"]);
             string patientID = patientN.ToString("000");
             // 베이스파일 저장경로
-            string path1 = @Properties.Resources.baseFileLocation;
+            string path1 = @Properties.Resources.baseFile;
             // excel, pdf 저장경로
             string path2 = @Properties.Resources.saveLocation + date + patientID + ".xls";
             string path3 = @Properties.Resources.saveLocation + date + patientID + " " + patientName.Text + ".pdf";
@@ -163,7 +181,7 @@ namespace hospi_hospital_only
 
                 File.Exists(path1);
                 File.Exists(path2);
-                wb.Close();
+                wb.Close(false);
                 excelApp.Quit();
                 File.Delete(path2);
                 System.Diagnostics.Process.Start(path3);
@@ -176,12 +194,12 @@ namespace hospi_hospital_only
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string path;
+            Dispose();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@textBoxSaveLocation.Text);
+            
         }
     }
 }
