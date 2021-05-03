@@ -875,11 +875,11 @@ namespace hospi_hospital_only
         {
             if (listViewIndexID1 == null)
             {
-                MessageBox.Show("보류할 항목이 선택되지 않았습니다.", "알림");
+                MessageBox.Show("완료하실 수납 정보가 선택되지 않았습니다.", "알림");
             }
             else
             {
-                DialogResult ok = MessageBox.Show("선택된 접수를 보류합니다.\r\n수진자명 : " + listViewIndexPatientName, "알림", MessageBoxButtons.YesNo);
+                DialogResult ok = MessageBox.Show("수납완료 처리합니다.\r\n수진자명 : " + listViewIndexPatientName, "알림", MessageBoxButtons.YesNo);
                 if (ok == DialogResult.Yes)
                 {
                     try
