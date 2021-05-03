@@ -33,6 +33,7 @@ namespace hospi_hospital_only
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         FirestoreDb fs;
         public static int count;
+        
 
         //Firestore 연결
         public void FireConnect()
@@ -70,17 +71,17 @@ namespace hospi_hospital_only
 
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
-                
-                foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-                {
-                    Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
+                DateTime dt = DateTime.Now;
+                long ss = Convert.ToInt64(dt.AddSeconds(-5).ToString("yyyyMMddHHmmss"));
+
+                Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
                     QuerySnapshot snap = await qref.GetSnapshotAsync();
                     foreach (DocumentSnapshot docsnap in snap)
                     {
                         Inquiry fp = docsnap.ConvertTo<Inquiry>();
                         if (docsnap.Exists)
                         {
-                            if (fp.checkedAnswer == false)
+                            if (fp.checkedAnswer == false && Convert.ToInt64(ConvertDate(fp.timestamp).ToString("yyyyMMddHHmmss")) >= ss)
                             {
                                 new ToastContentBuilder()
                                     .AddArgument("action", "viewConversation")
@@ -91,9 +92,16 @@ namespace hospi_hospital_only
                             }
                         }
                     }
-                    
-                }
+                
             });
+        }
+
+        public DateTime ConvertDate(long timestamp)
+        {
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddMilliseconds(timestamp).ToLocalTime();
+            return dtDateTime;
+
         }
     }
 }

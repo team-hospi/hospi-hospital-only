@@ -8,16 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
-using Google.Cloud.Firestore;
 
 namespace hospi_hospital_only
 {
     public partial class MainMenu : Form
     {
         string hospitalID;
-        int inquiryCount; // 문의 카운트
-        List<Inquiry> list = new List<Inquiry>(); // 문의내역 리스트
-        FirestoreDb fs;
 
         DBClass dbc = new DBClass();
         Main main = new Main();
@@ -64,17 +60,12 @@ namespace hospi_hospital_only
             // 진료실
             dbc.Subject_Open();
             dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-            for (int i = 0; i < dbc.SubjectTable.Rows.Count; i++)
+            for (int i = 0; i < DBClass.hospidepartment.Length; i++)
             {
-                string name = dbc.SubjectTable.Rows[i]["subjectName"].ToString();
-                int length = name.Length;
-                if (name.Substring(length - 1) != ")")
-                {
-                    comboBoxOffice.Items.Add(dbc.SubjectTable.Rows[i]["subjectName"]);
-                }
+                    comboBoxOffice.Items.Add(DBClass.hospidepartment[i]);
             }
 
-            label2.Text = dbc.Hospiname;
+            label3.Text = dbc.Hospiname;
         }
 
         private void buttonDispose_Click(object sender, EventArgs e)
