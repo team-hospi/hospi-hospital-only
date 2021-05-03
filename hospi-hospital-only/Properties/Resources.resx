@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="baseFileLocation" xml:space="preserve">
+    <value>C:\excel\Example.xls</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PrescriptionEX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PrescriptionEX.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Example" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Example.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="saveLocation" xml:space="preserve">
+    <value>C:\excel\example\</value>
   </data>
 </root>
