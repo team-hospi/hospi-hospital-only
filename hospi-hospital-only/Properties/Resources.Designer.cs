@@ -61,12 +61,30 @@ namespace hospi_hospital_only.Properties {
         }
         
         /// <summary>
+        ///   C:\excel\Example.xls과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string baseFileLocation {
+            get {
+                return ResourceManager.GetString("baseFileLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static byte[] PrescriptionEX {
+        internal static byte[] Example {
             get {
-                object obj = ResourceManager.GetObject("PrescriptionEX", resourceCulture);
+                object obj = ResourceManager.GetObject("Example", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   C:\excel\example\과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string saveLocation {
+            get {
+                return ResourceManager.GetString("saveLocation", resourceCulture);
             }
         }
     }
