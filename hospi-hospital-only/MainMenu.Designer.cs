@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "공지사항 텍스트 테스트"}, -1);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -57,8 +57,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -188,7 +188,7 @@
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.listView2.LabelWrap = false;
             this.listView2.Location = new System.Drawing.Point(16, 38);
             this.listView2.MultiSelect = false;
@@ -332,32 +332,32 @@
             this.label1.Location = new System.Drawing.Point(694, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 69);
-            this.label1.TabIndex = 38;
+            this.label1.TabIndex = 39;
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(21, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 58);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "병원명 표시 라벨";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.label2);
+            this.groupBox8.Controls.Add(this.label3);
             this.groupBox8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox8.Location = new System.Drawing.Point(19, 12);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(257, 86);
-            this.groupBox8.TabIndex = 40;
+            this.groupBox8.TabIndex = 41;
             this.groupBox8.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(21, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(215, 58);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "병원명 표시 라벨";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainMenu
             // 
@@ -418,7 +418,7 @@
         private System.Windows.Forms.TextBox inquirycount;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label3;
     }
 }

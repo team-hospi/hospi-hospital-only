@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 using Spire.Xls;
 
 namespace hospi_hospital_only
@@ -27,7 +27,7 @@ namespace hospi_hospital_only
 
         // 병원정보
 
-            
+
         public string PatientID
         {
             get { return patientID; }
@@ -45,7 +45,7 @@ namespace hospi_hospital_only
         }
         public string Patient
         {
-            get { return patient;}
+            get { return patient; }
             set { patient = value; }
         }
         public string PatientAge
@@ -70,7 +70,6 @@ namespace hospi_hospital_only
             dbc.PatientInfo(patientNum);
             dbc.VisitorTable = dbc.DS.Tables["visitor"];
         }
-        // 병원정보 오픈
 
         private void Prescription_Load(object sender, EventArgs e)
         {
@@ -86,7 +85,7 @@ namespace hospi_hospital_only
             textBoxChartNum.Text = patientID;
             textBoxAge.Text = patientAge + "세";
             textBoxSubject.Text = subjectName;
-            textBoxReceptionDate.Text = "20"+receptionDate;
+            textBoxReceptionDate.Text = "20" + receptionDate;
             textBoxHour.Text = receptionTime.Substring(0, 2);
             textBoxMinute.Text = receptionTime.Substring(2, 2);
 
@@ -120,14 +119,14 @@ namespace hospi_hospital_only
             DBGrid.Columns[3].Width = 80;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8, 2);
             int patientN = Convert.ToInt32(dbc.VisitorTable.Rows[0]["patientID"]);
-            string patientID = patientN.ToString("000"); 
+            string patientID = patientN.ToString("000");
             string path1 = @"C:\excel\PrescriptionEX.xls";
             string path2 = @"C:\excel\example\" + date + patientID + ".xls";
-            string path3 = @"C:\excel\example\" + date + patientID +" "+patientName.Text+ ".pdf";
+            string path3 = @"C:\excel\example\" + date + patientID + " " + patientName.Text + ".pdf";
             Excel.Application excelApp = new Excel.Application();
             Excel.Workbook wb = null;
             Excel.Worksheet ws = null;
@@ -136,13 +135,13 @@ namespace hospi_hospital_only
             {
                 wb = excelApp.Workbooks.Open(path1);
                 ws = wb.Worksheets.get_Item(1) as Excel.Worksheet;
-                ws.Cells[5, 6] = "  " + date.Substring(0,4)+"년 " + date.Substring(4,2)+"월 " + date.Substring(6,2)+"일   제 "+patientID+" 호";
-                ws.Cells[7, 8] = "  "+dbc.VisitorTable.Rows[0]["patientName"].ToString();
+                ws.Cells[5, 6] = "  " + date.Substring(0, 4) + "년 " + date.Substring(4, 2) + "월 " + date.Substring(6, 2) + "일   제 " + patientID + " 호";
+                ws.Cells[7, 8] = "  " + dbc.VisitorTable.Rows[0]["patientName"].ToString();
                 ws.Cells[8, 8] = "  " + dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString();
                 ws.Cells[5, 25] = "  " + dbc.Hospiname;
                 ws.Cells[6, 25] = "  " + dbc.HospiTell;
                 ws.Cells[7, 25] = "  " + dbc.HospiTell;
-                for(int i=0; i<DBGrid.Rows.Count; i++)
+                for (int i = 0; i < DBGrid.Rows.Count; i++)
                 {
                     ws.Cells[10 + i, 1] = "  " + DBGrid.Rows[i].Cells[0].FormattedValue.ToString();
                     ws.Cells[10 + i, 17] = "  " + DBGrid.Rows[i].Cells[1].FormattedValue.ToString();
@@ -167,7 +166,6 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show("catch");
             }
-            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -96,9 +96,9 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxCount = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.comboBoxCount = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -409,14 +409,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(15, 102);
@@ -569,7 +569,7 @@
             this.buttonMedicineAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buttonMedicineAdd.Location = new System.Drawing.Point(290, 102);
             this.buttonMedicineAdd.Name = "buttonMedicineAdd";
-            this.buttonMedicineAdd.Size = new System.Drawing.Size(90, 27);
+            this.buttonMedicineAdd.Size = new System.Drawing.Size(90, 26);
             this.buttonMedicineAdd.TabIndex = 37;
             this.buttonMedicineAdd.Text = "등록";
             this.buttonMedicineAdd.UseVisualStyleBackColor = true;
@@ -608,7 +608,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 23);
             this.label6.TabIndex = 9;
-            this.label6.Text = "1회 투약 량";
+            this.label6.Text = "1회 투약";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -662,7 +662,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "약품명";
-            this.columnHeader1.Width = 150;
+            this.columnHeader1.Width = 148;
             // 
             // columnHeader2
             // 
@@ -865,17 +865,14 @@
             this.label8.Text = "Hospi";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label10
+            // label11
             // 
-            this.label10.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(16, 86);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 23);
-            this.label10.TabIndex = 42;
-            this.label10.Text = "일 투약 횟수";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(155, 94);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(19, 15);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "회";
             // 
             // comboBoxCount
             // 
@@ -886,20 +883,23 @@
             "3",
             "4",
             "5"});
-            this.comboBoxCount.Location = new System.Drawing.Point(110, 85);
+            this.comboBoxCount.Location = new System.Drawing.Point(110, 88);
             this.comboBoxCount.Name = "comboBoxCount";
             this.comboBoxCount.Size = new System.Drawing.Size(43, 23);
-            this.comboBoxCount.TabIndex = 43;
+            this.comboBoxCount.TabIndex = 46;
             this.comboBoxCount.Text = "3";
             // 
-            // label11
+            // label10
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(155, 93);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(19, 15);
-            this.label11.TabIndex = 44;
-            this.label11.Text = "회";
+            this.label10.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(16, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 23);
+            this.label10.TabIndex = 45;
+            this.label10.Text = "일 투약 횟수";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // columnHeader12
             // 

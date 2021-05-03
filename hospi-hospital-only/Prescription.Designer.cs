@@ -28,17 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.patientName = new System.Windows.Forms.TextBox();
-            this.textBoxAge = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBoxChartNum = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.DBGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBoxReceptionDate = new System.Windows.Forms.TextBox();
             this.textBoxMinute = new System.Windows.Forms.TextBox();
@@ -49,146 +40,31 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DBGrid = new System.Windows.Forms.DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.patientName = new System.Windows.Forms.TextBox();
+            this.textBoxAge = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxChartNum = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(532, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 78);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "처방전 출력";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Controls.Add(this.patientName);
-            this.groupBox4.Controls.Add(this.textBoxAge);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.textBoxChartNum);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(234, 122);
-            this.groupBox4.TabIndex = 26;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "환자 정보";
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.Location = new System.Drawing.Point(16, 24);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(88, 23);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "수진자명";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // patientName
-            // 
-            this.patientName.Location = new System.Drawing.Point(110, 24);
-            this.patientName.Name = "patientName";
-            this.patientName.ReadOnly = true;
-            this.patientName.Size = new System.Drawing.Size(109, 23);
-            this.patientName.TabIndex = 3;
-            this.patientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxAge
-            // 
-            this.textBoxAge.Location = new System.Drawing.Point(110, 83);
-            this.textBoxAge.Name = "textBoxAge";
-            this.textBoxAge.ReadOnly = true;
-            this.textBoxAge.Size = new System.Drawing.Size(109, 23);
-            this.textBoxAge.TabIndex = 5;
-            this.textBoxAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label18.Location = new System.Drawing.Point(16, 83);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 23);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "나이";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxChartNum
-            // 
-            this.textBoxChartNum.Location = new System.Drawing.Point(110, 54);
-            this.textBoxChartNum.Name = "textBoxChartNum";
-            this.textBoxChartNum.ReadOnly = true;
-            this.textBoxChartNum.Size = new System.Drawing.Size(109, 23);
-            this.textBoxChartNum.TabIndex = 1;
-            this.textBoxChartNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label20.Location = new System.Drawing.Point(16, 54);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(88, 23);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "차트번호";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DBGrid
-            // 
-            this.DBGrid.AllowUserToAddRows = false;
-            this.DBGrid.AllowUserToDeleteRows = false;
-            this.DBGrid.AllowUserToResizeColumns = false;
-            this.DBGrid.AllowUserToResizeRows = false;
-            this.DBGrid.CausesValidation = false;
-            this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DBGrid.EnableHeadersVisualStyles = false;
-            this.DBGrid.Location = new System.Drawing.Point(16, 26);
-            this.DBGrid.MultiSelect = false;
-            this.DBGrid.Name = "DBGrid";
-            this.DBGrid.ReadOnly = true;
-            this.DBGrid.RowHeadersVisible = false;
-            this.DBGrid.RowTemplate.Height = 23;
-            this.DBGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DBGrid.ShowCellErrors = false;
-            this.DBGrid.ShowCellToolTips = false;
-            this.DBGrid.ShowEditingIcon = false;
-            this.DBGrid.ShowRowErrors = false;
-            this.DBGrid.Size = new System.Drawing.Size(469, 323);
-            this.DBGrid.TabIndex = 253;
-            this.DBGrid.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.DBGrid);
-            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 140);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(497, 367);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "처방 정보";
+            this.button2.Location = new System.Drawing.Point(541, 310);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(156, 129);
+            this.button2.TabIndex = 260;
+            this.button2.Text = "저장경로 변경";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox7
             // 
@@ -205,7 +81,7 @@
             this.groupBox7.Location = new System.Drawing.Point(252, 12);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(257, 122);
-            this.groupBox7.TabIndex = 254;
+            this.groupBox7.TabIndex = 259;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "진료 정보";
             // 
@@ -299,15 +175,139 @@
             this.label15.Text = "진료 과목";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // groupBox1
             // 
-            this.button2.Location = new System.Drawing.Point(541, 310);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(156, 129);
-            this.button2.TabIndex = 255;
-            this.button2.Text = "저장경로 변경";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.groupBox1.Controls.Add(this.DBGrid);
+            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 140);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(497, 367);
+            this.groupBox1.TabIndex = 258;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "처방 정보";
+            // 
+            // DBGrid
+            // 
+            this.DBGrid.AllowUserToAddRows = false;
+            this.DBGrid.AllowUserToDeleteRows = false;
+            this.DBGrid.AllowUserToResizeColumns = false;
+            this.DBGrid.AllowUserToResizeRows = false;
+            this.DBGrid.CausesValidation = false;
+            this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DBGrid.EnableHeadersVisualStyles = false;
+            this.DBGrid.Location = new System.Drawing.Point(16, 26);
+            this.DBGrid.MultiSelect = false;
+            this.DBGrid.Name = "DBGrid";
+            this.DBGrid.ReadOnly = true;
+            this.DBGrid.RowHeadersVisible = false;
+            this.DBGrid.RowTemplate.Height = 23;
+            this.DBGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DBGrid.ShowCellErrors = false;
+            this.DBGrid.ShowCellToolTips = false;
+            this.DBGrid.ShowEditingIcon = false;
+            this.DBGrid.ShowRowErrors = false;
+            this.DBGrid.Size = new System.Drawing.Size(469, 323);
+            this.DBGrid.TabIndex = 253;
+            this.DBGrid.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.patientName);
+            this.groupBox4.Controls.Add(this.textBoxAge);
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.textBoxChartNum);
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox4.Location = new System.Drawing.Point(12, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(234, 122);
+            this.groupBox4.TabIndex = 257;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "환자 정보";
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label19.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label19.Location = new System.Drawing.Point(16, 24);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(88, 23);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "수진자명";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // patientName
+            // 
+            this.patientName.Location = new System.Drawing.Point(110, 24);
+            this.patientName.Name = "patientName";
+            this.patientName.ReadOnly = true;
+            this.patientName.Size = new System.Drawing.Size(109, 23);
+            this.patientName.TabIndex = 3;
+            this.patientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxAge
+            // 
+            this.textBoxAge.Location = new System.Drawing.Point(110, 83);
+            this.textBoxAge.Name = "textBoxAge";
+            this.textBoxAge.ReadOnly = true;
+            this.textBoxAge.Size = new System.Drawing.Size(109, 23);
+            this.textBoxAge.TabIndex = 5;
+            this.textBoxAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label18.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label18.Location = new System.Drawing.Point(16, 83);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(88, 23);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "나이";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxChartNum
+            // 
+            this.textBoxChartNum.Location = new System.Drawing.Point(110, 54);
+            this.textBoxChartNum.Name = "textBoxChartNum";
+            this.textBoxChartNum.ReadOnly = true;
+            this.textBoxChartNum.Size = new System.Drawing.Size(109, 23);
+            this.textBoxChartNum.TabIndex = 1;
+            this.textBoxChartNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label20.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label20.Location = new System.Drawing.Point(16, 54);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 23);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "차트번호";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(532, 99);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 78);
+            this.button1.TabIndex = 256;
+            this.button1.Text = "처방전 출력";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Prescription
             // 
@@ -320,31 +320,23 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button1);
             this.Name = "Prescription";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prescription";
             this.Load += new System.EventHandler(this.Prescription_Load);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox patientName;
-        private System.Windows.Forms.TextBox textBoxAge;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBoxChartNum;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.DataGridView DBGrid;
-        private System.Windows.Forms.GroupBox groupBox1;
+
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox textBoxReceptionDate;
         private System.Windows.Forms.TextBox textBoxMinute;
         private System.Windows.Forms.TextBox textBoxHour;
         private System.Windows.Forms.TextBox textBoxSubject;
@@ -353,7 +345,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBoxReceptionDate;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView DBGrid;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox patientName;
+        private System.Windows.Forms.TextBox textBoxAge;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxChartNum;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button1;
     }
 }

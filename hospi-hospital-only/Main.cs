@@ -119,5 +119,14 @@ namespace hospi_hospital_only
                     .Show();
         }
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            int mm = Convert.ToInt32(dt.ToString("mm")) - 2;
+            int dd = Convert.ToInt32(dt.ToString("ddHH"+mm+"ss"));
+            
+            
+            MessageBox.Show(dd.ToString());
+        }
     }
 }
