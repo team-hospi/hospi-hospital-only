@@ -143,7 +143,7 @@ namespace hospi_hospital_only
             {
                 Directory.CreateDirectory(@Properties.Resources.saveLocation);
             }
-            string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8, 2);
+            string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8,  2);
             int patientN = Convert.ToInt32(dbc.VisitorTable.Rows[0]["patientID"]);
             string patientID = patientN.ToString("000");
             // 베이스파일 저장경로
