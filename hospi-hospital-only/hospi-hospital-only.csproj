@@ -171,6 +171,7 @@
     <Compile Include="UpdateSubject.Designer.cs">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Visitor.cs" />
     <EmbeddedResource Include="Hospital_SignUp.resx">
       <DependentUpon>Hospital_SignUp.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,11 +29,20 @@ namespace hospi_hospital_only
         public long timestamp { get; set; }
         [FirestoreProperty]
         public string name { get; set; }
+        [FirestoreProperty]
+        public string phone { get; set; }
+        [FirestoreProperty]
+        public string address { get; set; }
+        [FirestoreProperty]
+        public string birth { get; set; }
 
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
         public static int count;
         public string patientName;
+        public string patientPhone;
+        public string patientAddress;
+        public string patientBirth;
         public string documentName;
 
         public List<Reserve> list = new List<Reserve>(); // 문의내역 리스트
@@ -74,6 +83,9 @@ namespace hospi_hospital_only
                 if (docsnap.Exists)
                 {
                     patientName = fp.name;
+                    patientPhone = fp.phone;
+                    patientAddress = fp.address;
+                    patientBirth = fp.birth;
                 }
             }
         }
