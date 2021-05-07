@@ -153,14 +153,16 @@ namespace hospi_hospital_only
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                     // Age
                     int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                    if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
+                    if (dbc3.ReceptionTable.Rows[i][3].ToString().Length>7 && (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2"))
                     {
                         item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
                     }
-                    else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
+                    else if (dbc3.ReceptionTable.Rows[i][3].ToString().Length > 7 && (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4"))
                     {
                         item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
                     }
+                    
+                    
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][5].ToString());
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][6].ToString());
@@ -204,7 +206,10 @@ namespace hospi_hospital_only
                 DataRow vRow = dbc.VisitorTable.Rows[rows];
                 textBoxChartNum.Text = vRow["patientID"].ToString();
                 textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0, 6);
-                textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 7);
+                if (vRow["patientBirthCode"].ToString().Length > 7)
+                {
+                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 7);
+                }
                 phone1.Text = vRow["patientPhone"].ToString().Substring(0, 3);
                 phone2.Text = vRow["patientPhone"].ToString().Substring(3, 4);
                 phone3.Text = vRow["patientPhone"].ToString().Substring(7, 4);
@@ -253,7 +258,7 @@ namespace hospi_hospital_only
             dbc3.FireConnect();
             inquiry.FireConnect();
             incount = Inquiry.count;
-            //timer1.Start();   ==> 바이어베이스 용량 문제로 보류
+            
             // 폼 로드시 버튼 클릭
             button2_Click(sender, e); // 진료대기버튼
             button8_Click(sender, e); // 진료보류버튼
@@ -479,7 +484,10 @@ namespace hospi_hospital_only
                 VisitorText(e.RowIndex);
 
                 // 성별/나이 라벨 수정
-                GenderAgeLabel();
+                if(DBGrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString().Length >7)
+                {
+                    GenderAgeLabel();
+                }
                 textBoxPurpose.Focus();
             }
         }
@@ -963,6 +971,8 @@ namespace hospi_hospital_only
             }
             incount = Inquiry.count;
         }
+
+     
 
         // 수진자명 조회 엔터 이벤트
         private void patientName_KeyDown(object sender, KeyEventArgs e)
