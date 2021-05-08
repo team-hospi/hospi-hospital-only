@@ -33,6 +33,7 @@ namespace hospi_hospital_only
         Boolean inquiryCheck;
         int SelectRow;
         string UserToken; // 유저 토큰
+        string title;
 
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
 
@@ -133,7 +134,9 @@ namespace hospi_hospital_only
                 InquiryOpen();
                 dbc.Delay(300);
                 InquiryListUpdate();
-                fcm.PushNotificationToFCM(listView1.Items[SelectRow].SubItems[2].Text, UserToken);
+                title = listView1.Items[SelectRow].SubItems[2].Text;
+                if(title.Length > 10) { title = title.Substring(0, 10) + "..."; }
+                fcm.PushNotificationToFCM(DBClass.hospiname, UserToken, "문의 [" + title + "] 에 대한 답변이 완료되었습니다.");
                 
                 MessageBox.Show("답변 완료", "알림");
             }
