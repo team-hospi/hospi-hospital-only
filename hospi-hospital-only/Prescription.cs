@@ -185,6 +185,18 @@ namespace hospi_hospital_only
                 excelApp.Quit();
                 File.Delete(path2);
                 System.Diagnostics.Process.Start(path3);
+
+                if(checkBox1.Checked == true)
+                {
+                    Payment payment = new Payment();
+                    payment.PatientID = textBoxChartNum.Text;
+                    payment.PatientName = patientName.Text;
+                    payment.SubjectName = textBoxSubject.Text;
+                    payment.ShowDialog();
+                }
+
+                Dispose();
+
             }
             catch
             {
@@ -195,11 +207,6 @@ namespace hospi_hospital_only
         private void button2_Click(object sender, EventArgs e)
         {
             Dispose();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
