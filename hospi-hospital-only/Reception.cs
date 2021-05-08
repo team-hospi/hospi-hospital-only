@@ -17,13 +17,15 @@ namespace hospi_hospital_only
         DBClass dbc2 = new DBClass(); // reception, receptionist
         DBClass dbc3 = new DBClass(); // reception 조회 삭제
         Inquiry inquiry = new Inquiry();
-        string listViewIndexID1; // 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
-        string listViewIndexPatientName; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수
+        string listViewIndexID1; // 접수 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
+        string listViewIndexID2; // 수납 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
+        string messageTypeL, messageTypeR; // 진료보류, 접수복구    수납대기, 수납취소 메시지를 담기 위한 변수
+        string listViewIndexPatientNameL, listViewIndexPatientNameR; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수 // L(진료현황) R(수납현황)
         int listViewModeL, listViewModeR; // 리스트뷰의 현재상태를 저장한 변수     // L ( 진료대기 : 1 , 진료보류 : 2 )      // R ( 수납대기 : 1 , 수납완료 : 2 ) 
         string hospitalID;
         int old;
         string date; // 날짜 변수
-        string[] prescriptionArr = new string[3]; // 처방전 조회에 필요한 (patientID, receptionTime, receptionDate 저장)
+        string[] prescriptionArr = new string[5]; // 처방전 조회에 필요한 (patientID, receptionTime, receptionDate 저장)
         DataTable hisTable; // 수진자 정보 조회시 이전 진료기록을 담은 테이블 ( 이전 진료기록 띄울때 사용하고, 이전 진료기록중 내원목적 확인시에 재사용 )
         int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
         string selectedSubjectName; // 접수 수정시 과목명 저장
@@ -359,6 +361,8 @@ namespace hospi_hospital_only
             button8.Text = "▶ " + button8.Text + " ◀";
             listViewModeR = 1;
 
+            button14.Text = "수납";
+            button14.Enabled = true ;
             // 접수로드 (2 = 수납대기)
             ReceptionUpdate(2);
         }
@@ -369,6 +373,8 @@ namespace hospi_hospital_only
             ButtonClearR();
             button13.Text = "▶ " + button13.Text + " ◀";
             listViewModeR = 2;
+
+            button14.Enabled = false;
 
             // 접수로드 (3 = 수납완료)
             ReceptionUpdate(3);
@@ -653,7 +659,7 @@ namespace hospi_hospital_only
             }
             else
             {
-                DialogResult ok = MessageBox.Show("선택된 접수를 취소합니다.\r\n수진자명 : " + listViewIndexPatientName, "알림", MessageBoxButtons.YesNo);
+                DialogResult ok = MessageBox.Show("선택된 접수를 취소합니다.\r\n수진자명 : " + listViewIndexPatientNameL, "알림", MessageBoxButtons.YesNo);
                 if (ok == DialogResult.Yes)
                 {
                     try
@@ -738,7 +744,15 @@ namespace hospi_hospital_only
             }
             else
             {
-                DialogResult ok = MessageBox.Show("선택된 접수를 보류합니다.\r\n수진자명 : " + listViewIndexPatientName, "알림", MessageBoxButtons.YesNo);
+                if(listViewModeL == 1)
+                {
+                    messageTypeL = "접수를 보류합니다.";
+                }
+                else if (listViewModeL == 2)
+                {
+                    messageTypeL = "접수를 복구합니다.";
+                }
+                DialogResult ok = MessageBox.Show(messageTypeL + "\r\n\n수진자명 : " + listViewIndexPatientNameL, "알림", MessageBoxButtons.YesNo);
                 if (ok == DialogResult.Yes)
                 {
                     try
@@ -765,7 +779,7 @@ namespace hospi_hospital_only
                             dbc3.DBAdapter.Update(dbc3.DS, "reception");
                             dbc3.DS.AcceptChanges();
 
-                            button5_Click(sender, e);
+                            button5_Click(sender, e); // 진료 보류 버튼
                         }
                     }
                     catch (DataException DE)
@@ -820,10 +834,16 @@ namespace hospi_hospital_only
             // prescription배열에 ( patientID, receptionDate, receptionTime ) 넣기
             if (listView3.SelectedItems.Count != 0)
             {
+
                 int selectRow = listView3.SelectedItems[0].Index;
                 prescriptionArr[0] = listView3.Items[selectRow].SubItems[2].Text;
                 prescriptionArr[1] = dateTimePicker1.Value.ToString("yy-MM-dd");
                 prescriptionArr[2] = listView3.Items[selectRow].SubItems[1].Text.Substring(0,2)+listView3.Items[selectRow].SubItems[1].Text.Substring(5,2);
+                prescriptionArr[3] = listView3.Items[selectRow].SubItems[3].Text;
+                prescriptionArr[4] = listView3.Items[selectRow].SubItems[5].Text;
+
+                listViewIndexID2 = listView3.Items[selectRow].SubItems[7].Text;
+                listViewIndexPatientNameR = listView3.Items[selectRow].SubItems[3].Text;
             }
         }
 
@@ -835,7 +855,7 @@ namespace hospi_hospital_only
             {
                 int selectRow = listView1.SelectedItems[0].Index;
                 listViewIndexID1 = listView1.Items[selectRow].SubItems[7].Text;
-                listViewIndexPatientName = listView1.Items[selectRow].SubItems[3].Text;
+                listViewIndexPatientNameL = listView1.Items[selectRow].SubItems[3].Text;
 
                 selectedSubjectName = listView1.Items[selectRow].SubItems[5].Text;
             }
@@ -873,60 +893,58 @@ namespace hospi_hospital_only
         // 수납완료 버튼
         private void button14_Click(object sender, EventArgs e)
         {
-            if (listViewIndexID1 == null)
+            if (listViewIndexID2 == null)
             {
                 MessageBox.Show("완료하실 수납 정보가 선택되지 않았습니다.", "알림");
             }
             else
             {
-                DialogResult ok = MessageBox.Show("수납완료 처리합니다.\r\n수진자명 : " + listViewIndexPatientName, "알림", MessageBoxButtons.YesNo);
-                if (ok == DialogResult.Yes)
+                if (listViewModeR == 1)
                 {
-                    try
+                    Payment payment = new Payment();
+                    payment.PatientID = prescriptionArr[0];
+                    payment.PatientName = prescriptionArr[3];
+                    payment.SubjectName = prescriptionArr[4];
+                    payment.HospitalID = hospitalID;
+                    payment.ShowDialog();
+                }
+                /*try
+                {
+                    dbc3.Reception_Open();
+                    dbc3.ReceptionTable = dbc3.DS.Tables["reception"];
+                    DataRow upRow = dbc3.ReceptionTable.Rows[Convert.ToInt32(listViewIndexID2) - 1];
+
+                    if (listViewModeR == 1)
                     {
-                        dbc3.Reception_Open();
-                        dbc3.ReceptionTable = dbc3.DS.Tables["reception"];
-                        DataRow upRow = dbc3.ReceptionTable.Rows[Convert.ToInt32(listViewIndexID1) - 1];
+                        upRow.BeginEdit();
+                        upRow["receptionType"] = 3;
+                        upRow.EndEdit();
+                        dbc3.DBAdapter.Update(dbc3.DS, "reception");
+                        dbc3.DS.AcceptChanges();
 
-                        if (listViewModeL == 1)
-                        {
-                            upRow.BeginEdit();
-                            upRow["receptionType"] = 4;
-                            upRow.EndEdit();
-                            dbc3.DBAdapter.Update(dbc3.DS, "reception");
-                            dbc3.DS.AcceptChanges();
-
-                            button2_Click(sender, e); // 진료대기버튼
-                        }
-                        else if (listViewModeL == 2)
-                        {
-                            upRow.BeginEdit();
-                            upRow["receptionType"] = 1;
-                            upRow.EndEdit();
-                            dbc3.DBAdapter.Update(dbc3.DS, "reception");
-                            dbc3.DS.AcceptChanges();
-
-                            button5_Click(sender, e);
-                        }
+                        button8_Click(sender, e); // 수납대기 버튼
                     }
-                    catch (DataException DE)
+                    else if (listViewModeR == 2)
                     {
-                        MessageBox.Show(DE.Message);
-                    }
-                    catch (Exception DE)
-                    {
-                        MessageBox.Show(DE.Message);
+                        button14.Enabled = false;
                     }
                 }
-                else
+                catch (DataException DE)
                 {
-                    if (listViewModeL == 1)
+                    MessageBox.Show(DE.Message);
+                }
+                catch (Exception DE)
+                {
+                    MessageBox.Show(DE.Message);
+                }*/
+                {
+                    if (listViewModeR == 1)
                     {
-                        button2_Click(sender, e); // 접수내역버튼
+                        button2_Click(sender, e); // 수납대기버튼
                     }
-                    else if (listViewModeL == 2)
+                    else if (listViewModeR == 2)
                     {
-                        button5_Click(sender, e); // 진료보류버튼
+                        button5_Click(sender, e); // 수납완료버튼
                     }
                 }
             }
@@ -946,6 +964,11 @@ namespace hospi_hospital_only
             InquiryCheck inquiry = new InquiryCheck();
             inquiry.HospitalID = hospitalID;
             inquiry.ShowDialog();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

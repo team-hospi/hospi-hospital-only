@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBoxReceptionDate = new System.Windows.Forms.TextBox();
             this.textBoxMinute = new System.Windows.Forms.TextBox();
@@ -50,6 +50,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxChartNum = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox7.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
@@ -168,21 +169,22 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.DBGrid);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(12, 140);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(497, 404);
+            this.groupBox1.Size = new System.Drawing.Size(497, 433);
             this.groupBox1.TabIndex = 258;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "처방 정보";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(16, 355);
+            this.button2.Location = new System.Drawing.Point(16, 380);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 40);
+            this.button2.Size = new System.Drawing.Size(176, 40);
             this.button2.TabIndex = 260;
             this.button2.Text = "종료";
             this.button2.UseVisualStyleBackColor = true;
@@ -190,9 +192,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(154, 355);
+            this.button1.Location = new System.Drawing.Point(198, 380);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(331, 40);
+            this.button1.Size = new System.Drawing.Size(289, 40);
             this.button1.TabIndex = 256;
             this.button1.Text = "처방전 출력";
             this.button1.UseVisualStyleBackColor = true;
@@ -207,14 +209,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(16, 26);
@@ -311,11 +313,23 @@
             this.label20.Text = "차트번호";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(315, 355);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(170, 19);
+            this.checkBox1.TabIndex = 254;
+            this.checkBox1.Text = "출력 완료후 수납완료 진행";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Prescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 550);
+            this.ClientSize = new System.Drawing.Size(523, 585);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox1);
@@ -327,6 +341,7 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -356,5 +371,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
