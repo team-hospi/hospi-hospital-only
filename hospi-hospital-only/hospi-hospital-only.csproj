@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -152,6 +153,12 @@
       <DependentUpon>Reservation.cs</DependentUpon>
     </Compile>
     <Compile Include="Reserve.cs" />
+    <Compile Include="ReserveCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReserveCancel.Designer.cs">
+      <DependentUpon>ReserveCancel.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchAddress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reservation.resx">
       <DependentUpon>Reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReserveCancel.resx">
+      <DependentUpon>ReserveCancel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchAddress.resx">
       <DependentUpon>SearchAddress.cs</DependentUpon>

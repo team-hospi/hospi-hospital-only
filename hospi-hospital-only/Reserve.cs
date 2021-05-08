@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,12 @@ namespace hospi_hospital_only
         public string address { get; set; }
         [FirestoreProperty]
         public string birth { get; set; }
+        [FirestoreProperty]
+        public Dictionary<string, List<string>> reserveMap{ get; set; }
+        [FirestoreProperty]
+        public string token { get; set; }
+        [FirestoreProperty]
+        public string cancelComment { get; set; }
 
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
@@ -43,8 +50,12 @@ namespace hospi_hospital_only
         public string patientPhone;
         public string patientAddress;
         public string patientBirth;
-        public string documentName;
+        public static string documentName;
+        public static string reserveDocument;
+        public static string UserToken;
+        public static string cancelcomment;
 
+        public Dictionary<string, List<string>> reservemap;
         public List<Reserve> list = new List<Reserve>(); // 문의내역 리스트
         
         //Firestore 연결
@@ -86,6 +97,7 @@ namespace hospi_hospital_only
                     patientPhone = fp.phone;
                     patientAddress = fp.address;
                     patientBirth = fp.birth;
+                    UserToken = fp.token;
                 }
             }
         }
@@ -97,7 +109,7 @@ namespace hospi_hospital_only
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
-                Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                Reserve fp = docsnap.ConvertTo<Reserve>();
                 if (docsnap.Exists)
                 {
                     documentName = docsnap.Id;
@@ -106,6 +118,23 @@ namespace hospi_hospital_only
             }
         }
 
+        //예약 시간 문서이름 찾기
+        async public void FindReserveDocument(string hospitalID, string department)
+        {
+            Query qref = fs.Collection("reservedList").WhereEqualTo("hospitalId", hospitalID).WhereEqualTo("department", department);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Reserve fp = docsnap.ConvertTo<Reserve>();
+                if (docsnap.Exists)
+                {
+                    reserveDocument = docsnap.Id;
+                    reservemap = fp.reserveMap;
+                }
+            }
+        }
+
+        //예약 승인
         async public void ReserveAccept()
         {
             try
@@ -126,6 +155,64 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show(e.Message);
             }
+        }
+
+        //예약 시간 추가
+        async public void ReserveTimeAdd()
+        {
+            try
+            {
+                DocumentReference docref = fs.Collection("reservedList").Document(reserveDocument);
+                Dictionary<string, object> data = new Dictionary<string, object>()
+                {
+                    {"reservedMap", reservemap }
+
+                };
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists)
+                {
+                    await docref.UpdateAsync(data);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
+        //예약 취소
+        async public void ReserveCancel(string Comment)
+        {
+            try
+            {
+                DocumentReference docref = fs.Collection("reservationList").Document(documentName);
+                Dictionary<string, object> data = new Dictionary<string, object>()
+                {
+                    {"reservationStatus", -1 },
+                    {"cancelComment", Comment }
+
+                };
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists)
+                {
+                    await docref.UpdateAsync(data);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        public void RemoveReserveTime(string Date, string Time)
+        {
+            DocumentReference docref = fs.Collection("reservedList").Document(reserveDocument);
+            Dictionary<string, object> data = new Dictionary<string, object>()
+            {
+                {"reservedMap."+Date, FieldValue.ArrayRemove(Time) }
+            };
+            docref.UpdateAsync(data);
         }
 
     }

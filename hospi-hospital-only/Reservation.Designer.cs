@@ -127,6 +127,7 @@
             this.buttonCancel.TabIndex = 14;
             this.buttonCancel.Text = "예약 취소";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // label1
             // 

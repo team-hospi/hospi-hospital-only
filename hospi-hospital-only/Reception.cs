@@ -100,11 +100,11 @@ namespace hospi_hospital_only
         public void GenderAgeLabel()
         {
             String year = DateTime.Now.ToString("yyyy");
-            if (textBoxB2.Text.Substring(0, 1) == "1" || textBoxB2.Text.Substring(0, 1) == "2")
+            if (textBoxB2.Text.Substring(0, 1) == "1" || textBoxB2.Text.Substring(0, 1) == "2" || textBoxB2.Text.Substring(0, 1) == "0")
             {
                 old = Convert.ToInt32(year) - Convert.ToInt32(textBoxB1.Text.Substring(0, 2)) - 1899;
             }
-            else if (textBoxB2.Text.Substring(0, 1) == "3" || textBoxB2.Text.Substring(0, 1) == "4")
+            else if (textBoxB2.Text.Substring(0, 1) == "3" || textBoxB2.Text.Substring(0, 1) == "4" || textBoxB2.Text.Substring(0, 1) == "5")
             {
                 old = Convert.ToInt32(year) - Convert.ToInt32(textBoxB1.Text.Substring(0, 2)) - 1999;
             }
@@ -153,11 +153,11 @@ namespace hospi_hospital_only
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                     // Age
                     int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                    if (dbc3.ReceptionTable.Rows[i][3].ToString().Length>7 && (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2"))
+                    if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "0")
                     {
                         item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
                     }
-                    else if (dbc3.ReceptionTable.Rows[i][3].ToString().Length > 7 && (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4"))
+                    else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "5")
                     {
                         item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
                     }
@@ -206,7 +206,7 @@ namespace hospi_hospital_only
                 DataRow vRow = dbc.VisitorTable.Rows[rows];
                 textBoxChartNum.Text = vRow["patientID"].ToString();
                 textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0, 6);
-                if (vRow["patientBirthCode"].ToString().Length > 7)
+                if (vRow["patientBirthCode"].ToString().Length > 9)
                 {
                     textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 7);
                 }
@@ -484,7 +484,7 @@ namespace hospi_hospital_only
                 VisitorText(e.RowIndex);
 
                 // 성별/나이 라벨 수정
-                if(DBGrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString().Length >7)
+                if(DBGrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString().Length >9)
                 {
                     GenderAgeLabel();
                 }

@@ -89,6 +89,7 @@ namespace hospi_hospital_only
                                     .AddText("HOSPI")
                                     .AddText("새로운 문의가 등록 되었습니다!!")
                                     .Show();
+                                
                             }
                         }
                     }

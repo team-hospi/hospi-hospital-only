@@ -24,7 +24,7 @@ namespace hospi_hospital_only
 
 
 
-        public void PushNotificationToFCM(string title, string UserToken)
+        public void PushNotificationToFCM(string title, string UserToken, string body)
         {
             try
             {
@@ -39,8 +39,8 @@ namespace hospi_hospital_only
                     to = deviceId,
                     notification = new
                     {
-                        body = "["+ title + "]에 대한 답변이 완료되었습니다.",
-                        title = "알림"
+                        body = body,
+                        title = title
                     }
                    
                 };
@@ -71,5 +71,7 @@ namespace hospi_hospital_only
                 string str = ex.Message;
             }
         }
+
+        
     }
 }
