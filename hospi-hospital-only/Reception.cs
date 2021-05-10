@@ -837,7 +837,7 @@ namespace hospi_hospital_only
 
                 int selectRow = listView3.SelectedItems[0].Index;
                 prescriptionArr[0] = listView3.Items[selectRow].SubItems[2].Text;
-                prescriptionArr[1] = dateTimePicker1.Value.ToString("yy-MM-dd");
+                prescriptionArr[1] = dateTimePicker2.Value.ToString("yy-MM-dd");
                 prescriptionArr[2] = listView3.Items[selectRow].SubItems[1].Text.Substring(0,2)+listView3.Items[selectRow].SubItems[1].Text.Substring(5,2);
                 prescriptionArr[3] = listView3.Items[selectRow].SubItems[3].Text;
                 prescriptionArr[4] = listView3.Items[selectRow].SubItems[5].Text;
@@ -906,46 +906,11 @@ namespace hospi_hospital_only
                     payment.PatientName = prescriptionArr[3];
                     payment.SubjectName = prescriptionArr[4];
                     payment.HospitalID = hospitalID;
+                    payment.ReceptionDate = dateTimePicker2.Value.ToString("yy-MM-dd");
+                    payment.ReceptionTime = prescriptionArr[2];
                     payment.ShowDialog();
-                }
-                /*try
-                {
-                    dbc3.Reception_Open();
-                    dbc3.ReceptionTable = dbc3.DS.Tables["reception"];
-                    DataRow upRow = dbc3.ReceptionTable.Rows[Convert.ToInt32(listViewIndexID2) - 1];
 
-                    if (listViewModeR == 1)
-                    {
-                        upRow.BeginEdit();
-                        upRow["receptionType"] = 3;
-                        upRow.EndEdit();
-                        dbc3.DBAdapter.Update(dbc3.DS, "reception");
-                        dbc3.DS.AcceptChanges();
-
-                        button8_Click(sender, e); // 수납대기 버튼
-                    }
-                    else if (listViewModeR == 2)
-                    {
-                        button14.Enabled = false;
-                    }
-                }
-                catch (DataException DE)
-                {
-                    MessageBox.Show(DE.Message);
-                }
-                catch (Exception DE)
-                {
-                    MessageBox.Show(DE.Message);
-                }*/
-                {
-                    if (listViewModeR == 1)
-                    {
-                        button2_Click(sender, e); // 수납대기버튼
-                    }
-                    else if (listViewModeR == 2)
-                    {
-                        button5_Click(sender, e); // 수납완료버튼
-                    }
+                    button8_Click(sender, e);
                 }
             }
             listViewIndexID1 = null;

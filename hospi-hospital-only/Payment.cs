@@ -18,6 +18,8 @@ namespace hospi_hospital_only
         string patientName;
         string subjectName;
         string hospitalID;
+        string receptionDate;
+        string receptionTime;
 
         public string PatientID
         {
@@ -39,7 +41,16 @@ namespace hospi_hospital_only
             get { return hospitalID; }
             set { hospitalID = value; }
         }
-
+        public string ReceptionTime
+        {
+            get { return receptionTime; }
+            set { receptionTime = value; }
+        }
+        public string ReceptionDate
+        {
+            get { return receptionDate; }
+            set { receptionDate = value; }
+        }
         
         public Payment()
         {
@@ -56,17 +67,31 @@ namespace hospi_hospital_only
             dbc.ReceptionTable = dbc.DS.Tables["reception"];
             if(dbc.ReceptionTable.Rows.Count == 1)
             {
-                radioButton2.Checked = true;    //초진
+                textBoxType.Text = "초진";
             }
             else if (dbc.ReceptionTable.Rows.Count != 1)
             {
-                radioButton1.Checked = true;    //재진
+                textBoxType.Text = "재진";
             }
             // 병의원타입 추가
             dbc.FireConnect();
             dbc.Hospital_Open(hospitalID);
-            dbc.HospitalTable = dbc.DS.Tables["hospital"];
-            
+            if(DBClass.hospikind == "대학")
+            {
+                textBoxHospiKind.Text = "대학 병원";
+                textBox3.Text = "15000";
+            }
+            else if(DBClass.hospikind == "종합")
+            {
+                textBoxHospiKind.Text = "종합 병원";
+                textBox3.Text = "10000";
+            }
+            else if(DBClass.hospikind == "의원")
+            {
+                textBoxHospiKind.Text = "의원";
+                textBox3.Text = "5000";
+            }
+            textBox4.Text = (Convert.ToInt32(textBox2.Text) + Convert.ToInt32(textBox3.Text)).ToString();
         }
 
 
@@ -78,6 +103,50 @@ namespace hospi_hospital_only
         private void te(object sender, EventArgs e)
         {
 
+        }
+
+        // 카드
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dbc.Reception_Date(receptionDate, receptionTime, patientID);
+            dbc.ReceptionTable = dbc.DS.Tables["reception"];
+            DataRow upRow = dbc.ReceptionTable.Rows[0];
+
+            upRow.BeginEdit();
+            upRow["payment"] = "카드";
+            upRow["price"] = textBox4.Text;
+            upRow["receptionType"] = 3;
+            upRow.EndEdit();
+            dbc.DBAdapter.Update(dbc.DS, "reception");
+            dbc.DS.AcceptChanges();
+
+            DialogResult ok = MessageBox.Show("카드 결제는 별도의 단말에서 진행해주세요. \r\n결제완료 처리 하시겠습니까?", "알림", MessageBoxButtons.YesNo);
+            if (ok == DialogResult.Yes)
+            {
+                Dispose();
+            }
+        }
+
+        // 현금
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dbc.Reception_Date(receptionDate, receptionTime, patientID);
+            dbc.ReceptionTable = dbc.DS.Tables["reception"];
+            DataRow upRow = dbc.ReceptionTable.Rows[0];
+
+            upRow.BeginEdit();
+            upRow["payment"] = "현금";
+            upRow["price"] = textBox4.Text;
+            upRow["receptionType"] = 3;
+            upRow.EndEdit();
+            dbc.DBAdapter.Update(dbc.DS, "reception");
+            dbc.DS.AcceptChanges();
+
+            DialogResult ok = MessageBox.Show("현금으로 결제완료 처리 하시겠습니까?.", "알림", MessageBoxButtons.YesNo);
+            if (ok == DialogResult.Yes)
+            {
+                Dispose();
+            }
         }
     }
 }
