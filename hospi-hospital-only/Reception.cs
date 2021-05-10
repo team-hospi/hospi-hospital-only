@@ -17,6 +17,7 @@ namespace hospi_hospital_only
         DBClass dbc2 = new DBClass(); // reception, receptionist
         DBClass dbc3 = new DBClass(); // reception 조회 삭제
         Inquiry inquiry = new Inquiry();
+        Reserve reserve = new Reserve();
         string listViewIndexID1; // 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexPatientName; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수
         int listViewModeL, listViewModeR; // 리스트뷰의 현재상태를 저장한 변수     // L ( 진료대기 : 1 , 진료보류 : 2 )      // R ( 수납대기 : 1 , 수납완료 : 2 ) 
@@ -257,8 +258,11 @@ namespace hospi_hospital_only
             dbc2.FireConnect();
             dbc3.FireConnect();
             inquiry.FireConnect();
+            reserve.FireConnect();
             incount = Inquiry.count;
             
+
+
             // 폼 로드시 버튼 클릭
             button2_Click(sender, e); // 진료대기버튼
             button8_Click(sender, e); // 진료보류버튼
@@ -277,6 +281,7 @@ namespace hospi_hospital_only
                 dbc.Hospital_Open(hospitalID);
                 dbc.Delay(400);
                 inquiry.UpdateWait(hospitalID);
+                reserve.ReserveUpdateWait(hospitalID);
                 //dbc.HospitalTable = dbc.DS.Tables["hospital"];
                 //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace hospi_hospital_only
 {
@@ -215,5 +216,46 @@ namespace hospi_hospital_only
             docref.UpdateAsync(data);
         }
 
+        public void ReserveUpdateWait(string hospitalid)
+        {
+            CollectionReference citiesRef = fs.Collection("reservationList");
+            Query query = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalid).WhereEqualTo("reservationStatus", 0);
+
+            FirestoreChangeListener listener = query.Listen(async snapshot =>
+            {
+                DateTime dt = DateTime.Now;
+                long ss = Convert.ToInt64(dt.AddSeconds(-5).ToString("yyyyMMddHHmmss"));
+
+                Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalid);
+                QuerySnapshot snap = await qref.GetSnapshotAsync();
+                foreach (DocumentSnapshot docsnap in snap)
+                {
+                    Reserve fp = docsnap.ConvertTo<Reserve>();
+                    if (docsnap.Exists)
+                    {
+                        if (fp.reservationStatus == 0 && Convert.ToInt64(ConvertDate(fp.timestamp).ToString("yyyyMMddHHmmss")) >= ss)
+                        {
+                            new ToastContentBuilder()
+                                .AddArgument("action", "viewConversation")
+                                .AddArgument("conversationId", 9813)
+                                .AddText("HOSPI")
+                                .AddText("새로운 예약 신청이 있습니다.")
+                                .Show();
+
+                        }
+                    }
+                }
+
+            });
+        }
+
+        public DateTime ConvertDate(long timestamp)
+        {
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddMilliseconds(timestamp).ToLocalTime();
+            return dtDateTime;
+
+        }
     }
+
 }

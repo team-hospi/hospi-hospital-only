@@ -55,9 +55,7 @@ namespace hospi_hospital_only
             ReservationListUpdate();
             dbc.Visitor_Open();
             dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
-
-            dbc.Receptionist_Open();
-            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
+            
         }
 
         //리스트뷰 업데이트
@@ -174,8 +172,6 @@ namespace hospi_hospital_only
             {
                 if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
                 {
-                    ReceptionAdd();
-
                     reserve.ReserveAccept();
                     dbc.Delay(200);
                     reserve.ReserveOpen(hospitalID);
@@ -198,9 +194,7 @@ namespace hospi_hospital_only
                 {
 
                     newPatientAdd();
-
-                    ReceptionAdd();
-
+                    
 
                     reserve.ReserveAccept();
                     dbc.Delay(200);
@@ -240,9 +234,7 @@ namespace hospi_hospital_only
                     ReservationListUpdate();
                     dbc.Visitor_Open();
                     dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
-
-                    dbc.Receptionist_Open();
-                    dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
+                    
                 }
             }
         }
@@ -272,40 +264,6 @@ namespace hospi_hospital_only
             dbc.DBAdapter.Update(dbc.DS, "Visitor");
             dbc.DS.AcceptChanges();
 
-        }
-
-        //예약승인 -> 접수 등록
-        public void ReceptionAdd()
-        {
-            dbc.Reception_Open();
-            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
-            DataRow newRow = dbc.ReceptionTable.NewRow();
-            newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
-            for (int i = 0; i < dbc.VisitorTable.Rows.Count; i++)
-            {
-                if (dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
-                {
-                    newRow["PATIENTID"] = i + 1;
-                }
-            }
-
-            newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
-            newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
-            newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
-            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
-            {
-                if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
-                {
-                    newRow["ReceptionistCode"] = i + 1;
-                }
-            }
-
-            newRow["ReceptionInfo"] = ViewComment();
-            newRow["ReceptionType"] = 1;
-
-            dbc.ReceptionTable.Rows.Add(newRow);
-            dbc.DBAdapter.Update(dbc.DS, "Reception");
-            dbc.DS.AcceptChanges();
         }
 
 
