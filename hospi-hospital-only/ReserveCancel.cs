@@ -60,34 +60,7 @@ namespace hospi_hospital_only
                 {
                     try
                     {
-                        dbc.FindReceptionIndex(date.Substring(2, 8), time.Substring(0, 2) + time.Substring(3, 2));
-                        dbc.ReceptionTable = dbc.DS.Tables["reception"];
-                        receptionIndex = Convert.ToInt32(dbc.ReceptionTable.Rows[0][0].ToString());
-
-                        dbc.Reception_Open();
-                        dbc.ReceptionTable = dbc.DS.Tables["reception"];
-                        DataColumn[] PrimaryKey = new DataColumn[1];
-                        PrimaryKey[0] = dbc.ReceptionTable.Columns["receptionID"];
-                        dbc.ReceptionTable.PrimaryKey = PrimaryKey;
-                        DataRow delRow = dbc.ReceptionTable.Rows.Find(receptionIndex);
-                        int rowCount = dbc.ReceptionTable.Rows.Count; // 삭제전 전체 row 갯수
-                        delRow.Delete();
-                        int receptionID = Convert.ToInt32(receptionIndex);
-                        // listViewIndexID1 을 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
-
-                        //  열 하나가 삭제될 경우 열의 인덱스가 삭제 대상보다 높은경우 모두 -1 해줌
-                        // ex) 10개열 테이블에서 7번열 삭제시 8ㅡ>7 / 9-ㅡ>8 / 10ㅡ>9
-                        for (int i = 0; i < (rowCount - Convert.ToInt32(receptionIndex)); i++)
-                        {
-                            delRow = dbc.ReceptionTable.Rows[rowCount - (rowCount - receptionID)];
-                            delRow.BeginEdit();
-                            delRow["receptionID"] = Convert.ToInt32(delRow["receptionID"]) - 1;
-                            delRow.EndEdit();
-                            receptionID += 1;
-                        }
-                        dbc.DBAdapter.Update(dbc.DS, "reception");
-                        dbc.DS.AcceptChanges();
-
+                        
                         reserve.RemoveReserveTime(date, time);
 
                         reserve.ReserveCancel(richTextBox1.Text);
@@ -166,11 +139,6 @@ namespace hospi_hospital_only
             reserve.FireConnect();
             reserve.ReserveOpen(hospitalID);
             dbc.Delay(400);
-
-
-            dbc.FindReceptionIndex(date.Substring(2, 8), time.Substring(0, 2) + time.Substring(3, 2));
-            dbc.ReceptionTable = dbc.DS.Tables["reception"];
-            receptionIndex = Convert.ToInt32(dbc.ReceptionTable.Rows[0][0].ToString());
             
         }
     }
