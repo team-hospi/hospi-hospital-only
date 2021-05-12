@@ -192,6 +192,8 @@ namespace hospi_hospital_only
                     payment.PatientID = textBoxChartNum.Text;
                     payment.PatientName = patientName.Text;
                     payment.SubjectName = textBoxSubject.Text;
+                    payment.ReceptionDate = textBoxReceptionDate.Text.Substring(2, textBoxReceptionDate.Text.Length - 2);
+                    payment.ReceptionTime = textBoxHour.Text + textBoxMinute.Text;
                     payment.ShowDialog();
                 }
 

@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "1",
-            "공지사항 텍스트 테스트"}, -1);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxReceptionist = new System.Windows.Forms.ComboBox();
             this.buttonReception = new System.Windows.Forms.Button();
@@ -59,6 +56,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -182,13 +180,12 @@
             // 
             this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader10,
-            this.columnHeader11});
+            this.columnHeader11,
+            this.columnHeader1});
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
-            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
             this.listView2.LabelWrap = false;
             this.listView2.Location = new System.Drawing.Point(16, 38);
             this.listView2.MultiSelect = false;
@@ -197,17 +194,19 @@
             this.listView2.TabIndex = 33;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView2_ColumnWidthChanging);
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "No.";
             this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader10.Width = 50;
+            this.columnHeader10.Width = 40;
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "제목";
-            this.columnHeader11.Width = 410;
+            this.columnHeader11.Width = 429;
             // 
             // setting1
             // 
@@ -217,6 +216,7 @@
             this.setting1.Size = new System.Drawing.Size(27, 25);
             this.setting1.TabIndex = 38;
             this.setting1.Text = "⚙";
+            this.setting1.Click += new System.EventHandler(this.setting1_Click);
             // 
             // groupBox5
             // 
@@ -359,6 +359,10 @@
             this.label3.Text = "병원명 표시 라벨";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 0;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -420,5 +424,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

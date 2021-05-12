@@ -71,12 +71,6 @@
     <Compile Include="InquiryCheck.Designer.cs">
       <DependentUpon>InquiryCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main2.Designer.cs">
-      <DependentUpon>Main2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Hospital_Setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +88,18 @@
     </Compile>
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notice.Designer.cs">
+      <DependentUpon>Notice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoticeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoticeInfo.Designer.cs">
+      <DependentUpon>NoticeInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Office.cs">
       <SubType>Form</SubType>
@@ -183,9 +189,6 @@
     <EmbeddedResource Include="InquiryCheck.resx">
       <DependentUpon>InquiryCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main2.resx">
-      <DependentUpon>Main2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Hospital_Setting.resx">
       <DependentUpon>Hospital_Setting.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notice.resx">
+      <DependentUpon>Notice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoticeInfo.resx">
+      <DependentUpon>NoticeInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Office.resx">
       <DependentUpon>Office.cs</DependentUpon>

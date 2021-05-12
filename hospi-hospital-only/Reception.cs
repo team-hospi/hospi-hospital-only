@@ -820,7 +820,8 @@ namespace hospi_hospital_only
                 prescription.PatientAge = listView3.Items[listView3SelectedRow].SubItems[4].Text;
                 prescription.SubjectName = listView3.Items[listView3SelectedRow].SubItems[5].Text;
 
-                prescription.Show();
+                prescription.ShowDialog();
+                button2_Click(sender, e);   // 처방전 출력 이후 수납대기 새로고침
             }
             else if (prescriptionArr[0] == null)
             {
@@ -929,6 +930,19 @@ namespace hospi_hospital_only
             InquiryCheck inquiry = new InquiryCheck();
             inquiry.HospitalID = hospitalID;
             inquiry.ShowDialog();
+        }
+
+        // listView 정렬막기
+        private void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
+
+        private void listView3_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = listView3.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
