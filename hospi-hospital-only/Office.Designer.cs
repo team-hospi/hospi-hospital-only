@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -55,7 +54,9 @@
             this.buttonReceptionList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.DBGrid = new System.Windows.Forms.DataGridView();
+            this.listView4 = new System.Windows.Forms.ListView();
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonMedicienSearch = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -64,6 +65,9 @@
             this.buttonM2 = new System.Windows.Forms.Button();
             this.buttonM1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBoxCount = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -78,6 +82,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxMedicineName = new System.Windows.Forms.TextBox();
@@ -96,16 +101,11 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBoxCount = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -384,7 +384,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.DBGrid);
+            this.groupBox3.Controls.Add(this.listView4);
             this.groupBox3.Controls.Add(this.buttonMedicienSearch);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label9);
@@ -400,40 +400,31 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "처방";
             // 
-            // DBGrid
+            // listView4
             // 
-            this.DBGrid.AllowUserToAddRows = false;
-            this.DBGrid.AllowUserToDeleteRows = false;
-            this.DBGrid.AllowUserToResizeColumns = false;
-            this.DBGrid.AllowUserToResizeRows = false;
-            this.DBGrid.CausesValidation = false;
-            this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DBGrid.EnableHeadersVisualStyles = false;
-            this.DBGrid.Location = new System.Drawing.Point(15, 102);
-            this.DBGrid.MultiSelect = false;
-            this.DBGrid.Name = "DBGrid";
-            this.DBGrid.ReadOnly = true;
-            this.DBGrid.RowHeadersVisible = false;
-            this.DBGrid.RowTemplate.Height = 23;
-            this.DBGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DBGrid.ShowCellErrors = false;
-            this.DBGrid.ShowCellToolTips = false;
-            this.DBGrid.ShowEditingIcon = false;
-            this.DBGrid.ShowRowErrors = false;
-            this.DBGrid.Size = new System.Drawing.Size(374, 438);
-            this.DBGrid.TabIndex = 253;
-            this.DBGrid.TabStop = false;
-            this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
+            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader13,
+            this.columnHeader14});
+            this.listView4.FullRowSelect = true;
+            this.listView4.GridLines = true;
+            this.listView4.HideSelection = false;
+            this.listView4.Location = new System.Drawing.Point(16, 114);
+            this.listView4.Name = "listView4";
+            this.listView4.Size = new System.Drawing.Size(373, 425);
+            this.listView4.TabIndex = 41;
+            this.listView4.UseCompatibleStateImageBehavior = false;
+            this.listView4.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "약품코드";
+            this.columnHeader13.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "약품명";
+            this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader14.Width = 269;
             // 
             // buttonMedicienSearch
             // 
@@ -444,6 +435,7 @@
             this.buttonMedicienSearch.TabIndex = 40;
             this.buttonMedicienSearch.Text = "검색";
             this.buttonMedicienSearch.UseVisualStyleBackColor = true;
+            this.buttonMedicienSearch.Click += new System.EventHandler(this.buttonMedicienSearch_Click);
             // 
             // textBox4
             // 
@@ -473,6 +465,7 @@
             this.buttonM4.TabIndex = 36;
             this.buttonM4.Text = "타입4";
             this.buttonM4.UseVisualStyleBackColor = true;
+            this.buttonM4.Click += new System.EventHandler(this.buttonM4_Click);
             // 
             // buttonM3
             // 
@@ -483,6 +476,7 @@
             this.buttonM3.TabIndex = 35;
             this.buttonM3.Text = "타입3";
             this.buttonM3.UseVisualStyleBackColor = true;
+            this.buttonM3.Click += new System.EventHandler(this.buttonM3_Click);
             // 
             // buttonM2
             // 
@@ -530,6 +524,42 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "투약 정보";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(155, 94);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(19, 15);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "회";
+            // 
+            // comboBoxCount
+            // 
+            this.comboBoxCount.FormattingEnabled = true;
+            this.comboBoxCount.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.comboBoxCount.Location = new System.Drawing.Point(110, 88);
+            this.comboBoxCount.Name = "comboBoxCount";
+            this.comboBoxCount.Size = new System.Drawing.Size(43, 23);
+            this.comboBoxCount.TabIndex = 46;
+            this.comboBoxCount.Text = "3";
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(16, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 23);
+            this.label10.TabIndex = 45;
+            this.label10.Text = "일 투약 횟수";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button4
             // 
@@ -681,6 +711,11 @@
             this.columnHeader7.Text = "1회 투약";
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader7.Width = 70;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "약품 ID";
+            this.columnHeader12.Width = 0;
             // 
             // label4
             // 
@@ -865,47 +900,6 @@
             this.label8.Text = "Hospi";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(155, 94);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(19, 15);
-            this.label11.TabIndex = 47;
-            this.label11.Text = "회";
-            // 
-            // comboBoxCount
-            // 
-            this.comboBoxCount.FormattingEnabled = true;
-            this.comboBoxCount.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.comboBoxCount.Location = new System.Drawing.Point(110, 88);
-            this.comboBoxCount.Name = "comboBoxCount";
-            this.comboBoxCount.Size = new System.Drawing.Size(43, 23);
-            this.comboBoxCount.TabIndex = 46;
-            this.comboBoxCount.Text = "3";
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(16, 86);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 23);
-            this.label10.TabIndex = 45;
-            this.label10.Text = "일 투약 횟수";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "약품 ID";
-            this.columnHeader12.Width = 0;
-            // 
             // Office
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -936,7 +930,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1010,7 +1003,6 @@
         private System.Windows.Forms.TextBox textBoxReceptionCount;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.TextBox textBoxSubjectName;
-        private System.Windows.Forms.DataGridView DBGrid;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -1023,5 +1015,8 @@
         private System.Windows.Forms.ComboBox comboBoxCount;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
     }
 }
