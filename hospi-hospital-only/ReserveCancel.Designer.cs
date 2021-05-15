@@ -81,7 +81,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "ReserveCancel";
-            this.Text = "ReserveCancel";
+            this.Text = "예약 취소";
             this.Load += new System.EventHandler(this.ReserveCancel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
