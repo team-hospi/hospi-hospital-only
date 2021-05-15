@@ -49,7 +49,6 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +67,7 @@
             this.listViewReserve.GridLines = true;
             this.listViewReserve.HideSelection = false;
             this.listViewReserve.LabelWrap = false;
-            this.listViewReserve.Location = new System.Drawing.Point(10, 56);
+            this.listViewReserve.Location = new System.Drawing.Point(12, 69);
             this.listViewReserve.MultiSelect = false;
             this.listViewReserve.Name = "listViewReserve";
             this.listViewReserve.Size = new System.Drawing.Size(654, 352);
@@ -120,7 +119,7 @@
             // 
             // buttonAccept
             // 
-            this.buttonAccept.Location = new System.Drawing.Point(724, 207);
+            this.buttonAccept.Location = new System.Drawing.Point(724, 220);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(162, 23);
             this.buttonAccept.TabIndex = 13;
@@ -130,7 +129,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(724, 249);
+            this.buttonCancel.Location = new System.Drawing.Point(724, 262);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(162, 23);
             this.buttonCancel.TabIndex = 14;
@@ -141,7 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(677, 59);
+            this.label1.Location = new System.Drawing.Point(677, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 15;
@@ -150,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(677, 88);
+            this.label2.Location = new System.Drawing.Point(677, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 16;
@@ -158,14 +157,14 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(724, 56);
+            this.textBoxName.Location = new System.Drawing.Point(724, 69);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(162, 21);
             this.textBoxName.TabIndex = 17;
             // 
             // TextBoxComment
             // 
-            this.TextBoxComment.Location = new System.Drawing.Point(724, 88);
+            this.TextBoxComment.Location = new System.Drawing.Point(724, 101);
             this.TextBoxComment.Name = "TextBoxComment";
             this.TextBoxComment.ReadOnly = true;
             this.TextBoxComment.Size = new System.Drawing.Size(162, 96);
@@ -174,7 +173,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(308, 3);
+            this.button1.Location = new System.Drawing.Point(308, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 47);
             this.button1.TabIndex = 19;
@@ -184,7 +183,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(160, 3);
+            this.button2.Location = new System.Drawing.Point(160, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(142, 47);
             this.button2.TabIndex = 20;
@@ -194,7 +193,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 3);
+            this.button3.Location = new System.Drawing.Point(12, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(142, 47);
             this.button3.TabIndex = 21;
@@ -205,7 +204,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 19);
+            this.label3.Location = new System.Drawing.Point(6, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 22;
@@ -213,7 +212,7 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(41, 14);
+            this.textBoxSearch.Location = new System.Drawing.Point(41, 20);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(94, 21);
             this.textBoxSearch.TabIndex = 23;
@@ -225,14 +224,14 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(459, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 43);
+            this.groupBox1.Size = new System.Drawing.Size(204, 53);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "예약자 검색";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(141, 14);
+            this.button4.Location = new System.Drawing.Point(141, 18);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(57, 23);
             this.button4.TabIndex = 24;
@@ -240,22 +239,11 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(724, 348);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(162, 58);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "예약 접수";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // Reservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 418);
-            this.Controls.Add(this.button5);
+            this.ClientSize = new System.Drawing.Size(898, 424);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -301,6 +289,5 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
     }
 }

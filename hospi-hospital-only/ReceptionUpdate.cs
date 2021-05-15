@@ -112,7 +112,7 @@ namespace hospi_hospital_only
                 {
                     if (dbc.SubjectTable.Rows[i]["subjectName"].ToString() == comboBoxSubjcet.Text)
                     {
-                        upRow["subjectCode"] = dbc.SubjectTable.Rows[i]["subjectCode"];
+                        upRow["subjectName"] = comboBoxSubjcet.Text;
                     }
                 }
                 for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)

@@ -46,9 +46,11 @@ namespace hospi_hospital_only
         [FirestoreProperty]
         public string email { get; set; }
 
+        DBClass dbc = new DBClass();
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
         public static int count;
+        public string patientId;
         public string patientName;
         public string patientPhone;
         public string patientAddress;
@@ -57,6 +59,9 @@ namespace hospi_hospital_only
         public static string reserveDocument;
         public static string UserToken;
         public static string cancelcomment;
+
+        public int receptionIndex;
+
 
         public Dictionary<string, List<string>> reservemap;
         public List<Reserve> list = new List<Reserve>(); // 문의내역 리스트
@@ -88,6 +93,27 @@ namespace hospi_hospital_only
             }
         }
 
+        //당일 예약 땡겨오기
+        async public void TodayReserveOpen(string hospitalID)
+        {
+            list.Clear();
+            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalID);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Reserve fp = docsnap.ConvertTo<Reserve>();
+                if (docsnap.Exists)
+                {
+                    if (fp.reservationDate == DateTime.Now.ToString("yyyy-MM-dd"))
+                    {
+                        Reserve reserve = fp;
+
+                        list.Add(reserve);
+                    }
+                }
+            }
+        }
+
         async public void ConvertToName(string Name)
         {
             UserEmail.Clear();
@@ -111,6 +137,7 @@ namespace hospi_hospital_only
                 Reserve fp = docsnap.ConvertTo<Reserve>();
                 if (docsnap.Exists)
                 {
+                    patientId = fp.email;
                     patientName = fp.name;
                     patientPhone = fp.phone;
                     patientAddress = fp.address;
@@ -266,6 +293,73 @@ namespace hospi_hospital_only
             });
         }
 
+        public void ReserveCancelWait(string hospitalid)
+        {
+            CollectionReference citiesRef = fs.Collection("reservationList");
+            Query query = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalid);
+
+            FirestoreChangeListener listener = query.Listen(async snapshot =>
+            {
+                foreach (DocumentChange change in snapshot.Changes)
+                {
+                    if (change.ChangeType.ToString() == "Modified")
+                    {
+                        try
+                        {
+                            Query qref = fs.Collection("reservationList");
+                            QuerySnapshot snap = await qref.GetSnapshotAsync();
+                            foreach (DocumentSnapshot docsnap in snap)
+                            {
+                                Reserve fp = docsnap.ConvertTo<Reserve>();
+                                if (docsnap.Exists)
+                                {
+                                    if (docsnap.Id == change.Document.Id)
+                                    {
+
+
+                                        dbc.FindReceptionIndex(fp.reservationDate.Substring(2, 8), fp.reservationTime.Substring(0, 2) + fp.reservationTime.Substring(3, 2));
+                                        dbc.ReceptionTable = dbc.DS.Tables["reception"];
+                                        receptionIndex = Convert.ToInt32(dbc.ReceptionTable.Rows[0][0].ToString());
+
+                                        dbc.Reception_Open();
+                                        dbc.ReceptionTable = dbc.DS.Tables["reception"];
+                                        DataColumn[] PrimaryKey = new DataColumn[1];
+                                        PrimaryKey[0] = dbc.ReceptionTable.Columns["receptionID"];
+                                        dbc.ReceptionTable.PrimaryKey = PrimaryKey;
+                                        DataRow delRow = dbc.ReceptionTable.Rows.Find(receptionIndex);
+                                        int rowCount = dbc.ReceptionTable.Rows.Count; // 삭제전 전체 row 갯수
+                                        delRow.Delete();
+                                        int receptionID = Convert.ToInt32(receptionIndex);
+                                        // listViewIndexID1 을 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
+
+                                        //  열 하나가 삭제될 경우 열의 인덱스가 삭제 대상보다 높은경우 모두 -1 해줌
+                                        // ex) 10개열 테이블에서 7번열 삭제시 8ㅡ>7 / 9-ㅡ>8 / 10ㅡ>9
+                                        for (int i = 0; i < (rowCount - Convert.ToInt32(receptionIndex)); i++)
+                                        {
+                                            delRow = dbc.ReceptionTable.Rows[rowCount - (rowCount - receptionID)];
+                                            delRow.BeginEdit();
+                                            delRow["receptionID"] = Convert.ToInt32(delRow["receptionID"]) - 1;
+                                            delRow.EndEdit();
+                                            receptionID += 1;
+                                        }
+                                        dbc.DBAdapter.Update(dbc.DS, "reception");
+                                        dbc.DS.AcceptChanges();
+
+
+                                    }
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            
+                        }
+                    }
+                }
+
+            });
+
+            }
         public DateTime ConvertDate(long timestamp)
         {
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
@@ -273,6 +367,11 @@ namespace hospi_hospital_only
             return dtDateTime;
 
         }
+
+
     }
 
+        
 }
+
+
