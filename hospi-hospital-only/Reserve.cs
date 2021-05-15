@@ -43,6 +43,8 @@ namespace hospi_hospital_only
         public string token { get; set; }
         [FirestoreProperty]
         public string cancelComment { get; set; }
+        [FirestoreProperty]
+        public string email { get; set; }
 
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
@@ -58,7 +60,8 @@ namespace hospi_hospital_only
 
         public Dictionary<string, List<string>> reservemap;
         public List<Reserve> list = new List<Reserve>(); // 문의내역 리스트
-        
+        public List<string> UserEmail = new List<string>();
+
         //Firestore 연결
         public void FireConnect()
         {
@@ -85,6 +88,20 @@ namespace hospi_hospital_only
             }
         }
 
+        async public void ConvertToName(string Name)
+        {
+            UserEmail.Clear();
+            Query qref = fs.Collection("userList").WhereEqualTo("name", Name);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Reserve fp = docsnap.ConvertTo<Reserve>();
+                if (docsnap.Exists)
+                {
+                    UserEmail.Add(fp.email);
+                }
+            }
+        }
         async public void FindPatient(string id)
         {
             Query qref = fs.Collection("userList").WhereEqualTo("email", id);
