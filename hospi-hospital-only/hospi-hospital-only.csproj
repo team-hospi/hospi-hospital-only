@@ -122,6 +122,7 @@
     <Compile Include="Reception.Designer.cs">
       <DependentUpon>Reception.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReceptionList.cs" />
     <Compile Include="Reception_HistoryInfo.cs">
       <SubType>Form</SubType>
     </Compile>

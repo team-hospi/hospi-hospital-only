@@ -10,7 +10,7 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         Reserve reserve = new Reserve();
-
+        ReceptionList reception = new ReceptionList();
 
         int SelectRow;
         string hospitalID;
@@ -18,9 +18,15 @@ namespace hospi_hospital_only
         string status;
         string receptionist;
         int receptionIndex;
-        public string Date;
-        public string reserveTime;
         public string reserveStatus;
+
+        string selectid;
+        string selectdepartment;
+        string selectDate;
+        string selectTime;
+        string selectHour;
+        string selectminuit;
+        
         int state = 0;
 
         List<string> Time = new List<string>();
@@ -50,10 +56,13 @@ namespace hospi_hospital_only
 
         private void Reservation_Load(object sender, EventArgs e)
         {
+            reception.FireConnect();
             reserve.FireConnect();
             reserve.ReserveOpen(hospitalID);
             dbc.Delay(400);
             ReservationListUpdate(state);
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
             dbc.Visitor_Open();
             dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
             
@@ -167,10 +176,15 @@ namespace hospi_hospital_only
         private void listViewReserve_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             SelectRow = listViewReserve.SelectedItems[0].Index;
-            Date = listViewReserve.Items[SelectRow].SubItems[2].Text;
-            reserveTime = listViewReserve.Items[SelectRow].SubItems[3].Text;
+
             reserveStatus = listViewReserve.Items[SelectRow].SubItems[4].Text;
 
+            selectDate = listViewReserve.Items[SelectRow].SubItems[2].Text;
+            selectTime = listViewReserve.Items[SelectRow].SubItems[3].Text;
+            selectdepartment = listViewReserve.Items[SelectRow].SubItems[6].Text;
+            selectHour = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2);
+            selectminuit = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
+            selectid = listViewReserve.Items[SelectRow].SubItems[0].Text;
             //환자 정보 검색
             reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
 
@@ -203,45 +217,47 @@ namespace hospi_hospital_only
             {
                 if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
                 {
+                    dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
+                    dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+
+                    reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate + " " + FindDay(selectDate) + " " + selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
+
+
                     reserve.ReserveAccept();
                     dbc.Delay(200);
                     reserve.ReserveOpen(hospitalID);
                     dbc.Delay(200);
+
+
+                    if (listViewReserve.Items[SelectRow].SubItems[2].Text == DateTime.Now.ToString("yyyy-MM-dd"))
+                    {
+                        try
+                        {
+                            ReceptionAdd();
+                        }
+                        catch
+                        {
+                            newPatientAdd();
+
+                            ReceptionAdd();
+                        }
+                    }
+
                     MessageBox.Show("예약이 접수되었습니다.", "알림");
 
                     ReservationListUpdate(state);
-
+                    
                     //알림 메시지 전송
-                    fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + Date + " " + FindDay(Date) + " "+ reserveTime + "] " + " 예약이 확정되었습니다.");
+                    fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + selectDate + " " + FindDay(selectDate) + " "+ selectTime + "] " + " 예약이 확정되었습니다.");
                 }
                 else if (listViewReserve.Items[SelectRow].SubItems[4].Text == "승인됨")
                 {
                     MessageBox.Show("이미 접수가 완료된 예약입니다", "알림");
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
-                {
-
-                    newPatientAdd();
-                    
-
-                    reserve.ReserveAccept();
-                    dbc.Delay(200);
-                    reserve.ReserveOpen(hospitalID);
-                    dbc.Delay(200);
-                    MessageBox.Show("예약이 접수되었습니다.", "알림");
-
-                    ReservationListUpdate(state);
-
-                    //알림 메시지 전송
-                    fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + Date + " " + FindDay(Date) + " " + reserveTime + "] " + " 예약이 확정되었습니다.");
-                }
-                else if (listViewReserve.Items[SelectRow].SubItems[4].Text == "승인됨")
-                {
-                    MessageBox.Show("이미 접수가 완료된 예약입니다", "알림");
-                }
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -253,8 +269,8 @@ namespace hospi_hospital_only
                 
                 ReserveCancel reservecancel = new ReserveCancel();
                     reservecancel.HospitalID = hospitalID;
-                    reservecancel.Date = this.Date;
-                    reservecancel.Time = this.reserveTime;
+                    reservecancel.Date = selectDate;
+                    reservecancel.Time = selectTime;
                     reservecancel.Status = this.reserveStatus;
 
                 if (reservecancel.ShowDialog() == DialogResult.OK)
@@ -288,7 +304,7 @@ namespace hospi_hospital_only
             }
             newRow["PatientPhone"] = reserve.patientPhone.Substring(0, 3) + reserve.patientPhone.Substring(4, 4) + reserve.patientPhone.Substring(9, 4);
             newRow["PatientAddress"] = reserve.patientAddress;
-            newRow["MemberID"] = "";
+            newRow["MemberID"] = reserve.patientId;
             newRow["PatientMemo"] = "";
 
             dbc.VisitorTable.Rows.Add(newRow);
@@ -340,6 +356,7 @@ namespace hospi_hospital_only
             ReservationListUpdate(state);
         }
 
+        //예약 검색
         private void button4_Click(object sender, EventArgs e)
         {
             reserve.ConvertToName(textBoxSearch.Text);
@@ -379,9 +396,48 @@ namespace hospi_hospital_only
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        //접수 등록
+        public void ReceptionAdd()
         {
+            dbc.Reception_Open();
+            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+            DataRow newRow = dbc.ReceptionTable.NewRow();
+            newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+            for (int i = 0; i < dbc.VisitorTable.Rows.Count; i++)
+            {
+                if (dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
+                {
+                    newRow["PATIENTID"] = i + 1;
+                }
+            }
+
+            newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
+            newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
+            newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
+                {
+                    newRow["ReceptionistCode"] = i + 1;
+                }
+            }
+
+            newRow["ReceptionInfo"] = ViewComment();
+            newRow["ReceptionType"] = 1;
+            reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
+            dbc.Delay(200);
+            newRow["ReceptionCode"] = Reserve.documentName;
+            dbc.ReceptionTable.Rows.Add(newRow);
+            dbc.DBAdapter.Update(dbc.DS, "Reception");
+            dbc.DS.AcceptChanges();
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
     }
 }
