@@ -16,8 +16,11 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass(); // hospital, visitor
         DBClass dbc2 = new DBClass(); // reception, receptionist
         DBClass dbc3 = new DBClass(); // reception 조회 삭제
+        DBClass dbc4 = new DBClass();
         Inquiry inquiry = new Inquiry();
         Reserve reserve = new Reserve();
+        ReceptionList receptionlist = new ReceptionList();
+
         string listViewIndexID1; // 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexPatientName; // 리스트뷰 아이템 클릭시 해당정보의 PatientName을 저장하는 변수
         int listViewModeL, listViewModeR; // 리스트뷰의 현재상태를 저장한 변수     // L ( 진료대기 : 1 , 진료보류 : 2 )      // R ( 수납대기 : 1 , 수납완료 : 2 ) 
@@ -33,6 +36,7 @@ namespace hospi_hospital_only
         int listView3SelectedRow;
         int SelectRow; //접수현황 리스트뷰 선택인덱스
         string[] prescription;
+        int waitingIsNull = 0;
 
         public Reception()
         {
@@ -261,7 +265,7 @@ namespace hospi_hospital_only
             inquiry.FireConnect();
             reserve.FireConnect();
             incount = Inquiry.count;
-            
+            receptionlist.FireConnect();
 
 
             // 폼 로드시 버튼 클릭
@@ -554,6 +558,9 @@ namespace hospi_hospital_only
 
                     // 접수현황 업데이트
                     ReceptionUpdate(1);
+
+                    ReceptionListUpdate();
+                    
                 }
                 catch (DataException DE)
                 {
@@ -706,6 +713,8 @@ namespace hospi_hospital_only
                         }
                         dbc3.DBAdapter.Update(dbc3.DS, "reception");
                         dbc3.DS.AcceptChanges();
+
+                        ReceptionListUpdate();
                     }
                     catch (DataException DE)
                     {
@@ -994,8 +1003,10 @@ namespace hospi_hospital_only
         private void button17_Click(object sender, EventArgs e)
         {
             ReceptionAdd();
+            dbc.Delay(200);
 
             ReceptionUpdate(1);
+            ReceptionListAdd();
         }
 
 
@@ -1013,6 +1024,9 @@ namespace hospi_hospital_only
                     {
                         try
                         {
+                            dbc.Delay(200);
+                            dbc.Visitor_Open();
+                            dbc.VisitorTable = dbc.DS.Tables["Visitor"];
                             dbc.Reception_Open();
                             dbc.ReceptionTable = dbc.DS.Tables["Reception"];
                             DataRow newRow = dbc.ReceptionTable.NewRow();
@@ -1023,7 +1037,7 @@ namespace hospi_hospital_only
                             {
                                 if (dbc.VisitorTable.Rows[j]["PATIENTNAME"].ToString() == reserve.patientName)
                                 {
-                                    newRow["PATIENTID"] = j + 1;
+                                    newRow["PATIENTID"] = j+1;
                                 }
                             }
 
@@ -1042,14 +1056,20 @@ namespace hospi_hospital_only
                             newRow["ReceptionType"] = 1;
                             reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
                             dbc.Delay(200);
+
+                            
                             newRow["ReceptionCode"] = Reserve.documentName;
 
                             dbc.ReceptionTable.Rows.Add(newRow);
                             dbc.DBAdapter.Update(dbc.DS, "Reception");
                             dbc.DS.AcceptChanges();
+
+                            
+
                         }
-                        catch
+                        catch (Exception e)
                         {
+                            dbc.Delay(200);
                             reserve.FindPatient(reserve.list[i].id);
                             dbc.Delay(200);
                             dbc.Visitor_Open();
@@ -1100,27 +1120,106 @@ namespace hospi_hospital_only
                             newRow["ReceptionInfo"] = reserve.list[i].additionalContent;
                             newRow["ReceptionType"] = 1;
                             reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
-                            dbc.Delay(200);
+                            dbc.Delay(300);
+
+                            
                             newRow["ReceptionCode"] = Reserve.documentName;
 
                             dbc.ReceptionTable.Rows.Add(newRow);
                             dbc.DBAdapter.Update(dbc.DS, "Reception");
                             dbc.DS.AcceptChanges();
+
                         }
                     }
-                    MessageBox.Show("당일 예약 등록이 완료되었습니다.", "알림");
+
+
+
+                    
+                        MessageBox.Show("당일 예약 등록이 완료되었습니다.", "알림");
                 }
                 else if (reserve.list.Count == 0)
                 {
                     MessageBox.Show("당일 예약이 없습니다.", "알림");
                 }
             }
-            catch
+            catch(Exception e)
             {
                 MessageBox.Show("이미 당일 예약을 등록하였습니다.", "알림");
             }
         }
-           
+
+        public void ReceptionListAdd()
+        {
+            for (int i = 0; i < reserve.list.Count; i++)
+            {
+
+                string receptionDate = reserve.list[i].reservationDate + " " + FindDay(reserve.list[i].reservationDate) + " " + reserve.list[i].reservationTime.Substring(0, 2) + ":" + reserve.list[i].reservationTime.Substring(3, 2);
+
+                reserve.FindPatient(reserve.list[i].id);
+                dbc.Delay(200);
+                dbc4.countWaiting(reserve.list[i].department, reserve.list[i].reservationTime.Substring(0, 2) + reserve.list[i].reservationTime.Substring(3, 2), reserve.list[i].reservationDate.Substring(2, 8));
+                dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
+                try
+                {
+                    receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate, Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
+                }
+                catch
+                {
+                    receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate, waitingIsNull);
+                }
+
+                reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                dbc4.Delay(200);
+                reserve.ReserveAccept();
+            }
+        }
+
+        public void ReceptionListUpdate()
+        {
+            for (int i = 0; i < reserve.list.Count; i++)
+            {
+                string receptionDate = reserve.list[i].reservationDate + " " + FindDay(reserve.list[i].reservationDate) + " " + reserve.list[i].reservationTime.Substring(0, 2) + ":" + reserve.list[i].reservationTime.Substring(3, 2);
+
+                dbc4.countWaiting(reserve.list[i].department, reserve.list[i].reservationTime.Substring(0, 2) + reserve.list[i].reservationTime.Substring(3, 2), reserve.list[i].reservationDate.Substring(2, 8));
+                dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
+
+                receptionlist.FindDocument(hospitalID, receptionDate, reserve.list[i].id);
+                dbc.Delay(200);
+                try
+                {
+                    receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
+                }
+                catch
+                {
+                    receptionlist.watingNumberUpdate(waitingIsNull);
+                }
+                dbc.Delay(200);
+            }
+        }
+
+        public string FindDay(string Date)
+        {
+            string day = "";
+            DateTime date = new DateTime();
+            date = Convert.ToDateTime(Date);
+
+            if (date.DayOfWeek == DayOfWeek.Monday)
+                day = "(월)";
+            else if (date.DayOfWeek == DayOfWeek.Thursday)
+                day = "(화)";
+            else if (date.DayOfWeek == DayOfWeek.Wednesday)
+                day = "(수)";
+            else if (date.DayOfWeek == DayOfWeek.Thursday)
+                day = "(목)";
+            else if (date.DayOfWeek == DayOfWeek.Friday)
+                day = "(금)";
+            else if (date.DayOfWeek == DayOfWeek.Saturday)
+                day = "(토)";
+            else if (date.DayOfWeek == DayOfWeek.Sunday)
+                day = "(일)";
+
+            return day;
+        }
     }
 
 }
