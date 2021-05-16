@@ -37,6 +37,7 @@ namespace hospi_hospital_only
 
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
+        public string documentName;
 
         public void FireConnect()
         {
@@ -64,6 +65,36 @@ namespace hospi_hospital_only
                 {"waitingNumber", number }
              };
             coll.AddAsync(data1);
+        }
+
+        async public void watingNumberUpdate(int waitingNumber)
+        {
+            DocumentReference docref = fs.Collection("receptionList").Document(documentName);
+            Dictionary<string, object> data = new Dictionary<string, object>()
+            {
+                {"waitingNumber", waitingNumber},
+            };
+            DocumentSnapshot snap = await docref.GetSnapshotAsync();
+            if (snap.Exists)
+            {
+                await docref.UpdateAsync(data);
+            }
+        }
+
+        //문서 이름찾기
+        async public void FindDocument(string hospitalId, string receptionDate, string id)
+        {
+            Query qref = fs.Collection("receptionList").WhereEqualTo("hospitalId", hospitalId).WhereEqualTo("receptionDate", receptionDate).WhereEqualTo("id", id);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                ReceptionList fp = docsnap.ConvertTo<ReceptionList>();
+                if (docsnap.Exists)
+                {
+                    documentName = docsnap.Id;
+
+                }
+            }
         }
 
 
