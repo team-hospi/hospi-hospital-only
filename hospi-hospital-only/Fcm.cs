@@ -40,9 +40,10 @@ namespace hospi_hospital_only
                     notification = new
                     {
                         body = body,
-                        title = title
+                        title = title,
+                        android_channel_id = "channelId"
                     }
-                   
+
                 };
                 var serializer = new JavaScriptSerializer();
                 var json = serializer.Serialize(data);
