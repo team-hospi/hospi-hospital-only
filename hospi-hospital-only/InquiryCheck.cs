@@ -38,7 +38,6 @@ namespace hospi_hospital_only
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
 
 
-
         public string HospitalID
         {
             get { return hospitalID; }
@@ -69,8 +68,6 @@ namespace hospi_hospital_only
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
             fs = FirestoreDb.Create("hospi-edcf9");
-
-
         }
 
         async public void InquiryOpen()

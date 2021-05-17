@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -402,29 +403,38 @@
             // 
             // listView4
             // 
-            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader13,
-            this.columnHeader14});
-            this.listView4.FullRowSelect = true;
-            this.listView4.GridLines = true;
-            this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(16, 114);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(373, 425);
-            this.listView4.TabIndex = 41;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            this.listView4.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "약품코드";
-            this.columnHeader13.Width = 100;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "약품명";
-            this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader14.Width = 269;
+            this.DBGrid.AllowUserToAddRows = false;
+            this.DBGrid.AllowUserToDeleteRows = false;
+            this.DBGrid.AllowUserToResizeColumns = false;
+            this.DBGrid.AllowUserToResizeRows = false;
+            this.DBGrid.CausesValidation = false;
+            this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DBGrid.EnableHeadersVisualStyles = false;
+            this.DBGrid.Location = new System.Drawing.Point(15, 102);
+            this.DBGrid.MultiSelect = false;
+            this.DBGrid.Name = "DBGrid";
+            this.DBGrid.ReadOnly = true;
+            this.DBGrid.RowHeadersVisible = false;
+            this.DBGrid.RowTemplate.Height = 23;
+            this.DBGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DBGrid.ShowCellErrors = false;
+            this.DBGrid.ShowCellToolTips = false;
+            this.DBGrid.ShowEditingIcon = false;
+            this.DBGrid.ShowRowErrors = false;
+            this.DBGrid.Size = new System.Drawing.Size(374, 438);
+            this.DBGrid.TabIndex = 253;
+            this.DBGrid.TabStop = false;
+            this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
             // 
             // buttonMedicienSearch
             // 
@@ -463,7 +473,7 @@
             this.buttonM4.Name = "buttonM4";
             this.buttonM4.Size = new System.Drawing.Size(89, 32);
             this.buttonM4.TabIndex = 36;
-            this.buttonM4.Text = "타입4";
+            this.buttonM4.Text = "주사제";
             this.buttonM4.UseVisualStyleBackColor = true;
             this.buttonM4.Click += new System.EventHandler(this.buttonM4_Click);
             // 
@@ -487,6 +497,7 @@
             this.buttonM2.TabIndex = 34;
             this.buttonM2.Text = "타입2";
             this.buttonM2.UseVisualStyleBackColor = true;
+            this.buttonM2.Click += new System.EventHandler(this.buttonM2_Click);
             // 
             // buttonM1
             // 

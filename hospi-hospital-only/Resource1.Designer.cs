@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace hospi_hospital_only.Properties {
+namespace hospi_hospital_only {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace hospi_hospital_only.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Resource1 {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resource1() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace hospi_hospital_only.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("hospi_hospital_only.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("hospi_hospital_only.Resource1", typeof(Resource1).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,43 +57,6 @@ namespace hospi_hospital_only.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   C:\HospiExcel\HospiBaseFile.xls과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string baseFile {
-            get {
-                return ResourceManager.GetString("baseFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   C:\HospiExcel\과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string baseFileLocation {
-            get {
-                return ResourceManager.GetString("baseFileLocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static byte[] BaseFileResource {
-            get {
-                object obj = ResourceManager.GetObject("BaseFileResource", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   C:\HospiExcel\TempDirectory\과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string saveLocation {
-            get {
-                return ResourceManager.GetString("saveLocation", resourceCulture);
             }
         }
     }
