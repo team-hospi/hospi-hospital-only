@@ -10,13 +10,15 @@ using System.Windows.Forms;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using Spire.Xls;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace hospi_hospital_only
 {
     public partial class Prescription : Form
     {
+        
         DBClass dbc = new DBClass();
-
+        DataRow locationRow;
         // 환자정보
         string patientID;
         string receptionTime;
@@ -25,7 +27,6 @@ namespace hospi_hospital_only
         string patientAge;
         string subjectName;
 
-        // 병원정보
 
 
         public string PatientID
@@ -64,6 +65,7 @@ namespace hospi_hospital_only
             InitializeComponent();
         }
 
+        [STAThread]
         // 환자정보 오픈
         public void PatientInfo(int patientNum)
         {
@@ -73,6 +75,16 @@ namespace hospi_hospital_only
 
         private void Prescription_Load(object sender, EventArgs e)
         {
+            // 베이스파일, 디렉토리 없으면 생성해줌
+            DirectoryInfo baseFile = new DirectoryInfo(@Properties.Resources.baseFileLocation);
+            if (baseFile.Exists == false)
+            {
+                Directory.CreateDirectory(@Properties.Resources.baseFileLocation);
+                byte[] baseFileResource = Properties.Resources.BaseFileResource;
+                string savePath = @Properties.Resources.baseFile;
+                System.IO.File.WriteAllBytes(savePath, baseFileResource);
+            }
+
             dbc.Presctiption_Select(patientID, receptionDate, receptionTime);
             dbc.PrescriptionTable = dbc.DS.Tables["prescription"];
             DBGrid.DataSource = dbc.PrescriptionTable.DefaultView;
@@ -121,12 +133,24 @@ namespace hospi_hospital_only
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8, 2);
+            DirectoryInfo di = new DirectoryInfo(@Properties.Resources.saveLocation);
+            if(di.Exists == true)
+            {
+                Directory.Delete(@Properties.Resources.saveLocation, true);
+            }
+            DirectoryInfo dir = new DirectoryInfo(@Properties.Resources.saveLocation);
+            if (dir.Exists == false)
+            {
+                Directory.CreateDirectory(@Properties.Resources.saveLocation);
+            }
+            string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8,  2);
             int patientN = Convert.ToInt32(dbc.VisitorTable.Rows[0]["patientID"]);
             string patientID = patientN.ToString("000");
-            string path1 = @"C:\excel\PrescriptionEX.xls";
-            string path2 = @"C:\excel\example\" + date + patientID + ".xls";
-            string path3 = @"C:\excel\example\" + date + patientID + " " + patientName.Text + ".pdf";
+            // 베이스파일 저장경로
+            string path1 = @Properties.Resources.baseFile;
+            // excel, pdf 저장경로
+            string path2 = @Properties.Resources.saveLocation + date + patientID + ".xls";
+            string path3 = @Properties.Resources.saveLocation + date + patientID + " " + patientName.Text + ".pdf";
             Excel.Application excelApp = new Excel.Application();
             Excel.Workbook wb = null;
             Excel.Worksheet ws = null;
@@ -141,6 +165,7 @@ namespace hospi_hospital_only
                 ws.Cells[5, 25] = "  " + dbc.Hospiname;
                 ws.Cells[6, 25] = "  " + dbc.HospiTell;
                 ws.Cells[7, 25] = "  " + dbc.HospiTell;
+                ws.Cells[22, 5] = "교부일로부터 (    7    )일간";
                 for (int i = 0; i < DBGrid.Rows.Count; i++)
                 {
                     ws.Cells[10 + i, 1] = "  " + DBGrid.Rows[i].Cells[0].FormattedValue.ToString();
@@ -150,27 +175,40 @@ namespace hospi_hospital_only
                 }
 
                 ws.SaveAs(path2);
-
                 Workbook workbook = new Workbook();
                 workbook.LoadFromFile(path2, ExcelVersion.Version2010);
                 workbook.SaveToFile(path3, Spire.Xls.FileFormat.PDF);
 
                 File.Exists(path1);
                 File.Exists(path2);
-                wb.Close();
+                wb.Close(false);
                 excelApp.Quit();
                 File.Delete(path2);
                 System.Diagnostics.Process.Start(path3);
+
+                if(checkBox1.Checked == true)
+                {
+                    Payment payment = new Payment();
+                    payment.PatientID = textBoxChartNum.Text;
+                    payment.PatientName = patientName.Text;
+                    payment.SubjectName = textBoxSubject.Text;
+                    payment.ReceptionDate = textBoxReceptionDate.Text.Substring(2, textBoxReceptionDate.Text.Length - 2);
+                    payment.ReceptionTime = textBoxHour.Text + textBoxMinute.Text;
+                    payment.ShowDialog();
+                }
+
+                Dispose();
+
             }
             catch
             {
-                MessageBox.Show("catch");
+                MessageBox.Show("오류");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("미구현");
+            Dispose();
         }
     }
 }
