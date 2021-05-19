@@ -716,11 +716,14 @@ namespace hospi_hospital_only
                             delRow["receptionCode"] = dbc.ReceptionTable.Rows[0][0].ToString();
                             delRow.EndEdit();
                             receptionID += 1;
+
                         }
                         dbc3.DBAdapter.Update(dbc3.DS, "reception");
                         dbc3.DS.AcceptChanges();
 
+
                         ReceptionListUpdate();
+
                     }
                     catch (DataException DE)
                     {
@@ -739,6 +742,7 @@ namespace hospi_hospital_only
                 {
                     button5_Click(sender, e); // 진료보류버튼
                 }
+
                 listViewIndexID1 = null; // 삭제완료후 null값 넣어줌
             }
         }
@@ -1003,11 +1007,18 @@ namespace hospi_hospital_only
 
         private void button17_Click(object sender, EventArgs e)
         {
-            ReceptionAdd();
-            dbc.Delay(200);
+            try
+            {
+                ReceptionAdd();
+                dbc.Delay(200);
 
-            ReceptionUpdate(1);
-            ReceptionListAdd();
+                ReceptionUpdate(1);
+                ReceptionListAdd();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("이미 당일 예약을 완료하였습니다.", "알림");
+            }
         }
 
 
@@ -1015,13 +1026,11 @@ namespace hospi_hospital_only
         //예약 -> 접수
         public void ReceptionAdd()
         {
-            try
+            if (reserve.list.Count != 0)
             {
-
-
-                if (reserve.list.Count != 0)
+                for (int i = 0; i < reserve.list.Count; i++)
                 {
-                    for (int i = 0; i < reserve.list.Count; i++)
+                    if (reserve.list[i].reservationStatus == 1)
                     {
                         try
                         {
@@ -1038,7 +1047,7 @@ namespace hospi_hospital_only
                             {
                                 if (dbc.VisitorTable.Rows[j]["PATIENTNAME"].ToString() == reserve.patientName)
                                 {
-                                    newRow["PATIENTID"] = j+1;
+                                    newRow["PATIENTID"] = j + 1;
                                 }
                             }
 
@@ -1058,14 +1067,14 @@ namespace hospi_hospital_only
                             reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
                             dbc.Delay(200);
 
-                            
+
                             newRow["ReceptionCode"] = Reserve.documentName;
 
                             dbc.ReceptionTable.Rows.Add(newRow);
                             dbc.DBAdapter.Update(dbc.DS, "Reception");
                             dbc.DS.AcceptChanges();
 
-                            
+
 
                         }
                         catch (Exception e)
@@ -1123,7 +1132,7 @@ namespace hospi_hospital_only
                             reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
                             dbc.Delay(300);
 
-                            
+
                             newRow["ReceptionCode"] = Reserve.documentName;
 
                             dbc.ReceptionTable.Rows.Add(newRow);
@@ -1132,69 +1141,66 @@ namespace hospi_hospital_only
 
                         }
                     }
-
-
-
-                    
-                        MessageBox.Show("당일 예약 등록이 완료되었습니다.", "알림");
                 }
-                else if (reserve.list.Count == 0)
-                {
-                    MessageBox.Show("당일 예약이 없습니다.", "알림");
-                }
+                MessageBox.Show("당일 예약 등록이 완료되었습니다.", "알림");
             }
-            catch(Exception e)
+            else if (reserve.list.Count == 0)
             {
-                MessageBox.Show("이미 당일 예약을 등록하였습니다.", "알림");
+                    MessageBox.Show("당일 예약이 없습니다.", "알림");
             }
         }
+
+
 
         public void ReceptionListAdd()
         {
             for (int i = 0; i < reserve.list.Count; i++)
             {
-
-                string receptionDate = reserve.list[i].reservationDate + " " + FindDay(reserve.list[i].reservationDate) + " " + reserve.list[i].reservationTime.Substring(0, 2) + ":" + reserve.list[i].reservationTime.Substring(3, 2);
-
-                reserve.FindPatient(reserve.list[i].id);
-                dbc.Delay(200);
-                dbc4.countWaiting(reserve.list[i].department, reserve.list[i].reservationTime.Substring(0, 2) + reserve.list[i].reservationTime.Substring(3, 2), reserve.list[i].reservationDate.Substring(2, 8));
-                dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
-                try
+                if (reserve.list[i].reservationStatus == 1)
                 {
-                    receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate, Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
-                }
-                catch
-                {
-                    receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate, waitingIsNull);
-                }
+                    string receptionDate = reserve.list[i].reservationDate;
+                    string receptionTime = reserve.list[i].reservationTime;
 
-                reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
-                dbc4.Delay(200);
-                reserve.ReserveAccept();
+                    reserve.FindPatient(reserve.list[i].id);
+                    dbc.Delay(200);
+                    dbc4.countWaiting(reserve.list[i].department, reserve.list[i].reservationTime.Substring(0, 2) + reserve.list[i].reservationTime.Substring(3, 2), reserve.list[i].reservationDate.Substring(2, 8));
+                    dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
+                    try
+                    {
+                        receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
+                    }
+                    catch
+                    {
+                        receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, waitingIsNull);
+                    }
+
+                    reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                    dbc4.Delay(200);
+                }
             }
         }
 
         public void ReceptionListUpdate()
         {
-            for (int i = 0; i < reserve.list.Count; i++)
+            receptionlist.TodayReceptionOpen(hospitalID,listView1.Items[SelectRow].SubItems[5].Text);
+            dbc.Delay(100);
+            for (int i = 0; i < receptionlist.list.Count; i++)
             {
-                string receptionDate = reserve.list[i].reservationDate + " " + FindDay(reserve.list[i].reservationDate) + " " + reserve.list[i].reservationTime.Substring(0, 2) + ":" + reserve.list[i].reservationTime.Substring(3, 2);
 
-                dbc4.countWaiting(reserve.list[i].department, reserve.list[i].reservationTime.Substring(0, 2) + reserve.list[i].reservationTime.Substring(3, 2), reserve.list[i].reservationDate.Substring(2, 8));
+                dbc4.countWaiting(listView1.Items[SelectRow].SubItems[5].Text , receptionlist.list[i].receptionTime.Substring(0,2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
                 dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
 
-                receptionlist.FindDocument(hospitalID, receptionDate, reserve.list[i].id);
-                dbc.Delay(200);
+                receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].id, receptionlist.list[i].department);
+                dbc.Delay(100);
                 try
                 {
-                    receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
+                    receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
                 }
                 catch
                 {
                     receptionlist.watingNumberUpdate(waitingIsNull);
                 }
-                dbc.Delay(200);
+                dbc.Delay(100);
             }
         }
 

@@ -26,7 +26,9 @@ namespace hospi_hospital_only
         string selectTime;
         string selectHour;
         string selectminuit;
-        
+
+
+        string today = DateTime.Now.ToString("yyyy-MM-dd (ddd) HH:mm");
         int state = 0;
 
         List<string> Time = new List<string>();
@@ -126,7 +128,28 @@ namespace hospi_hospital_only
                     this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
                     listViewReserve.Sort();
                 }
+                else if (reserve.list[i].reservationDate == DateTime.Now.ToString("yyyy-MM-dd") && status == 3)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = reserve.list[i].id;
+                    item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
+                    item.SubItems.Add(reserve.list[i].reservationDate);
+                    item.SubItems.Add(reserve.list[i].reservationTime);
+                    if (reserve.list[i].reservationStatus == ReserveWait)
+                    {
+                        item.SubItems.Add("대기");
+                    }
+                    else if (reserve.list[i].reservationStatus == ReserveAccepted)
+                    {
+                        item.SubItems.Add("승인됨");
+                    }
+                    item.SubItems.Add(reserve.list[i].id);
+                    item.SubItems.Add(reserve.list[i].department);
+                    listViewReserve.Items.Add(item);
 
+                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                    listViewReserve.Sort();
+                }
             }
         }
 
@@ -217,15 +240,9 @@ namespace hospi_hospital_only
             {
                 if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
                 {
-                    dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
-                    dbc.ReceptionTable = dbc.DS.Tables["Reception"];
-
-                    reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate + " " + FindDay(selectDate) + " " + selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
 
 
                     reserve.ReserveAccept();
-                    dbc.Delay(200);
-                    reserve.ReserveOpen(hospitalID);
                     dbc.Delay(200);
 
 
@@ -233,15 +250,53 @@ namespace hospi_hospital_only
                     {
                         try
                         {
+
+                            dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
+                            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+
+                            reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
+
                             ReceptionAdd();
+
+                            reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
+                            
+                            dbc.Delay(400);
+                            for (int i = 0; i < reception.list.Count; i++)
+                            {
+                                dbc.countWaiting(reception.list[i].department, reception.list[i].receptionTime, DateTime.Now.ToString("yy-MM-dd"));
+                                dbc.WaitingTable = dbc.DS.Tables["Reception"];
+
+                                reception.FindDocument(hospitalID, reception.today, reception.list[i].receptionTime, reception.list[i].id, reception.list[i].department);
+                                dbc.Delay(200);
+                                reception.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
+                                dbc.Delay(200);
+                            }
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            MessageBox.Show(ex.ToString());
                             newPatientAdd();
 
                             ReceptionAdd();
+
+                            reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
+                            dbc.Delay(200);
+                            for (int i = 0; i < reception.list.Count; i++)
+                            {
+
+                                dbc.countWaiting(reception.list[i].department, reception.list[i].receptionTime, DateTime.Now.ToString("yy-MM-dd"));
+                                dbc.WaitingTable = dbc.DS.Tables["Reception"];
+
+                                reception.FindDocument(hospitalID, reception.today, reception.list[i].receptionTime, reception.list[i].id, reception.list[i].department);
+                                dbc.Delay(200);
+                                reception.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
+                                dbc.Delay(200);
+                            }
                         }
                     }
+
+                    reserve.ReserveOpen(hospitalID);
+                    dbc.Delay(200);
 
                     MessageBox.Show("예약이 접수되었습니다.", "알림");
 
@@ -399,37 +454,99 @@ namespace hospi_hospital_only
         //접수 등록
         public void ReceptionAdd()
         {
-            dbc.Reception_Open();
-            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
-            DataRow newRow = dbc.ReceptionTable.NewRow();
-            newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
-            for (int i = 0; i < dbc.VisitorTable.Rows.Count; i++)
+            try
             {
-                if (dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
-                {
-                    newRow["PATIENTID"] = i + 1;
-                }
-            }
 
-            newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
-            newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
-            newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
-            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                dbc.Reception_Open();
+                dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+                DataRow newRow = dbc.ReceptionTable.NewRow();
+                newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+                for (int i = 0; i < dbc.VisitorTable.Rows.Count; i++)
+                {
+                    if (dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
+                    {
+                        newRow["PATIENTID"] = i + 1;
+                    }
+                }
+
+                newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
+                newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
+                newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
+                for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                {
+                    if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
+                    {
+                        newRow["ReceptionistCode"] = i + 1;
+                    }
+                }
+
+                newRow["ReceptionInfo"] = ViewComment();
+                newRow["ReceptionType"] = 1;
+                reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
+                dbc.Delay(200);
+                newRow["ReceptionCode"] = Reserve.documentName;
+                dbc.ReceptionTable.Rows.Add(newRow);
+                dbc.DBAdapter.Update(dbc.DS, "Reception");
+                dbc.DS.AcceptChanges();
+            }
+            catch
             {
-                if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
+                dbc.Delay(200);
+                reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
+                dbc.Delay(200);
+                dbc.Visitor_Open();
+                dbc.VisitorTable = dbc.DS.Tables["Visitor"];
+                DataRow newRow = dbc.VisitorTable.NewRow();
+                newRow["PatientID"] = dbc.VisitorTable.Rows.Count + 1;
+                newRow["PatientName"] = reserve.patientName;
+                if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000)
                 {
-                    newRow["ReceptionistCode"] = i + 1;
+                    newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-0";
                 }
-            }
+                else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) > 2000)
+                {
+                    newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-5";
+                }
+                newRow["PatientPhone"] = reserve.patientPhone.Substring(0, 3) + reserve.patientPhone.Substring(4, 4) + reserve.patientPhone.Substring(9, 4);
+                newRow["PatientAddress"] = reserve.patientAddress;
+                newRow["MemberID"] = reserve.patientId;
+                newRow["PatientMemo"] = "";
 
-            newRow["ReceptionInfo"] = ViewComment();
-            newRow["ReceptionType"] = 1;
-            reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
-            dbc.Delay(200);
-            newRow["ReceptionCode"] = Reserve.documentName;
-            dbc.ReceptionTable.Rows.Add(newRow);
-            dbc.DBAdapter.Update(dbc.DS, "Reception");
-            dbc.DS.AcceptChanges();
+                dbc.VisitorTable.Rows.Add(newRow);
+                dbc.DBAdapter.Update(dbc.DS, "Visitor");
+                dbc.DS.AcceptChanges();
+                dbc.Reception_Open();
+                dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+                newRow = dbc.ReceptionTable.NewRow();
+                newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+                for (int i = 0; i < dbc.VisitorTable.Rows.Count; i++)
+                {
+                    if (dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
+                    {
+                        newRow["PATIENTID"] = i + 1;
+                    }
+                }
+
+                newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
+                newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
+                newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
+                for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                {
+                    if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
+                    {
+                        newRow["ReceptionistCode"] = i + 1;
+                    }
+                }
+
+                newRow["ReceptionInfo"] = ViewComment();
+                newRow["ReceptionType"] = 1;
+                reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
+                dbc.Delay(200);
+                newRow["ReceptionCode"] = Reserve.documentName;
+                dbc.ReceptionTable.Rows.Add(newRow);
+                dbc.DBAdapter.Update(dbc.DS, "Reception");
+                dbc.DS.AcceptChanges();
+            }
 
         }
 
@@ -438,6 +555,11 @@ namespace hospi_hospital_only
             
         }
 
+        private void button5_Click_1(object sender, EventArgs e)
+        {
 
+            state = 3;
+            ReservationListUpdate(3);
+        }
     }
 }
