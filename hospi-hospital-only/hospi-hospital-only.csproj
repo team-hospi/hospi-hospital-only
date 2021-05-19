@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckMasterPW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckMasterPW.Designer.cs">
+      <DependentUpon>CheckMasterPW.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBClass.cs" />
     <Compile Include="Fcm.cs" />
     <Compile Include="Hospital_SignUp.cs">
@@ -89,6 +95,12 @@
     </Compile>
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterMenu.Designer.cs">
+      <DependentUpon>MasterMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Notice.cs">
       <SubType>Form</SubType>
@@ -192,6 +204,9 @@
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
     <Compile Include="Visitor.cs" />
+    <EmbeddedResource Include="CheckMasterPW.resx">
+      <DependentUpon>CheckMasterPW.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hospital_SignUp.resx">
       <DependentUpon>Hospital_SignUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterMenu.resx">
+      <DependentUpon>MasterMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notice.resx">
       <DependentUpon>Notice.cs</DependentUpon>
