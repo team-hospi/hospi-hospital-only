@@ -87,6 +87,7 @@
             this.ClientSize = new System.Drawing.Size(290, 191);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Reception_HistoryInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReceptionInfo";

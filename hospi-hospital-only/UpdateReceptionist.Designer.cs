@@ -229,6 +229,7 @@
             this.ClientSize = new System.Drawing.Size(393, 250);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox11);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UpdateReceptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "접수자 추가/삭제";

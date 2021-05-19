@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBoxReceptionType = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxChartNum = new System.Windows.Forms.TextBox();
@@ -46,8 +48,6 @@
             this.comboBoxTime1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBoxReceptionType = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,18 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "접수 수정";
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(12, 94);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(88, 23);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "접수상태";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -87,6 +99,16 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(135, 23);
             this.dateTimePicker1.TabIndex = 27;
+            // 
+            // textBoxReceptionType
+            // 
+            this.textBoxReceptionType.ForeColor = System.Drawing.Color.Black;
+            this.textBoxReceptionType.Location = new System.Drawing.Point(106, 94);
+            this.textBoxReceptionType.Name = "textBoxReceptionType";
+            this.textBoxReceptionType.ReadOnly = true;
+            this.textBoxReceptionType.Size = new System.Drawing.Size(135, 23);
+            this.textBoxReceptionType.TabIndex = 28;
+            this.textBoxReceptionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -276,28 +298,6 @@
             this.label4.Text = "과목";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(12, 94);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 23);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "접수상태";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxReceptionType
-            // 
-            this.textBoxReceptionType.ForeColor = System.Drawing.Color.Black;
-            this.textBoxReceptionType.Location = new System.Drawing.Point(106, 94);
-            this.textBoxReceptionType.Name = "textBoxReceptionType";
-            this.textBoxReceptionType.ReadOnly = true;
-            this.textBoxReceptionType.Size = new System.Drawing.Size(135, 23);
-            this.textBoxReceptionType.TabIndex = 28;
-            this.textBoxReceptionType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // ReceptionUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -305,6 +305,7 @@
             this.ClientSize = new System.Drawing.Size(282, 321);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ReceptionUpdate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "접수 항목 수정";

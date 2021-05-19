@@ -16,10 +16,10 @@ namespace hospi_hospital_only
         string hospitalID;
 
         DBClass dbc = new DBClass();
+       
         Main main = new Main();
         CultureInfo cultures = CultureInfo.CreateSpecificCulture("ko-KR");
         Inquiry inquiry = new Inquiry();
-        string[] user;
         int indexNum;
         string noticeID;
 
@@ -70,18 +70,6 @@ namespace hospi_hospital_only
 
             label3.Text = dbc.Hospiname;
 
-            // 공지사항 게시자를 위한 접수자, 과목정보 받아오기
-            user = new string[comboBoxReceptionist.Items.Count + comboBoxOffice.Items.Count];
-            for(int i=0; i< comboBoxOffice.Items.Count; i++)
-            {
-                user[i] = comboBoxOffice.Items[i].ToString();
-            }
-            int a = 0;
-            for(int j=comboBoxOffice.Items.Count; j<comboBoxReceptionist.Items.Count+comboBoxOffice.Items.Count; j++)
-            {
-                user[j] = comboBoxReceptionist.Items[a].ToString();
-                a++;
-            }
 
             // 공지사항 띄우기
             listView2.Items.Clear();
@@ -93,9 +81,13 @@ namespace hospi_hospital_only
                 {
                     listView2.Items.Add((listView2.Items.Count + 1).ToString());
                     listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                    string startDate ="20"+ dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                    listView2.Items[i].SubItems.Add(startDate) ;
                     listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
                 }
             }
+
         }
 
         private void buttonDispose_Click(object sender, EventArgs e)
@@ -157,9 +149,10 @@ namespace hospi_hospital_only
         // 병원설정변경
         private void button3_Click(object sender, EventArgs e)
         {
-            Hospital_Setting hospital_Setting = new Hospital_Setting();
-            hospital_Setting.HospitalID = hospitalID;
-            hospital_Setting.Show();
+            CheckMasterPW checkMasterPW = new CheckMasterPW();
+            checkMasterPW.HospitalID = hospitalID;
+            checkMasterPW.FormNum = 1;
+            checkMasterPW.ShowDialog();
         }
 
         // 문의확인
@@ -173,22 +166,26 @@ namespace hospi_hospital_only
         // 공지사항 톱니바퀴 클릭
         private void setting1_Click(object sender, EventArgs e)
         {
-            Notice notice = new Notice();
-            notice.User = user;
-            notice.ShowDialog();
+            CheckMasterPW checkMasterPW = new CheckMasterPW();
+            checkMasterPW.HospitalID = hospitalID;
+            checkMasterPW.FormNum = 2;
+            checkMasterPW.ShowDialog();
 
-            /*dbc.Notice_Open();
-            dbc.NoticeTable = dbc.DS.Tables["Notice"];
             listView2.Items.Clear();
+            dbc.Notice_Open();
+            dbc.NoticeTable = dbc.DS.Tables["Notice"];
             for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
             {
                 if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
                 {
                     listView2.Items.Add((listView2.Items.Count + 1).ToString());
                     listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                    string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                    listView2.Items[i].SubItems.Add(startDate);
+                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
                 }
-            }*/
-            MainMenu_Load(sender, e);
+            }
         }
 
         private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
@@ -199,15 +196,40 @@ namespace hospi_hospital_only
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // MainMenu_Load(sender, e);
-
             if (listView2.SelectedIndices.Count > 0)
             {
-                string noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[2].Text.ToString();
+                string noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
                 NoticeInfo noticeInfo = new NoticeInfo();
-                noticeInfo.A = noticeID;
+                noticeInfo.NoticeID = noticeID;
                 noticeInfo.ShowDialog();
+
+                if (1 == noticeInfo.Update)
+                {
+                    listView2.Items.Clear();
+                    dbc.Notice_Open();
+                    dbc.NoticeTable = dbc.DS.Tables["Notice"];
+                    for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
+                        {
+                            listView2.Items.Add((listView2.Items.Count + 1).ToString());
+                            listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                            string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                            listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                            listView2.Items[i].SubItems.Add(startDate);
+                            listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                        }
+                    }
+                }
             }
+        }
+
+        // 관리자 메뉴 버튼
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CheckMasterPW checkMasterPW = new CheckMasterPW();
+            checkMasterPW.FormNum = 4;
+            checkMasterPW.ShowDialog();
         }
     }
 }
