@@ -96,11 +96,35 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="MasterAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterAdd.Designer.cs">
+      <DependentUpon>MasterAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterDelete.Designer.cs">
+      <DependentUpon>MasterDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterInfomation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterInfomation.Designer.cs">
+      <DependentUpon>MasterInfomation.cs</DependentUpon>
+    </Compile>
     <Compile Include="MasterMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MasterMenu.Designer.cs">
       <DependentUpon>MasterMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterPassword.Designer.cs">
+      <DependentUpon>MasterPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Notice.cs">
       <SubType>Form</SubType>
@@ -222,8 +246,20 @@
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MasterAdd.resx">
+      <DependentUpon>MasterAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterDelete.resx">
+      <DependentUpon>MasterDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterInfomation.resx">
+      <DependentUpon>MasterInfomation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MasterMenu.resx">
       <DependentUpon>MasterMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterPassword.resx">
+      <DependentUpon>MasterPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notice.resx">
       <DependentUpon>Notice.cs</DependentUpon>
