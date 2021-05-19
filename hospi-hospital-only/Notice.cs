@@ -13,12 +13,12 @@ namespace hospi_hospital_only
     public partial class Notice : Form
     {
         DBClass dbc = new DBClass();
-        string[] user;
+        string writer;
 
-        public string[] User
+        public string Writer
         {
-            get { return user; }
-            set { user = value; }
+            get { return writer; }
+            set { writer = value; }
         }
 
         public Notice()
@@ -29,10 +29,7 @@ namespace hospi_hospital_only
         private void Notice_Load(object sender, EventArgs e)
         {
             textBoxStartDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            for (int i = 0; i < user.Length; i++)
-            {
-                comboBox1.Items.Add(user[i]);
-            }
+            textBoxWriter.Text = writer;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -78,10 +75,6 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show("내용을 입력해주세요.", "알림");
             }
-            else if (comboBox1.Text == "선택")
-            {
-                MessageBox.Show("게시자를 선택해주세요.", "알림");
-            }
             else
             {
                 DialogResult ok = MessageBox.Show("공지사항을 등록하시겠습니까?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -107,7 +100,7 @@ namespace hospi_hospital_only
                         {
                             newRow["NoticeEndDate"] = dateTimePickerEndDate.Value.ToString("yyMMdd");
                         }
-                        newRow["NoticeWriter"] = comboBox1.Text;
+                        newRow["NoticeWriter"] = textBoxWriter.Text;
 
                         dbc.NoticeTable.Rows.Add(newRow);
                         dbc.DBAdapter.Update(dbc.DS, "Notice");
@@ -126,5 +119,6 @@ namespace hospi_hospital_only
                 }
             }
         }
+
     }
 }

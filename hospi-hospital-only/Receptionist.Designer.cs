@@ -95,6 +95,7 @@
             this.ClientSize = new System.Drawing.Size(346, 133);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox11);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Receptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "접수자 설정";
