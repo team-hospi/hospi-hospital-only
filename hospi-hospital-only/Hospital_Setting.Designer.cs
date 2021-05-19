@@ -856,6 +856,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Hospital_Setting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "병원 정보 설정";

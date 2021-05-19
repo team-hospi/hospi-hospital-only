@@ -51,6 +51,8 @@ namespace hospi_hospital_only
                 Thread rTh = new Thread(Login);
                 rTh.Start();
             }
+
+
         }
 
 
@@ -65,6 +67,7 @@ namespace hospi_hospital_only
         public void Login()
         {
             int cnt = 0;
+            MainMenu mainmenu = new MainMenu();
 
             while (true)
             {
@@ -82,8 +85,8 @@ namespace hospi_hospital_only
                     button6.Enabled = true;
                     LoginLabel.Visible = false;
                     dbc.FindDocument(textBoxHospitalID.Text);
-                    MainMenu mainmenu = new MainMenu();
                     mainmenu.HospitalID = textBoxHospitalID.Text;
+                    this.Visible = false;
                     mainmenu.ShowDialog();
                     textBoxPW.Clear();
                     break;
@@ -97,6 +100,10 @@ namespace hospi_hospital_only
                     TextBoxClear();
                     break;
                 }
+            }
+            if(mainmenu.IsDisposed || mainmenu == null)
+            {
+                this.Visible = true;   
             }
         }
 
@@ -127,6 +134,15 @@ namespace hospi_hospital_only
             
             
             MessageBox.Show(dd.ToString());
+        }
+
+        // 엔터이벤트
+        private void textBoxPW_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button6_Click(sender, e);
+            }
         }
     }
 }

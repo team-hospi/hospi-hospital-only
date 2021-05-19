@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxType = new System.Windows.Forms.TextBox();
             this.textBoxHospiKind = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxChartNum = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBoxType = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -194,6 +194,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "업장 정보";
             // 
+            // textBoxType
+            // 
+            this.textBoxType.Location = new System.Drawing.Point(109, 24);
+            this.textBoxType.Name = "textBoxType";
+            this.textBoxType.ReadOnly = true;
+            this.textBoxType.Size = new System.Drawing.Size(141, 23);
+            this.textBoxType.TabIndex = 9;
+            this.textBoxType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // textBoxHospiKind
             // 
             this.textBoxHospiKind.Location = new System.Drawing.Point(110, 53);
@@ -307,15 +316,6 @@
             this.label20.Text = "차트번호";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBoxType
-            // 
-            this.textBoxType.Location = new System.Drawing.Point(109, 24);
-            this.textBoxType.Name = "textBoxType";
-            this.textBoxType.ReadOnly = true;
-            this.textBoxType.Size = new System.Drawing.Size(141, 23);
-            this.textBoxType.TabIndex = 9;
-            this.textBoxType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -326,6 +326,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Payment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";

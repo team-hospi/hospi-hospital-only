@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.textBoxADD = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.phone3 = new System.Windows.Forms.TextBox();
@@ -43,8 +45,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,28 @@
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "인적사항";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(16, 215);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 33);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "취소";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button11.Location = new System.Drawing.Point(110, 215);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(192, 33);
+            this.button11.TabIndex = 44;
+            this.button11.Text = "등록 완료";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // textBoxADD
             // 
@@ -204,34 +226,13 @@
             this.label20.Text = "차트번호";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button11.Location = new System.Drawing.Point(110, 215);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(192, 33);
-            this.button11.TabIndex = 44;
-            this.button11.Text = "등록 완료";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(16, 215);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 33);
-            this.button1.TabIndex = 45;
-            this.button1.Text = "취소";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Reception_First
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 278);
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Reception_First";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "초진 환자 등록";

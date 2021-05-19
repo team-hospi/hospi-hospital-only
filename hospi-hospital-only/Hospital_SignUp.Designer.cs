@@ -97,6 +97,10 @@
             this.textBoxPw1 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBoxAddAddress = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBoxAdCode = new System.Windows.Forms.TextBox();
             this.textBoxTell3 = new System.Windows.Forms.TextBox();
             this.textBoxTell2 = new System.Windows.Forms.TextBox();
             this.HospitalType = new System.Windows.Forms.ComboBox();
@@ -108,10 +112,6 @@
             this.textBoxHospitalName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxAdCode = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBoxAddAddress = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -126,10 +126,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(365, 851);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button3.Location = new System.Drawing.Point(319, 681);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(286, 40);
+            this.button3.Size = new System.Drawing.Size(250, 32);
             this.button3.TabIndex = 64;
             this.button3.Text = "종료";
             this.button3.UseVisualStyleBackColor = true;
@@ -138,10 +137,9 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(365, 804);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Location = new System.Drawing.Point(319, 643);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(286, 40);
+            this.button2.Size = new System.Drawing.Size(250, 32);
             this.button2.TabIndex = 63;
             this.button2.Text = "등록완료";
             this.button2.UseVisualStyleBackColor = true;
@@ -154,11 +152,9 @@
             this.groupBox2.Controls.Add(this.EndState);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(365, 589);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Location = new System.Drawing.Point(319, 471);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(286, 125);
+            this.groupBox2.Size = new System.Drawing.Size(250, 100);
             this.groupBox2.TabIndex = 69;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "토요일, 공휴일 개원 여부";
@@ -169,10 +165,9 @@
             this.HoliState.Items.AddRange(new object[] {
             "휴원",
             "개원"});
-            this.HoliState.Location = new System.Drawing.Point(126, 75);
-            this.HoliState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HoliState.Location = new System.Drawing.Point(110, 60);
             this.HoliState.Name = "HoliState";
-            this.HoliState.Size = new System.Drawing.Size(139, 28);
+            this.HoliState.Size = new System.Drawing.Size(122, 23);
             this.HoliState.TabIndex = 27;
             // 
             // label14
@@ -180,9 +175,9 @@
             this.label14.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.Location = new System.Drawing.Point(18, 75);
+            this.label14.Location = new System.Drawing.Point(16, 60);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(100, 28);
+            this.label14.Size = new System.Drawing.Size(88, 23);
             this.label14.TabIndex = 32;
             this.label14.Text = "공휴일";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,10 +188,9 @@
             this.EndState.Items.AddRange(new object[] {
             "휴원",
             "개원"});
-            this.EndState.Location = new System.Drawing.Point(126, 39);
-            this.EndState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EndState.Location = new System.Drawing.Point(110, 31);
             this.EndState.Name = "EndState";
-            this.EndState.Size = new System.Drawing.Size(139, 28);
+            this.EndState.Size = new System.Drawing.Size(122, 23);
             this.EndState.TabIndex = 26;
             // 
             // label10
@@ -204,9 +198,9 @@
             this.label10.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(18, 38);
+            this.label10.Location = new System.Drawing.Point(16, 30);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 28);
+            this.label10.Size = new System.Drawing.Size(88, 23);
             this.label10.TabIndex = 2;
             this.label10.Text = "토요일";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -218,11 +212,9 @@
             this.groupBox8.Controls.Add(this.lunch2);
             this.groupBox8.Controls.Add(this.lunch1);
             this.groupBox8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox8.Location = new System.Drawing.Point(365, 355);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox8.Location = new System.Drawing.Point(319, 284);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Size = new System.Drawing.Size(286, 94);
+            this.groupBox8.Size = new System.Drawing.Size(250, 75);
             this.groupBox8.TabIndex = 70;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "점심 시간";
@@ -230,9 +222,9 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(187, 45);
+            this.label19.Location = new System.Drawing.Point(164, 36);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(13, 20);
+            this.label19.Size = new System.Drawing.Size(10, 15);
             this.label19.TabIndex = 11;
             this.label19.Text = ":";
             // 
@@ -241,9 +233,9 @@
             this.label22.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label22.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22.Location = new System.Drawing.Point(18, 40);
+            this.label22.Location = new System.Drawing.Point(16, 32);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(100, 28);
+            this.label22.Size = new System.Drawing.Size(88, 23);
             this.label22.TabIndex = 2;
             this.label22.Text = "점심시간";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -256,10 +248,9 @@
             "15",
             "30",
             "45"});
-            this.lunch2.Location = new System.Drawing.Point(207, 39);
-            this.lunch2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lunch2.Location = new System.Drawing.Point(181, 31);
             this.lunch2.Name = "lunch2";
-            this.lunch2.Size = new System.Drawing.Size(57, 28);
+            this.lunch2.Size = new System.Drawing.Size(50, 23);
             this.lunch2.TabIndex = 21;
             // 
             // lunch1
@@ -270,10 +261,9 @@
             "12",
             "13",
             "14"});
-            this.lunch1.Location = new System.Drawing.Point(125, 39);
-            this.lunch1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lunch1.Location = new System.Drawing.Point(109, 31);
             this.lunch1.Name = "lunch1";
-            this.lunch1.Size = new System.Drawing.Size(57, 28);
+            this.lunch1.Size = new System.Drawing.Size(50, 23);
             this.lunch1.TabIndex = 20;
             // 
             // groupBox7
@@ -287,11 +277,9 @@
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox7.Location = new System.Drawing.Point(365, 456);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox7.Location = new System.Drawing.Point(319, 365);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox7.Size = new System.Drawing.Size(286, 125);
+            this.groupBox7.Size = new System.Drawing.Size(250, 100);
             this.groupBox7.TabIndex = 71;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "공휴일 운영 시간";
@@ -299,18 +287,18 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(189, 80);
+            this.label15.Location = new System.Drawing.Point(165, 64);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(13, 20);
+            this.label15.Size = new System.Drawing.Size(10, 15);
             this.label15.TabIndex = 8;
             this.label15.Text = ":";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(189, 44);
+            this.label16.Location = new System.Drawing.Point(165, 35);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(13, 20);
+            this.label16.Size = new System.Drawing.Size(10, 15);
             this.label16.TabIndex = 7;
             this.label16.Text = ":";
             // 
@@ -320,10 +308,9 @@
             this.HoliClose2.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.HoliClose2.Location = new System.Drawing.Point(208, 75);
-            this.HoliClose2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HoliClose2.Location = new System.Drawing.Point(182, 60);
             this.HoliClose2.Name = "HoliClose2";
-            this.HoliClose2.Size = new System.Drawing.Size(57, 28);
+            this.HoliClose2.Size = new System.Drawing.Size(50, 23);
             this.HoliClose2.TabIndex = 25;
             // 
             // HoliClose1
@@ -354,10 +341,9 @@
             "03",
             "04",
             "05"});
-            this.HoliClose1.Location = new System.Drawing.Point(126, 75);
-            this.HoliClose1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HoliClose1.Location = new System.Drawing.Point(110, 60);
             this.HoliClose1.Name = "HoliClose1";
-            this.HoliClose1.Size = new System.Drawing.Size(57, 28);
+            this.HoliClose1.Size = new System.Drawing.Size(50, 23);
             this.HoliClose1.TabIndex = 24;
             // 
             // holiOpen2
@@ -366,10 +352,9 @@
             this.holiOpen2.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.holiOpen2.Location = new System.Drawing.Point(208, 38);
-            this.holiOpen2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.holiOpen2.Location = new System.Drawing.Point(182, 30);
             this.holiOpen2.Name = "holiOpen2";
-            this.holiOpen2.Size = new System.Drawing.Size(57, 28);
+            this.holiOpen2.Size = new System.Drawing.Size(50, 23);
             this.holiOpen2.TabIndex = 23;
             // 
             // holiOpen1
@@ -401,10 +386,9 @@
             "03",
             "04",
             "05"});
-            this.holiOpen1.Location = new System.Drawing.Point(126, 38);
-            this.holiOpen1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.holiOpen1.Location = new System.Drawing.Point(110, 30);
             this.holiOpen1.Name = "holiOpen1";
-            this.holiOpen1.Size = new System.Drawing.Size(57, 28);
+            this.holiOpen1.Size = new System.Drawing.Size(50, 23);
             this.holiOpen1.TabIndex = 22;
             // 
             // label17
@@ -412,9 +396,9 @@
             this.label17.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label17.Location = new System.Drawing.Point(18, 38);
+            this.label17.Location = new System.Drawing.Point(16, 30);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(100, 28);
+            this.label17.Size = new System.Drawing.Size(88, 23);
             this.label17.TabIndex = 2;
             this.label17.Text = "OPEN";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -424,9 +408,9 @@
             this.label18.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label18.Location = new System.Drawing.Point(18, 75);
+            this.label18.Location = new System.Drawing.Point(16, 60);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 28);
+            this.label18.Size = new System.Drawing.Size(88, 23);
             this.label18.TabIndex = 0;
             this.label18.Text = "CLOSE";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -442,11 +426,9 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(365, 96);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(319, 77);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(286, 125);
+            this.groupBox1.Size = new System.Drawing.Size(250, 100);
             this.groupBox1.TabIndex = 67;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "평일 운영 시간";
@@ -454,18 +436,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(190, 79);
+            this.label5.Location = new System.Drawing.Point(166, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 20);
+            this.label5.Size = new System.Drawing.Size(10, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = ":";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(190, 42);
+            this.label4.Location = new System.Drawing.Point(166, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 20);
+            this.label4.Size = new System.Drawing.Size(10, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = ":";
             // 
@@ -475,10 +457,9 @@
             this.DayClose2.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.DayClose2.Location = new System.Drawing.Point(208, 75);
-            this.DayClose2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DayClose2.Location = new System.Drawing.Point(182, 60);
             this.DayClose2.Name = "DayClose2";
-            this.DayClose2.Size = new System.Drawing.Size(57, 28);
+            this.DayClose2.Size = new System.Drawing.Size(50, 23);
             this.DayClose2.TabIndex = 15;
             // 
             // DayClose1
@@ -509,10 +490,9 @@
             "03",
             "04",
             "05"});
-            this.DayClose1.Location = new System.Drawing.Point(126, 75);
-            this.DayClose1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DayClose1.Location = new System.Drawing.Point(110, 60);
             this.DayClose1.Name = "DayClose1";
-            this.DayClose1.Size = new System.Drawing.Size(57, 28);
+            this.DayClose1.Size = new System.Drawing.Size(50, 23);
             this.DayClose1.TabIndex = 14;
             // 
             // DayOpen2
@@ -521,10 +501,9 @@
             this.DayOpen2.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.DayOpen2.Location = new System.Drawing.Point(208, 38);
-            this.DayOpen2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DayOpen2.Location = new System.Drawing.Point(182, 30);
             this.DayOpen2.Name = "DayOpen2";
-            this.DayOpen2.Size = new System.Drawing.Size(57, 28);
+            this.DayOpen2.Size = new System.Drawing.Size(50, 23);
             this.DayOpen2.TabIndex = 13;
             // 
             // DayOpen1
@@ -556,10 +535,9 @@
             "03",
             "04",
             "05"});
-            this.DayOpen1.Location = new System.Drawing.Point(126, 38);
-            this.DayOpen1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DayOpen1.Location = new System.Drawing.Point(110, 30);
             this.DayOpen1.Name = "DayOpen1";
-            this.DayOpen1.Size = new System.Drawing.Size(57, 28);
+            this.DayOpen1.Size = new System.Drawing.Size(50, 23);
             this.DayOpen1.TabIndex = 12;
             // 
             // label7
@@ -567,9 +545,9 @@
             this.label7.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(18, 38);
+            this.label7.Location = new System.Drawing.Point(16, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 28);
+            this.label7.Size = new System.Drawing.Size(88, 23);
             this.label7.TabIndex = 2;
             this.label7.Text = "OPEN";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -579,9 +557,9 @@
             this.label8.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(18, 75);
+            this.label8.Location = new System.Drawing.Point(16, 60);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 28);
+            this.label8.Size = new System.Drawing.Size(88, 23);
             this.label8.TabIndex = 0;
             this.label8.Text = "CLOSE";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -597,11 +575,9 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(365, 229);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Location = new System.Drawing.Point(319, 183);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(286, 125);
+            this.groupBox3.Size = new System.Drawing.Size(250, 100);
             this.groupBox3.TabIndex = 68;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "토요일 운영 시간";
@@ -609,18 +585,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(189, 81);
+            this.label6.Location = new System.Drawing.Point(165, 65);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 20);
+            this.label6.Size = new System.Drawing.Size(10, 15);
             this.label6.TabIndex = 8;
             this.label6.Text = ":";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(189, 45);
+            this.label9.Location = new System.Drawing.Point(165, 36);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(13, 20);
+            this.label9.Size = new System.Drawing.Size(10, 15);
             this.label9.TabIndex = 7;
             this.label9.Text = ":";
             // 
@@ -630,10 +606,9 @@
             this.EndClose2.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.EndClose2.Location = new System.Drawing.Point(208, 76);
-            this.EndClose2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EndClose2.Location = new System.Drawing.Point(182, 61);
             this.EndClose2.Name = "EndClose2";
-            this.EndClose2.Size = new System.Drawing.Size(57, 28);
+            this.EndClose2.Size = new System.Drawing.Size(50, 23);
             this.EndClose2.TabIndex = 19;
             // 
             // EndClose1
@@ -664,10 +639,9 @@
             "03",
             "04",
             "05"});
-            this.EndClose1.Location = new System.Drawing.Point(126, 76);
-            this.EndClose1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EndClose1.Location = new System.Drawing.Point(110, 61);
             this.EndClose1.Name = "EndClose1";
-            this.EndClose1.Size = new System.Drawing.Size(57, 28);
+            this.EndClose1.Size = new System.Drawing.Size(50, 23);
             this.EndClose1.TabIndex = 18;
             // 
             // EndOpen2
@@ -676,10 +650,9 @@
             this.EndOpen2.Items.AddRange(new object[] {
             "00",
             "30"});
-            this.EndOpen2.Location = new System.Drawing.Point(208, 39);
-            this.EndOpen2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EndOpen2.Location = new System.Drawing.Point(182, 31);
             this.EndOpen2.Name = "EndOpen2";
-            this.EndOpen2.Size = new System.Drawing.Size(57, 28);
+            this.EndOpen2.Size = new System.Drawing.Size(50, 23);
             this.EndOpen2.TabIndex = 17;
             // 
             // EndOpen1
@@ -711,10 +684,9 @@
             "03",
             "04",
             "05"});
-            this.EndOpen1.Location = new System.Drawing.Point(126, 39);
-            this.EndOpen1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EndOpen1.Location = new System.Drawing.Point(110, 31);
             this.EndOpen1.Name = "EndOpen1";
-            this.EndOpen1.Size = new System.Drawing.Size(57, 28);
+            this.EndOpen1.Size = new System.Drawing.Size(50, 23);
             this.EndOpen1.TabIndex = 16;
             // 
             // label11
@@ -722,9 +694,9 @@
             this.label11.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(18, 38);
+            this.label11.Location = new System.Drawing.Point(16, 30);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 28);
+            this.label11.Size = new System.Drawing.Size(88, 23);
             this.label11.TabIndex = 2;
             this.label11.Text = "OPEN";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -734,9 +706,9 @@
             this.label12.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(18, 75);
+            this.label12.Location = new System.Drawing.Point(16, 60);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 28);
+            this.label12.Size = new System.Drawing.Size(88, 23);
             this.label12.TabIndex = 0;
             this.label12.Text = "CLOSE";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -749,11 +721,9 @@
             this.groupBox9.Controls.Add(this.textBoxEtc);
             this.groupBox9.Controls.Add(this.buttonSubjectAdd);
             this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox9.Location = new System.Drawing.Point(17, 744);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox9.Location = new System.Drawing.Point(15, 595);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox9.Size = new System.Drawing.Size(341, 147);
+            this.groupBox9.Size = new System.Drawing.Size(298, 118);
             this.groupBox9.TabIndex = 74;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "기타 과목 설정";
@@ -763,9 +733,9 @@
             this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(22, 36);
+            this.label3.Location = new System.Drawing.Point(19, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 28);
+            this.label3.Size = new System.Drawing.Size(69, 23);
             this.label3.TabIndex = 48;
             this.label3.Text = "과목명";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -773,10 +743,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(22, 111);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(19, 89);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 31);
+            this.button1.Size = new System.Drawing.Size(69, 25);
             this.button1.TabIndex = 11;
             this.button1.Text = "삭제";
             this.button1.UseVisualStyleBackColor = true;
@@ -785,29 +754,26 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(107, 72);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(94, 58);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(219, 64);
+            this.listBox1.Size = new System.Drawing.Size(192, 49);
             this.listBox1.TabIndex = 12;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // textBoxEtc
             // 
-            this.textBoxEtc.Location = new System.Drawing.Point(107, 36);
-            this.textBoxEtc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxEtc.Location = new System.Drawing.Point(94, 29);
             this.textBoxEtc.Name = "textBoxEtc";
-            this.textBoxEtc.Size = new System.Drawing.Size(219, 27);
+            this.textBoxEtc.Size = new System.Drawing.Size(192, 23);
             this.textBoxEtc.TabIndex = 9;
             // 
             // buttonSubjectAdd
             // 
             this.buttonSubjectAdd.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonSubjectAdd.Location = new System.Drawing.Point(22, 72);
-            this.buttonSubjectAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonSubjectAdd.Location = new System.Drawing.Point(19, 58);
             this.buttonSubjectAdd.Name = "buttonSubjectAdd";
-            this.buttonSubjectAdd.Size = new System.Drawing.Size(79, 31);
+            this.buttonSubjectAdd.Size = new System.Drawing.Size(69, 25);
             this.buttonSubjectAdd.TabIndex = 10;
             this.buttonSubjectAdd.Text = "추가";
             this.buttonSubjectAdd.UseVisualStyleBackColor = true;
@@ -828,11 +794,9 @@
             this.groupBox6.Controls.Add(this.checkBox2);
             this.groupBox6.Controls.Add(this.checkBox1);
             this.groupBox6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox6.Location = new System.Drawing.Point(18, 551);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox6.Location = new System.Drawing.Point(16, 441);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(341, 185);
+            this.groupBox6.Size = new System.Drawing.Size(298, 148);
             this.groupBox6.TabIndex = 73;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "병원 과목 설정";
@@ -840,10 +804,9 @@
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(245, 138);
-            this.checkBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox12.Location = new System.Drawing.Point(214, 110);
             this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(61, 24);
+            this.checkBox12.Size = new System.Drawing.Size(50, 19);
             this.checkBox12.TabIndex = 38;
             this.checkBox12.Text = "내과";
             this.checkBox12.UseVisualStyleBackColor = true;
@@ -851,10 +814,9 @@
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(139, 138);
-            this.checkBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox11.Location = new System.Drawing.Point(122, 110);
             this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(61, 24);
+            this.checkBox11.Size = new System.Drawing.Size(50, 19);
             this.checkBox11.TabIndex = 35;
             this.checkBox11.Text = "안과";
             this.checkBox11.UseVisualStyleBackColor = true;
@@ -862,10 +824,9 @@
             // checkBox10
             // 
             this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(23, 138);
-            this.checkBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox10.Location = new System.Drawing.Point(20, 110);
             this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(61, 24);
+            this.checkBox10.Size = new System.Drawing.Size(50, 19);
             this.checkBox10.TabIndex = 32;
             this.checkBox10.Text = "치과";
             this.checkBox10.UseVisualStyleBackColor = true;
@@ -873,10 +834,9 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(245, 101);
-            this.checkBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox9.Location = new System.Drawing.Point(214, 81);
             this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(91, 24);
+            this.checkBox9.Size = new System.Drawing.Size(74, 19);
             this.checkBox9.TabIndex = 37;
             this.checkBox9.Text = "신경외과";
             this.checkBox9.UseVisualStyleBackColor = true;
@@ -884,10 +844,9 @@
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(139, 101);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox8.Location = new System.Drawing.Point(122, 81);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(106, 24);
+            this.checkBox8.Size = new System.Drawing.Size(86, 19);
             this.checkBox8.TabIndex = 36;
             this.checkBox8.Text = "정신의학과";
             this.checkBox8.UseVisualStyleBackColor = true;
@@ -895,10 +854,9 @@
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(23, 102);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox7.Location = new System.Drawing.Point(20, 82);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(91, 24);
+            this.checkBox7.Size = new System.Drawing.Size(74, 19);
             this.checkBox7.TabIndex = 31;
             this.checkBox7.Text = "비뇨기과";
             this.checkBox7.UseVisualStyleBackColor = true;
@@ -906,10 +864,9 @@
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(245, 70);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox6.Location = new System.Drawing.Point(214, 56);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(91, 24);
+            this.checkBox6.Size = new System.Drawing.Size(74, 19);
             this.checkBox6.TabIndex = 40;
             this.checkBox6.Text = "성형외과";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -917,10 +874,9 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(139, 70);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox5.Location = new System.Drawing.Point(122, 56);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(76, 24);
+            this.checkBox5.Size = new System.Drawing.Size(62, 19);
             this.checkBox5.TabIndex = 41;
             this.checkBox5.Text = "피부과";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -928,10 +884,9 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(23, 70);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox4.Location = new System.Drawing.Point(20, 56);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(91, 24);
+            this.checkBox4.Size = new System.Drawing.Size(74, 19);
             this.checkBox4.TabIndex = 39;
             this.checkBox4.Text = "산부인과";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -939,10 +894,9 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(245, 39);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox3.Location = new System.Drawing.Point(214, 31);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(91, 24);
+            this.checkBox3.Size = new System.Drawing.Size(74, 19);
             this.checkBox3.TabIndex = 34;
             this.checkBox3.Text = "정형외과";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -950,10 +904,9 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(139, 39);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox2.Location = new System.Drawing.Point(122, 31);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(106, 24);
+            this.checkBox2.Size = new System.Drawing.Size(86, 19);
             this.checkBox2.TabIndex = 33;
             this.checkBox2.Text = "이비인후과";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -961,10 +914,9 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(23, 39);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox1.Location = new System.Drawing.Point(20, 31);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(106, 24);
+            this.checkBox1.Size = new System.Drawing.Size(86, 19);
             this.checkBox1.TabIndex = 30;
             this.checkBox1.Text = "가정의학과";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -981,11 +933,9 @@
             this.groupBox5.Controls.Add(this.textBoxPw1);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox5.Location = new System.Drawing.Point(17, 96);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox5.Location = new System.Drawing.Point(15, 77);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(341, 160);
+            this.groupBox5.Size = new System.Drawing.Size(298, 128);
             this.groupBox5.TabIndex = 72;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "로그인 정보";
@@ -995,9 +945,9 @@
             this.pwLabel1.AutoSize = true;
             this.pwLabel1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pwLabel1.ForeColor = System.Drawing.Color.Red;
-            this.pwLabel1.Location = new System.Drawing.Point(291, 71);
+            this.pwLabel1.Location = new System.Drawing.Point(255, 57);
             this.pwLabel1.Name = "pwLabel1";
-            this.pwLabel1.Size = new System.Drawing.Size(25, 28);
+            this.pwLabel1.Size = new System.Drawing.Size(20, 21);
             this.pwLabel1.TabIndex = 47;
             this.pwLabel1.Text = "X";
             // 
@@ -1006,19 +956,18 @@
             this.pwLabel2.AutoSize = true;
             this.pwLabel2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pwLabel2.ForeColor = System.Drawing.Color.Red;
-            this.pwLabel2.Location = new System.Drawing.Point(291, 109);
+            this.pwLabel2.Location = new System.Drawing.Point(255, 87);
             this.pwLabel2.Name = "pwLabel2";
-            this.pwLabel2.Size = new System.Drawing.Size(25, 28);
+            this.pwLabel2.Size = new System.Drawing.Size(20, 21);
             this.pwLabel2.TabIndex = 46;
             this.pwLabel2.Text = "X";
             // 
             // IDCheck
             // 
             this.IDCheck.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IDCheck.Location = new System.Drawing.Point(277, 34);
-            this.IDCheck.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IDCheck.Location = new System.Drawing.Point(242, 27);
             this.IDCheck.Name = "IDCheck";
-            this.IDCheck.Size = new System.Drawing.Size(50, 31);
+            this.IDCheck.Size = new System.Drawing.Size(44, 25);
             this.IDCheck.TabIndex = 2;
             this.IDCheck.Text = "확인";
             this.IDCheck.UseVisualStyleBackColor = true;
@@ -1026,11 +975,10 @@
             // 
             // textBoxPw2
             // 
-            this.textBoxPw2.Location = new System.Drawing.Point(123, 108);
-            this.textBoxPw2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxPw2.Location = new System.Drawing.Point(108, 86);
             this.textBoxPw2.Name = "textBoxPw2";
             this.textBoxPw2.PasswordChar = '●';
-            this.textBoxPw2.Size = new System.Drawing.Size(150, 27);
+            this.textBoxPw2.Size = new System.Drawing.Size(132, 23);
             this.textBoxPw2.TabIndex = 4;
             this.textBoxPw2.TextChanged += new System.EventHandler(this.textBoxPw2_TextChanged);
             // 
@@ -1039,9 +987,9 @@
             this.label21.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label21.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.Location = new System.Drawing.Point(16, 108);
+            this.label21.Location = new System.Drawing.Point(14, 86);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(100, 28);
+            this.label21.Size = new System.Drawing.Size(88, 23);
             this.label21.TabIndex = 4;
             this.label21.Text = "PW 확인";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1051,29 +999,27 @@
             this.label23.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label23.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label23.Location = new System.Drawing.Point(16, 34);
+            this.label23.Location = new System.Drawing.Point(14, 27);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(100, 28);
+            this.label23.Size = new System.Drawing.Size(88, 23);
             this.label23.TabIndex = 2;
             this.label23.Text = "ID";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxHospitalID
             // 
-            this.textBoxHospitalID.Location = new System.Drawing.Point(123, 35);
-            this.textBoxHospitalID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHospitalID.Location = new System.Drawing.Point(108, 28);
             this.textBoxHospitalID.Name = "textBoxHospitalID";
-            this.textBoxHospitalID.Size = new System.Drawing.Size(150, 27);
+            this.textBoxHospitalID.Size = new System.Drawing.Size(132, 23);
             this.textBoxHospitalID.TabIndex = 1;
             this.textBoxHospitalID.TextChanged += new System.EventHandler(this.textBoxHospitalID_TextChanged);
             // 
             // textBoxPw1
             // 
-            this.textBoxPw1.Location = new System.Drawing.Point(123, 71);
-            this.textBoxPw1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxPw1.Location = new System.Drawing.Point(108, 57);
             this.textBoxPw1.Name = "textBoxPw1";
             this.textBoxPw1.PasswordChar = '●';
-            this.textBoxPw1.Size = new System.Drawing.Size(150, 27);
+            this.textBoxPw1.Size = new System.Drawing.Size(132, 23);
             this.textBoxPw1.TabIndex = 3;
             this.textBoxPw1.TextChanged += new System.EventHandler(this.textBoxPw1_TextChanged);
             // 
@@ -1082,9 +1028,9 @@
             this.label25.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label25.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.Location = new System.Drawing.Point(16, 71);
+            this.label25.Location = new System.Drawing.Point(14, 57);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(100, 28);
+            this.label25.Size = new System.Drawing.Size(88, 23);
             this.label25.TabIndex = 0;
             this.label25.Text = "PW";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1106,29 +1052,64 @@
             this.groupBox4.Controls.Add(this.textBoxHospitalName);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox4.Location = new System.Drawing.Point(17, 259);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Location = new System.Drawing.Point(15, 207);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(341, 284);
+            this.groupBox4.Size = new System.Drawing.Size(298, 227);
             this.groupBox4.TabIndex = 66;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "병원 기본 정보";
             // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label26.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label26.Location = new System.Drawing.Point(14, 200);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(88, 21);
+            this.label26.TabIndex = 34;
+            this.label26.Text = "상세주소";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxAddAddress
+            // 
+            this.textBoxAddAddress.Location = new System.Drawing.Point(108, 200);
+            this.textBoxAddAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxAddAddress.Name = "textBoxAddAddress";
+            this.textBoxAddAddress.Size = new System.Drawing.Size(178, 23);
+            this.textBoxAddAddress.TabIndex = 33;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(193, 115);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(93, 22);
+            this.button4.TabIndex = 32;
+            this.button4.Text = "주소 검색";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // textBoxAdCode
+            // 
+            this.textBoxAdCode.Location = new System.Drawing.Point(108, 116);
+            this.textBoxAdCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxAdCode.Name = "textBoxAdCode";
+            this.textBoxAdCode.Size = new System.Drawing.Size(81, 23);
+            this.textBoxAdCode.TabIndex = 31;
+            // 
             // textBoxTell3
             // 
-            this.textBoxTell3.Location = new System.Drawing.Point(261, 108);
-            this.textBoxTell3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxTell3.Location = new System.Drawing.Point(228, 86);
             this.textBoxTell3.Name = "textBoxTell3";
-            this.textBoxTell3.Size = new System.Drawing.Size(66, 27);
+            this.textBoxTell3.Size = new System.Drawing.Size(58, 23);
             this.textBoxTell3.TabIndex = 9;
             // 
             // textBoxTell2
             // 
-            this.textBoxTell2.Location = new System.Drawing.Point(192, 108);
-            this.textBoxTell2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxTell2.Location = new System.Drawing.Point(168, 86);
             this.textBoxTell2.Name = "textBoxTell2";
-            this.textBoxTell2.Size = new System.Drawing.Size(66, 27);
+            this.textBoxTell2.Size = new System.Drawing.Size(58, 23);
             this.textBoxTell2.TabIndex = 8;
             // 
             // HospitalType
@@ -1138,10 +1119,9 @@
             "의원",
             "종합",
             "대학"});
-            this.HospitalType.Location = new System.Drawing.Point(123, 70);
-            this.HospitalType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.HospitalType.Location = new System.Drawing.Point(108, 56);
             this.HospitalType.Name = "HospitalType";
-            this.HospitalType.Size = new System.Drawing.Size(203, 28);
+            this.HospitalType.Size = new System.Drawing.Size(178, 23);
             this.HospitalType.TabIndex = 6;
             // 
             // label24
@@ -1149,20 +1129,19 @@
             this.label24.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label24.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label24.Location = new System.Drawing.Point(16, 71);
+            this.label24.Location = new System.Drawing.Point(14, 57);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(100, 28);
+            this.label24.Size = new System.Drawing.Size(88, 23);
             this.label24.TabIndex = 30;
             this.label24.Text = "병원타입";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxHospitalAddress
             // 
-            this.textBoxHospitalAddress.Location = new System.Drawing.Point(123, 179);
-            this.textBoxHospitalAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHospitalAddress.Location = new System.Drawing.Point(108, 143);
             this.textBoxHospitalAddress.Multiline = true;
             this.textBoxHospitalAddress.Name = "textBoxHospitalAddress";
-            this.textBoxHospitalAddress.Size = new System.Drawing.Size(203, 66);
+            this.textBoxHospitalAddress.Size = new System.Drawing.Size(178, 54);
             this.textBoxHospitalAddress.TabIndex = 8;
             // 
             // label2
@@ -1170,19 +1149,18 @@
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(16, 144);
+            this.label2.Location = new System.Drawing.Point(14, 115);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 28);
+            this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 28;
             this.label2.Text = "주소";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxTell1
             // 
-            this.textBoxTell1.Location = new System.Drawing.Point(123, 108);
-            this.textBoxTell1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxTell1.Location = new System.Drawing.Point(108, 86);
             this.textBoxTell1.Name = "textBoxTell1";
-            this.textBoxTell1.Size = new System.Drawing.Size(66, 27);
+            this.textBoxTell1.Size = new System.Drawing.Size(58, 23);
             this.textBoxTell1.TabIndex = 7;
             // 
             // label13
@@ -1190,19 +1168,18 @@
             this.label13.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(16, 108);
+            this.label13.Location = new System.Drawing.Point(14, 86);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(100, 28);
+            this.label13.Size = new System.Drawing.Size(88, 23);
             this.label13.TabIndex = 28;
             this.label13.Text = "대표 번호";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxHospitalName
             // 
-            this.textBoxHospitalName.Location = new System.Drawing.Point(123, 34);
-            this.textBoxHospitalName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxHospitalName.Location = new System.Drawing.Point(108, 27);
             this.textBoxHospitalName.Name = "textBoxHospitalName";
-            this.textBoxHospitalName.Size = new System.Drawing.Size(203, 27);
+            this.textBoxHospitalName.Size = new System.Drawing.Size(178, 23);
             this.textBoxHospitalName.TabIndex = 5;
             // 
             // label20
@@ -1210,9 +1187,9 @@
             this.label20.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label20.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label20.Location = new System.Drawing.Point(16, 34);
+            this.label20.Location = new System.Drawing.Point(14, 27);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 28);
+            this.label20.Size = new System.Drawing.Size(88, 23);
             this.label20.TabIndex = 0;
             this.label20.Text = "병원명";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1223,54 +1200,18 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Green;
-            this.label1.Location = new System.Drawing.Point(24, 6);
+            this.label1.Location = new System.Drawing.Point(21, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(626, 86);
+            this.label1.Size = new System.Drawing.Size(548, 69);
             this.label1.TabIndex = 65;
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBoxAdCode
-            // 
-            this.textBoxAdCode.Location = new System.Drawing.Point(123, 145);
-            this.textBoxAdCode.Name = "textBoxAdCode";
-            this.textBoxAdCode.Size = new System.Drawing.Size(92, 27);
-            this.textBoxAdCode.TabIndex = 31;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(221, 144);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(106, 28);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "주소 검색";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // textBoxAddAddress
-            // 
-            this.textBoxAddAddress.Location = new System.Drawing.Point(123, 250);
-            this.textBoxAddAddress.Name = "textBoxAddAddress";
-            this.textBoxAddAddress.Size = new System.Drawing.Size(203, 27);
-            this.textBoxAddAddress.TabIndex = 33;
-            // 
-            // label26
-            // 
-            this.label26.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label26.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label26.Location = new System.Drawing.Point(16, 250);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(100, 26);
-            this.label26.TabIndex = 34;
-            this.label26.Text = "상세주소";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Hospital_SignUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 908);
+            this.ClientSize = new System.Drawing.Size(581, 726);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
@@ -1283,7 +1224,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Hospital_SignUp";
             this.Text = "회원가입";
             this.Load += new System.EventHandler(this.Hospital_SignUp_Load);
