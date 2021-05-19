@@ -41,7 +41,7 @@ namespace hospi_hospital_only
                     {
                         body = body,
                         title = title,
-                        android_channel_id = "channelId"
+                        android_channel_id = "channel"
                     }
 
                 };

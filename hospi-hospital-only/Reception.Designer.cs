@@ -930,7 +930,7 @@
             this.button17.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button17.Location = new System.Drawing.Point(206, 22);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(89, 32);
+            this.button17.Size = new System.Drawing.Size(100, 32);
             this.button17.TabIndex = 7;
             this.button17.Text = "당일 예약 접수";
             this.button17.UseVisualStyleBackColor = true;
