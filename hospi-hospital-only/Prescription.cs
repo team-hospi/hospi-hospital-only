@@ -11,6 +11,7 @@ using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using Spire.Xls;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Xml;
 
 namespace hospi_hospital_only
 {
@@ -26,8 +27,10 @@ namespace hospi_hospital_only
         string patient;
         string patientAge;
         string subjectName;
-
-
+        string item_ID;
+        string period;
+        string dosage;
+        string count;
 
         public string PatientID
         {
@@ -85,7 +88,7 @@ namespace hospi_hospital_only
                 System.IO.File.WriteAllBytes(savePath, baseFileResource);
             }
 
-            dbc.Presctiption_Select(patientID, receptionDate, receptionTime);
+            dbc.Select_Prescription(patientID, receptionDate, receptionTime);
             dbc.PrescriptionTable = dbc.DS.Tables["prescription"];
             DBGrid.DataSource = dbc.PrescriptionTable.DefaultView;
 
@@ -121,6 +124,7 @@ namespace hospi_hospital_only
             {
                 item.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
             DBGrid.Columns[0].HeaderText = "약품명";
             DBGrid.Columns[1].HeaderText = "투약일 수";
             DBGrid.Columns[2].HeaderText = "1일 투약 량";
@@ -210,5 +214,6 @@ namespace hospi_hospital_only
         {
             Dispose();
         }
+
     }
 }

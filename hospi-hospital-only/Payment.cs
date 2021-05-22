@@ -13,6 +13,8 @@ namespace hospi_hospital_only
     public partial class Payment : Form
     {
         DBClass dbc = new DBClass();
+        PrescriptionList prescription = new PrescriptionList();
+        ReceptionList reception = new ReceptionList();
 
         string patientID;
         string patientName;
@@ -20,6 +22,10 @@ namespace hospi_hospital_only
         string hospitalID;
         string receptionDate;
         string receptionTime;
+
+        bool mobileUse;
+
+        List<string> Medicine = new List<string>();
 
         public string PatientID
         {
@@ -59,6 +65,9 @@ namespace hospi_hospital_only
 
         private void Payment_Load(object sender, EventArgs e)
         {
+            prescription.FireConnect();
+            reception.FireConnect();
+            dbc.Delay(200);
             textBoxChartNum.Text = patientID;
             textBoxPatientName.Text = patientName;
             textBoxSubject.Text = subjectName;
@@ -123,6 +132,8 @@ namespace hospi_hospital_only
             DialogResult ok = MessageBox.Show("카드 결제는 별도의 단말에서 진행해주세요. \r\n결제완료 처리 하시겠습니까?", "알림", MessageBoxButtons.YesNo);
             if (ok == DialogResult.Yes)
             {
+
+                PayEnd();
                 Dispose();
             }
         }
@@ -145,7 +156,40 @@ namespace hospi_hospital_only
             DialogResult ok = MessageBox.Show("현금으로 결제완료 처리 하시겠습니까?.", "알림", MessageBoxButtons.YesNo);
             if (ok == DialogResult.Yes)
             {
+                PayEnd();
                 Dispose();
+            }
+        }
+
+        //수납 완료 시 파이어스토어 처방 등록
+        private void PayEnd()
+        {
+            Medicine.Clear();
+            dbc.Mobile_Use(Convert.ToInt32(patientID));
+            dbc.MobileTable = dbc.DS.Tables["Visitor"];
+            if (dbc.MobileTable.Rows[0][0].ToString() != "")
+            {
+                mobileUse = true;
+            }
+            else if (dbc.MobileTable.Rows[0][0].ToString() == "")
+            {
+                mobileUse = false;
+            }
+            if (mobileUse == true)
+            {
+                MessageBox.Show(dbc.MobileTable.Rows[0][0].ToString());
+                dbc.FindOpinion(Convert.ToInt32(patientID), receptionDate, receptionTime);
+                dbc.PrescriptionTable = dbc.DS.Tables["Prescription"];
+                for(int i=0; i<dbc.PrescriptionTable.Rows.Count; i++)
+                {
+                    Medicine.Add(dbc.PrescriptionTable.Rows[i][1].ToString());
+                }
+                prescription.PrescriptionAdd(subjectName, dbc.MobileTable.Rows[0][0].ToString(), dbc.PrescriptionTable.Rows[0][0].ToString(), Medicine);
+                dbc.Delay(200);
+                reception.FindDocument(DBClass.hospiID, "20"+receptionDate, receptionTime.Substring(0,2) + ":" + receptionTime.Substring(2,2), subjectName);
+                dbc.Delay(200);
+                reception.Delete_Reception();
+
             }
         }
     }
