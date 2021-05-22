@@ -39,11 +39,11 @@ namespace hospi_hospital_only
                 item.SubItems.Add(watingTable.Rows[i]["patientName"].ToString());
                 // Age
                 int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                if (watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "1" || watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "2")
+                if (watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "1" || watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "2" || watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "0")
                 {
                     item.SubItems.Add((year - Convert.ToInt32(watingTable.Rows[i]["patientBirthCode"].ToString().Substring(0, 2)) - 1899).ToString());
                 }
-                else if (watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "3" || watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "4")
+                else if (watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "3" || watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "4" || watingTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "5")
                 {
                     item.SubItems.Add((year - Convert.ToInt32(watingTable.Rows[i]["patientBirthCode"].ToString().Substring(0, 2)) - 1999).ToString());
                 }

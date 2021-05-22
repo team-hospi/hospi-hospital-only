@@ -42,6 +42,7 @@ namespace hospi_hospital_only
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
         public string documentName;
+        
 
         public List<ReceptionList> list = new List<ReceptionList>();
 
@@ -104,9 +105,10 @@ namespace hospi_hospital_only
         }
 
         //문서 이름찾기
-        async public void FindDocument(string hospitalId, string receptionDate, string receptionTime, string id, string department)
+        async public void FindDocument(string hospitalId, string receptionDate, string receptionTime, string department)
         {
-            Query qref = fs.Collection("receptionList").WhereEqualTo("hospitalId", hospitalId).WhereEqualTo("receptionDate", receptionDate).WhereEqualTo("receptionTime", receptionTime).WhereEqualTo("id", id).WhereEqualTo("department", department);
+            documentName = null;
+            Query qref = fs.Collection("receptionList").WhereEqualTo("hospitalId", hospitalId).WhereEqualTo("receptionDate", receptionDate).WhereEqualTo("receptionTime", receptionTime).WhereEqualTo("department", department);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -117,6 +119,26 @@ namespace hospi_hospital_only
 
                 }
             }
+        }
+
+        public async void Update_Reception(int status)
+        {
+                DocumentReference docref = fs.Collection("receptionList").Document(documentName);
+                Dictionary<string, object> data = new Dictionary<string, object>()
+                {
+                    {"status", status }
+                };
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists)
+                {
+                    await docref.UpdateAsync(data);
+                }
+        }
+
+        public void Delete_Reception()
+        {
+            DocumentReference docref = fs.Collection("receptionList").Document(documentName);
+            docref.DeleteAsync();
         }
 
 

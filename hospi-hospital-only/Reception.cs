@@ -20,6 +20,7 @@ namespace hospi_hospital_only
         Inquiry inquiry = new Inquiry();
         Reserve reserve = new Reserve();
         ReceptionList receptionlist = new ReceptionList();
+        PrescriptionList prescriptionlist = new PrescriptionList();
         
         string listViewIndexID1; // 접수 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexID2; // 수납 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
@@ -39,6 +40,7 @@ namespace hospi_hospital_only
         int SelectRow; //접수현황 리스트뷰 선택인덱스
         string[] prescription;
         int waitingIsNull = 0;
+        int acceptReserve = 0;
 
         public Reception()
         {
@@ -873,7 +875,7 @@ namespace hospi_hospital_only
             // prescription배열에 ( patientID, receptionDate, receptionTime ) 넣기
             if (listView3.SelectedItems.Count != 0)
             {
-                
+                listView3SelectedRow = listView3.SelectedItems[0].Index;
                 int selectRow = listView3.SelectedItems[0].Index;
                 prescriptionArr[0] = listView3.Items[selectRow].SubItems[2].Text;
                 prescriptionArr[1] = dateTimePicker2.Value.ToString("yy-MM-dd");
@@ -1070,6 +1072,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionCode"] = Reserve.documentName;
 
+                            acceptReserve = 1;
                             dbc.ReceptionTable.Rows.Add(newRow);
                             dbc.DBAdapter.Update(dbc.DS, "Reception");
                             dbc.DS.AcceptChanges();
@@ -1135,6 +1138,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionCode"] = Reserve.documentName;
 
+                            acceptReserve = 1;
                             dbc.ReceptionTable.Rows.Add(newRow);
                             dbc.DBAdapter.Update(dbc.DS, "Reception");
                             dbc.DS.AcceptChanges();
@@ -1142,7 +1146,8 @@ namespace hospi_hospital_only
                         }
                     }
                 }
-                MessageBox.Show("당일 예약 등록이 완료되었습니다.", "알림");
+                if(acceptReserve == 1) { MessageBox.Show("당일 예약 등록이 완료되었습니다.", "알림"); }
+                else if(acceptReserve == 0) { MessageBox.Show("승인된 예약이 없습니다.", "알림"); }
             }
             else if (reserve.list.Count == 0)
             {
@@ -1190,7 +1195,7 @@ namespace hospi_hospital_only
                 dbc4.countWaiting(listView1.Items[SelectRow].SubItems[5].Text , receptionlist.list[i].receptionTime.Substring(0,2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
                 dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
 
-                receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].id, receptionlist.list[i].department);
+                receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].department);
                 dbc.Delay(100);
                 try
                 {

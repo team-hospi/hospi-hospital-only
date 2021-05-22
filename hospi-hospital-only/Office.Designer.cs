@@ -416,6 +416,7 @@
             this.listView4.TabIndex = 42;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
+            this.listView4.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView4_MouseDoubleClick);
             // 
             // columnHeader15
             // 
