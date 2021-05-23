@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
 using System.Collections;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 
 namespace hospi_hospital_only
 {
@@ -64,13 +66,28 @@ namespace hospi_hospital_only
         //폼 자체에서 파이어스토어 연결
         public void FireConnect()
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            {
+                try
+                {
+                    FirebaseApp.Create(new AppOptions()
+                    {
+                        Credential = GoogleCredential.GetApplicationDefault(),
+                    });
+                }
+                catch (Exception e)
+                { }
 
-            fs = FirestoreDb.Create("hospi-edcf9");
+
+                /*
+                string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+                */
+                fs = FirestoreDb.Create("hospi-edcf9");
+
+
+            }
         }
-
-        async public void InquiryOpen()
+            async public void InquiryOpen()
         {
             list.Clear();
             Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalID);
