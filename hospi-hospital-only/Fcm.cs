@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using FirebaseAdmin.Messaging;
 using Google.Cloud.Firestore;
 
 namespace hospi_hospital_only
@@ -24,55 +25,29 @@ namespace hospi_hospital_only
 
 
 
-        public void PushNotificationToFCM(string title, string UserToken, string body)
+        public async Task PushNotificationToFCM(string title, string UserToken, string body)
         {
             try
             {
-                var applicationID = "AAAAB_lm5NU:APA91bFykKZMyRXlkHYeolFihouf_0EnC5U3yVlIwrvhSB-bDuVAMnfOwBKx2KYxPMRkUjqNAo8Z_s_ex8yqBB_O7WpfErr5_88vI-WxX7UC8yXFEQv3PITbF2dTwQEGgLKbqLfSyYTx";
-                var senderId = "34249041109";
-                string deviceId = UserToken;
-                WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
-                tRequest.Method = "post";
-                tRequest.ContentType = "application/json";
-                var data = new
+                var message = new FirebaseAdmin.Messaging.Message()
                 {
-                    to = deviceId,
-                    notification = new
+                    Notification = new Notification()
                     {
-                        body = body,
-                        title = title,
-                        android_channel_id = "channel"
-                    }
-
+                        Title = title,
+                        Body = body,
+                    },
+                    Token = UserToken,
                 };
-                var serializer = new JavaScriptSerializer();
-                var json = serializer.Serialize(data);
-                Byte[] byteArray = Encoding.UTF8.GetBytes(json);
-                tRequest.Headers.Add(string.Format("Authorization: key={0}", applicationID));
-                tRequest.Headers.Add(string.Format("Sender: id={0}", senderId));
-                tRequest.ContentLength = byteArray.Length;
-                using (Stream dataStream = tRequest.GetRequestStream())
-                {
-                    dataStream.Write(byteArray, 0, byteArray.Length);
-                    using (WebResponse tResponse = tRequest.GetResponse())
-                    {
-                        using (Stream dataStreamResponse = tResponse.GetResponseStream())
-                        {
-                            using (StreamReader tReader = new StreamReader(dataStreamResponse))
-                            {
-                                String sResponseFromServer = tReader.ReadToEnd();
-                                string str = sResponseFromServer;
-                            }
-                        }
-                    }
-                }
+
+                await FirebaseMessaging.DefaultInstance.SendAsync(message);
             }
             catch (Exception ex)
             {
                 string str = ex.Message;
             }
+
         }
 
-        
+
     }
 }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Firestore;
 using Microsoft.Toolkit.Uwp.Notifications;
 
@@ -70,9 +72,21 @@ namespace hospi_hospital_only
         //Firestore 연결
         public void FireConnect()
         {
+            try
+            {
+                FirebaseApp.Create(new AppOptions()
+                {
+                    Credential = GoogleCredential.GetApplicationDefault(),
+                });
+            }
+            catch (Exception e)
+            { }
+
+
+            /*
             string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
+            */
             fs = FirestoreDb.Create("hospi-edcf9");
         }
 
