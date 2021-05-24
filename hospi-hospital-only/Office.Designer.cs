@@ -60,10 +60,6 @@
             this.buttonMedicienSearch = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.buttonM4 = new System.Windows.Forms.Button();
-            this.buttonM3 = new System.Windows.Forms.Button();
-            this.buttonM2 = new System.Windows.Forms.Button();
-            this.buttonM1 = new System.Windows.Forms.Button();
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -94,6 +90,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.buttonToday = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -390,10 +387,6 @@
             this.groupBox3.Controls.Add(this.buttonMedicienSearch);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.buttonM4);
-            this.groupBox3.Controls.Add(this.buttonM3);
-            this.groupBox3.Controls.Add(this.buttonM2);
-            this.groupBox3.Controls.Add(this.buttonM1);
             this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox3.Location = new System.Drawing.Point(610, 82);
             this.groupBox3.Name = "groupBox3";
@@ -410,9 +403,9 @@
             this.listView4.FullRowSelect = true;
             this.listView4.GridLines = true;
             this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(17, 114);
+            this.listView4.Location = new System.Drawing.Point(17, 68);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(373, 425);
+            this.listView4.Size = new System.Drawing.Size(373, 471);
             this.listView4.TabIndex = 42;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
@@ -432,7 +425,7 @@
             // buttonMedicienSearch
             // 
             this.buttonMedicienSearch.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonMedicienSearch.Location = new System.Drawing.Point(300, 73);
+            this.buttonMedicienSearch.Location = new System.Drawing.Point(302, 35);
             this.buttonMedicienSearch.Name = "buttonMedicienSearch";
             this.buttonMedicienSearch.Size = new System.Drawing.Size(89, 23);
             this.buttonMedicienSearch.TabIndex = 40;
@@ -442,7 +435,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(110, 73);
+            this.textBox4.Location = new System.Drawing.Point(112, 35);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(184, 23);
             this.textBox4.TabIndex = 38;
@@ -453,56 +446,12 @@
             this.label9.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(16, 72);
+            this.label9.Location = new System.Drawing.Point(18, 34);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 23);
             this.label9.TabIndex = 39;
             this.label9.Text = "약품명";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // buttonM4
-            // 
-            this.buttonM4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonM4.Location = new System.Drawing.Point(300, 24);
-            this.buttonM4.Name = "buttonM4";
-            this.buttonM4.Size = new System.Drawing.Size(89, 32);
-            this.buttonM4.TabIndex = 36;
-            this.buttonM4.Text = "주사제";
-            this.buttonM4.UseVisualStyleBackColor = true;
-            this.buttonM4.Click += new System.EventHandler(this.buttonM4_Click);
-            // 
-            // buttonM3
-            // 
-            this.buttonM3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonM3.Location = new System.Drawing.Point(205, 24);
-            this.buttonM3.Name = "buttonM3";
-            this.buttonM3.Size = new System.Drawing.Size(89, 32);
-            this.buttonM3.TabIndex = 35;
-            this.buttonM3.Text = "타입3";
-            this.buttonM3.UseVisualStyleBackColor = true;
-            this.buttonM3.Click += new System.EventHandler(this.buttonM3_Click);
-            // 
-            // buttonM2
-            // 
-            this.buttonM2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonM2.Location = new System.Drawing.Point(110, 24);
-            this.buttonM2.Name = "buttonM2";
-            this.buttonM2.Size = new System.Drawing.Size(89, 32);
-            this.buttonM2.TabIndex = 34;
-            this.buttonM2.Text = "타입2";
-            this.buttonM2.UseVisualStyleBackColor = true;
-            this.buttonM2.Click += new System.EventHandler(this.buttonM2_Click);
-            // 
-            // buttonM1
-            // 
-            this.buttonM1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonM1.Location = new System.Drawing.Point(15, 24);
-            this.buttonM1.Name = "buttonM1";
-            this.buttonM1.Size = new System.Drawing.Size(89, 32);
-            this.buttonM1.TabIndex = 33;
-            this.buttonM1.Text = "타입1";
-            this.buttonM1.UseVisualStyleBackColor = true;
-            this.buttonM1.Click += new System.EventHandler(this.buttonM1_Click);
             // 
             // groupBox1
             // 
@@ -798,6 +747,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button5);
             this.groupBox7.Controls.Add(this.button1);
             this.groupBox7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox7.Location = new System.Drawing.Point(1102, 12);
@@ -806,6 +756,17 @@
             this.groupBox7.TabIndex = 31;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "시스템 메뉴";
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Location = new System.Drawing.Point(15, 21);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(89, 37);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "약품정보\r\n업데이트";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox10
             // 
@@ -910,6 +871,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1429, 645);
+            this.ControlBox = false;
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox9);
@@ -975,10 +937,6 @@
         internal System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button buttonM4;
-        private System.Windows.Forms.Button buttonM3;
-        private System.Windows.Forms.Button buttonM2;
-        private System.Windows.Forms.Button buttonM1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -1026,5 +984,6 @@
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.Button button5;
     }
 }
