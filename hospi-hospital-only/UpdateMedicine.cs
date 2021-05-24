@@ -66,7 +66,7 @@ namespace hospi_hospital_only
             int aaa = 0;
             // 추가
             await Task.Run(() => {
-                for (int i = 1; i < 30; i++)
+                for (int i = 1; i < 100; i++)
                 {
                     string url = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey=jgj5koEUBWf6YgyDdiDqk2jre4EIbOEXoyAF5JSYUFM7ZEM563jRAWIokqD9H8GWV8suKbPyUKp9vP9/Q3I/yg==&item_name=" + item_name + "&pageNo=" + i + "&numOfRows=100"; // URL
 
