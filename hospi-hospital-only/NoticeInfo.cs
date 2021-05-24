@@ -80,6 +80,7 @@ namespace hospi_hospital_only
                 checkBox1.Visible = true;
                 button3.Visible = true;
                 button4.Visible = true;
+                button5.Visible = true;
                 groupBox1.Text = "공지사항 수정";
                 textBoxTitle.Focus();
             }
@@ -126,6 +127,22 @@ namespace hospi_hospital_only
             dbc.DS.AcceptChanges();
 
             MessageBox.Show("수정이 완료되었습니다.", "알림");
+            Dispose();
+        }
+
+        // 삭제 버튼
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dbc.Notice_Open();
+            dbc.NoticeTable = dbc.DS.Tables["notice"];
+            DataRow upRow = dbc.NoticeTable.Rows[dbc.NoticeTable.Rows.Count - (Convert.ToInt32(noticeID) + 1)];
+            upRow.BeginEdit();
+            upRow["NoticeEndDate"] = "000000";
+            upRow.EndEdit();
+            dbc.DBAdapter.Update(dbc.DS, "Notice");
+            dbc.DS.AcceptChanges();
+
+            MessageBox.Show("삭제가 완료되었습니다.", "알림");
             Dispose();
         }
     }

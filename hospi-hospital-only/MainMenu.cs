@@ -231,5 +231,14 @@ namespace hospi_hospital_only
             checkMasterPW.FormNum = 4;
             checkMasterPW.ShowDialog();
         }
+
+        // 접수자, 과목 수정 톱니바퀴
+        private void setting2_Click(object sender, EventArgs e)
+        {
+            CheckMasterPW checkMaserPW = new CheckMasterPW();
+            checkMaserPW.FormNum = 6;
+            checkMaserPW.Show();
+
+        }
     }
 }
