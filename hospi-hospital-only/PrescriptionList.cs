@@ -51,16 +51,15 @@ namespace hospi_hospital_only
                 {"id", patientID },
                 {"medicine", Medicine },
                 {"opinion", opinion },
-                {"timestamp", UnixTimeNow() }
+                {"timestamp", MillisecondsTimestamp(DateTime.Now) }
             };
             coll.AddAsync(data1);
         }
 
-        public long UnixTimeNow()
+        public static long MillisecondsTimestamp(DateTime date)
         {
-            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-
-            return (long)timeSpan.TotalSeconds;
+            DateTime baseDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return (long)(date.ToUniversalTime() - baseDate).TotalMilliseconds;
         }
     }
 }

@@ -177,6 +177,22 @@ namespace hospi_hospital_only
             }
         }
 
+
+        async public void EndDocument(string hospitalID, string department, string id, string Date, string Time)
+        {
+            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalID).WhereEqualTo("department", department).WhereEqualTo("id", id).WhereEqualTo("reservationDate", Date).WhereEqualTo("reservationTime", Time);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            foreach (DocumentSnapshot docsnap in snap)
+            {
+                Reserve fp = docsnap.ConvertTo<Reserve>();
+                if (docsnap.Exists)
+                {
+                    documentName = docsnap.Id;
+
+                }
+            }
+        }
+
         //예약 시간 문서이름 찾기
         async public void FindReserveDocument(string hospitalID, string department)
         {
@@ -250,6 +266,29 @@ namespace hospi_hospital_only
                 {
                     {"reservationStatus", -1 },
                     {"cancelComment", Comment }
+
+                };
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists)
+                {
+                    await docref.UpdateAsync(data);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        //진료 완료
+        async public void ReserveEnd()
+        {
+            try
+            {
+                DocumentReference docref = fs.Collection("reservationList").Document(documentName);
+                Dictionary<string, object> data = new Dictionary<string, object>()
+                {
+                    {"reservationStatus", 2 }
 
                 };
                 DocumentSnapshot snap = await docref.GetSnapshotAsync();
