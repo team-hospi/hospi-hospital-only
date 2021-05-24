@@ -91,7 +91,7 @@ namespace hospi_hospital_only
                     textBoxPW.Clear();
                     break;
                 }
-                else if (cnt > 150)
+                else if (cnt > 30)
                 {
 
                     button6.Enabled = true;
