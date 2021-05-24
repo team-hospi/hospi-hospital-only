@@ -15,7 +15,7 @@ namespace hospi_hospital_only
     public partial class UpdateMedicine : Form
     {
         DBClass dbc = new DBClass();
-        public string item_name;
+        public string item_name = "";
 
         public UpdateMedicine()
         {
