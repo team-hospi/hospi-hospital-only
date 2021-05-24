@@ -30,7 +30,6 @@
         {
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.settingLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox11.SuspendLayout();
@@ -39,7 +38,6 @@
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.button2);
-            this.groupBox11.Controls.Add(this.settingLabel);
             this.groupBox11.Controls.Add(this.button1);
             this.groupBox11.Controls.Add(this.comboBox1);
             this.groupBox11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -59,16 +57,6 @@
             this.button2.Text = "취소";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // settingLabel
-            // 
-            this.settingLabel.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.settingLabel.Location = new System.Drawing.Point(294, 10);
-            this.settingLabel.Name = "settingLabel";
-            this.settingLabel.Size = new System.Drawing.Size(27, 25);
-            this.settingLabel.TabIndex = 33;
-            this.settingLabel.Text = "⚙";
-            this.settingLabel.Click += new System.EventHandler(this.settingLabel_Click);
             // 
             // button1
             // 
@@ -110,7 +98,6 @@
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label settingLabel;
         private System.Windows.Forms.Button button2;
     }
 }
