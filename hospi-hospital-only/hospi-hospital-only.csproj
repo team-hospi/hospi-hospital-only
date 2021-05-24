@@ -222,6 +222,12 @@
       <DependentUpon>SearchAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="SignUp.cs" />
+    <Compile Include="UpdateMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateMedicine.Designer.cs">
+      <DependentUpon>UpdateMedicine.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateReceptionist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchAddress.resx">
       <DependentUpon>SearchAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateMedicine.resx">
+      <DependentUpon>UpdateMedicine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateReceptionist.resx">
       <DependentUpon>UpdateReceptionist.cs</DependentUpon>
