@@ -49,6 +49,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -222,7 +223,7 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.textBoxSearch);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(459, 6);
+            this.groupBox1.Location = new System.Drawing.Point(679, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(204, 53);
             this.groupBox1.TabIndex = 24;
@@ -239,11 +240,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(456, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(142, 47);
+            this.button5.TabIndex = 25;
+            this.button5.Text = "당일 예약 목록보기";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // Reservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 424);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -290,5 +302,6 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
