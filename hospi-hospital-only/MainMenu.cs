@@ -16,7 +16,7 @@ namespace hospi_hospital_only
         string hospitalID;
 
         DBClass dbc = new DBClass();
-       
+
         Main main = new Main();
         CultureInfo cultures = CultureInfo.CreateSpecificCulture("ko-KR");
         Inquiry inquiry = new Inquiry();
@@ -50,11 +50,11 @@ namespace hospi_hospital_only
             // 접수처
             dbc.Receptionist_Open();
             dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
-            for(int i=0; i<dbc.ReceptionistTable.Rows.Count; i++)
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
             {
                 string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
                 int length = name.Length;
-                if (name.Substring(length-1) != ")")
+                if (name.Substring(length - 1) != ")")
                 {
                     comboBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
                 }
@@ -65,7 +65,7 @@ namespace hospi_hospital_only
             dbc.SubjectTable = dbc.DS.Tables["subjectName"];
             for (int i = 0; i < DBClass.hospidepartment.Length; i++)
             {
-                    comboBoxOffice.Items.Add(DBClass.hospidepartment[i]);
+                comboBoxOffice.Items.Add(DBClass.hospidepartment[i]);
             }
 
             label3.Text = dbc.Hospiname;
@@ -75,19 +75,24 @@ namespace hospi_hospital_only
             listView2.Items.Clear();
             dbc.Notice_Open();
             dbc.NoticeTable = dbc.DS.Tables["Notice"];
-            for(int i=0; i<dbc.NoticeTable.Rows.Count; i++)
+
+            for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
             {
-                if(Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
+                ListViewItem items = new ListViewItem();
+                items.Text = (listView2.Items.Count + 1).ToString();
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                items.SubItems.Add(startDate);
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString());
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString());
+
+                if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString()) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
                 {
-                    listView2.Items.Add((listView2.Items.Count + 1).ToString());
-                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
-                    string startDate ="20"+ dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
-                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
-                    listView2.Items[i].SubItems.Add(startDate) ;
-                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                    listView2.Items.Add(items);
                 }
             }
-
         }
 
         private void buttonDispose_Click(object sender, EventArgs e)
@@ -107,7 +112,7 @@ namespace hospi_hospital_only
         // 진료실
         private void buttonOffice_Click(object sender, EventArgs e)
         {
-            if(comboBoxOffice.Text != "진료과목 선택")
+            if (comboBoxOffice.Text != "진료과목 선택")
             {
                 Office office = new Office();
                 office.SubjectID = comboBoxOffice.Text;
@@ -125,7 +130,7 @@ namespace hospi_hospital_only
         // 접수처
         private void buttonReception_Click(object sender, EventArgs e)
         {
-            if(comboBoxReceptionist.Text != "접수자 선택")
+            if (comboBoxReceptionist.Text != "접수자 선택")
             {
                 Reception reception = new Reception();
                 reception.HospitalID = hospitalID;
@@ -174,16 +179,22 @@ namespace hospi_hospital_only
             listView2.Items.Clear();
             dbc.Notice_Open();
             dbc.NoticeTable = dbc.DS.Tables["Notice"];
+
             for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
             {
-                if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
+                ListViewItem items = new ListViewItem();
+                items.Text = (listView2.Items.Count + 1).ToString();
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                items.SubItems.Add(startDate);
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString());
+                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString());
+
+                if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString()) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
                 {
-                    listView2.Items.Add((listView2.Items.Count + 1).ToString());
-                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
-                    string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
-                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
-                    listView2.Items[i].SubItems.Add(startDate);
-                    listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                    listView2.Items.Add(items);
                 }
             }
         }
@@ -196,32 +207,37 @@ namespace hospi_hospital_only
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView2.SelectedIndices.Count > 0)
+            if (listView2.SelectedItems.Count > 0)
             {
-                string noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
-                NoticeInfo noticeInfo = new NoticeInfo();
-                noticeInfo.NoticeID = noticeID;
-                noticeInfo.ShowDialog();
-
-                if (1 == noticeInfo.Update)
-                {
-                    listView2.Items.Clear();
-                    dbc.Notice_Open();
-                    dbc.NoticeTable = dbc.DS.Tables["Notice"];
-                    for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
-                    {
-                        if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
-                        {
-                            listView2.Items.Add((listView2.Items.Count + 1).ToString());
-                            listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
-                            string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
-                            listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
-                            listView2.Items[i].SubItems.Add(startDate);
-                            listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
-                        }
-                    }
-                }
+                noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
             }
+            /* if (listView2.SelectedIndices.Count > 0)
+             {
+                 string noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
+                 NoticeInfo noticeInfo = new NoticeInfo();
+                 noticeInfo.NoticeID = noticeID;
+                 noticeInfo.ShowDialog();
+                 noticeID = "";
+
+                 if (1 == noticeInfo.Update)
+                 {
+                     listView2.Items.Clear();
+                     dbc.Notice_Open();
+                     dbc.NoticeTable = dbc.DS.Tables["Notice"];
+                     for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
+                     {
+                         if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
+                         {
+                             listView2.Items.Add((listView2.Items.Count + 1).ToString());
+                             listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                             string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                             listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                             listView2.Items[i].SubItems.Add(startDate);
+                             listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                         }
+                     }
+                 }
+             }*/
         }
 
         // 관리자 메뉴 버튼
@@ -240,5 +256,41 @@ namespace hospi_hospital_only
             checkMaserPW.Show();
 
         }
+
+        private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (noticeID != "")
+            {
+                NoticeInfo noticeInfo = new NoticeInfo();
+                noticeInfo.NoticeID = noticeID;
+                noticeInfo.ShowDialog();
+
+                if (1 == noticeInfo.Update)
+                {
+                    listView2.Items.Clear();
+                    dbc.Notice_Open();
+                    dbc.NoticeTable = dbc.DS.Tables["Notice"];
+
+                    for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
+                    {
+                        ListViewItem items = new ListViewItem();
+                        items.Text = (listView2.Items.Count + 1).ToString();
+                        items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
+                        items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
+                        string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
+                        items.SubItems.Add(startDate);
+                        items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
+                        items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString());
+                        items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString());
+
+                        if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString()) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
+                        {
+                            listView2.Items.Add(items);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+

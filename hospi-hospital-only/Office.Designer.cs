@@ -90,7 +90,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.buttonToday = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -431,7 +430,6 @@
             this.buttonMedicienSearch.TabIndex = 40;
             this.buttonMedicienSearch.Text = "검색";
             this.buttonMedicienSearch.UseVisualStyleBackColor = true;
-            this.buttonMedicienSearch.Click += new System.EventHandler(this.buttonMedicienSearch_Click);
             // 
             // textBox4
             // 
@@ -747,7 +745,6 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.button5);
             this.groupBox7.Controls.Add(this.button1);
             this.groupBox7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox7.Location = new System.Drawing.Point(1102, 12);
@@ -756,17 +753,6 @@
             this.groupBox7.TabIndex = 31;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "시스템 메뉴";
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(15, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 37);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "약품정보\r\n업데이트";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox10
             // 
@@ -984,6 +970,5 @@
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.Button button5;
     }
 }

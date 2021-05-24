@@ -45,6 +45,8 @@
             this.게시일 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.setting1 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.labelTime = new System.Windows.Forms.Label();
@@ -176,7 +178,7 @@
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(282, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(612, 256);
+            this.groupBox4.Size = new System.Drawing.Size(615, 256);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "공지사항";
@@ -188,7 +190,9 @@
             this.제목,
             this.게시일,
             this.columnHeader2,
-            this.columnHeader1});
+            this.columnHeader1,
+            this.columnHeader3,
+            this.columnHeader4});
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -197,12 +201,13 @@
             this.listView2.Location = new System.Drawing.Point(16, 38);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(576, 196);
+            this.listView2.Size = new System.Drawing.Size(579, 196);
             this.listView2.TabIndex = 33;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
             this.listView2.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView2_ColumnWidthChanging);
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
             // 
             // 번호
             // 
@@ -229,7 +234,18 @@
             // 
             // columnHeader1
             // 
+            this.columnHeader1.Text = "id";
             this.columnHeader1.Width = 0;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "end";
+            this.columnHeader3.Width = 0;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "today";
+            this.columnHeader4.Width = 0;
             // 
             // setting1
             // 
@@ -395,7 +411,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 407);
+            this.ClientSize = new System.Drawing.Size(909, 416);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
@@ -458,5 +474,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
