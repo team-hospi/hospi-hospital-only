@@ -186,6 +186,7 @@
             this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
             this.dateTimePickerEndDate.Size = new System.Drawing.Size(134, 23);
             this.dateTimePickerEndDate.TabIndex = 16;
+            this.dateTimePickerEndDate.ValueChanged += new System.EventHandler(this.dateTimePickerEndDate_ValueChanged);
             // 
             // label2
             // 

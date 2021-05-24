@@ -25,6 +25,7 @@ namespace hospi_hospital_only
          3 = NoticeInfo (수정버튼)
          4 = MasterMenu
          5 = MasterInfomation 비밀번호 확인 버튼
+         6 = SelectUpdateMode (접수과, 과목 선택 폼)
              */
 
         public int FormNum
@@ -117,12 +118,19 @@ namespace hospi_hospital_only
                         passwordOK = 1;
                         Dispose();
                     }
+                    else if (formNum == 6)
+                    {
+                        CheckUpdateMode checkUpdateMode = new CheckUpdateMode();
+                        checkUpdateMode.ShowDialog();
+                        Dispose();
+                    }
 
                 }
                 else if(dbc.MasterTable.Rows[masterID]["masterPassword"].ToString() != textBoxPW.Text)
                 {
                     MessageBox.Show("비밀번호를 확인해주세요.", "알림");
                     textBoxPW.Focus();
+                    textBoxPW.SelectAll();
                 }
             }
         }

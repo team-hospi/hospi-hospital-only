@@ -156,6 +156,7 @@
             this.setting2.Size = new System.Drawing.Size(27, 25);
             this.setting2.TabIndex = 38;
             this.setting2.Text = "⚙";
+            this.setting2.Click += new System.EventHandler(this.setting2_Click);
             // 
             // buttonDispose
             // 

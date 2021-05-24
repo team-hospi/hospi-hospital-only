@@ -62,6 +62,7 @@ namespace hospi_hospital_only
 
                     listView2.Items.Add(item);
                 }
+                button1.Enabled = false;
             }
         }
     }
