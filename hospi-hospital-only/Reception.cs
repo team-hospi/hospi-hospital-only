@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windows.UI.ViewManagement;
 
 namespace hospi_hospital_only
 {
@@ -37,7 +38,7 @@ namespace hospi_hospital_only
         string receptionistName; // MainMenu에서 접수자명 받아옴
         int incount;
         int listView3SelectedRow;
-        int SelectRow; //접수현황 리스트뷰 선택인덱스
+        int SelectRow=0; //접수현황 리스트뷰 선택인덱스
         string[] prescription;
         int waitingIsNull = 0;
         int acceptReserve = 0;
@@ -529,45 +530,100 @@ namespace hospi_hospital_only
             {
                 try
                 {
-                    dbc.Reception_Open();
-                    dbc.ReceptionTable = dbc.DS.Tables["Reception"];
-                    DataRow newRow = dbc.ReceptionTable.NewRow();
-                    newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
-                    newRow["PatientID"] = textBoxChartNum.Text;
-                    newRow["ReceptionTime"] = comboBoxTime1.Text + comboBoxTime2.Text;
-                    newRow["ReceptionDate"] = dateTimePicker1.Value.ToString("yy/MM/dd");
-                    newRow["SubjectName"] = comboBoxSubjcet.Text;
-                    for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                    dbc.Mobile_Visitor(textBoxChartNum.Text);
+                    dbc.VisitorTable = dbc.DS.Tables["Visitor"];
+                    if (dbc.VisitorTable.Rows[0][0].ToString() == "")
                     {
-                        if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == textBoxReceptionist.Text)
+                        try
                         {
-                            newRow["ReceptionistCode"] = i + 1;
+                            dbc.Reception_Open();
+                            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+                            DataRow newRow = dbc.ReceptionTable.NewRow();
+                            newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+                            newRow["PatientID"] = textBoxChartNum.Text;
+                            newRow["ReceptionTime"] = comboBoxTime1.Text + comboBoxTime2.Text;
+                            newRow["ReceptionDate"] = dateTimePicker1.Value.ToString("yy/MM/dd");
+                            newRow["SubjectName"] = comboBoxSubjcet.Text;
+                            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                            {
+                                if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == textBoxReceptionist.Text)
+                                {
+                                    newRow["ReceptionistCode"] = i + 1;
+                                }
+                            }
+                            newRow["ReceptionInfo"] = textBoxPurpose.Text;
+                            newRow["ReceptionType"] = 1;
+
+                            dbc.ReceptionTable.Rows.Add(newRow);
+                            dbc.DBAdapter.Update(dbc.DS, "Reception");
+                            dbc.DS.AcceptChanges();
+
+                            MessageBox.Show("접수 완료.", "알림");
+                            TextBoxClear();
+                            patientName.Clear();
+                            comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
+                            DBGrid.DataSource = null;
+                            patientName.Focus();
+
+                            if (checkBox2.Checked == false)
+                            {
+                                checkBox2.Checked = true;
+                            }
+
+                            // 접수현황 업데이트
+                            ReceptionUpdate(1);
+
+                            ReceptionListUpdate(0);
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
                         }
                     }
-                    newRow["ReceptionInfo"] = textBoxPurpose.Text;
-                    newRow["ReceptionType"] = 1;
-                    newRow["ReceptionCode"] = DateTime.Now.ToString("yyyy-MM-dd" + dbc.ReceptionTable.Rows.Count);
-
-                    dbc.ReceptionTable.Rows.Add(newRow);
-                    dbc.DBAdapter.Update(dbc.DS, "Reception");  
-                    dbc.DS.AcceptChanges();
-
-                    MessageBox.Show("접수 완료.", "알림");
-                    TextBoxClear();
-                    patientName.Clear();
-                    comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
-                    DBGrid.DataSource = null;
-                    patientName.Focus();
-
-                    if (checkBox2.Checked == false)
+                    else if(dbc.VisitorTable.Rows[0][0].ToString() != "")
                     {
-                        checkBox2.Checked = true;
+                        dbc.countWaiting(comboBoxSubjcet.Text, comboBoxTime1.Text + comboBoxTime2.Text, DateTime.Now.ToString("yy-MM-dd"));
+                        dbc.WaitingTable = dbc.DS.Tables["Reception"];
+                        receptionlist.ReceptionAccept(comboBoxSubjcet.Text, dbc.VisitorTable.Rows[0][0].ToString(), patientName.Text, DateTime.Now.ToString("yyyy-MM-dd"), comboBoxTime1.Text + ":" + comboBoxTime2.Text , Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
+                        dbc.Delay(200);
+                        dbc.Reception_Open();
+                        dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+                        DataRow newRow = dbc.ReceptionTable.NewRow();
+                        newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+                        newRow["PatientID"] = textBoxChartNum.Text;
+                        newRow["ReceptionTime"] = comboBoxTime1.Text + comboBoxTime2.Text;
+                        newRow["ReceptionDate"] = dateTimePicker1.Value.ToString("yy/MM/dd");
+                        newRow["SubjectName"] = comboBoxSubjcet.Text;
+                        for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+                        {
+                            if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == textBoxReceptionist.Text)
+                            {
+                                newRow["ReceptionistCode"] = i + 1;
+                            }
+                        }
+                        newRow["ReceptionInfo"] = textBoxPurpose.Text;
+                        newRow["ReceptionType"] = 1;
+
+                        dbc.ReceptionTable.Rows.Add(newRow);
+                        dbc.DBAdapter.Update(dbc.DS, "Reception");
+                        dbc.DS.AcceptChanges();
+
+                        MessageBox.Show("접수 완료.", "알림");
+                        TextBoxClear();
+                        patientName.Clear();
+                        comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
+                        DBGrid.DataSource = null;
+                        patientName.Focus();
+
+                        if (checkBox2.Checked == false)
+                        {
+                            checkBox2.Checked = true;
+                        }
+
+                        // 접수현황 업데이트
+                        ReceptionUpdate(1);
+                        ReceptionListUpdate(0);
                     }
-
-                    // 접수현황 업데이트
-                    ReceptionUpdate(1);
-
-                    ReceptionListUpdate();
                     
                 }
                 catch (DataException DE)
@@ -715,7 +771,6 @@ namespace hospi_hospital_only
 
                             dbc.Delay(200);
                             delRow["receptionID"] = Convert.ToInt32(delRow["receptionID"]) - 1;
-                            delRow["receptionCode"] = dbc.ReceptionTable.Rows[0][0].ToString();
                             delRow.EndEdit();
                             receptionID += 1;
 
@@ -724,7 +779,7 @@ namespace hospi_hospital_only
                         dbc3.DS.AcceptChanges();
 
 
-                        ReceptionListUpdate();
+                        ReceptionListUpdate(1);
 
                     }
                     catch (DataException DE)
@@ -1155,7 +1210,52 @@ namespace hospi_hospital_only
             }
         }
 
+        private void 초진환자등록ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reception_First receipt_First = new Reception_First();
+            receipt_First.ShowDialog();
+            patientName.Text = receipt_First.VisitorName; // 수진자명 받아와서 텍스트 대입
+            if (patientName.Text != "")
+            {
+                button9_Click(sender, e);                                   // 조회 클릭
+                VisitorText(0);                                                     // 수진자 정보 넣기
+            }
+        }
 
+        private void 예약확인ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reservation reservation = new Reservation();
+            reservation.HospitalID = hospitalID;
+            reservation.Receptionist = receptionistName;
+            reservation.ShowDialog();
+        }
+
+        private void 문의확인ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InquiryCheck inquiry = new InquiryCheck();
+            inquiry.HospitalID = hospitalID;
+            inquiry.ShowDialog();
+        }
+
+        private void 병원정보설정ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Hospital_Setting hospital_Setting = new Hospital_Setting();
+            hospital_Setting.HospitalID = hospitalID;
+            hospital_Setting.ShowDialog();
+        }
+
+        private void 접수자변경ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 접수자 변경 메뉴 
+            Receptionist receptionist = new Receptionist();
+            receptionist.ReceptionistName = textBoxReceptionist.Text;
+            receptionist.ShowDialog();
+            textBoxReceptionist.Text = receptionist.ReceptionistName;
+
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+        }
 
         public void ReceptionListAdd()
         {
@@ -1185,27 +1285,55 @@ namespace hospi_hospital_only
             }
         }
 
-        public void ReceptionListUpdate()
+        //접수 = 0 그 외 =1
+        public void ReceptionListUpdate(int status)
         {
-            receptionlist.TodayReceptionOpen(hospitalID,listView1.Items[SelectRow].SubItems[5].Text);
-            dbc.Delay(100);
-            for (int i = 0; i < receptionlist.list.Count; i++)
+
+            if (status == 0)
             {
-
-                dbc4.countWaiting(listView1.Items[SelectRow].SubItems[5].Text , receptionlist.list[i].receptionTime.Substring(0,2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
-                dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
-
-                receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].department);
+                receptionlist.TodayReceptionOpen(hospitalID, comboBoxSubjcet.Text);
                 dbc.Delay(100);
-                try
+                for (int i = 0; i < receptionlist.list.Count; i++)
                 {
-                    receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
+
+                    dbc4.countWaiting(comboBoxSubjcet.Text , receptionlist.list[i].receptionTime.Substring(0, 2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
+                    dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
+
+                    receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, comboBoxSubjcet.Text);
+                    dbc.Delay(100);
+                    try
+                    {
+                        receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
+                    }
+                    catch
+                    {
+                        receptionlist.watingNumberUpdate(waitingIsNull);
+                    }
+                    dbc.Delay(100);
                 }
-                catch
-                {
-                    receptionlist.watingNumberUpdate(waitingIsNull);
-                }
+            }
+            if (status == 1)
+            {
+                receptionlist.TodayReceptionOpen(hospitalID, listView1.Items[SelectRow].SubItems[5].Text);
                 dbc.Delay(100);
+                for (int i = 0; i < receptionlist.list.Count; i++)
+                {
+
+                    dbc4.countWaiting(listView1.Items[SelectRow].SubItems[5].Text, receptionlist.list[i].receptionTime.Substring(0, 2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
+                    dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
+
+                    receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].department);
+                    dbc.Delay(100);
+                    try
+                    {
+                        receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
+                    }
+                    catch
+                    {
+                        receptionlist.watingNumberUpdate(waitingIsNull);
+                    }
+                    dbc.Delay(100);
+                }
             }
         }
 
