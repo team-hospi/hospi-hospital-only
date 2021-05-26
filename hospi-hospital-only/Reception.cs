@@ -374,6 +374,7 @@ namespace hospi_hospital_only
 
             // 접수로드 (4 = 진료보류환자)
             ReceptionUpdate(4);
+
         }
 
         // 수납대기 버튼
@@ -1360,6 +1361,7 @@ namespace hospi_hospital_only
 
             return day;
         }
+
     }
 
 }

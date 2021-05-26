@@ -36,6 +36,7 @@ namespace hospi_hospital_only
         static int ReserveCanceled = -1;
         static int ReserveWait = 0;
         static int ReserveAccepted = 1;
+        static int ReserveEnd = 2;
 
         Fcm fcm = new Fcm();
 
@@ -76,7 +77,7 @@ namespace hospi_hospital_only
             
             for (int i = 0; i < reserve.list.Count; i++)
             {
-                if (reserve.list[i].reservationStatus != ReserveCanceled && status == 0)
+                if (reserve.list[i].reservationStatus != ReserveCanceled && reserve.list[i].reservationStatus != ReserveEnd && status == 0)
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
@@ -251,25 +252,29 @@ namespace hospi_hospital_only
                         try
                         {
 
+
+                            ReceptionAdd();
+
+
                             dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
                             dbc.ReceptionTable = dbc.DS.Tables["Reception"];
 
                             reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
 
-                            ReceptionAdd();
+                            dbc.Delay(200);
 
                             reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
-                            
-                            dbc.Delay(400);
+
+                            dbc.Delay(200);
                             for (int i = 0; i < reception.list.Count; i++)
                             {
                                 dbc.countWaiting(reception.list[i].department, reception.list[i].receptionTime, DateTime.Now.ToString("yy-MM-dd"));
                                 dbc.WaitingTable = dbc.DS.Tables["Reception"];
 
                                 reception.FindDocument(hospitalID, reception.today, reception.list[i].receptionTime, reception.list[i].department);
-                                dbc.Delay(200);
+                                dbc.Delay(100);
                                 reception.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
-                                dbc.Delay(200);
+                                dbc.Delay(100);
                             }
                         }
                         catch(Exception ex)
@@ -278,6 +283,14 @@ namespace hospi_hospital_only
                             newPatientAdd();
 
                             ReceptionAdd();
+
+
+                            dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
+                            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+
+                            reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
+
+                            dbc.Delay(200);
 
                             reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
                             dbc.Delay(200);
@@ -288,9 +301,9 @@ namespace hospi_hospital_only
                                 dbc.WaitingTable = dbc.DS.Tables["Reception"];
 
                                 reception.FindDocument(hospitalID, reception.today, reception.list[i].receptionTime, reception.list[i].department);
-                                dbc.Delay(200);
+                                dbc.Delay(100);
                                 reception.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
-                                dbc.Delay(200);
+                                dbc.Delay(100);
                             }
                         }
                     }
