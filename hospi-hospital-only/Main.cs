@@ -14,6 +14,8 @@ namespace hospi_hospital_only
     public partial class Main : Form
     {
         DBClass dbc = new DBClass();
+        int login;
+
         public Main()
         {
             InitializeComponent();
@@ -45,14 +47,24 @@ namespace hospi_hospital_only
             }
             else
             {
-
                 button6.Enabled = false;
                 LoginLabel.Visible = true;
                 Thread rTh = new Thread(Login);
                 rTh.Start();
+                
+                for(int i =0; i<1; i++)
+                {
+                    if (login == 1)
+                    {
+                        rTh.Abort();
+                        MessageBox.Show("가나다");
+                    }
+                    else if (login == 0)
+                    {
+                        i = 0;
+                    }
+                }
             }
-
-
         }
 
 
@@ -89,6 +101,7 @@ namespace hospi_hospital_only
                     this.Visible = false;
                     mainmenu.ShowDialog();
                     textBoxPW.Clear();
+                    login = 1;
                     break;
                 }
                 else if (cnt > 30)
@@ -148,6 +161,12 @@ namespace hospi_hospital_only
         private void button1_Click_1(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            AddImage addImage = new AddImage();
+            addImage.ShowDialog();
         }
     }
 }
