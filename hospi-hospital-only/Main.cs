@@ -30,6 +30,8 @@ namespace hospi_hospital_only
         private void button6_Click(object sender, EventArgs e)
         {
             dbc.FireConnect();
+
+            
             dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
 
 
@@ -45,7 +47,7 @@ namespace hospi_hospital_only
             }
             else
             {
-
+                DBClass.DBname = textBoxHospitalID.Text;
                 button6.Enabled = false;
                 LoginLabel.Visible = true;
                 Thread rTh = new Thread(Login);
