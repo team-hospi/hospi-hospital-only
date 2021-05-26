@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.label5);
@@ -80,10 +82,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "공지사항";
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Location = new System.Drawing.Point(93, 289);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(76, 37);
+            this.button5.TabIndex = 53;
+            this.button5.Text = "삭제";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 248);
+            this.label6.Location = new System.Drawing.Point(41, 256);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(117, 30);
             this.label6.TabIndex = 52;
@@ -117,7 +131,7 @@
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button3.Location = new System.Drawing.Point(93, 289);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(284, 37);
+            this.button3.Size = new System.Drawing.Size(283, 37);
             this.button3.TabIndex = 49;
             this.button3.Text = "저장 후 종료";
             this.button3.UseVisualStyleBackColor = true;
@@ -165,6 +179,7 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(151, 23);
             this.dateTimePicker1.TabIndex = 45;
             this.dateTimePicker1.Visible = false;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label3
             // 
@@ -192,9 +207,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(92, 289);
+            this.button1.Location = new System.Drawing.Point(93, 289);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(284, 37);
+            this.button1.Size = new System.Drawing.Size(283, 37);
             this.button1.TabIndex = 1;
             this.button1.Text = "종료";
             this.button1.UseVisualStyleBackColor = true;
@@ -321,5 +336,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

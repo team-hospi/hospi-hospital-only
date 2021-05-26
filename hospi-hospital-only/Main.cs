@@ -144,5 +144,10 @@ namespace hospi_hospital_only
                 button6_Click(sender, e);
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }

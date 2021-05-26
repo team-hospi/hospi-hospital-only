@@ -94,6 +94,7 @@
             this.textBoxPW.PasswordChar = '●';
             this.textBoxPW.Size = new System.Drawing.Size(160, 23);
             this.textBoxPW.TabIndex = 2;
+            this.textBoxPW.Enter += new System.EventHandler(this.textBoxPW_Enter);
             this.textBoxPW.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPW_KeyDown);
             // 
             // label6
