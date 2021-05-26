@@ -147,11 +147,12 @@ namespace hospi_hospital_only
                 dbc.Delay(300);
                 InquiryOpen();
                 dbc.Delay(300);
-                InquiryListUpdate();
                 title = listView1.Items[SelectRow].SubItems[2].Text;
-                if(title.Length > 10) { title = title.Substring(0, 10) + "..."; }
-                fcm.PushNotificationToFCM(DBClass.hospiname, UserToken, "문의 [" + title + "] 에 대한 답변이 완료되었습니다.");
-                
+                if (title.Length > 10) { title = title.Substring(0, 10) + "..."; }
+                if (listView1.Items[SelectRow].SubItems[3].Text == "X") { fcm.PushNotificationToFCM(DBClass.hospiname, UserToken, "문의 [" + title + "] 에 대한 답변이 완료되었습니다."); }
+                else if (listView1.Items[SelectRow].SubItems[3].Text == "O") { fcm.PushNotificationToFCM(DBClass.hospiname, UserToken, "문의 [" + title + "] 에 대한 답변이 수정되었습니다."); }
+                InquiryListUpdate();
+
                 MessageBox.Show("답변 완료", "알림");
             }
         }
