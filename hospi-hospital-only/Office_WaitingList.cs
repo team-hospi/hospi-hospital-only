@@ -48,7 +48,7 @@ namespace hospi_hospital_only
                     item.SubItems.Add((year - Convert.ToInt32(watingTable.Rows[i]["patientBirthCode"].ToString().Substring(0, 2)) - 1999).ToString());
                 }
                 item.SubItems.Add(watingTable.Rows[i]["receptionistName"].ToString());
-                textBoxReceptionCount.Text = listView1.Items.Count.ToString();
+                textBoxReceptionCount.Text = (listView1.Items.Count+1).ToString();
                 listView1.Items.Add(item);
             }
         }

@@ -14,7 +14,7 @@ namespace hospi_hospital_only
     public partial class Main : Form
     {
         DBClass dbc = new DBClass();
-        int login;
+        private bool loginSuccess;
 
         public Main()
         {
@@ -31,7 +31,13 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
+
+
+            loginSuccess = false;
+
             dbc.FireConnect();
+
+            
             dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
 
 
@@ -47,24 +53,36 @@ namespace hospi_hospital_only
             }
             else
             {
+                DBClass.DBname = textBoxHospitalID.Text;
                 button6.Enabled = false;
                 LoginLabel.Visible = true;
                 Thread rTh = new Thread(Login);
                 rTh.Start();
-                
-                for(int i =0; i<1; i++)
+                dbc.Delay(1500);
+
+                MainMenu mainmenu = new MainMenu();
+                if (loginSuccess == true)
                 {
-                    if (login == 1)
-                    {
-                        rTh.Abort();
-                        MessageBox.Show("가나다");
-                    }
-                    else if (login == 0)
-                    {
-                        i = 0;
-                    }
+                    loginSuccess = true;
+                    button6.Enabled = true;
+                    LoginLabel.Visible = false;
+                    dbc.FindDocument(textBoxHospitalID.Text);
+                    mainmenu.HospitalID = textBoxHospitalID.Text;
+                    mainmenu.ShowDialog();
+                    textBoxPW.Clear();
                 }
+                else if (loginSuccess == false)
+                {
+                    button6.Enabled = true;
+                    LoginLabel.Visible = false;
+                    MessageBox.Show("로그인정보 불일치", "알림");
+                    TextBoxClear();
+                }
+
+                rTh.Abort();
             }
+
+
         }
 
 
@@ -83,6 +101,7 @@ namespace hospi_hospital_only
 
             while (true)
             {
+
                 ++cnt;
                 Thread.Sleep(200);
                 CheckForIllegalCrossThreadCalls = false;
@@ -94,23 +113,13 @@ namespace hospi_hospital_only
 
                 if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
                 {
-                    button6.Enabled = true;
-                    LoginLabel.Visible = false;
-                    dbc.FindDocument(textBoxHospitalID.Text);
-                    mainmenu.HospitalID = textBoxHospitalID.Text;
-                    this.Visible = false;
-                    mainmenu.ShowDialog();
-                    textBoxPW.Clear();
-                    login = 1;
+                    loginSuccess = true;
                     break;
                 }
                 else if (cnt > 30)
                 {
+                    loginSuccess = false;
 
-                    button6.Enabled = true;
-                    LoginLabel.Visible = false;
-                    MessageBox.Show("로그인정보 불일치", "알림");
-                    TextBoxClear();
                     break;
                 }
             }
@@ -161,12 +170,6 @@ namespace hospi_hospital_only
         private void button1_Click_1(object sender, EventArgs e)
         {
             Dispose();
-        }
-
-        private void button2_Click_2(object sender, EventArgs e)
-        {
-            AddImage addImage = new AddImage();
-            addImage.ShowDialog();
         }
     }
 }
