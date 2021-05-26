@@ -248,6 +248,7 @@ namespace hospi_hospital_only
         private void buttonHistory_Click(object sender, EventArgs e)
         {
             this.Width= 796;
+            buttonHistory.Enabled = false;
             if(listBoxDelete.Items.Count == 0)
             {
                 dbc.Receptionist_Open();
@@ -268,6 +269,7 @@ namespace hospi_hospital_only
         private void button2_Click(object sender, EventArgs e)
         {
             this.Width = 409;
+            buttonHistory.Enabled = true;
         }
 
         // 복구 버튼

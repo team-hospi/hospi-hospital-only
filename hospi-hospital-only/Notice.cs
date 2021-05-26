@@ -37,6 +37,7 @@ namespace hospi_hospital_only
             if (checkBox1.Checked == true)
             {
                 dateTimePickerEndDate.Enabled = false;
+                dateTimePickerEndDate.Value = DateTime.Now;
             }
             else if (checkBox1.Checked == false)
             {
@@ -120,5 +121,16 @@ namespace hospi_hospital_only
             }
         }
 
+        private void dateTimePickerEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            int date1 = Convert.ToInt32(textBoxStartDate.Text.Substring(0, 4) + textBoxStartDate.Text.Substring(5, 2) + textBoxStartDate.Text.Substring(8, 2));
+            int date2 = Convert.ToInt32(dateTimePickerEndDate.Text.Substring(0, 4) + dateTimePickerEndDate.Text.Substring(5, 2) + dateTimePickerEndDate.Text.Substring(8, 2));
+            if (date1 > date2)
+            {
+                MessageBox.Show("게시종료일은 게시일보다 빠를 수 없습니다.", "알림");
+                dateTimePickerEndDate.Value = DateTime.Now;
+            }
+        }
     }
 }
+

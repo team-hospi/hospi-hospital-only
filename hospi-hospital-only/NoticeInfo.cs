@@ -80,8 +80,15 @@ namespace hospi_hospital_only
                 checkBox1.Visible = true;
                 button3.Visible = true;
                 button4.Visible = true;
+                button5.Visible = true;
                 groupBox1.Text = "공지사항 수정";
                 textBoxTitle.Focus();
+                button1.Width = 207;
+                button3.Width = 207;
+                Point p = new Point(170, 289);
+                button1.Location = p;
+                button3.Location = p;
+
             }
             update = 1;
         }
@@ -128,9 +135,32 @@ namespace hospi_hospital_only
             MessageBox.Show("수정이 완료되었습니다.", "알림");
             Dispose();
         }
+
+        // 삭제 버튼
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dbc.Notice_Open();
+            dbc.NoticeTable = dbc.DS.Tables["notice"];
+            DataRow upRow = dbc.NoticeTable.Rows[dbc.NoticeTable.Rows.Count - (Convert.ToInt32(noticeID) + 1)];
+            upRow.BeginEdit();
+            upRow["NoticeEndDate"] = "0";
+            upRow.EndEdit();
+            dbc.DBAdapter.Update(dbc.DS, "Notice");
+            dbc.DS.AcceptChanges();
+
+            MessageBox.Show("삭제가 완료되었습니다.", "알림");
+            Dispose();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            int date1 = Convert.ToInt32(textBoxDate.Text.Substring(0, 4) + textBoxDate.Text.Substring(5, 2) + textBoxDate.Text.Substring(8, 2));
+            int date2 = Convert.ToInt32(dateTimePicker1.Text.Substring(0, 4) + dateTimePicker1.Text.Substring(5, 2) + dateTimePicker1.Text.Substring(8, 2));
+            if (date1 > date2)
+            {
+                MessageBox.Show("게시종료일은 게시일보다 빠를 수 없습니다.", "알림");
+                dateTimePicker1.Value = DateTime.Now;
+            }
+        }
     }
 }
-// 1 2 3 4 5 
-// 5 - (5-1)
-// 5 - (5-4)
-// 5 - (5-2)

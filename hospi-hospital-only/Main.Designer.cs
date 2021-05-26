@@ -35,9 +35,9 @@ namespace hospi_hospital_only
             this.labelPW = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.textBoxPW = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.labelID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@ namespace hospi_hospital_only
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(227, 32);
             this.button6.TabIndex = 4;
-            this.button6.Text = "접속";
+            this.button6.Text = "접 속";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -62,17 +62,16 @@ namespace hospi_hospital_only
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.labelPW);
-            this.groupBox1.Controls.Add(this.LoginLabel);
-            this.groupBox1.Controls.Add(this.textBoxPW);
             this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.labelPW);
+            this.groupBox1.Controls.Add(this.textBoxPW);
             this.groupBox1.Controls.Add(this.textBoxHospitalID);
             this.groupBox1.Controls.Add(this.labelID);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(17, 81);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(257, 173);
+            this.groupBox1.Size = new System.Drawing.Size(257, 172);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
@@ -91,9 +90,10 @@ namespace hospi_hospital_only
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(163, 138);
+            this.LoginLabel.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LoginLabel.Location = new System.Drawing.Point(108, 65);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(62, 15);
+            this.LoginLabel.Size = new System.Drawing.Size(67, 12);
             this.LoginLabel.TabIndex = 36;
             this.LoginLabel.Text = "로그인 중.";
             this.LoginLabel.Visible = false;
@@ -107,17 +107,6 @@ namespace hospi_hospital_only
             this.textBoxPW.TabIndex = 2;
             this.textBoxPW.Text = "1234";
             this.textBoxPW.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPW_KeyDown);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(16, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 32);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "신규 병원 등록";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelID
             // 
@@ -137,27 +126,41 @@ namespace hospi_hospital_only
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Green;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(10, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 69);
             this.label1.TabIndex = 39;
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(16, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(227, 32);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "종 료";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 261);
+            this.ClientSize = new System.Drawing.Size(287, 265);
+            this.ControlBox = false;
+            this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "로그인";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -168,9 +171,9 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Label labelPW;
         private System.Windows.Forms.TextBox textBoxPW;
         private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
