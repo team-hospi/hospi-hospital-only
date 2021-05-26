@@ -14,6 +14,8 @@ namespace hospi_hospital_only
     public partial class Main : Form
     {
         DBClass dbc = new DBClass();
+        private bool loginSuccess;
+
         public Main()
         {
             InitializeComponent();
@@ -29,6 +31,10 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
+
+
+            loginSuccess = false;
+
             dbc.FireConnect();
 
             
@@ -52,6 +58,28 @@ namespace hospi_hospital_only
                 LoginLabel.Visible = true;
                 Thread rTh = new Thread(Login);
                 rTh.Start();
+                dbc.Delay(1500);
+
+                MainMenu mainmenu = new MainMenu();
+                if (loginSuccess == true)
+                {
+                    loginSuccess = true;
+                    button6.Enabled = true;
+                    LoginLabel.Visible = false;
+                    dbc.FindDocument(textBoxHospitalID.Text);
+                    mainmenu.HospitalID = textBoxHospitalID.Text;
+                    mainmenu.ShowDialog();
+                    textBoxPW.Clear();
+                }
+                else if (loginSuccess == false)
+                {
+                    button6.Enabled = true;
+                    LoginLabel.Visible = false;
+                    MessageBox.Show("로그인정보 불일치", "알림");
+                    TextBoxClear();
+                }
+
+                rTh.Abort();
             }
 
 
@@ -73,6 +101,7 @@ namespace hospi_hospital_only
 
             while (true)
             {
+
                 ++cnt;
                 Thread.Sleep(200);
                 CheckForIllegalCrossThreadCalls = false;
@@ -84,22 +113,13 @@ namespace hospi_hospital_only
 
                 if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
                 {
-                    button6.Enabled = true;
-                    LoginLabel.Visible = false;
-                    dbc.FindDocument(textBoxHospitalID.Text);
-                    mainmenu.HospitalID = textBoxHospitalID.Text;
-                    this.Visible = false;
-                    mainmenu.ShowDialog();
-                    textBoxPW.Clear();
+                    loginSuccess = true;
                     break;
                 }
                 else if (cnt > 30)
                 {
+                    loginSuccess = false;
 
-                    button6.Enabled = true;
-                    LoginLabel.Visible = false;
-                    MessageBox.Show("로그인정보 불일치", "알림");
-                    TextBoxClear();
                     break;
                 }
             }
