@@ -22,6 +22,7 @@ namespace hospi_hospital_only
         Reserve reserve = new Reserve();
         ReceptionList receptionlist = new ReceptionList();
         PrescriptionList prescriptionlist = new PrescriptionList();
+        Security security = new Security();
         
         string listViewIndexID1; // 접수 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexID2; // 수납 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
@@ -216,10 +217,10 @@ namespace hospi_hospital_only
             {
                 DataRow vRow = dbc.VisitorTable.Rows[rows];
                 textBoxChartNum.Text = vRow["patientID"].ToString();
-                textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0, 6);
+                textBoxB1.Text = security.AESDecrypt128(vRow["patientBirthCode"].ToString(), DBClass.hospiPW).Substring(0,6);
                 if (vRow["patientBirthCode"].ToString().Length > 9)
                 {
-                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 7);
+                    textBoxB2.Text = security.AESDecrypt128(vRow["patientBirthCode"].ToString(), DBClass.hospiPW).Substring(7, 7);
                 }
                 phone1.Text = vRow["patientPhone"].ToString().Substring(0, 3);
                 phone2.Text = vRow["patientPhone"].ToString().Substring(3, 4);
@@ -445,8 +446,15 @@ namespace hospi_hospital_only
                         patientName.Clear();
                     }
 
+                    DBGrid.Columns.Add("PatientID", "차트번호");
+                    DBGrid.Columns.Add("PatientName", "이름");
+                    DBGrid.Columns.Add("SecurityNumber", "주민번호");
+
                     // GirdView 띄우기
-                    DBGrid.DataSource = dbc.DS.Tables["visitor"].DefaultView;
+                    for(int i=0; i<dbc.VisitorTable.Rows.Count; i++)
+                    {
+                        DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], security.AESDecrypt128(dbc.VisitorTable.Rows[i][2].ToString(), DBClass.hospiPW));
+                    }
 
                     // GirdView 속성 ▼
                     DBGrid.CurrentCell = null; // 로딩시 첫번째열 자동선택 없애기 
@@ -467,17 +475,6 @@ namespace hospi_hospital_only
                     {
                         item.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-                    // DBGrid 컬럼 속성
-                    DBGrid.Columns[0].HeaderText = "차트번호";
-                    DBGrid.Columns[1].HeaderText = "수진자명";
-                    DBGrid.Columns[2].HeaderText = "주민등록번호";
-                    DBGrid.Columns[0].Width = 85;
-                    DBGrid.Columns[1].Width = 85;
-                    DBGrid.Columns[2].Width = 105;
-                    DBGrid.Columns[3].Visible = false;
-                    DBGrid.Columns[4].Visible = false;
-                    DBGrid.Columns[5].Visible = false;
-                    DBGrid.Columns[6].Visible = false;
 
                     // 생년월일 텍스트박스 포커스
                     if (dbc.VisitorTable.Rows.Count != 0 || dbc.VisitorTable.Rows.Count == 1)
