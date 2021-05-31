@@ -106,7 +106,7 @@ namespace hospi_hospital_only
                 DataRow newRow = dbc.ImageTable.NewRow();
                 newRow["ImageID"] = dbc.ImageTable.Rows.Count;
                 newRow["patientID"] = textBox2.Text;
-                newRow["ImageDate"] = dateTimePicker1.Value.ToString("yyMMdd");
+                newRow["ImageDate"] = dateTimePicker1.Value.ToString("yy-MM-dd");
                 newRow["ImageSource"] = rawData;
 
                 dbc.ImageTable.Rows.Add(newRow);
@@ -136,7 +136,7 @@ namespace hospi_hospital_only
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dbc.Image_Open(textBoxPatientID.Text, dateTimePicker2.Value.ToString("yyMMdd"));
+            dbc.Image_Open(textBoxPatientID.Text, dateTimePicker2.Value.ToString("yy-MM-dd"));
             dbc.ImageTable = dbc.DS.Tables["Image"];
 
             byte[] imageByte = (byte[])dbc.ImageTable.Rows[0]["imageSource"];
@@ -168,10 +168,10 @@ namespace hospi_hospital_only
         {
             if (e.Button == MouseButtons.Left)
             {
-                imgRect.X = imgRect.X + (int)Math.Round((double)(e.X - clickPoint.X) / 10);
+                imgRect.X = imgRect.X + (int)Math.Round((double)(e.X - clickPoint.X) / 16);
                 if (imgRect.X >= 0) imgRect.X = 0;
                 if (Math.Abs(imgRect.X) >= Math.Abs(imgRect.Width - pictureBox1.Width)) imgRect.X = -(imgRect.Width - pictureBox1.Width);
-                imgRect.Y = imgRect.Y + (int)Math.Round((double)(e.Y - clickPoint.Y) / 10);
+                imgRect.Y = imgRect.Y + (int)Math.Round((double)(e.Y - clickPoint.Y) / 16);
                 if (imgRect.Y >= 0) imgRect.Y = 0;
                 if (Math.Abs(imgRect.Y) >= Math.Abs(imgRect.Height - pictureBox1.Height)) imgRect.Y = -(imgRect.Height - pictureBox1.Height);
             }
