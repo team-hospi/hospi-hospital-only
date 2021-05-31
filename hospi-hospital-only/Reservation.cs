@@ -364,19 +364,19 @@ namespace hospi_hospital_only
             newRow["PatientName"] = textBoxName.Text;
             if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000 && reserve.patientSex =="남자")
             {
-                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) +"1";
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) +"-1";
             }
             else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000 && reserve.patientSex == "여자")
             {
-                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "2";
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-2";
             }
             else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) >= 2000 && reserve.patientSex == "남자")
             {
-                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "3";
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-3";
             }
             else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) >= 2000 && reserve.patientSex == "여자")
             {
-                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "4";
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-4";
             }
             newRow["PatientPhone"] = reserve.patientPhone.Substring(0, 3) + reserve.patientPhone.Substring(4, 4) + reserve.patientPhone.Substring(9, 4);
             newRow["PatientAddress"] = reserve.patientAddress;
