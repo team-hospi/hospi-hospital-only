@@ -112,11 +112,11 @@ namespace hospi_hospital_only
         public void GenderAgeLabel()
         {
             String year = DateTime.Now.ToString("yyyy");
-            if (textBoxB2.Text.Substring(0, 1) == "1" || textBoxB2.Text.Substring(0, 1) == "2" || textBoxB2.Text.Substring(0, 1) == "0")
+            if (textBoxB2.Text.Substring(0, 1) == "1" || textBoxB2.Text.Substring(0, 1) == "2")
             {
                 old = Convert.ToInt32(year) - Convert.ToInt32(textBoxB1.Text.Substring(0, 2)) - 1899;
             }
-            else if (textBoxB2.Text.Substring(0, 1) == "3" || textBoxB2.Text.Substring(0, 1) == "4" || textBoxB2.Text.Substring(0, 1) == "5")
+            else if (textBoxB2.Text.Substring(0, 1) == "3" || textBoxB2.Text.Substring(0, 1) == "4")
             {
                 old = Convert.ToInt32(year) - Convert.ToInt32(textBoxB1.Text.Substring(0, 2)) - 1999;
             }
@@ -248,6 +248,10 @@ namespace hospi_hospital_only
                 if (vRow["patientBirthCode"].ToString().Length > 9)
                 {
                     textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1) + security.AESDecrypt128(vRow["patientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
+                }
+                else
+                {
+                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1);
                 }
                 phone1.Text = vRow["patientPhone"].ToString().Substring(0, 3);
                 phone2.Text = vRow["patientPhone"].ToString().Substring(3, 4);
@@ -541,10 +545,8 @@ namespace hospi_hospital_only
                 VisitorText(e.RowIndex);
 
                 // 성별/나이 라벨 수정
-                if(DBGrid.Rows[e.RowIndex].Cells[2].FormattedValue.ToString().Length >9)
-                {
-                    GenderAgeLabel();
-                }
+
+                GenderAgeLabel();
                 textBoxPurpose.Focus();
             }
         }
@@ -709,6 +711,11 @@ namespace hospi_hospital_only
                 foreach (DataGridViewRow row in DBGrid.Rows)
                 {
                     if (row.Cells[2].Value.ToString().Substring(0,6).Equals(searchValue))
+                    {
+                        rowIndex = row.Index;
+                        break;
+                    }
+                    else if(row.Cells[2].Value.ToString().Substring(0,2).Equals(searchValue))
                     {
                         rowIndex = row.Index;
                         break;
@@ -1296,6 +1303,12 @@ namespace hospi_hospital_only
 
             dbc.Receptionist_Open();
             dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+        }
+
+        private void 환자정보수정ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PatientSetting Psetting = new PatientSetting();
+            Psetting.ShowDialog();
         }
 
         public void ReceptionListAdd()
