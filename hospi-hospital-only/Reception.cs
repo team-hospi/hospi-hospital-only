@@ -502,7 +502,7 @@ namespace hospi_hospital_only
             if(e.RowIndex != -1)
             {
                 TextBoxClear();
-
+                patientName.Text = DBGrid.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                 // 재진조회 그룹박스, 특이사항 정보 넣기
                 //VisitorText(Convert.ToInt32(DBGrid.Rows[e.RowIndex].Cells[1].FormattedValue));
                 VisitorText(e.RowIndex);

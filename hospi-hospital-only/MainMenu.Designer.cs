@@ -411,19 +411,19 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(305, 450);
+            this.button2.Location = new System.Drawing.Point(272, 432);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(291, 39);
             this.button2.TabIndex = 42;
-            this.button2.Text = "스레드 OpenFileDialog 테스트";
+            this.button2.Text = "촬영실";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 537);
+            this.ClientSize = new System.Drawing.Size(909, 509);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox9);
