@@ -291,6 +291,19 @@ namespace hospi_hospital_only
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddImage a = new AddImage();
+            a.ShowDialog();
+        }
+
+        // 촬영실 열기
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Radiography radiography = new Radiography();
+            radiography.ShowDialog();
+        }
     }
 }
 

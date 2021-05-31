@@ -85,10 +85,6 @@ namespace hospi_hospital_only
                     {
                         MessageBox.Show(DE.Message);
                     }
-                    catch (Exception DE)
-                    {
-                        MessageBox.Show(DE.Message);
-                    }
 
                     visitorName = textBox1.Text;
                     Dispose();
