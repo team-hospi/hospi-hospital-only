@@ -162,6 +162,12 @@
     <Compile Include="Office_WaitingList.Designer.cs">
       <DependentUpon>Office_WaitingList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PatientSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientSetting.Designer.cs">
+      <DependentUpon>PatientSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Payment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Office_WaitingList.resx">
       <DependentUpon>Office_WaitingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientSetting.resx">
+      <DependentUpon>PatientSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>

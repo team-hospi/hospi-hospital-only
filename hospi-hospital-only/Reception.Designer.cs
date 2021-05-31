@@ -1317,15 +1317,16 @@
             // 초진환자등록ToolStripMenuItem
             // 
             this.초진환자등록ToolStripMenuItem.Name = "초진환자등록ToolStripMenuItem";
-            this.초진환자등록ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.초진환자등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.초진환자등록ToolStripMenuItem.Text = "초진환자 등록";
             this.초진환자등록ToolStripMenuItem.Click += new System.EventHandler(this.초진환자등록ToolStripMenuItem_Click);
             // 
             // 환자정보수정ToolStripMenuItem
             // 
             this.환자정보수정ToolStripMenuItem.Name = "환자정보수정ToolStripMenuItem";
-            this.환자정보수정ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.환자정보수정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.환자정보수정ToolStripMenuItem.Text = "환자 정보 수정";
+            this.환자정보수정ToolStripMenuItem.Click += new System.EventHandler(this.환자정보수정ToolStripMenuItem_Click);
             // 
             // 예약ToolStripMenuItem
             // 
