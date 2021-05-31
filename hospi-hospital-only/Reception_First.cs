@@ -73,7 +73,7 @@ namespace hospi_hospital_only
 
                         newRow["PatientID"] = textBox2.Text;
                         newRow["PatientName"] = textBox1.Text;
-                        newRow["PatientBirthCode"] = security.AESEncrypt128(textBoxB1.Text +"-"+ textBoxB2.Text, DBClass.hospiPW);
+                        newRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0,1)+security.AESEncrypt128(textBoxB2.Text.Substring(1), DBClass.hospiPW);
                         newRow["PatientPhone"] = phone1.Text + phone2.Text + phone3.Text;
                         newRow["PatientAddress"] = textBoxADD.Text;
 
