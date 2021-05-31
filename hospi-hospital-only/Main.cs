@@ -171,5 +171,18 @@ namespace hospi_hospital_only
         {
             Dispose();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            AddImage addImage = new AddImage();
+            addImage.ShowDialog();
+        }
+
+        }
     }
-}
+
