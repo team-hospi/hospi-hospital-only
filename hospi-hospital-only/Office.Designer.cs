@@ -99,6 +99,8 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.textBoxOpinion = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -382,6 +384,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.textBoxOpinion);
             this.groupBox3.Controls.Add(this.listView4);
             this.groupBox3.Controls.Add(this.buttonMedicienSearch);
             this.groupBox3.Controls.Add(this.textBox4);
@@ -404,7 +408,7 @@
             this.listView4.HideSelection = false;
             this.listView4.Location = new System.Drawing.Point(17, 68);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(373, 471);
+            this.listView4.Size = new System.Drawing.Size(373, 203);
             this.listView4.TabIndex = 42;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
@@ -852,6 +856,24 @@
             this.label8.Text = "Hospi";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // textBoxOpinion
+            // 
+            this.textBoxOpinion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBoxOpinion.Location = new System.Drawing.Point(17, 323);
+            this.textBoxOpinion.Multiline = true;
+            this.textBoxOpinion.Name = "textBoxOpinion";
+            this.textBoxOpinion.Size = new System.Drawing.Size(372, 217);
+            this.textBoxOpinion.TabIndex = 43;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 290);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 15);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "의사 소견";
+            // 
             // Office
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -970,5 +992,7 @@
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxOpinion;
     }
 }
