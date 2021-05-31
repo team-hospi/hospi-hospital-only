@@ -11,6 +11,7 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         Reserve reserve = new Reserve();
         ReceptionList reception = new ReceptionList();
+        Security security = new Security();
 
         int SelectRow;
         string hospitalID;
@@ -279,7 +280,6 @@ namespace hospi_hospital_only
                         }
                         catch(Exception ex)
                         {
-                            MessageBox.Show(ex.ToString());
                             newPatientAdd();
 
                             ReceptionAdd();
@@ -362,13 +362,21 @@ namespace hospi_hospital_only
             DataRow newRow = dbc.VisitorTable.NewRow();
             newRow["PatientID"] = dbc.VisitorTable.Rows.Count + 1;
             newRow["PatientName"] = textBoxName.Text;
-            if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000)
+            if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000 && reserve.patientSex =="남자")
             {
-                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-0";
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) +"-1";
             }
-            else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) > 2000)
+            else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000 && reserve.patientSex == "여자")
             {
-                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-5";
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-2";
+            }
+            else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) >= 2000 && reserve.patientSex == "남자")
+            {
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-3";
+            }
+            else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) >= 2000 && reserve.patientSex == "여자")
+            {
+                newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-4";
             }
             newRow["PatientPhone"] = reserve.patientPhone.Substring(0, 3) + reserve.patientPhone.Substring(4, 4) + reserve.patientPhone.Substring(9, 4);
             newRow["PatientAddress"] = reserve.patientAddress;
@@ -467,8 +475,6 @@ namespace hospi_hospital_only
         //접수 등록
         public void ReceptionAdd()
         {
-            try
-            {
 
                 dbc.Reception_Open();
                 dbc.ReceptionTable = dbc.DS.Tables["Reception"];
@@ -501,10 +507,8 @@ namespace hospi_hospital_only
                 dbc.ReceptionTable.Rows.Add(newRow);
                 dbc.DBAdapter.Update(dbc.DS, "Reception");
                 dbc.DS.AcceptChanges();
-            }
-            catch
+            /*catch
             {
-                dbc.Delay(200);
                 reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
                 dbc.Delay(200);
                 dbc.Visitor_Open();
@@ -559,7 +563,7 @@ namespace hospi_hospital_only
                 dbc.ReceptionTable.Rows.Add(newRow);
                 dbc.DBAdapter.Update(dbc.DS, "Reception");
                 dbc.DS.AcceptChanges();
-            }
+            }*/
 
         }
 

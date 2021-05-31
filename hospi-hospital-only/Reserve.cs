@@ -47,6 +47,8 @@ namespace hospi_hospital_only
         public string cancelComment { get; set; }
         [FirestoreProperty]
         public string email { get; set; }
+        [FirestoreProperty]
+        public string sex { set; get; }
 
         DBClass dbc = new DBClass();
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
@@ -57,6 +59,7 @@ namespace hospi_hospital_only
         public string patientPhone;
         public string patientAddress;
         public string patientBirth;
+        public string patientSex;
         public static string documentName;
         public static string reserveDocument;
         public static string UserToken;
@@ -156,6 +159,7 @@ namespace hospi_hospital_only
                     patientPhone = fp.phone;
                     patientAddress = fp.address;
                     patientBirth = fp.birth;
+                    patientSex = fp.sex;
                     UserToken = fp.token;
                 }
             }

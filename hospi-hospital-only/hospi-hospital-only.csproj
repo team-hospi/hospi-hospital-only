@@ -233,6 +233,7 @@
     <Compile Include="SearchAddress.Designer.cs">
       <DependentUpon>SearchAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Security.cs" />
     <Compile Include="SignUp.cs" />
     <Compile Include="UpdateMedicine.cs">
       <SubType>Form</SubType>
