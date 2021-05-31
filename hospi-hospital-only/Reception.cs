@@ -137,7 +137,7 @@ namespace hospi_hospital_only
             try
             {
                 date = dateTimePicker2.Value.ToString("yy-MM-dd");
-                dbc3.Reception_Update(date, receptionType);
+                dbc3.Reception_Update(date, receptionType); // 타입 4,5 함수 추가
                 dbc3.ReceptionTable = dbc3.DS.Tables["Reception"];
 
                 if (receptionType == 1 || receptionType == 4)
@@ -205,6 +205,7 @@ namespace hospi_hospital_only
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][5].ToString());
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][6].ToString());
+                    item.SubItems.Add(dbc3.ReceptionTable.Rows[i][7].ToString());
                     if (receptionType == 1 || receptionType == 4)
                     {
                         listView1.Items.Add(item);
@@ -336,6 +337,8 @@ namespace hospi_hospital_only
                     comboBoxSubjcet.Items.Add(DBClass.hospidepartment[i]);
                 }
                 comboBoxSubjcet.Text = DBClass.hospidepartment[0];    // 최상위 과목명을 기본 텍스트로 지정
+                button5_Click(sender, e);
+                button2_Click(sender, e);
             }
             catch (DataException DE)
             {
@@ -389,6 +392,8 @@ namespace hospi_hospital_only
 
             // 접수로드 (1 = 진료대기)
             ReceptionUpdate(1);
+
+            label2.Visible = false;
         }
 
         // 진료보류 버튼
@@ -400,9 +405,18 @@ namespace hospi_hospital_only
 
             button22.Text = "접수 복구";
 
-            // 접수로드 (4 = 진료보류환자)
+            // 접수로드 (4 = 진료보류환자) + 5번 보류환자
             ReceptionUpdate(4);
 
+            for(int i=0; i<listView1.Items.Count; i++)
+            {
+                if(listView1.Items[i].SubItems[8].Text == "5")
+                {
+                    listView1.Items[i].BackColor = Color.Yellow;
+                }
+            }
+
+            label2.Visible = true;
         }
 
         // 수납대기 버튼
@@ -1269,6 +1283,8 @@ namespace hospi_hospital_only
             reservation.HospitalID = hospitalID;
             reservation.Receptionist = receptionistName;
             reservation.ShowDialog();
+
+            button2_Click(sender, e);
         }
 
         private void 문의확인ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1280,10 +1296,10 @@ namespace hospi_hospital_only
 
         private void 병원정보설정ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            Hospital_Setting hospital_Setting = new Hospital_Setting();
-            hospital_Setting.HospitalID = hospitalID;
-            hospital_Setting.ShowDialog();
+            CheckMasterPW checkMasterPW = new CheckMasterPW();
+            checkMasterPW.HospitalID = hospitalID;
+            checkMasterPW.FormNum = 1;
+            checkMasterPW.ShowDialog();
         }
 
         private void 접수자변경ToolStripMenuItem_Click(object sender, EventArgs e)

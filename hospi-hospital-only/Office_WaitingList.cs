@@ -30,6 +30,7 @@ namespace hospi_hospital_only
 
         private void Office_WaitingList_Load(object sender, EventArgs e)
         {
+            
             for(int i=0; i<watingTable.Rows.Count; i++)
             {
                 ListViewItem item = new ListViewItem();
