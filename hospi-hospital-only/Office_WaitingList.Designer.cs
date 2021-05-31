@@ -172,7 +172,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Office_WaitingList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Office_WaitingList";
+            this.Text = "진료 대기 명단";
             this.Load += new System.EventHandler(this.Office_WaitingList_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();

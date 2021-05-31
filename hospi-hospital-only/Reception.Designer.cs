@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -143,6 +143,8 @@
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.병원정보설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.접수자변경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -528,14 +530,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -733,12 +735,13 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.button22);
             this.groupBox3.Controls.Add(this.button19);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.listView1);
+            this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.receptionCount1);
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.button5);
@@ -817,14 +820,15 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader19});
+            this.columnHeader19,
+            this.columnHeader21});
             this.listView1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
             this.listView1.LabelWrap = false;
-            this.listView1.Location = new System.Drawing.Point(11, 101);
+            this.listView1.Location = new System.Drawing.Point(12, 101);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(442, 414);
@@ -1380,6 +1384,23 @@
             this.접수자변경ToolStripMenuItem.Text = "접수자 변경";
             this.접수자변경ToolStripMenuItem.Click += new System.EventHandler(this.접수자변경ToolStripMenuItem_Click);
             // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "접수타입";
+            this.columnHeader21.Width = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Yellow;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(314, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(139, 15);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "의료영상 접수 완료 상태";
+            this.label2.Visible = false;
+            // 
             // Reception
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1549,5 +1570,7 @@
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 병원정보설정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 접수자변경ToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.Label label2;
     }
 }

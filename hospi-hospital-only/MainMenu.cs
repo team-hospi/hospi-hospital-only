@@ -211,33 +211,7 @@ namespace hospi_hospital_only
             {
                 noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
             }
-            /* if (listView2.SelectedIndices.Count > 0)
-             {
-                 string noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
-                 NoticeInfo noticeInfo = new NoticeInfo();
-                 noticeInfo.NoticeID = noticeID;
-                 noticeInfo.ShowDialog();
-                 noticeID = "";
-
-                 if (1 == noticeInfo.Update)
-                 {
-                     listView2.Items.Clear();
-                     dbc.Notice_Open();
-                     dbc.NoticeTable = dbc.DS.Tables["Notice"];
-                     for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
-                     {
-                         if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"]) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
-                         {
-                             listView2.Items.Add((listView2.Items.Count + 1).ToString());
-                             listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
-                             string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
-                             listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
-                             listView2.Items[i].SubItems.Add(startDate);
-                             listView2.Items[i].SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
-                         }
-                     }
-                 }
-             }*/
+            
         }
 
         // 관리자 메뉴 버튼
@@ -301,7 +275,7 @@ namespace hospi_hospital_only
         // 촬영실 열기
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Radiography radiography = new Radiography();
+            AddRadiography radiography = new AddRadiography();
             radiography.ShowDialog();
         }
     }
