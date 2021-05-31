@@ -13,6 +13,7 @@ namespace hospi_hospital_only
     public partial class Reception_First : Form
     {
         DBClass dbc = new DBClass();
+        Security security = new Security();
         int hospitalID; // 병원코드
         string visitorName; // 수진자명번호 ( Reception 폼으로 넘겨줌 )
 
@@ -72,7 +73,7 @@ namespace hospi_hospital_only
 
                         newRow["PatientID"] = textBox2.Text;
                         newRow["PatientName"] = textBox1.Text;
-                        newRow["PatientBirthCode"] = textBoxB1.Text +"-"+ textBoxB2.Text;
+                        newRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0,1)+security.AESEncrypt128(textBoxB2.Text.Substring(1), DBClass.hospiPW);
                         newRow["PatientPhone"] = phone1.Text + phone2.Text + phone3.Text;
                         newRow["PatientAddress"] = textBoxADD.Text;
 

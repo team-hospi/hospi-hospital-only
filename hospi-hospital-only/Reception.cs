@@ -22,6 +22,7 @@ namespace hospi_hospital_only
         Reserve reserve = new Reserve();
         ReceptionList receptionlist = new ReceptionList();
         PrescriptionList prescriptionlist = new PrescriptionList();
+        Security security = new Security();
         
         string listViewIndexID1; // 접수 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
         string listViewIndexID2; // 수납 현황 리스트뷰 아이템 클릭시 해당정보의 receptionID를 저장하는 변수
@@ -164,16 +165,43 @@ namespace hospi_hospital_only
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                     // Age
                     int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                    if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "0")
+                    try
+                    {
+                        string secureCode = security.AESDecrypt128(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7), DBClass.hospiPW);
+
+                        if (secureCode.Substring(0, 1) == "1" || secureCode.Substring(0, 1) == "2")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
+                        }
+                        else if (secureCode.Substring(0, 1) == "3" || secureCode.Substring(0, 1) == "4")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
+                        }
+                    }
+                    catch {
+                        if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
+                        }
+                        else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
+                        }
+                        else { item.SubItems.Add(""); }
+                    }
+                    
+
+                    /*if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
                     {
                         item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
                     }
-                    else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "5")
+                    else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
                     {
                         item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
                     }
-                    
-                    
+                    else { item.SubItems.Add(""); }
+                    */
+
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][5].ToString());
                     item.SubItems.Add(dbc3.ReceptionTable.Rows[i][6].ToString());
@@ -216,10 +244,10 @@ namespace hospi_hospital_only
             {
                 DataRow vRow = dbc.VisitorTable.Rows[rows];
                 textBoxChartNum.Text = vRow["patientID"].ToString();
-                textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0, 6);
+                textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0,6);
                 if (vRow["patientBirthCode"].ToString().Length > 9)
                 {
-                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 7);
+                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1) + security.AESDecrypt128(vRow["patientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
                 }
                 phone1.Text = vRow["patientPhone"].ToString().Substring(0, 3);
                 phone2.Text = vRow["patientPhone"].ToString().Substring(3, 4);
@@ -432,6 +460,8 @@ namespace hospi_hospital_only
             {
                 try
                 {
+                    DBGrid.Rows.Clear();
+                    DBGrid.Columns.Clear();
                     // 재진조회 그룹박스 정보 넣기
                     TextBoxClear();
 
@@ -445,8 +475,22 @@ namespace hospi_hospital_only
                         patientName.Clear();
                     }
 
+                    DBGrid.Columns.Add("PatientID", "차트번호");
+                    DBGrid.Columns.Add("PatientName", "이름");
+                    DBGrid.Columns.Add("SecurityNumber", "주민번호");
+
                     // GirdView 띄우기
-                    DBGrid.DataSource = dbc.DS.Tables["visitor"].DefaultView;
+                    for(int i=0; i<dbc.VisitorTable.Rows.Count; i++)
+                    {
+                        try
+                        {
+                            DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], dbc.VisitorTable.Rows[i][2].ToString().Substring(0, 8) + security.AESDecrypt128(dbc.VisitorTable.Rows[i][2].ToString().Substring(8), DBClass.hospiPW));
+                        }
+                        catch
+                        {
+                            DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], dbc.VisitorTable.Rows[i][2].ToString().Substring(0, 8));
+                        }
+                    }
 
                     // GirdView 속성 ▼
                     DBGrid.CurrentCell = null; // 로딩시 첫번째열 자동선택 없애기 
@@ -467,17 +511,6 @@ namespace hospi_hospital_only
                     {
                         item.SortMode = DataGridViewColumnSortMode.NotSortable;
                     }
-                    // DBGrid 컬럼 속성
-                    DBGrid.Columns[0].HeaderText = "차트번호";
-                    DBGrid.Columns[1].HeaderText = "수진자명";
-                    DBGrid.Columns[2].HeaderText = "주민등록번호";
-                    DBGrid.Columns[0].Width = 85;
-                    DBGrid.Columns[1].Width = 85;
-                    DBGrid.Columns[2].Width = 105;
-                    DBGrid.Columns[3].Visible = false;
-                    DBGrid.Columns[4].Visible = false;
-                    DBGrid.Columns[5].Visible = false;
-                    DBGrid.Columns[6].Visible = false;
 
                     // 생년월일 텍스트박스 포커스
                     if (dbc.VisitorTable.Rows.Count != 0 || dbc.VisitorTable.Rows.Count == 1)
@@ -671,15 +704,22 @@ namespace hospi_hospital_only
         {
             try
             {
-                dbc.Visitor_BirthName(patientName.Text, patientBirth.Text);
+                String searchValue = patientBirth.Text;
+                int rowIndex = -1;
+                foreach (DataGridViewRow row in DBGrid.Rows)
+                {
+                    if (row.Cells[2].Value.ToString().Substring(0,6).Equals(searchValue))
+                    {
+                        rowIndex = row.Index;
+                        break;
+                    }
+                }
+                DBGrid.Rows[rowIndex].Selected = true;
+                /*dbc.Visitor_BirthName(patientName.Text, patientBirth.Text);
                 dbc.VisitorTable = dbc.DS.Tables["visitor"];
-                DBGrid.DataSource = dbc.VisitorTable.DefaultView;
+                DBGrid.DataSource = dbc.VisitorTable.DefaultView;*/
             }
             catch (DataException DE)
-            {
-                MessageBox.Show(DE.Message);
-            }
-            catch (Exception DE)
             {
                 MessageBox.Show(DE.Message);
             }
