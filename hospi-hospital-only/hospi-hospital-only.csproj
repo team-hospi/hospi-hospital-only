@@ -57,12 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddImage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddImage.Designer.cs">
-      <DependentUpon>AddImage.cs</DependentUpon>
-    </Compile>
     <Compile Include="CheckMasterPW.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,9 +254,6 @@
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
     <Compile Include="Visitor.cs" />
-    <EmbeddedResource Include="AddImage.resx">
-      <DependentUpon>AddImage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CheckMasterPW.resx">
       <DependentUpon>CheckMasterPW.cs</DependentUpon>
     </EmbeddedResource>
