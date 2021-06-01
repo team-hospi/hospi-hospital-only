@@ -77,7 +77,14 @@ namespace hospi_hospital_only
         {
             dbc.Location_Open();
             dbc.LocationTable = dbc.DS.Tables["Location"];
-            location = dbc.LocationTable.Rows[0]["location"].ToString();
+            if (dbc.LocationTable.Rows.Count == 0)
+            {
+                location = @"C:\";
+            }
+            else if(dbc.LocationTable.Rows.Count == 1)
+            {
+                location = dbc.LocationTable.Rows[0]["location"].ToString();
+            }
             textBox1.Text = location;
 
             button1_Click(sender, e);
@@ -91,7 +98,24 @@ namespace hospi_hospital_only
 
             string path = folderBrowserDialog.SelectedPath;
 
-            if (path != "")
+            dbc.Location_Open();
+            dbc.LocationTable = dbc.DS.Tables["location"];
+
+            if (dbc.LocationTable.Rows.Count == 0 && path !="")
+            {
+                dbc.Location_Open();
+                dbc.LocationTable = dbc.DS.Tables["location"];
+                DataRow newRow = dbc.LocationTable.NewRow();
+                newRow["LocationID"] = 0;
+                newRow["Location"] = path;
+
+                dbc.LocationTable.Rows.Add(newRow);
+                dbc.DBAdapter.Update(dbc.DS, "location");
+                dbc.DS.AcceptChanges();
+
+                textBox1.Text = path;
+            }
+            else if (dbc.LocationTable.Rows.Count == 1 && path != "")
             {
                 dbc.Location_Open();
                 dbc.LocationTable = dbc.DS.Tables["location"];
@@ -104,7 +128,7 @@ namespace hospi_hospital_only
                 dbc.DBAdapter.Update(dbc.DS, "location");
                 dbc.DS.AcceptChanges();
 
-                Radiography_Load(sender, e);
+                textBox1.Text = path;
             }
         }
 
@@ -116,14 +140,27 @@ namespace hospi_hospital_only
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = @textBox1.Text;
-            openFileDialog.Filter = "이미지 파일(*.jpg; *.jpeg; *.gif; *.bmp; *.png) |*.jpg; *.jpeg; *.gif; *.bmp; *.png ";
-            openFileDialog.ShowDialog();
-            textBox2.Text = openFileDialog.FileName;
+            DirectoryInfo di = new DirectoryInfo(@textBox1.Text);
+            if(di.Exists == true)
+            {
+                openFileDialog.InitialDirectory = @textBox1.Text;
+                openFileDialog.Filter = "이미지 파일(*.jpg; *.jpeg; *.gif; *.bmp; *.png) |*.jpg; *.jpeg; *.gif; *.bmp; *.png ";
+                openFileDialog.ShowDialog();
+                if (openFileDialog.FileName != "")
+                {
+                    textBox2.Text = openFileDialog.FileName;
+                    // 사진 띄우기
+                    Image image = Image.FromFile(textBox2.Text);
+                    pictureBox1.Image = image;
 
-            // 사진 띄우기
-            Image image = Image.FromFile(textBox2.Text);
-            pictureBox1.Image = image;
+                }
+            }
+            else
+            {
+                MessageBox.Show("지정 경로가 존재하지 않습니다.", "알림");
+                button3_Click(sender, e);
+            }
+           
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
