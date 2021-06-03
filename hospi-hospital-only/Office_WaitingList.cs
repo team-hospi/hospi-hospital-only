@@ -52,11 +52,22 @@ namespace hospi_hospital_only
                 textBoxReceptionCount.Text = (listView1.Items.Count+1).ToString();
                 listView1.Items.Add(item);
             }
+            if(listView1.Items.Count > 0)
+            {
+                label1.Visible = true;
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        // 컬럼 크기변경 막기
+        private void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
         }
     }
 }

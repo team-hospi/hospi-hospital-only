@@ -123,7 +123,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(295, 32);
+            this.button3.Location = new System.Drawing.Point(428, 32);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 25);
             this.button3.TabIndex = 43;
@@ -148,7 +148,7 @@
             this.textBox1.Location = new System.Drawing.Point(103, 33);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(189, 23);
+            this.textBox1.Size = new System.Drawing.Size(321, 23);
             this.textBox1.TabIndex = 3;
             // 
             // groupBox1
@@ -158,9 +158,9 @@
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(633, 12);
+            this.groupBox1.Location = new System.Drawing.Point(759, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 511);
+            this.groupBox1.Size = new System.Drawing.Size(377, 617);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "보류 환자 리스트";
@@ -214,7 +214,7 @@
             this.listView1.Location = new System.Drawing.Point(20, 68);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(337, 426);
+            this.listView1.Size = new System.Drawing.Size(337, 532);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -273,13 +273,13 @@
             this.textBox2.Location = new System.Drawing.Point(103, 62);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(189, 23);
+            this.textBox2.Size = new System.Drawing.Size(321, 23);
             this.textBox2.TabIndex = 45;
             // 
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(295, 61);
+            this.button2.Location = new System.Drawing.Point(428, 61);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 25);
             this.button2.TabIndex = 1;
@@ -298,7 +298,7 @@
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox2.Location = new System.Drawing.Point(261, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(366, 103);
+            this.groupBox2.Size = new System.Drawing.Size(492, 103);
             this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "업로드";
@@ -307,7 +307,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(18, 22);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(582, 410);
+            this.pictureBox1.Size = new System.Drawing.Size(715, 517);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 48;
             this.pictureBox1.TabStop = false;
@@ -315,7 +315,7 @@
             // buttonDispose
             // 
             this.buttonDispose.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonDispose.Location = new System.Drawing.Point(825, 529);
+            this.buttonDispose.Location = new System.Drawing.Point(951, 635);
             this.buttonDispose.Name = "buttonDispose";
             this.buttonDispose.Size = new System.Drawing.Size(186, 39);
             this.buttonDispose.TabIndex = 49;
@@ -326,7 +326,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(633, 529);
+            this.button4.Location = new System.Drawing.Point(759, 635);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(186, 39);
             this.button4.TabIndex = 50;
@@ -340,7 +340,7 @@
             this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox3.Location = new System.Drawing.Point(12, 121);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(615, 446);
+            this.groupBox3.Size = new System.Drawing.Size(741, 553);
             this.groupBox3.TabIndex = 51;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "의료 영상";
@@ -350,11 +350,11 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Radiography
+            // AddRadiography
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 579);
+            this.ClientSize = new System.Drawing.Size(1148, 686);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button4);
@@ -363,7 +363,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Radiography";
+            this.Name = "AddRadiography";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "촬영실";
             this.Load += new System.EventHandler(this.Radiography_Load);
