@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace hospi_hospital_only
@@ -69,7 +70,39 @@ namespace hospi_hospital_only
             dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
             dbc.Visitor_Open();
             dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
-            
+        }
+        
+        // 버튼 텍스트 변경
+        public void ButtonTextChange(int type)
+        {
+            // 1 : 전체 목록
+            // 2 : 미승인 예약
+            // 3 : 당일 예약
+            // 4 : 승인 완료
+            button3.Text = "전체 목록";
+            button2.Text = "미승인 목록";
+            button5.Text = "당일 예약 목록";
+            button1.Text = "승인 완료 목록";
+
+            textBoxSearch.Text = "";
+            textBoxName.Text = "";
+
+            if (type == 1)
+            {
+                button3.Text = "▶ " + button3.Text + " ◀";
+            }
+            else if(type == 2)
+            {
+                button2.Text = "▶ " + button2.Text + " ◀";
+            }
+            else if(type == 3)
+            {
+                button5.Text = "▶ " + button5.Text + " ◀";
+            }
+            else if (type == 4)
+            {
+                button1.Text = "▶ " + button1.Text + " ◀";
+            }
         }
         //리스트뷰 업데이트
         public void ReservationListUpdate(int status)
@@ -82,6 +115,7 @@ namespace hospi_hospital_only
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
+                    item.SubItems.Add((listViewReserve.Items.Count+1).ToString());
                     item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                     item.SubItems.Add(reserve.list[i].reservationDate);
                     item.SubItems.Add(reserve.list[i].reservationTime);
@@ -104,6 +138,7 @@ namespace hospi_hospital_only
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
+                    item.SubItems.Add((listViewReserve.Items.Count + 1).ToString());
                     item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                     item.SubItems.Add(reserve.list[i].reservationDate);
                     item.SubItems.Add(reserve.list[i].reservationTime);
@@ -119,6 +154,7 @@ namespace hospi_hospital_only
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
+                    item.SubItems.Add((listViewReserve.Items.Count + 1).ToString());
                     item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                     item.SubItems.Add(reserve.list[i].reservationDate);
                     item.SubItems.Add(reserve.list[i].reservationTime);
@@ -134,6 +170,7 @@ namespace hospi_hospital_only
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
+                    item.SubItems.Add((listViewReserve.Items.Count + 1).ToString());
                     item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                     item.SubItems.Add(reserve.list[i].reservationDate);
                     item.SubItems.Add(reserve.list[i].reservationTime);
@@ -418,18 +455,21 @@ namespace hospi_hospital_only
         {
             state = 2;
             ReservationListUpdate(state);
+            ButtonTextChange(4);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             state = 1;
             ReservationListUpdate(state);
+            ButtonTextChange(2);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             state = 0;
             ReservationListUpdate(state);
+            ButtonTextChange(1);
         }
 
         //예약 검색
@@ -450,9 +490,10 @@ namespace hospi_hospital_only
                     {
                         ListViewItem item = new ListViewItem();
                         item.Text = reserve.list[i].id;
+                        item.SubItems.Add((listViewReserve.Items.Count + 1).ToString());
                         item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                         item.SubItems.Add(reserve.list[i].reservationDate);
-                        item.SubItems.Add(reserve.list[i].reservationTime);
+                        item.SubItems.Add(reserve.list[i].reservationTime.Substring(0,2)+" "+ reserve.list[i].reservationTime.Substring(2,1)+" "+ reserve.list[i].reservationTime.Substring(3, 2));
                         if (reserve.list[i].reservationStatus == ReserveWait)
                         {
                             item.SubItems.Add("대기");
@@ -574,9 +615,30 @@ namespace hospi_hospital_only
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-
+            ButtonTextChange(3);
             state = 3;
             ReservationListUpdate(3);
+        }
+
+        // 컬럼 크기변경 막기
+        private void listViewReserve_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = listViewReserve.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
+
+        // 이름검색 엔터이벤트
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button4_Click(sender, e);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
     }
 }

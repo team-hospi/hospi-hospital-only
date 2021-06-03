@@ -41,11 +41,13 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.labelGenderAge);
             this.groupBox4.Controls.Add(this.textBoxSubName);
@@ -62,9 +64,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(310, 21);
+            this.button1.Location = new System.Drawing.Point(317, 21);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 28);
+            this.button1.Size = new System.Drawing.Size(82, 28);
             this.button1.TabIndex = 0;
             this.button1.Text = "종료";
             this.button1.UseVisualStyleBackColor = true;
@@ -73,7 +75,7 @@
             // labelGenderAge
             // 
             this.labelGenderAge.AutoSize = true;
-            this.labelGenderAge.Location = new System.Drawing.Point(242, 32);
+            this.labelGenderAge.Location = new System.Drawing.Point(189, 33);
             this.labelGenderAge.Name = "labelGenderAge";
             this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
             this.labelGenderAge.TabIndex = 35;
@@ -95,7 +97,7 @@
             this.textBoxReceptionCount.Location = new System.Drawing.Point(152, 25);
             this.textBoxReceptionCount.Name = "textBoxReceptionCount";
             this.textBoxReceptionCount.ReadOnly = true;
-            this.textBoxReceptionCount.Size = new System.Drawing.Size(88, 23);
+            this.textBoxReceptionCount.Size = new System.Drawing.Size(36, 23);
             this.textBoxReceptionCount.TabIndex = 7;
             this.textBoxReceptionCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -122,6 +124,7 @@
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView1_ColumnWidthChanging);
             // 
             // columnHeader1
             // 
@@ -163,6 +166,17 @@
             this.columnHeader19.Text = "접수고유번호";
             this.columnHeader19.Width = 0;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Yellow;
+            this.label1.Location = new System.Drawing.Point(23, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "현재 진료중";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
+            // 
             // Office_WaitingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -195,5 +209,6 @@
         private System.Windows.Forms.Label labelGenderAge;
         private System.Windows.Forms.TextBox textBoxReceptionCount;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,19 +76,28 @@ namespace hospi_hospital_only
 
         private void Radiography_Load(object sender, EventArgs e)
         {
-            dbc.Location_Open();
-            dbc.LocationTable = dbc.DS.Tables["Location"];
-            if (dbc.LocationTable.Rows.Count == 0)
+            // User\Documents 폴더
+            string saveLocation = @Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"\HospiDirectory";
+
+            if (Properties.Settings.Default.SaveLocation == "" )
             {
-                location = @"C:\";
+                DirectoryInfo di = new DirectoryInfo(@saveLocation);
+                if (di.Exists == false)
+                {
+                    Directory.CreateDirectory(@saveLocation);
+                }
+                Properties.Settings.Default.SaveLocation = saveLocation;
+                Properties.Settings.Default.Save();
+                textBox1.Text = Properties.Settings.Default.SaveLocation;
+
             }
-            else if(dbc.LocationTable.Rows.Count == 1)
+            else if (Properties.Settings.Default.SaveLocation != "")
             {
-                location = dbc.LocationTable.Rows[0]["location"].ToString();
+                textBox1.Text = Properties.Settings.Default.SaveLocation;
             }
-            textBox1.Text = location;
 
             button1_Click(sender, e);
+            
         }
 
         // 기본경로 수정
@@ -98,38 +108,9 @@ namespace hospi_hospital_only
 
             string path = folderBrowserDialog.SelectedPath;
 
-            dbc.Location_Open();
-            dbc.LocationTable = dbc.DS.Tables["location"];
-
-            if (dbc.LocationTable.Rows.Count == 0 && path !="")
-            {
-                dbc.Location_Open();
-                dbc.LocationTable = dbc.DS.Tables["location"];
-                DataRow newRow = dbc.LocationTable.NewRow();
-                newRow["LocationID"] = 0;
-                newRow["Location"] = path;
-
-                dbc.LocationTable.Rows.Add(newRow);
-                dbc.DBAdapter.Update(dbc.DS, "location");
-                dbc.DS.AcceptChanges();
-
-                textBox1.Text = path;
-            }
-            else if (dbc.LocationTable.Rows.Count == 1 && path != "")
-            {
-                dbc.Location_Open();
-                dbc.LocationTable = dbc.DS.Tables["location"];
-                DataRow upRow = dbc.LocationTable.Rows[0];
-
-                upRow.BeginEdit();
-                upRow["location"] = path;
-                upRow.EndEdit();
-
-                dbc.DBAdapter.Update(dbc.DS, "location");
-                dbc.DS.AcceptChanges();
-
-                textBox1.Text = path;
-            }
+            Properties.Settings.Default.SaveLocation = path;
+            Properties.Settings.Default.Save();
+            textBox1.Text = Properties.Settings.Default.SaveLocation;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -152,7 +133,6 @@ namespace hospi_hospital_only
                     // 사진 띄우기
                     Image image = Image.FromFile(textBox2.Text);
                     pictureBox1.Image = image;
-
                 }
             }
             else
@@ -246,6 +226,12 @@ namespace hospi_hospital_only
         private void timer1_Tick(object sender, EventArgs e)
         {
             button1_Click(sender, e);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.SaveLocation = "";
+            Properties.Settings.Default.Save();
         }
     }
 }
