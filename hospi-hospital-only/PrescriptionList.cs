@@ -31,13 +31,17 @@ namespace hospi_hospital_only
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
 
+        string path;
 
         public void FireConnect()
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            FBKey fbKey = new FBKey();
+            fbKey.DecryptFile();
+            path = fbKey.TempKeyFilePath;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
             fs = FirestoreDb.Create("hospi-edcf9");
+            fbKey.DeleteTemp();
         }
 
         public void PrescriptionAdd(string department, string patientID, string opinion, List<string> Medicine)

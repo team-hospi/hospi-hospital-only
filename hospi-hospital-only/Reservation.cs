@@ -255,27 +255,9 @@ namespace hospi_hospital_only
             textBoxName.Text = reserve.patientName;
             //문서찾기(병원id, 시간, 환자id, 날짜)
             reserve.FindDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[4].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[3].Text);
+            dbc.Delay(50);
             reserve.FindReserveDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[7].Text);
-            TextBoxComment.Text = ViewComment();
-        }
-
-        //추가 내용 확인
-        public string ViewComment()
-        {
-
-            for (int i = 0; i < listViewReserve.Items.Count; i++)
-            {
-                if (reserve.list[i].id == listViewReserve.Items[SelectRow].SubItems[0].Text && reserve.list[i].reservationDate == listViewReserve.Items[SelectRow].SubItems[3].Text && reserve.list[i].reservationTime == listViewReserve.Items[SelectRow].SubItems[4].Text)
-                {
-                    comment = reserve.list[i].symptom;
-                    break;
-                }
-                else
-                {
-                    comment = "";
-                }
-            }
-            return comment;
+            TextBoxComment.Text = reserve.comment;
         }
 
         //예약 승인 버튼 클릭이벤트
@@ -546,7 +528,7 @@ namespace hospi_hospital_only
                     }
                 }
 
-                newRow["ReceptionInfo"] = ViewComment();
+                newRow["ReceptionInfo"] = TextBoxComment.Text;
                 newRow["ReceptionType"] = 1;
                 reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
                 dbc.Delay(200);

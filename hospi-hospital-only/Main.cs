@@ -175,8 +175,13 @@ namespace hospi_hospital_only
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            
         }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
+}
 
