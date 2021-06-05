@@ -1181,7 +1181,7 @@ namespace hospi_hospital_only
                                 }
                             }
 
-                            newRow["ReceptionInfo"] = reserve.list[i].additionalContent;
+                            newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
                             reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
                             dbc.Delay(200);
@@ -1247,7 +1247,7 @@ namespace hospi_hospital_only
                                 }
                             }
 
-                            newRow["ReceptionInfo"] = reserve.list[i].additionalContent;
+                            newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
                             reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
                             dbc.Delay(300);

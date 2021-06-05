@@ -16,7 +16,7 @@ namespace hospi_hospital_only
     class Reserve
     {
         [FirestoreProperty]
-        public string additionalContent { get; set; }
+        public string symptom { get; set; }
         [FirestoreProperty]
         public string department { get; set; }
         [FirestoreProperty]
