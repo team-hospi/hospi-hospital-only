@@ -55,13 +55,18 @@ namespace hospi_hospital_only
 
         FirestoreDb fs;
 
+        string path;
+
         //Firestore 연결
         public void FireConnect()
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            FBKey fbKey = new FBKey();
+            fbKey.DecryptFile();
+            path = fbKey.TempKeyFilePath;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
             fs = FirestoreDb.Create("hospi-edcf9");
+            fbKey.DeleteTemp();
         }
 
         //ID 체크

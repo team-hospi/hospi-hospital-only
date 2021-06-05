@@ -42,16 +42,19 @@ namespace hospi_hospital_only
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
         public string documentName;
-        
+        string path;
 
         public List<ReceptionList> list = new List<ReceptionList>();
 
         public void FireConnect()
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            FBKey fbKey = new FBKey();
+            fbKey.DecryptFile();
+            path = fbKey.TempKeyFilePath;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
             fs = FirestoreDb.Create("hospi-edcf9");
+            fbKey.DeleteTemp();
         }
 
         async public void TodayReceptionOpen(string hospitalId, string department)

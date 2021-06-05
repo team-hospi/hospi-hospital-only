@@ -51,7 +51,6 @@ namespace hospi_hospital_only
         public string sex { set; get; }
 
         DBClass dbc = new DBClass();
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
         public static int count;
         public string patientId;
@@ -65,8 +64,13 @@ namespace hospi_hospital_only
         public static string UserToken;
         public static string cancelcomment;
 
+        public string time;
+        public string Date;
+        public string comment;
+
         public int receptionIndex;
 
+        string path;
 
         public Dictionary<string, List<string>> reservemap;
         public List<Reserve> list = new List<Reserve>(); // 문의내역 리스트
@@ -75,22 +79,13 @@ namespace hospi_hospital_only
         //Firestore 연결
         public void FireConnect()
         {
-            try
-            {
-                FirebaseApp.Create(new AppOptions()
-                {
-                    Credential = GoogleCredential.GetApplicationDefault(),
-                });
-            }
-            catch (Exception e)
-            { }
-
-
-            /*
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+            FBKey fbKey = new FBKey();
+            fbKey.DecryptFile();
+            path = fbKey.TempKeyFilePath;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            */
+
             fs = FirestoreDb.Create("hospi-edcf9");
+            fbKey.DeleteTemp();
         }
 
         async public void ReserveOpen(string hospitalID)
@@ -176,6 +171,9 @@ namespace hospi_hospital_only
                 if (docsnap.Exists)
                 {
                     documentName = docsnap.Id;
+                    time = fp.reservationTime;
+                    Date = fp.reservationDate;
+                    comment = fp.symptom;
 
                 }
             }

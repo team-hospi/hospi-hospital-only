@@ -33,6 +33,7 @@ namespace hospi_hospital_only
 
         FirestoreDb fs;
 
+
         async public void FinePatient(string email)
         {
             Query qref = fs.Collection("userList").WhereEqualTo("email", email);

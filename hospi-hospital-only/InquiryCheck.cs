@@ -36,6 +36,7 @@ namespace hospi_hospital_only
         int SelectRow;
         string UserToken; // 유저 토큰
         string title;
+        string path;
 
         private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
 
@@ -67,22 +68,13 @@ namespace hospi_hospital_only
         public void FireConnect()
         {
             {
-                try
-                {
-                    FirebaseApp.Create(new AppOptions()
-                    {
-                        Credential = GoogleCredential.GetApplicationDefault(),
-                    });
-                }
-                catch (Exception e)
-                { }
-
-
-                /*
-                string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
+                FBKey fbKey = new FBKey();
+                fbKey.DecryptFile();
+                path = fbKey.TempKeyFilePath;
                 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-                */
+
                 fs = FirestoreDb.Create("hospi-edcf9");
+                fbKey.DeleteTemp();
 
 
             }
