@@ -7,7 +7,7 @@
     <ProjectGuid>{EB71D326-1106-4915-928B-33CA9C12648F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>hospi_hospital_only</RootNamespace>
-    <AssemblyName>hospi_hospital_only</AssemblyName>
+    <AssemblyName>Hospi</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>HospiIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Hospi.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -286,6 +286,7 @@
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
     <Compile Include="Visitor.cs" />
+    <Content Include="Hospi.ico" />
     <Content Include="HospiIcon.ico" />
     <Content Include="Resources\Licence.txt" />
     <EmbeddedResource Include="CheckMasterPW.resx">
