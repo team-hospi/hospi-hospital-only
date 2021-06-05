@@ -301,6 +301,7 @@
     <Compile Include="UpdateSubject.Designer.cs">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="Visitor.cs" />
     <Content Include="Hospi.ico" />
     <Content Include="HospiIcon.ico" />
@@ -421,9 +422,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\BaseFileResource.xls" />
-    <Content Include="service-account.hos">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
