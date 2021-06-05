@@ -28,7 +28,6 @@ namespace hospi_hospital_only
 
         public static string DB_NAME = "prescriptionList";
 
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
 
         string path;

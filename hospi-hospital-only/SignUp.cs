@@ -51,8 +51,6 @@ namespace hospi_hospital_only
         public static Boolean IDCheck;
         
 
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
-
         FirestoreDb fs;
 
         string path;
