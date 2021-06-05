@@ -31,8 +31,6 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
-
-
             loginSuccess = false;
 
             dbc.FireConnect();
@@ -60,6 +58,8 @@ namespace hospi_hospital_only
                 rTh.Start();
                 dbc.Delay(1500);
 
+                this.Visible = false;
+
                 MainMenu mainmenu = new MainMenu();
                 if (loginSuccess == true)
                 {
@@ -70,6 +70,7 @@ namespace hospi_hospital_only
                     mainmenu.HospitalID = textBoxHospitalID.Text;
                     mainmenu.ShowDialog();
                     textBoxPW.Clear();
+
                 }
                 else if (loginSuccess == false)
                 {
@@ -82,7 +83,7 @@ namespace hospi_hospital_only
                 rTh.Abort();
             }
 
-
+            this.Visible = true;
         }
 
 
@@ -176,13 +177,6 @@ namespace hospi_hospital_only
         {
 
         }
-
-        private void button2_Click_2(object sender, EventArgs e)
-        {
-            AddImage addImage = new AddImage();
-            addImage.ShowDialog();
-        }
-
         }
     }
 

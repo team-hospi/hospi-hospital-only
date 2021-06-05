@@ -38,7 +38,6 @@ namespace hospi_hospital_only
             this.labelID = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,24 +144,12 @@ namespace hospi_hospital_only
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(299, 100);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(227, 32);
-            this.button2.TabIndex = 40;
-            this.button2.Text = "BLOB TEST";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 265);
+            this.ClientSize = new System.Drawing.Size(286, 265);
             this.ControlBox = false;
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -188,7 +175,6 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
 
