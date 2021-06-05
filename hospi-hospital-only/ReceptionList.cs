@@ -84,7 +84,6 @@ namespace hospi_hospital_only
                 {"patient", name },
                 {"receptionDate", Date },
                 {"receptionTime", Time },
-                {"status", 0 },
                 {"waitingNumber", number }
              };
             coll.AddAsync(data1);
@@ -121,19 +120,6 @@ namespace hospi_hospital_only
             }
         }
 
-        public async void Update_Reception(int status)
-        {
-                DocumentReference docref = fs.Collection("receptionList").Document(documentName);
-                Dictionary<string, object> data = new Dictionary<string, object>()
-                {
-                    {"status", status }
-                };
-                DocumentSnapshot snap = await docref.GetSnapshotAsync();
-                if (snap.Exists)
-                {
-                    await docref.UpdateAsync(data);
-                }
-        }
 
         public void Delete_Reception()
         {

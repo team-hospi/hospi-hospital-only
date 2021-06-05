@@ -15,6 +15,7 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         PrescriptionList prescription = new PrescriptionList();
         ReceptionList reception = new ReceptionList();
+        Reserve reserve = new Reserve();
 
         string patientID;
         string patientName;
@@ -23,6 +24,7 @@ namespace hospi_hospital_only
         string receptionDate;
         string receptionTime;
 
+        string mobileID;
         bool mobileUse;
 
         List<string> Medicine = new List<string>();
@@ -170,6 +172,7 @@ namespace hospi_hospital_only
             if (dbc.MobileTable.Rows[0][0].ToString() != "")
             {
                 mobileUse = true;
+                mobileID = dbc.MobileTable.Rows[0][0].ToString();
             }
             else if (dbc.MobileTable.Rows[0][0].ToString() == "")
             {
@@ -189,6 +192,7 @@ namespace hospi_hospital_only
                 reception.FindDocument(DBClass.hospiID, "20"+receptionDate, receptionTime.Substring(0,2) + ":" + receptionTime.Substring(2,2), subjectName);
                 dbc.Delay(200);
                 reception.Delete_Reception();
+                
 
             }
         }

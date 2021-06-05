@@ -192,7 +192,6 @@ namespace hospi_hospital_only
                 if (docsnap.Exists)
                 {
                     documentName = docsnap.Id;
-
                 }
             }
         }
@@ -363,7 +362,8 @@ namespace hospi_hospital_only
                     {
                         try
                         {
-                            Query qref = fs.Collection("reservationList");
+                            
+                            Query qref = fs.Collection("reservationList").WhereEqualTo("reservationStatus",-1);
                             QuerySnapshot snap = await qref.GetSnapshotAsync();
                             foreach (DocumentSnapshot docsnap in snap)
                             {
