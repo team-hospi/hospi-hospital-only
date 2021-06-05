@@ -86,6 +86,7 @@ namespace hospi_hospital_only
 
             textBoxSearch.Text = "";
             textBoxName.Text = "";
+            TextBoxComment.Text = "";
 
             if (type == 1)
             {
@@ -239,13 +240,13 @@ namespace hospi_hospital_only
         {
             SelectRow = listViewReserve.SelectedItems[0].Index;
 
-            reserveStatus = listViewReserve.Items[SelectRow].SubItems[4].Text;
+            reserveStatus = listViewReserve.Items[SelectRow].SubItems[5].Text;
 
-            selectDate = listViewReserve.Items[SelectRow].SubItems[2].Text;
-            selectTime = listViewReserve.Items[SelectRow].SubItems[3].Text;
-            selectdepartment = listViewReserve.Items[SelectRow].SubItems[6].Text;
-            selectHour = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2);
-            selectminuit = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
+            selectDate = listViewReserve.Items[SelectRow].SubItems[3].Text;
+            selectTime = listViewReserve.Items[SelectRow].SubItems[4].Text;
+            selectdepartment = listViewReserve.Items[SelectRow].SubItems[7].Text;
+            selectHour = listViewReserve.Items[SelectRow].SubItems[4].Text.Substring(0, 2);
+            selectminuit = listViewReserve.Items[SelectRow].SubItems[4].Text.Substring(3, 2);
             selectid = listViewReserve.Items[SelectRow].SubItems[0].Text;
             //환자 정보 검색
             reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
@@ -253,8 +254,8 @@ namespace hospi_hospital_only
             dbc.Delay(200);
             textBoxName.Text = reserve.patientName;
             //문서찾기(병원id, 시간, 환자id, 날짜)
-            reserve.FindDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[3].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[2].Text);
-            reserve.FindReserveDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
+            reserve.FindDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[4].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[3].Text);
+            reserve.FindReserveDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[7].Text);
             TextBoxComment.Text = ViewComment();
         }
 
@@ -264,9 +265,14 @@ namespace hospi_hospital_only
 
             for (int i = 0; i < listViewReserve.Items.Count; i++)
             {
-                if (reserve.list[i].id == listViewReserve.Items[SelectRow].SubItems[0].Text && reserve.list[i].reservationDate == listViewReserve.Items[SelectRow].SubItems[2].Text && reserve.list[i].reservationTime == listViewReserve.Items[SelectRow].SubItems[3].Text)
+                if (reserve.list[i].id == listViewReserve.Items[SelectRow].SubItems[0].Text && reserve.list[i].reservationDate == listViewReserve.Items[SelectRow].SubItems[3].Text && reserve.list[i].reservationTime == listViewReserve.Items[SelectRow].SubItems[4].Text)
                 {
-                    comment = reserve.list[i].additionalContent;
+                    comment = reserve.list[i].symptom;
+                    break;
+                }
+                else
+                {
+                    comment = "";
                 }
             }
             return comment;
@@ -277,7 +283,7 @@ namespace hospi_hospital_only
         {
             try
             {
-                if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
+                if (listViewReserve.Items[SelectRow].SubItems[5].Text == "대기")
                 {
 
 
@@ -285,7 +291,7 @@ namespace hospi_hospital_only
                     dbc.Delay(200);
 
 
-                    if (listViewReserve.Items[SelectRow].SubItems[2].Text == DateTime.Now.ToString("yyyy-MM-dd"))
+                    if (listViewReserve.Items[SelectRow].SubItems[3].Text == DateTime.Now.ToString("yyyy-MM-dd"))
                     {
                         try
                         {
@@ -301,7 +307,7 @@ namespace hospi_hospital_only
 
                             dbc.Delay(200);
 
-                            reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
+                            reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[7].Text);
 
                             dbc.Delay(200);
                             for (int i = 0; i < reception.list.Count; i++)
@@ -329,7 +335,7 @@ namespace hospi_hospital_only
 
                             dbc.Delay(200);
 
-                            reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
+                            reception.TodayReceptionOpen(hospitalID, listViewReserve.Items[SelectRow].SubItems[7].Text);
                             dbc.Delay(200);
                             for (int i = 0; i < reception.list.Count; i++)
                             {
@@ -355,7 +361,7 @@ namespace hospi_hospital_only
                     //알림 메시지 전송
                     fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + selectDate + " " + FindDay(selectDate) + " "+ selectTime + "] " + " 예약이 확정되었습니다.");
                 }
-                else if (listViewReserve.Items[SelectRow].SubItems[4].Text == "승인됨")
+                else if (listViewReserve.Items[SelectRow].SubItems[5].Text == "승인됨")
                 {
                     MessageBox.Show("이미 접수가 완료된 예약입니다", "알림");
                 }
@@ -529,9 +535,9 @@ namespace hospi_hospital_only
                     }
                 }
 
-                newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
-                newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
-                newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
+                newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[4].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[4].Text.Substring(3, 2);
+                newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(2, 8);
+                newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[7].Text;
                 for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
                 {
                     if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
