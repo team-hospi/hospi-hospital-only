@@ -37,6 +37,7 @@ namespace hospi_hospital_only
         int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
         string selectedSubjectName; // 접수 수정시 과목명 저장
         string receptionistName; // MainMenu에서 접수자명 받아옴
+        public static bool pushAlim;
         int incount;
         int listView3SelectedRow;
         int SelectRow=0; //접수현황 리스트뷰 선택인덱스
@@ -315,6 +316,7 @@ namespace hospi_hospital_only
 
             // 접수시간 (현재)
             TimeNow();
+            timer1.Start();
 
             try
             {
@@ -1110,7 +1112,16 @@ namespace hospi_hospital_only
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            if(pushAlim == true)
+            {
+                new ToastContentBuilder()
+                                    .AddArgument("action", "viewConversation")
+                                    .AddArgument("conversationId", 9813)
+                                    .AddText("HOSPI")
+                                    .AddText("다음 환자 알림")
+                                    .Show();
+                pushAlim = false;
+            }
         }
 
      
@@ -1431,6 +1442,15 @@ namespace hospi_hospital_only
             return day;
         }
 
+        public void push()
+        {
+            new ToastContentBuilder()
+                                    .AddArgument("action", "viewConversation")
+                                    .AddArgument("conversationId", 9813)
+                                    .AddText("HOSPI")
+                                    .AddText("다음 환자 호출")
+                                    .Show();
+        }
     }
 
 }
