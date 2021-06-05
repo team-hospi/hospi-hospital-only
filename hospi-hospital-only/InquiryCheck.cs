@@ -68,13 +68,20 @@ namespace hospi_hospital_only
         public void FireConnect()
         {
             {
-                FBKey fbKey = new FBKey();
-                fbKey.DecryptFile();
-                path = fbKey.TempKeyFilePath;
-                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+                try
+                {
+                    FirebaseApp.Create(new AppOptions()
+                    {
+                        Credential = GoogleCredential.GetApplicationDefault(),
+                    });
+                }
+                catch (Exception e)
+                { }
 
+
+            
                 fs = FirestoreDb.Create("hospi-edcf9");
-                fbKey.DeleteTemp();
+                
 
 
             }
