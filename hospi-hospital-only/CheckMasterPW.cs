@@ -155,6 +155,21 @@ namespace hospi_hospital_only
             dbc.Master_Open();
             dbc.MasterTable = dbc.DS.Tables["master"];
             
+            if(dbc.MasterTable.Rows.Count == 0)
+            {
+                DataRow newRow = dbc.MasterTable.NewRow();
+                newRow["MasterID"] = 0;
+                newRow["MasterName"] = "Master";
+                newRow["MasterPassword"] = "0000";
+
+                dbc.MasterTable.Rows.Add(newRow);
+                dbc.DBAdapter.Update(dbc.DS, "master");
+                dbc.DS.AcceptChanges();
+
+                MessageBox.Show("기본 최상위 관리자가 생성되었습니다. \r\n\r\n관리자명 : [ Master ]\r\n비밀번호 : [ 0000 ]\r\n\r\n관리자 메뉴에서 비밀번호를 변경해주세요.", "알림");
+
+            }
+
             for(int i=0; i<dbc.MasterTable.Rows.Count; i++)
             {
                 comboBoxMaster.Items.Add(dbc.MasterTable.Rows[i]["masterName"].ToString());

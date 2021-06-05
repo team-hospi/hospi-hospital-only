@@ -10,13 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace hospi_hospital_only
 {
-    public partial class AddImage : Form
+    public partial class OfficeRadiography : Form
     {
         DBClass dbc = new DBClass();
-        Image newImage;
         Image returnImage;
+        Image newImage;
 
         // 마우스 이벤트 변수
         Point imgPoint;
@@ -25,7 +26,28 @@ namespace hospi_hospital_only
         Point clickPoint;
         Point LastPoint;
 
-        public AddImage()
+        // 변수
+        string date;
+        string patientID;
+        string patientName;
+
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+        public string PatientID
+        {
+            get { return patientID; }
+            set { patientID = value; }
+        }
+        public string PatientName
+        {
+            get { return patientName; }
+            set { patientName = value; }
+        }
+
+        public OfficeRadiography()
         {
             InitializeComponent();
 
@@ -37,6 +59,19 @@ namespace hospi_hospital_only
             clickPoint = imgPoint;
 
             pictureBox1.Invalidate();
+        }
+
+        // byte[] > image 변환
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream(byteArrayIn, 0, byteArrayIn.Length);
+                ms.Write(byteArrayIn, 0, byteArrayIn.Length);
+                returnImage = Image.FromStream(ms, true);
+            }
+            catch { }
+            return returnImage;
         }
 
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
@@ -72,6 +107,24 @@ namespace hospi_hospital_only
             pictureBox1.Invalidate();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void OfficeRadiography_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = patientID;
+            textBox2.Text = patientName;
+
+            dbc.Image_Open(patientID, date);
+            dbc.ImageTable = dbc.DS.Tables["Image"];
+
+            byte[] imageByte = (byte[])dbc.ImageTable.Rows[0]["imageSource"];
+            newImage = byteArrayToImage(imageByte);
+            pictureBox1.Image = newImage;
+        }
+
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             if (pictureBox1.Image != null)
@@ -81,77 +134,6 @@ namespace hospi_hospital_only
                 e.Graphics.DrawImage(pictureBox1.Image, imgRect);
                 pictureBox1.Focus();
             }
-        }
-
-        //  image > byte[] 변환
-        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-             try
-             {
-                Image image = Image.FromFile(textBox1.Text);
-                byte[] rawData = ImageToByteArray(image);
-
-                dbc.Image_Open();
-                dbc.ImageTable = dbc.DS.Tables["Image"];
-
-                DataRow newRow = dbc.ImageTable.NewRow();
-                newRow["ImageID"] = dbc.ImageTable.Rows.Count;
-                newRow["patientID"] = textBox2.Text;
-                newRow["ImageDate"] = dateTimePicker1.Value.ToString("yy-MM-dd");
-                newRow["ImageSource"] = rawData;
-
-                dbc.ImageTable.Rows.Add(newRow);
-                dbc.DBAdapter.Update(dbc.DS, "Image");
-                dbc.DS.AcceptChanges();
-
-                MessageBox.Show("완료");
-            }
-             catch (DataException DE)
-             {
-                 MessageBox.Show(DE.Message);
-             }
-        }
-
-        // byte[] > image 변환
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            try
-            {
-                MemoryStream ms = new MemoryStream(byteArrayIn, 0, byteArrayIn.Length);
-                ms.Write(byteArrayIn, 0, byteArrayIn.Length);
-                returnImage = Image.FromStream(ms, true);
-            }
-            catch { }
-            return returnImage;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            dbc.Image_Open(textBoxPatientID.Text, dateTimePicker2.Value.ToString("yy-MM-dd"));
-            dbc.ImageTable = dbc.DS.Tables["Image"];
-
-            byte[] imageByte = (byte[])dbc.ImageTable.Rows[0]["imageSource"];
-            newImage = byteArrayToImage(imageByte);
-            pictureBox1.Image = newImage;
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = @"C:\image";
-            openFileDialog.Filter = "Image file(*.jpg)|*.jpg";
-            openFileDialog.ShowDialog();
-            textBox1.Text = openFileDialog.FileName;
         }
 
         // zoom시점 사진 이동
@@ -168,10 +150,10 @@ namespace hospi_hospital_only
         {
             if (e.Button == MouseButtons.Left)
             {
-                imgRect.X = imgRect.X + (int)Math.Round((double)(e.X - clickPoint.X) / 16);
+                imgRect.X = imgRect.X + (int)Math.Round((double)(e.X - clickPoint.X) / 5);
                 if (imgRect.X >= 0) imgRect.X = 0;
                 if (Math.Abs(imgRect.X) >= Math.Abs(imgRect.Width - pictureBox1.Width)) imgRect.X = -(imgRect.Width - pictureBox1.Width);
-                imgRect.Y = imgRect.Y + (int)Math.Round((double)(e.Y - clickPoint.Y) / 16);
+                imgRect.Y = imgRect.Y + (int)Math.Round((double)(e.Y - clickPoint.Y) / 5);
                 if (imgRect.Y >= 0) imgRect.Y = 0;
                 if (Math.Abs(imgRect.Y) >= Math.Abs(imgRect.Height - pictureBox1.Height)) imgRect.Y = -(imgRect.Height - pictureBox1.Height);
             }
