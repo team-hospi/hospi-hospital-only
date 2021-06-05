@@ -38,8 +38,6 @@ namespace hospi_hospital_only
         string title;
         string path;
 
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
-
 
         public string HospitalID
         {

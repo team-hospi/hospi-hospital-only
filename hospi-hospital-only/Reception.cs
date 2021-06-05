@@ -316,7 +316,6 @@ namespace hospi_hospital_only
 
             // 접수시간 (현재)
             TimeNow();
-            timer1.Start();
 
             try
             {
@@ -1112,16 +1111,7 @@ namespace hospi_hospital_only
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(pushAlim == true)
-            {
-                new ToastContentBuilder()
-                                    .AddArgument("action", "viewConversation")
-                                    .AddArgument("conversationId", 9813)
-                                    .AddText("HOSPI")
-                                    .AddText("다음 환자 알림")
-                                    .Show();
-                pushAlim = false;
-            }
+            
         }
 
      
@@ -1364,6 +1354,11 @@ namespace hospi_hospital_only
                     dbc4.Delay(200);
                 }
             }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
         //접수 = 0 그 외 =1

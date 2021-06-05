@@ -30,7 +30,6 @@ namespace hospi_hospital_only
         [FirestoreProperty]
         public string title { get; set; }
 
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         FirestoreDb fs;
         public static int count;
         string path;

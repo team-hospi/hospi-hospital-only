@@ -39,7 +39,6 @@ namespace hospi_hospital_only
 
 
         public string today = DateTime.Now.ToString("yyyy-MM-dd");
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
         public FirestoreDb fs;
         public string documentName;
         string path;

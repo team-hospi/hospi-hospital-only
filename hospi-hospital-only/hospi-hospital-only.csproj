@@ -408,9 +408,6 @@
     <EmbeddedResource Include="UpdateReceptionist.resx">
       <DependentUpon>UpdateReceptionist.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="updateSubject.resx">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </EmbeddedResource>
