@@ -19,6 +19,8 @@ namespace hospi_hospital_only
     {
         
         DBClass dbc = new DBClass();
+        Security security = new Security();
+
         DataRow locationRow;
         // 환자정보
         string patientID;
@@ -165,7 +167,7 @@ namespace hospi_hospital_only
                 ws = wb.Worksheets.get_Item(1) as Excel.Worksheet;
                 ws.Cells[5, 6] = "  " + date.Substring(0, 4) + "년 " + date.Substring(4, 2) + "월 " + date.Substring(6, 2) + "일   제 " + patientID + " 호";
                 ws.Cells[7, 8] = "  " + dbc.VisitorTable.Rows[0]["patientName"].ToString();
-                ws.Cells[8, 8] = "  " + dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString();
+                ws.Cells[8, 8] = "  " + dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString().Substring(0,8) + security.AESDecrypt128(dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
                 ws.Cells[5, 25] = "  " + dbc.Hospiname;
                 ws.Cells[6, 25] = "  " + dbc.HospiTell;
                 ws.Cells[7, 25] = "  " + dbc.HospiTell;

@@ -130,7 +130,7 @@ namespace hospi_hospital_only
                     this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
                     listViewReserve.Sort();
                 }
-                else if (reserve.list[i].reservationDate == DateTime.Now.ToString("yyyy-MM-dd") && status == 3)
+                else if (reserve.list[i].reservationDate == DateTime.Now.ToString("yyyy-MM-dd") && reserve.list[i].reservationStatus != 2 && status == 3)
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
@@ -507,64 +507,6 @@ namespace hospi_hospital_only
                 dbc.ReceptionTable.Rows.Add(newRow);
                 dbc.DBAdapter.Update(dbc.DS, "Reception");
                 dbc.DS.AcceptChanges();
-            /*catch
-            {
-                reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
-                dbc.Delay(200);
-                dbc.Visitor_Open();
-                dbc.VisitorTable = dbc.DS.Tables["Visitor"];
-                DataRow newRow = dbc.VisitorTable.NewRow();
-                newRow["PatientID"] = dbc.VisitorTable.Rows.Count + 1;
-                newRow["PatientName"] = reserve.patientName;
-                if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) < 2000)
-                {
-                    newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-0";
-                }
-                else if (Convert.ToInt32(reserve.patientBirth.Substring(0, 4)) > 2000)
-                {
-                    newRow["PatientBirthcode"] = reserve.patientBirth.Substring(2, 2) + reserve.patientBirth.Substring(5, 2) + reserve.patientBirth.Substring(8, 2) + "-5";
-                }
-                newRow["PatientPhone"] = reserve.patientPhone.Substring(0, 3) + reserve.patientPhone.Substring(4, 4) + reserve.patientPhone.Substring(9, 4);
-                newRow["PatientAddress"] = reserve.patientAddress;
-                newRow["MemberID"] = reserve.patientId;
-                newRow["PatientMemo"] = "";
-
-                dbc.VisitorTable.Rows.Add(newRow);
-                dbc.DBAdapter.Update(dbc.DS, "Visitor");
-                dbc.DS.AcceptChanges();
-                dbc.Reception_Open();
-                dbc.ReceptionTable = dbc.DS.Tables["Reception"];
-                newRow = dbc.ReceptionTable.NewRow();
-                newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
-                for (int i = 0; i < dbc.VisitorTable.Rows.Count; i++)
-                {
-                    if (dbc.VisitorTable.Rows[i]["PATIENTNAME"].ToString() == textBoxName.Text)
-                    {
-                        newRow["PATIENTID"] = i + 1;
-                    }
-                }
-
-                newRow["ReceptionTime"] = listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(0, 2) + listViewReserve.Items[SelectRow].SubItems[3].Text.Substring(3, 2);
-                newRow["ReceptionDate"] = listViewReserve.Items[SelectRow].SubItems[2].Text.Substring(2, 8);
-                newRow["SubjectName"] = listViewReserve.Items[SelectRow].SubItems[6].Text;
-                for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
-                {
-                    if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
-                    {
-                        newRow["ReceptionistCode"] = i + 1;
-                    }
-                }
-
-                newRow["ReceptionInfo"] = ViewComment();
-                newRow["ReceptionType"] = 1;
-                reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
-                dbc.Delay(200);
-                newRow["ReceptionCode"] = Reserve.documentName;
-                dbc.ReceptionTable.Rows.Add(newRow);
-                dbc.DBAdapter.Update(dbc.DS, "Reception");
-                dbc.DS.AcceptChanges();
-            }*/
-
         }
 
         private void button5_Click(object sender, EventArgs e)
