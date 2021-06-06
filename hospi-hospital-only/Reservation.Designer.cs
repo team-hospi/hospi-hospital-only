@@ -30,7 +30,6 @@
         {
             this.listViewReserve = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,7 +64,6 @@
             // 
             this.listViewReserve.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader8,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
@@ -91,11 +89,6 @@
             // 
             this.columnHeader1.Text = "ID";
             this.columnHeader1.Width = 0;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "No.";
-            this.columnHeader8.Width = 40;
             // 
             // columnHeader2
             // 
@@ -125,7 +118,7 @@
             // 
             this.columnHeader6.Text = "모바일 회원 아이디";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader6.Width = 155;
+            this.columnHeader6.Width = 200;
             // 
             // columnHeader7
             // 
@@ -384,7 +377,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox TextBoxComment;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
