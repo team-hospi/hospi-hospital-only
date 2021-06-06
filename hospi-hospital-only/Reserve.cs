@@ -51,6 +51,8 @@ namespace hospi_hospital_only
         public string sex { set; get; }
 
         DBClass dbc = new DBClass();
+        ReceptionList reception = new ReceptionList();
+
         public FirestoreDb fs;
         public static int count;
         public string patientId;
@@ -403,6 +405,11 @@ namespace hospi_hospital_only
                                         }
                                         dbc.DBAdapter.Update(dbc.DS, "reception");
                                         dbc.DS.AcceptChanges();
+                                        reception.FireConnect();
+                                        dbc.Delay(200);
+                                        reception.FindDocument(DBClass.hospiID, fp.reservationDate, fp.reservationTime, fp.department);
+                                        dbc.Delay(200);
+                                        reception.Delete_Reception();
 
 
                                     }
