@@ -117,7 +117,7 @@ namespace hospi_hospital_only
             dbc.Delay(200);
             for (int i = 0; i < list.Count; i++)
             {
-                if (list[i].id == listView1.Items[SelectRow].SubItems[0].Text && list[i].checkedAnswer == inquiryCheck && list[i].title == listView1.Items[SelectRow].SubItems[2].Text)
+                if (list[i].id == listView1.Items[SelectRow].SubItems[0].Text && list[i].checkedAnswer == inquiryCheck && list[i].title == listView1.Items[SelectRow].SubItems[2].Text && ConvertDate(list[i].timestamp).ToString("yyyy-MM-dd HH:mm") == listView1.Items[SelectRow].SubItems[1].Text)
                 {
                     richTextBox1.Text = list[i].content;
                     richTextBox2.Text = list[i].answer;
