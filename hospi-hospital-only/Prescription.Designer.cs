@@ -337,7 +337,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Prescription";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Prescription";
+            this.Text = "처방";
             this.Load += new System.EventHandler(this.Prescription_Load);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();

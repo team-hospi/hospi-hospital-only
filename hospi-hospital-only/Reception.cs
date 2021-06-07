@@ -672,7 +672,6 @@ namespace hospi_hospital_only
                             TextBoxClear();
                             patientName.Clear();
                             comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
-                            DBGrid.DataSource = null;
                             patientName.Focus();
 
                             if (checkBox2.Checked == false)
