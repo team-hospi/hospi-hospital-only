@@ -116,9 +116,13 @@ namespace hospi_hospital_only
             {
                 Office office = new Office();
                 office.SubjectID = comboBoxOffice.Text;
-                this.Visible = false;
+
+                office.Show();
+
+                /*this.Visible = false;
                 office.ShowDialog();
-                this.Visible = true;
+                this.Visible = true;*/
+
                 comboBoxOffice.Text = "진료과목 선택";
             }
             else
@@ -135,9 +139,13 @@ namespace hospi_hospital_only
                 Reception reception = new Reception();
                 reception.HospitalID = hospitalID;
                 reception.ReceptionistName = comboBoxReceptionist.Text;
-                this.Visible = false;
+
+                reception.Show();
+
+                /*this.Visible = false;
                 reception.ShowDialog();
-                this.Visible = true;
+                this.Visible = true;*/
+
                 comboBoxReceptionist.Text = "접수자 선택";
             }
             else

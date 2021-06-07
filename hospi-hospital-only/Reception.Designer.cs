@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,7 +45,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBoxLast = new System.Windows.Forms.TextBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.textBoxChartNum = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button22 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
@@ -145,7 +145,6 @@
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.병원정보설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.접수자변경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -227,7 +226,6 @@
             this.groupBox7.Controls.Add(this.dateTimePicker1);
             this.groupBox7.Controls.Add(this.checkBox2);
             this.groupBox7.Controls.Add(this.button11);
-            this.groupBox7.Controls.Add(this.checkBox1);
             this.groupBox7.Controls.Add(this.textBoxLast);
             this.groupBox7.Controls.Add(this.textBoxPurpose);
             this.groupBox7.Controls.Add(this.label23);
@@ -344,24 +342,13 @@
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button11.Location = new System.Drawing.Point(495, 145);
+            this.button11.Location = new System.Drawing.Point(335, 145);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(130, 37);
+            this.button11.Size = new System.Drawing.Size(290, 37);
             this.button11.TabIndex = 21;
             this.button11.Text = "접수";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(339, 163);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(150, 19);
-            this.checkBox1.TabIndex = 32;
-            this.checkBox1.Text = "응급 환자 ( 우선 접수 )";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // textBoxLast
             // 
@@ -531,14 +518,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -755,6 +742,20 @@
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "접수 현황";
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(312, 525);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 29);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "보류환자 \r\n접수취소 불가";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Visible = false;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label2
             // 
@@ -1310,7 +1311,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // menuStrip1
@@ -1407,20 +1408,6 @@
             this.접수자변경ToolStripMenuItem.Text = "접수자 변경";
             this.접수자변경ToolStripMenuItem.Click += new System.EventHandler(this.접수자변경ToolStripMenuItem_Click);
             // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(312, 525);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(139, 29);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "보류환자 \r\n접수취소 불가";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label7.Visible = false;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // Reception
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1486,7 +1473,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBoxLast;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox textBoxFirst;

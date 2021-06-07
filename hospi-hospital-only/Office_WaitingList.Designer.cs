@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.labelGenderAge = new System.Windows.Forms.Label();
             this.textBoxSubName = new System.Windows.Forms.TextBox();
-            this.textBoxReceptionCount = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,7 +40,6 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +47,7 @@
             // 
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.labelGenderAge);
             this.groupBox4.Controls.Add(this.textBoxSubName);
-            this.groupBox4.Controls.Add(this.textBoxReceptionCount);
             this.groupBox4.Controls.Add(this.listView1);
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
@@ -60,6 +56,17 @@
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "접수 대기 목록";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Yellow;
+            this.label1.Location = new System.Drawing.Point(23, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "현재 진료";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Visible = false;
             // 
             // button1
             // 
@@ -72,16 +79,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // labelGenderAge
-            // 
-            this.labelGenderAge.AutoSize = true;
-            this.labelGenderAge.Location = new System.Drawing.Point(189, 33);
-            this.labelGenderAge.Name = "labelGenderAge";
-            this.labelGenderAge.Size = new System.Drawing.Size(19, 15);
-            this.labelGenderAge.TabIndex = 35;
-            this.labelGenderAge.Text = "명";
-            this.labelGenderAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // textBoxSubName
             // 
             this.textBoxSubName.Location = new System.Drawing.Point(17, 25);
@@ -91,15 +88,6 @@
             this.textBoxSubName.TabIndex = 30;
             this.textBoxSubName.Text = "진료 1과";
             this.textBoxSubName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxReceptionCount
-            // 
-            this.textBoxReceptionCount.Location = new System.Drawing.Point(152, 25);
-            this.textBoxReceptionCount.Name = "textBoxReceptionCount";
-            this.textBoxReceptionCount.ReadOnly = true;
-            this.textBoxReceptionCount.Size = new System.Drawing.Size(36, 23);
-            this.textBoxReceptionCount.TabIndex = 7;
-            this.textBoxReceptionCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // listView1
             // 
@@ -166,17 +154,6 @@
             this.columnHeader19.Text = "접수고유번호";
             this.columnHeader19.Width = 0;
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(23, 78);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "현재 진료중";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Visible = false;
-            // 
             // Office_WaitingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -206,8 +183,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader19;
         private System.Windows.Forms.TextBox textBoxSubName;
-        private System.Windows.Forms.Label labelGenderAge;
-        private System.Windows.Forms.TextBox textBoxReceptionCount;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
     }
