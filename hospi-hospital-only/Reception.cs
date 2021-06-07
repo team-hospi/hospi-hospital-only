@@ -659,6 +659,7 @@ namespace hospi_hospital_only
                         dbc.DBAdapter.Update(dbc.DS, "Reception");
                         dbc.DS.AcceptChanges();
 
+
                         MessageBox.Show("접수 완료.", "알림");
                         TextBoxClear();
                         patientName.Clear();
@@ -674,6 +675,7 @@ namespace hospi_hospital_only
                         // 접수현황 업데이트
                         ReceptionUpdate(1);
                         ReceptionListUpdate(0);
+
                     }
                     
                 }
@@ -1385,7 +1387,7 @@ namespace hospi_hospital_only
                     {
                         receptionlist.watingNumberUpdate(waitingIsNull);
                     }
-                    dbc.Delay(100);
+                    dbc.Delay(300);
                 }
             }
             if (status == 1)
