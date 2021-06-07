@@ -267,5 +267,19 @@ namespace hospi_hospital_only
             textBoxADDR.ReadOnly = true;
             button1.Text = "변경 시작";
         }
+
+        private void patientName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button9_Click(sender, e);
+            }
+            
+        }
+
+        private void PatientSetting_Load(object sender, EventArgs e)
+        {
+            patientName.Focus();
+        }
     }
 }
