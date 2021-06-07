@@ -45,6 +45,7 @@ namespace hospi_hospital_only
         int waitingIsNull = 0;
         int acceptReserve = 0;
         int prescriptionType = 0; // 1:수납대기 상태에서 2:수납완료 상태에서
+        int updatewait = 0;
 
         public Reception()
         {
@@ -337,7 +338,14 @@ namespace hospi_hospital_only
         // 종료
         private void button1_Click(object sender, EventArgs e)
         {
-            Dispose();
+            if (updatewait == 1)
+            {
+                MessageBox.Show("접수 현황을 업데이트하는 중입니다.\n잠시만 기다려 주세요.", "알림");
+            }
+            else if (updatewait == 0)
+            {
+                Dispose();
+            }
         }
 
         // 폼 로드
@@ -1444,6 +1452,7 @@ namespace hospi_hospital_only
 
             if (status == 0)
             {
+                updatewait = 1;
                 receptionlist.TodayReceptionOpen(hospitalID, comboBoxSubjcet.Text);
                 dbc.Delay(100);
                 for (int i = 0; i < receptionlist.list.Count; i++)
@@ -1462,11 +1471,12 @@ namespace hospi_hospital_only
                     {
                         receptionlist.watingNumberUpdate(waitingIsNull);
                     }
-                    dbc.Delay(300);
+                    dbc.Delay(100);
                 }
             }
             if (status == 1)
             {
+                updatewait = 1;
                 receptionlist.TodayReceptionOpen(hospitalID, listView1.Items[SelectRow].SubItems[5].Text);
                 dbc.Delay(100);
                 for (int i = 0; i < receptionlist.list.Count; i++)
@@ -1488,6 +1498,7 @@ namespace hospi_hospital_only
                     dbc.Delay(100);
                 }
             }
+            updatewait = 0;
         }
 
         public string FindDay(string Date)
