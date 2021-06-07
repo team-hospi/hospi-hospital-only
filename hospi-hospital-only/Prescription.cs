@@ -33,7 +33,13 @@ namespace hospi_hospital_only
         string period;
         string dosage;
         string count;
+        int prescriptionType;
 
+        public int PrescriptionType
+        {
+            get { return prescriptionType; }
+            set { prescriptionType = value; }
+        }
         public string PatientID
         {
             get { return patientID; }
@@ -135,81 +141,119 @@ namespace hospi_hospital_only
             DBGrid.Columns[1].Width = 80;
             DBGrid.Columns[2].Width = 80;
             DBGrid.Columns[3].Width = 80;
+
+            if (DBGrid.Rows.Count == 0)
+            {
+                button1.Text = "수 납";
+            }
+
+            if (prescriptionType == 2)
+            {
+                if(button1.Text == "수 납")
+                {
+                    button1.Enabled = false;
+                }
+                else
+                {
+                    button1.Enabled = true;
+                    checkBox1.Checked = false;
+                    checkBox1.Enabled = false;
+                }
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            DirectoryInfo di = new DirectoryInfo(@Properties.Resources.saveLocation);
-            if(di.Exists == true)
+            if(DBGrid.Rows.Count == 0)
             {
-                Directory.Delete(@Properties.Resources.saveLocation, true);
-            }
-            DirectoryInfo dir = new DirectoryInfo(@Properties.Resources.saveLocation);
-            if (dir.Exists == false)
-            {
-                Directory.CreateDirectory(@Properties.Resources.saveLocation);
-            }
-            string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8,  2);
-            int patientN = Convert.ToInt32(dbc.VisitorTable.Rows[0]["patientID"]);
-            string patientID = patientN.ToString("000");
-            // 베이스파일 저장경로
-            string path1 = @Properties.Resources.baseFile;
-            // excel, pdf 저장경로
-            string path2 = @Properties.Resources.saveLocation + date + patientID + ".xls";
-            string path3 = @Properties.Resources.saveLocation + date + patientID + " " + patientName.Text + ".pdf";
-            Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook wb = null;
-            Excel.Worksheet ws = null;
-
-            try
-            {
-                wb = excelApp.Workbooks.Open(path1);
-                ws = wb.Worksheets.get_Item(1) as Excel.Worksheet;
-                ws.Cells[5, 6] = "  " + date.Substring(0, 4) + "년 " + date.Substring(4, 2) + "월 " + date.Substring(6, 2) + "일   제 " + patientID + " 호";
-                ws.Cells[7, 8] = "  " + dbc.VisitorTable.Rows[0]["patientName"].ToString();
-                ws.Cells[8, 8] = "  " + dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString().Substring(0,8) + security.AESDecrypt128(dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
-                ws.Cells[5, 25] = "  " + dbc.Hospiname;
-                ws.Cells[6, 25] = "  " + dbc.HospiTell;
-                ws.Cells[7, 25] = "  " + dbc.HospiTell;
-                ws.Cells[22, 5] = "교부일로부터 (    7    )일간";
-                for (int i = 0; i < DBGrid.Rows.Count; i++)
-                {
-                    ws.Cells[10 + i, 1] = "  " + DBGrid.Rows[i].Cells[0].FormattedValue.ToString();
-                    ws.Cells[10 + i, 17] = "  " + DBGrid.Rows[i].Cells[1].FormattedValue.ToString();
-                    ws.Cells[10 + i, 20] = "  " + DBGrid.Rows[i].Cells[2].FormattedValue.ToString();
-                    ws.Cells[10 + i, 23] = "  " + DBGrid.Rows[i].Cells[3].FormattedValue.ToString();
-                }
-
-                ws.SaveAs(path2);
-                Workbook workbook = new Workbook();
-                workbook.LoadFromFile(path2, ExcelVersion.Version2010);
-                workbook.SaveToFile(path3, Spire.Xls.FileFormat.PDF);
-
-                File.Exists(path1);
-                File.Exists(path2);
-                wb.Close(false);
-                excelApp.Quit();
-                File.Delete(path2);
-                System.Diagnostics.Process.Start(path3);
-
-                if(checkBox1.Checked == true)
-                {
-                    Payment payment = new Payment();
-                    payment.PatientID = textBoxChartNum.Text;
-                    payment.PatientName = patientName.Text;
-                    payment.SubjectName = textBoxSubject.Text;
-                    payment.ReceptionDate = textBoxReceptionDate.Text.Substring(2, textBoxReceptionDate.Text.Length - 2);
-                    payment.ReceptionTime = textBoxHour.Text + textBoxMinute.Text;
-                    payment.ShowDialog();
-                }
+                MessageBox.Show("처방정보가 존재하지 않습니다. 수납 화면으로 진행됩니다.","알림");
+                Payment payment = new Payment();
+                payment.PatientID = textBoxChartNum.Text;
+                payment.PatientName = patientName.Text;
+                payment.SubjectName = textBoxSubject.Text;
+                payment.ReceptionDate = textBoxReceptionDate.Text.Substring(2, textBoxReceptionDate.Text.Length - 2);
+                payment.ReceptionTime = textBoxHour.Text + textBoxMinute.Text;
+                payment.ShowDialog();
 
                 Dispose();
-
             }
-            catch
+            else
             {
-                MessageBox.Show("오류");
+                DirectoryInfo di = new DirectoryInfo(@Properties.Resources.saveLocation);
+                if (di.Exists == true)
+                {
+                    Directory.Delete(@Properties.Resources.saveLocation, true);
+                }
+                DirectoryInfo dir = new DirectoryInfo(@Properties.Resources.saveLocation);
+                if (dir.Exists == false)
+                {
+                    Directory.CreateDirectory(@Properties.Resources.saveLocation);
+                }
+                string date = textBoxReceptionDate.Text.Substring(0, 4) + textBoxReceptionDate.Text.Substring(5, 2) + textBoxReceptionDate.Text.Substring(8, 2);
+                int patientN = Convert.ToInt32(dbc.VisitorTable.Rows[0]["patientID"]);
+                string patientID = patientN.ToString("000");
+                // 베이스파일 저장경로
+                string path1 = @Properties.Resources.baseFile;
+                // excel, pdf 저장경로
+                string path2 = @Properties.Resources.saveLocation + date + patientID + ".xls";
+                string path3 = @Properties.Resources.saveLocation + date + patientID + " " + patientName.Text + ".pdf";
+                Excel.Application excelApp = new Excel.Application();
+                Excel.Workbook wb = null;
+                Excel.Worksheet ws = null;
+
+                try
+                {
+                    wb = excelApp.Workbooks.Open(path1);
+                    ws = wb.Worksheets.get_Item(1) as Excel.Worksheet;
+                    ws.Cells[5, 6] = "  " + date.Substring(0, 4) + "년 " + date.Substring(4, 2) + "월 " + date.Substring(6, 2) + "일   제 " + patientID + " 호";
+                    ws.Cells[7, 8] = "  " + dbc.VisitorTable.Rows[0]["patientName"].ToString();
+                    ws.Cells[8, 8] = "  " + dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString().Substring(0, 8) + security.AESDecrypt128(dbc.VisitorTable.Rows[0]["PatientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
+                    ws.Cells[5, 25] = "  " + dbc.Hospiname;
+                    ws.Cells[6, 25] = "  " + dbc.HospiTell;
+                    ws.Cells[7, 25] = "  " + dbc.HospiTell;
+                    ws.Cells[22, 5] = "교부일로부터 (    7    )일간";
+                    for (int i = 0; i < DBGrid.Rows.Count; i++)
+                    {
+                        ws.Cells[10 + i, 1] = "  " + DBGrid.Rows[i].Cells[0].FormattedValue.ToString();
+                        ws.Cells[10 + i, 17] = "  " + DBGrid.Rows[i].Cells[1].FormattedValue.ToString();
+                        ws.Cells[10 + i, 20] = "  " + DBGrid.Rows[i].Cells[2].FormattedValue.ToString();
+                        ws.Cells[10 + i, 23] = "  " + DBGrid.Rows[i].Cells[3].FormattedValue.ToString();
+                    }
+
+                    ws.SaveAs(path2);
+                    Workbook workbook = new Workbook();
+                    workbook.LoadFromFile(path2, ExcelVersion.Version2010);
+                    workbook.SaveToFile(path3, Spire.Xls.FileFormat.PDF);
+
+                    File.Exists(path1);
+                    File.Exists(path2);
+                    wb.Close(false);
+                    excelApp.Quit();
+                    File.Delete(path2);
+                    System.Diagnostics.Process.Start(path3);
+
+                    if(prescriptionType == 1)
+                    {
+                        if (checkBox1.Checked == true)
+                        {
+                            Payment payment = new Payment();
+                            payment.PatientID = textBoxChartNum.Text;
+                            payment.PatientName = patientName.Text;
+                            payment.SubjectName = textBoxSubject.Text;
+                            payment.ReceptionDate = textBoxReceptionDate.Text.Substring(2, textBoxReceptionDate.Text.Length - 2);
+                            payment.ReceptionTime = textBoxHour.Text + textBoxMinute.Text;
+                            payment.ShowDialog();
+                        }
+                    }
+                    Dispose();
+
+                }
+                catch
+                {
+                    MessageBox.Show("오류");
+                }
             }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

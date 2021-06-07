@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -56,6 +56,16 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "환자 정보";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(524, 24);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(228, 32);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "종 료";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -68,15 +78,6 @@
             this.label5.Text = "수진자명";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(349, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(145, 23);
-            this.textBox2.TabIndex = 49;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -88,6 +89,15 @@
             this.label4.TabIndex = 48;
             this.label4.Text = "차트번호";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(349, 29);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(145, 23);
+            this.textBox2.TabIndex = 49;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
@@ -109,22 +119,11 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "의료 영상";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(524, 24);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(228, 32);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "종 료";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(16, 22);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(738, 666);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 49;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
