@@ -183,7 +183,7 @@ namespace hospi_hospital_only
                 
                 dbc.FindOpinion(Convert.ToInt32(patientID), receptionDate, receptionTime);
                 dbc.PrescriptionTable = dbc.DS.Tables["Prescription"];
-                for(int i=0; i<dbc.PrescriptionTable.Rows.Count; i++)
+                if(dbc.PrescriptionTable.Rows.Count != 0)
                 {
                     Medicine.Add(dbc.PrescriptionTable.Rows[i][1].ToString());
                 }

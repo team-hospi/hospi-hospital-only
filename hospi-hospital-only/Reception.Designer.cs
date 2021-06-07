@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -145,6 +145,7 @@
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.병원정보설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.접수자변경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -345,7 +346,7 @@
             this.button11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button11.Location = new System.Drawing.Point(495, 145);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(130, 33);
+            this.button11.Size = new System.Drawing.Size(130, 37);
             this.button11.TabIndex = 21;
             this.button11.Text = "접수";
             this.button11.UseVisualStyleBackColor = true;
@@ -354,7 +355,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(339, 159);
+            this.checkBox1.Location = new System.Drawing.Point(339, 163);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(150, 19);
             this.checkBox1.TabIndex = 32;
@@ -375,7 +376,7 @@
             this.textBoxPurpose.Location = new System.Drawing.Point(111, 123);
             this.textBoxPurpose.Multiline = true;
             this.textBoxPurpose.Name = "textBoxPurpose";
-            this.textBoxPurpose.Size = new System.Drawing.Size(192, 55);
+            this.textBoxPurpose.Size = new System.Drawing.Size(192, 59);
             this.textBoxPurpose.TabIndex = 26;
             // 
             // label23
@@ -397,7 +398,7 @@
             this.label21.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label21.Location = new System.Drawing.Point(16, 123);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(88, 55);
+            this.label21.Size = new System.Drawing.Size(88, 59);
             this.label21.TabIndex = 25;
             this.label21.Text = "당일내원메모\r\n(내원 목적)";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -530,14 +531,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -735,6 +736,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.button22);
             this.groupBox3.Controls.Add(this.button19);
@@ -771,7 +773,7 @@
             this.button22.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button22.Location = new System.Drawing.Point(11, 521);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(143, 33);
+            this.button22.Size = new System.Drawing.Size(143, 37);
             this.button22.TabIndex = 42;
             this.button22.Text = "진료 보류";
             this.button22.UseVisualStyleBackColor = true;
@@ -782,7 +784,7 @@
             this.button19.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button19.Location = new System.Drawing.Point(161, 521);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(143, 33);
+            this.button19.Size = new System.Drawing.Size(143, 37);
             this.button19.TabIndex = 41;
             this.button19.Text = "접수 수정";
             this.button19.UseVisualStyleBackColor = true;
@@ -805,7 +807,7 @@
             this.button12.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button12.Location = new System.Drawing.Point(310, 521);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(143, 33);
+            this.button12.Size = new System.Drawing.Size(143, 37);
             this.button12.TabIndex = 40;
             this.button12.Text = "접수 취소";
             this.button12.UseVisualStyleBackColor = true;
@@ -1132,7 +1134,7 @@
             this.button15.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button15.Location = new System.Drawing.Point(161, 521);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(143, 33);
+            this.button15.Size = new System.Drawing.Size(143, 37);
             this.button15.TabIndex = 42;
             this.button15.Text = "처방 확인";
             this.button15.UseVisualStyleBackColor = true;
@@ -1143,7 +1145,7 @@
             this.button14.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button14.Location = new System.Drawing.Point(310, 521);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(143, 33);
+            this.button14.Size = new System.Drawing.Size(143, 37);
             this.button14.TabIndex = 41;
             this.button14.Text = "수납";
             this.button14.UseVisualStyleBackColor = true;
@@ -1266,6 +1268,7 @@
             this.groupBox11.TabIndex = 31;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "날짜 정보";
+            this.groupBox11.Enter += new System.EventHandler(this.groupBox11_Enter);
             // 
             // button21
             // 
@@ -1404,12 +1407,26 @@
             this.접수자변경ToolStripMenuItem.Text = "접수자 변경";
             this.접수자변경ToolStripMenuItem.Click += new System.EventHandler(this.접수자변경ToolStripMenuItem_Click);
             // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(312, 525);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(139, 29);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "보류환자 \r\n접수취소 불가";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Visible = false;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // Reception
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1601, 683);
+            this.ClientSize = new System.Drawing.Size(1601, 688);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.label1);
@@ -1575,5 +1592,6 @@
         private System.Windows.Forms.ToolStripMenuItem 접수자변경ToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeader21;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
     }
 }

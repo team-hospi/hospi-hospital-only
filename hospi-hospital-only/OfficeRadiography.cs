@@ -122,7 +122,9 @@ namespace hospi_hospital_only
 
             byte[] imageByte = (byte[])dbc.ImageTable.Rows[0]["imageSource"];
             newImage = byteArrayToImage(imageByte);
+
             pictureBox1.Image = newImage;
+
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)

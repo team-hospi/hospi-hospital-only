@@ -195,7 +195,7 @@ namespace hospi_hospital_only
                 dbc.DBAdapter.Update(dbc.DS, "reception");
                 dbc.DS.AcceptChanges();
 
-                MessageBox.Show("완료");
+                MessageBox.Show("저장이 완료되었습니다", "알림");
 
                 button1_Click(sender, e);
                 textBox2.Clear();
