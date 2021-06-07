@@ -180,20 +180,20 @@ namespace hospi_hospital_only
             }
             if (mobileUse == true)
             {
-                MessageBox.Show(dbc.MobileTable.Rows[0][0].ToString());
                 dbc.FindOpinion(Convert.ToInt32(patientID), receptionDate, receptionTime);
                 dbc.PrescriptionTable = dbc.DS.Tables["Prescription"];
-                for(int i=0; i<dbc.PrescriptionTable.Rows.Count; i++)
+                if(dbc.PrescriptionTable.Rows.Count != 0)
                 {
-                    Medicine.Add(dbc.PrescriptionTable.Rows[i][1].ToString());
+                    for (int i = 0; i < dbc.PrescriptionTable.Rows.Count; i++)
+                    {
+                        Medicine.Add(dbc.PrescriptionTable.Rows[i][1].ToString());
+                    }
+                    prescription.PrescriptionAdd(subjectName, dbc.MobileTable.Rows[0][0].ToString(), dbc.PrescriptionTable.Rows[0][0].ToString(), Medicine);
+                    dbc.Delay(200);
+                    reception.FindDocument(DBClass.hospiID, "20" + receptionDate, receptionTime.Substring(0, 2) + ":" + receptionTime.Substring(2, 2), subjectName);
+                    dbc.Delay(200);
+                    reception.Delete_Reception();
                 }
-                prescription.PrescriptionAdd(subjectName, dbc.MobileTable.Rows[0][0].ToString(), dbc.PrescriptionTable.Rows[0][0].ToString(), Medicine);
-                dbc.Delay(200);
-                reception.FindDocument(DBClass.hospiID, "20"+receptionDate, receptionTime.Substring(0,2) + ":" + receptionTime.Substring(2,2), subjectName);
-                dbc.Delay(200);
-                reception.Delete_Reception();
-                
-
             }
         }
     }
