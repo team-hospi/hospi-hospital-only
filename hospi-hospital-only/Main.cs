@@ -56,7 +56,7 @@ namespace hospi_hospital_only
                 LoginLabel.Visible = true;
                 Thread rTh = new Thread(Login);
                 rTh.Start();
-                dbc.Delay(1500);
+                dbc.Delay(3000);
 
                 this.Visible = false;
 
