@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxPurpose = new System.Windows.Forms.TextBox();
             this.textBoxAge = new System.Windows.Forms.TextBox();
@@ -48,12 +49,16 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.labelPresctiptionEnd = new System.Windows.Forms.Label();
             this.buttonNextReception = new System.Windows.Forms.Button();
             this.buttonReceptionEnd = new System.Windows.Forms.Button();
             this.buttonReceptionList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxOpinion = new System.Windows.Forms.TextBox();
             this.listView4 = new System.Windows.Forms.ListView();
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -99,10 +104,7 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxOpinion = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -328,6 +330,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "진료 메뉴";
             // 
+            // button6
+            // 
+            this.button6.Enabled = false;
+            this.button6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button6.Location = new System.Drawing.Point(218, 22);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(89, 32);
+            this.button6.TabIndex = 44;
+            this.button6.Text = "진료 보류";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Enabled = false;
+            this.button5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Location = new System.Drawing.Point(313, 22);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(89, 32);
+            this.button5.TabIndex = 43;
+            this.button5.Text = "의료 영상";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // labelPresctiptionEnd
             // 
             this.labelPresctiptionEnd.AutoSize = true;
@@ -401,6 +427,24 @@
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "처방";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 290);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 15);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "의사 소견";
+            // 
+            // textBoxOpinion
+            // 
+            this.textBoxOpinion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBoxOpinion.Location = new System.Drawing.Point(17, 323);
+            this.textBoxOpinion.Multiline = true;
+            this.textBoxOpinion.Name = "textBoxOpinion";
+            this.textBoxOpinion.Size = new System.Drawing.Size(372, 217);
+            this.textBoxOpinion.TabIndex = 43;
             // 
             // listView4
             // 
@@ -860,47 +904,10 @@
             this.label8.Text = "Hospi";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button5
+            // timer1
             // 
-            this.button5.Enabled = false;
-            this.button5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(313, 22);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 32);
-            this.button5.TabIndex = 43;
-            this.button5.Text = "의료 영상";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Enabled = false;
-            this.button6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button6.Location = new System.Drawing.Point(218, 22);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 32);
-            this.button6.TabIndex = 44;
-            this.button6.Text = "진료 보류";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // textBoxOpinion
-            // 
-            this.textBoxOpinion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxOpinion.Location = new System.Drawing.Point(17, 323);
-            this.textBoxOpinion.Multiline = true;
-            this.textBoxOpinion.Name = "textBoxOpinion";
-            this.textBoxOpinion.Size = new System.Drawing.Size(372, 217);
-            this.textBoxOpinion.TabIndex = 43;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 290);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(59, 15);
-            this.label12.TabIndex = 44;
-            this.label12.Text = "의사 소견";
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Office
             // 
@@ -1024,5 +1031,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxOpinion;
+        private System.Windows.Forms.Timer timer1;
     }
 }
