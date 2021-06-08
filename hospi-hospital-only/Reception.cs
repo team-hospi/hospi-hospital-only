@@ -516,9 +516,10 @@ namespace hospi_hospital_only
         // 병원정보설정 버튼
         private void button16_Click(object sender, EventArgs e)
         {
-            Hospital_Setting hospital_Setting = new Hospital_Setting();
-            hospital_Setting.HospitalID = hospitalID;
-            hospital_Setting.ShowDialog();
+            CheckMasterPW checkMasterPW = new CheckMasterPW();
+            checkMasterPW.HospitalID = hospitalID;
+            checkMasterPW.FormNum = 1;
+            checkMasterPW.ShowDialog();
         }
 
         // 접수된 예약 버튼
@@ -1194,10 +1195,13 @@ namespace hospi_hospital_only
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            comboBoxTime2.Text = DateTime.Now.ToString("mm");
-            if(comboBoxTime2.Text == "59")
+            if (checkBox2.Checked == true)      // 현재 체크박스가 체크상태일때만 시간 수정
             {
-                comboBoxTime1.Text = DateTime.Now.ToString("HH");
+                comboBoxTime2.Text = DateTime.Now.ToString("mm");
+                if (comboBoxTime2.Text == "59")
+                {
+                    comboBoxTime1.Text = DateTime.Now.ToString("HH");
+                }
             }
 
             //
