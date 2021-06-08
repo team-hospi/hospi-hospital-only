@@ -18,6 +18,8 @@ namespace hospi_hospital_only
         DBClass dbc2 = new DBClass(); // reception, receptionist
         DBClass dbc3 = new DBClass(); // reception 조회 삭제
         DBClass dbc4 = new DBClass();
+        DBClass dbc5 = new DBClass();   // timer 에서 사용
+        
         Inquiry inquiry = new Inquiry();
         Reserve reserve = new Reserve();
         ReceptionList receptionlist = new ReceptionList();
@@ -406,6 +408,8 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show(DE.Message);
             }
+
+            timer1.Start();
         }
 
         // 초진등록
@@ -556,9 +560,11 @@ namespace hospi_hospital_only
                     DBGrid.Columns.Add("PatientID", "차트번호");
                     DBGrid.Columns.Add("PatientName", "이름");
                     DBGrid.Columns.Add("SecurityNumber", "주민번호");
+                    DBGrid.Columns[0].Width = 75;
+                    DBGrid.Columns[2].Width = 120;
 
                     // GirdView 띄우기
-                    for(int i=0; i<dbc.VisitorTable.Rows.Count; i++)
+                    for (int i=0; i<dbc.VisitorTable.Rows.Count; i++)
                     {
                         try
                         {
@@ -672,6 +678,9 @@ namespace hospi_hospital_only
                             TextBoxClear();
                             patientName.Clear();
                             comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
+                            DBGrid.DataSource = null;
+                            DBGrid.Rows.Clear();
+                            DBGrid.Columns.Clear();
                             patientName.Focus();
 
                             if (checkBox2.Checked == false)
@@ -683,6 +692,7 @@ namespace hospi_hospital_only
                             ReceptionUpdate(1);
 
                             ReceptionListUpdate(0);
+
                         }
                         catch(Exception ex)
                         {
@@ -723,6 +733,9 @@ namespace hospi_hospital_only
                         patientName.Clear();
                         comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
                         DBGrid.DataSource = null;
+                        DBGrid.Rows.Clear();
+                        DBGrid.Columns.Clear();
+
                         patientName.Focus();
 
                         if (checkBox2.Checked == false)
@@ -733,7 +746,7 @@ namespace hospi_hospital_only
                         // 접수현황 업데이트
                         ReceptionUpdate(1);
                         ReceptionListUpdate(0);
-
+                        DBGrid.DataSource = null;
                     }
                     
                 }
@@ -1181,7 +1194,51 @@ namespace hospi_hospital_only
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            comboBoxTime2.Text = DateTime.Now.ToString("mm");
+            if(comboBoxTime2.Text == "59")
+            {
+                comboBoxTime1.Text = DateTime.Now.ToString("HH");
+            }
+
+            //
+            if(button2.Text == "▶ 진료대기 ◀")
+            {
+                dbc5.Reception_Update(dateTimePicker2.Value.ToString("yy-MM-dd"), 1);
+                dbc5.ReceptionTable = dbc5.DS.Tables["reception"];
+                if(dbc5.ReceptionTable.Rows.Count != listView1.Items.Count)
+                {
+                    button2_Click(sender, e);
+                }
+            }
+            else if(button5.Text == "▶ 진료보류 ◀")
+            {
+                dbc5.Reception_Update(dateTimePicker2.Value.ToString("yy-MM-dd"), 4);
+                dbc5.ReceptionTable = dbc5.DS.Tables["reception"];
+                if (dbc5.ReceptionTable.Rows.Count != listView1.Items.Count)
+                {
+                    button5_Click(sender, e);
+                }
+            }
+
+
+            if (button8.Text == "▶ 수납대기 ◀")
+            {
+                dbc5.Reception_Update(dateTimePicker2.Value.ToString("yy-MM-dd"), 2);
+                dbc5.ReceptionTable = dbc5.DS.Tables["reception"];
+                if (dbc5.ReceptionTable.Rows.Count != listView3.Items.Count)
+                {
+                    button8_Click(sender, e);
+                }
+            }
+            else if (button13.Text == "▶ 진료보류 ◀")
+            {
+                dbc5.Reception_Update(dateTimePicker2.Value.ToString("yy-MM-dd"), 3);
+                dbc5.ReceptionTable = dbc5.DS.Tables["reception"];
+                if (dbc5.ReceptionTable.Rows.Count != listView3.Items.Count)
+                {
+                    button13_Click(sender, e);
+                }
+            }
         }
 
      
