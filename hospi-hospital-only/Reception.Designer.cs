@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -518,14 +518,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -1381,7 +1381,7 @@
             // 문의확인ToolStripMenuItem
             // 
             this.문의확인ToolStripMenuItem.Name = "문의확인ToolStripMenuItem";
-            this.문의확인ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.문의확인ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.문의확인ToolStripMenuItem.Text = "문의 내역";
             this.문의확인ToolStripMenuItem.Click += new System.EventHandler(this.문의확인ToolStripMenuItem_Click);
             // 
@@ -1397,14 +1397,14 @@
             // 병원정보설정ToolStripMenuItem
             // 
             this.병원정보설정ToolStripMenuItem.Name = "병원정보설정ToolStripMenuItem";
-            this.병원정보설정ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.병원정보설정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.병원정보설정ToolStripMenuItem.Text = "병원 정보 설정";
             this.병원정보설정ToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정ToolStripMenuItem_Click);
             // 
             // 접수자변경ToolStripMenuItem
             // 
             this.접수자변경ToolStripMenuItem.Name = "접수자변경ToolStripMenuItem";
-            this.접수자변경ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.접수자변경ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.접수자변경ToolStripMenuItem.Text = "접수자 변경";
             this.접수자변경ToolStripMenuItem.Click += new System.EventHandler(this.접수자변경ToolStripMenuItem_Click);
             // 
