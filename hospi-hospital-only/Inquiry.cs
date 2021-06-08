@@ -69,33 +69,37 @@ namespace hospi_hospital_only
         public void UpdateWait(string hospitalid)
         {
             CollectionReference citiesRef = fs.Collection("inquiryList");
-            Query query = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid).WhereEqualTo("checkedAnswer", false);
+            Query query = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("checkedAnswer", false);
 
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
                 DateTime dt = DateTime.Now;
                 long ss = Convert.ToInt64(dt.AddSeconds(-5).ToString("yyyyMMddHHmmss"));
-
-                Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
-                    QuerySnapshot snap = await qref.GetSnapshotAsync();
-                    foreach (DocumentSnapshot docsnap in snap)
+                foreach (DocumentChange change in snapshot.Changes)
+                {
+                    if (change.ChangeType.ToString() == "Added")
                     {
-                        Inquiry fp = docsnap.ConvertTo<Inquiry>();
-                        if (docsnap.Exists)
+                        Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("checkedAnswer", false);
+                        QuerySnapshot snap = await qref.GetSnapshotAsync();
+                        foreach (DocumentSnapshot docsnap in snap)
                         {
-                            if (fp.checkedAnswer == false && Convert.ToInt64(ConvertDate(fp.timestamp).ToString("yyyyMMddHHmmss")) >= ss)
+                            Inquiry fp = docsnap.ConvertTo<Inquiry>();
+                            if (docsnap.Exists)
                             {
-                                new ToastContentBuilder()
-                                    .AddArgument("action", "viewConversation")
-                                    .AddArgument("conversationId", 9813)
-                                    .AddText("HOSPI")
-                                    .AddText("새로운 문의가 등록 되었습니다!!")
-                                    .Show();
-                                
+                                if (fp.checkedAnswer == false && Convert.ToInt64(ConvertDate(fp.timestamp).ToString("yyyyMMddHHmmss")) >= ss)
+                                {
+                                    new ToastContentBuilder()
+                                        .AddArgument("action", "viewConversation")
+                                        .AddArgument("conversationId", 9813)
+                                        .AddText("HOSPI")
+                                        .AddText("새로운 문의가 등록 되었습니다!!")
+                                        .Show();
+
+                                }
                             }
                         }
                     }
-                
+                }
             });
         }
 
@@ -105,6 +109,12 @@ namespace hospi_hospital_only
             dtDateTime = dtDateTime.AddMilliseconds(timestamp).ToLocalTime();
             return dtDateTime;
 
+        }
+
+        public static long MillisecondsTimestamp(DateTime date)
+        {
+            DateTime baseDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return (long)(date.ToUniversalTime() - baseDate).TotalMilliseconds;
         }
     }
 }
