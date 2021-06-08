@@ -36,7 +36,7 @@ namespace hospi_hospital_only
                 intLFrmLoading = 1;
                 //string strhtml = lfn_html();
                 //webBrowser1.DocumentText = strhtml; // html문서를 심을시.. 오류가 남
-                webBrowser1.Navigate("https://hospipi.kro.kr/address.do");
+                webBrowser1.Navigate("https://hospipi.kro.kr/AddressSearch/Form");
                 webBrowser1.ObjectForScripting = this;
 
                 this.Tag = null;
