@@ -15,7 +15,24 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         DataTable watingTable;
         string date;
-        int subjectID;
+        string subjectID;
+        int patientEnter;   // 현재 office에서 진료중인 환자가 있으면 1, 진료중인 환자가 없으면 0 
+
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+        public string SubjectID
+        {
+            get { return subjectID; }
+            set { subjectID = value; }
+        }
+        public int PatientEnter
+        {
+            get { return patientEnter; }
+            set { patientEnter = value; }
+        }
 
         public Office_WaitingList()
         {
@@ -30,12 +47,40 @@ namespace hospi_hospital_only
 
         private void Office_WaitingList_Load(object sender, EventArgs e)
         {
-            
-            for(int i=0; i<watingTable.Rows.Count; i++)
+            textBoxSubName.Text = subjectID;
+
+            dbc.Reception_Office2(date, subjectID);
+            dbc.ReceptionTable = dbc.DS.Tables["reception"];
+
+            if (dbc.ReceptionTable.Rows.Count != 0)
+            {
+                for (int i = 0; i < dbc.ReceptionTable.Rows.Count; i++)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = (listView1.Items.Count + 1).ToString("00");
+                    item.SubItems.Add(dbc.ReceptionTable.Rows[i]["receptionTime"].ToString().Substring(0, 2) + " : " + dbc.ReceptionTable.Rows[i]["receptionTime"].ToString().Substring(2, 2));
+                    item.SubItems.Add(dbc.ReceptionTable.Rows[i]["patientID"].ToString());
+                    item.SubItems.Add(dbc.ReceptionTable.Rows[i]["patientName"].ToString());
+                    // Age
+                    int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
+                    if (dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "1" || dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "2" || dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "0")
+                    {
+                        item.SubItems.Add((year - Convert.ToInt32(dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(0, 2)) - 1899).ToString());
+                    }
+                    else if (dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "3" || dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "4" || dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(7, 1) == "5")
+                    {
+                        item.SubItems.Add((year - Convert.ToInt32(dbc.ReceptionTable.Rows[i]["patientBirthCode"].ToString().Substring(0, 2)) - 1999).ToString());
+                    }
+                    item.SubItems.Add(dbc.ReceptionTable.Rows[i]["receptionistName"].ToString());
+                    item.SubItems.Add("의료영상 등록");
+                    listView1.Items.Add(item);
+                }
+            }
+            for (int i = 0; i < watingTable.Rows.Count; i++)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = (listView1.Items.Count + 1).ToString("00");
-                item.SubItems.Add(watingTable.Rows[i]["receptionTime"].ToString().Substring(0,2)+ " : " + watingTable.Rows[i]["receptionTime"].ToString().Substring(2, 2)) ;
+                item.SubItems.Add(watingTable.Rows[i]["receptionTime"].ToString().Substring(0, 2) + " : " + watingTable.Rows[i]["receptionTime"].ToString().Substring(2, 2));
                 item.SubItems.Add(watingTable.Rows[i]["patientID"].ToString());
                 item.SubItems.Add(watingTable.Rows[i]["patientName"].ToString());
                 // Age
@@ -49,11 +94,18 @@ namespace hospi_hospital_only
                     item.SubItems.Add((year - Convert.ToInt32(watingTable.Rows[i]["patientBirthCode"].ToString().Substring(0, 2)) - 1999).ToString());
                 }
                 item.SubItems.Add(watingTable.Rows[i]["receptionistName"].ToString());
+                item.SubItems.Add("일반 진료 대기중");
                 listView1.Items.Add(item);
             }
-            if(listView1.Items.Count > 0)
+
+            if (patientEnter == 0)
             {
-                label1.Visible = true;
+                //label1.Visible = false;
+            }
+            else if (patientEnter == 1)
+            {
+                listView1.Items[0].BackColor = Color.Yellow;
+                //label1.Visible = true;
             }
         }
 
