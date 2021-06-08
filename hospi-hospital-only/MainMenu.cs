@@ -14,7 +14,6 @@ namespace hospi_hospital_only
     public partial class MainMenu : Form
     {
         string hospitalID;
-
         DBClass dbc = new DBClass();
 
         Main main = new Main();
@@ -105,8 +104,6 @@ namespace hospi_hospital_only
             string time = DateTime.Now.ToString("tt hh:mm", cultures);
             labelTime.Text = time;
 
-            //inquiry.checkinquiry(hospitalID);
-            //inquirycount.Text = Inquiry.count.ToString(); ====> 파이어베이스 용량 문제로 보류
         }
 
         // 진료실
@@ -116,9 +113,10 @@ namespace hospi_hospital_only
             {
                 Office office = new Office();
                 office.SubjectID = comboBoxOffice.Text;
-                this.Visible = false;
-                office.ShowDialog();
-                this.Visible = true;
+
+                office.Show();
+
+
                 comboBoxOffice.Text = "진료과목 선택";
             }
             else
@@ -135,9 +133,9 @@ namespace hospi_hospital_only
                 Reception reception = new Reception();
                 reception.HospitalID = hospitalID;
                 reception.ReceptionistName = comboBoxReceptionist.Text;
-                this.Visible = false;
-                reception.ShowDialog();
-                this.Visible = true;
+
+                reception.Show();
+
                 comboBoxReceptionist.Text = "접수자 선택";
             }
             else
