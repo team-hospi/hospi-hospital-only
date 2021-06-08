@@ -226,7 +226,6 @@ namespace hospi_hospital_only
             CheckMasterPW checkMaserPW = new CheckMasterPW();
             checkMaserPW.FormNum = 6;
             checkMaserPW.Show();
-
         }
 
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)

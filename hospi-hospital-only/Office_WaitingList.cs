@@ -100,12 +100,10 @@ namespace hospi_hospital_only
 
             if (patientEnter == 0)
             {
-                //label1.Visible = false;
             }
             else if (patientEnter == 1)
             {
                 listView1.Items[0].BackColor = Color.Yellow;
-                //label1.Visible = true;
             }
         }
 
