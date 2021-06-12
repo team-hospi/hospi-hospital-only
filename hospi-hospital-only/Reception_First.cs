@@ -96,5 +96,31 @@ namespace hospi_hospital_only
         {
             Dispose();
         }
+
+        private void textBoxB1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                e.Handled = true;
+            }
+            if(textBoxB1.Text.Length>5)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxB2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                e.Handled = true;
+            }
+            if (textBoxB2.Text.Length > 6)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -171,9 +171,11 @@
             // 
             this.textBoxB2.Location = new System.Drawing.Point(213, 93);
             this.textBoxB2.Name = "textBoxB2";
+            this.textBoxB2.PasswordChar = '*';
             this.textBoxB2.Size = new System.Drawing.Size(89, 23);
             this.textBoxB2.TabIndex = 7;
             this.textBoxB2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxB2_KeyPress);
             // 
             // label17
             // 
@@ -193,6 +195,7 @@
             this.textBoxB1.Name = "textBoxB1";
             this.textBoxB1.Size = new System.Drawing.Size(90, 23);
             this.textBoxB1.TabIndex = 5;
+            this.textBoxB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxB1_KeyPress);
             // 
             // label18
             // 
