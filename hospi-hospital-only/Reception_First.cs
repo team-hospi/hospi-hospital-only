@@ -53,7 +53,7 @@ namespace hospi_hospital_only
                 MessageBox.Show("주민등록번호 형식이 잘못되었습니다.", "알림");
                 // 문자열 입력방지 추가해야함
             }
-            else if(phone1.TextLength != 3 || phone2.TextLength != 4 || phone3.TextLength != 4)
+            else if(phone1.TextLength != 3 || (phone2.TextLength != 4 && phone2.TextLength != 3) || phone3.TextLength != 4)
             {
                 MessageBox.Show("전화번호 형식이 잘못되었습니다.", "알림");
                 // 문자열 입력방지 추가해야함
@@ -104,7 +104,7 @@ namespace hospi_hospital_only
             {
                 e.Handled = true;
             }
-            if(textBoxB1.Text.Length>5)
+            if(textBoxB1.Text.Length>5 && e.KeyChar != Convert.ToChar(Keys.Back))
             {
                 e.Handled = true;
             }
@@ -117,7 +117,43 @@ namespace hospi_hospital_only
             {
                 e.Handled = true;
             }
-            if (textBoxB2.Text.Length > 6)
+            if (textBoxB2.Text.Length > 6 && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void phone1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                e.Handled = true;
+            }
+            if (phone1.Text.Length > 2 && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void phone2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                e.Handled = true;
+            }
+            if (phone2.Text.Length > 3 && e.KeyChar != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void phone3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+            {
+                e.Handled = true;
+            }
+            if (phone3.Text.Length > 3 && e.KeyChar != Convert.ToChar(Keys.Back))
             {
                 e.Handled = true;
             }

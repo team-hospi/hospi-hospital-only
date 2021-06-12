@@ -120,6 +120,7 @@
             this.phone3.Size = new System.Drawing.Size(62, 23);
             this.phone3.TabIndex = 20;
             this.phone3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.phone3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phone3_KeyPress);
             // 
             // phone2
             // 
@@ -128,6 +129,7 @@
             this.phone2.Size = new System.Drawing.Size(63, 23);
             this.phone2.TabIndex = 19;
             this.phone2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.phone2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phone2_KeyPress);
             // 
             // phone1
             // 
@@ -135,6 +137,7 @@
             this.phone1.Name = "phone1";
             this.phone1.Size = new System.Drawing.Size(63, 23);
             this.phone1.TabIndex = 18;
+            this.phone1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phone1_KeyPress);
             // 
             // label12
             // 
