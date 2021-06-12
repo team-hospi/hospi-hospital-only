@@ -217,7 +217,7 @@ namespace hospi_hospital_only
                 item.SubItems.Add(Check);
                 listView1.Items.Add(item);
 
-                this.listView1.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                this.listView1.ListViewItemSorter = new ListviewItemComparer(1, SortOrder.Ascending);
                 listView1.Sort();
             }
         }
@@ -235,13 +235,13 @@ namespace hospi_hospital_only
         class ListviewItemComparer : IComparer
         {
             private int col;
-            public string sort = "asc";
+            public SortOrder sort;
             public ListviewItemComparer()
             {
                 col = 0;
             }
 
-            public ListviewItemComparer(int column, string sort)
+            public ListviewItemComparer(int column, SortOrder sort)
             {
                 col = column;
                 this.sort = sort;
@@ -249,41 +249,24 @@ namespace hospi_hospital_only
 
             public int Compare(object x, object y)
             {
-                if (sort == "asc")
-                {
-                    return String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text);
-                }
-                else
-                {
-                    return String.Compare(((ListViewItem)y).SubItems[col].Text, ((ListViewItem)x).SubItems[col].Text);
-                }
+                int returnVal = -1;
+                returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text, ((ListViewItem)y).SubItems[col].Text); // Determine whether the sort order is descending. 
+                if (sort == SortOrder.Descending) // Invert the value returned by String.Compare. 
+                    returnVal *= -1; return returnVal;
+
+            
             }
         }
 
         //리스트뷰 컬럼 선택시 정렬
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (e.Column == 0)
-            {
-                return;
-            }
-
-            listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text.Replace("", "");
-            listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text.Replace("", "");
-
-
-            if (this.listView1.Sorting == SortOrder.Ascending || listView1.Sorting == SortOrder.None)
-            {
-                this.listView1.ListViewItemSorter = new ListviewItemComparer(e.Column, "desc");
+            if (listView1.Sorting == SortOrder.Ascending)
                 listView1.Sorting = SortOrder.Descending;
-                listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text + "";
-            }
             else
-            {
-                this.listView1.ListViewItemSorter = new ListviewItemComparer(e.Column, "asc");
                 listView1.Sorting = SortOrder.Ascending;
-                listView1.Columns[e.Column].Text = listView1.Columns[e.Column].Text + "";
-            }
+
+            listView1.ListViewItemSorter = new ListviewItemComparer(e.Column, listView1.Sorting);
 
             listView1.Sort();
         }

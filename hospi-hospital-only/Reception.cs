@@ -48,6 +48,7 @@ namespace hospi_hospital_only
         int acceptReserve = 0;
         int prescriptionType = 0; // 1:수납대기 상태에서 2:수납완료 상태에서
         int updatewait = 0;
+        bool patientSearch = false;
 
         public Reception()
         {
@@ -836,12 +837,19 @@ namespace hospi_hospital_only
                 if (listView1.Items[i].SubItems[3].Text == textBox2.Text)
                 {
                     listView1.Items[i].BackColor = Color.Yellow;
+                    patientSearch = true;
                 }
                 else
                 {
                     listView1.Items[i].BackColor = Color.White;
                 }
             }
+
+            if (patientSearch == false)
+            {
+                MessageBox.Show("검색 결과가 없습니다.", "알림");
+            }
+            patientSearch = false;
             textBox2.Clear();
         }
         // 접수현황 수진자명 검색 엔터이벤트
