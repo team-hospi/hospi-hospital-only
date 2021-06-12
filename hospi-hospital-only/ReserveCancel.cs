@@ -54,7 +54,7 @@ namespace hospi_hospital_only
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text != "" && richTextBox1.Text != " ")
+            if (richTextBox1.Text.Trim() != "")
             {
                 if (status == "승인됨")
                 {
