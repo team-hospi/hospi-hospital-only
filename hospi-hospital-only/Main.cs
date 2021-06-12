@@ -44,11 +44,13 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show("아이디를 입력하세요.", "알림");
                 textBoxHospitalID.Focus();
+                button6.Enabled = true;
             }
             else if (textBoxPW.Text == "")
             {
                 MessageBox.Show("비밀번호를 입력하세요.", "알림");
                 textBoxPW.Focus();
+                button6.Enabled = true;
             }
             else
             {
