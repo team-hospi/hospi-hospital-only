@@ -82,5 +82,10 @@ namespace hospi_hospital_only
         {
             Dispose();
         }
+
+        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

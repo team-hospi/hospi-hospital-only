@@ -151,6 +151,7 @@
             this.comboBoxReceptionist.Name = "comboBoxReceptionist";
             this.comboBoxReceptionist.Size = new System.Drawing.Size(135, 23);
             this.comboBoxReceptionist.TabIndex = 44;
+            this.comboBoxReceptionist.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxReceptionist_KeyPress);
             // 
             // label3
             // 
@@ -202,6 +203,7 @@
             this.comboBoxSubjcet.Name = "comboBoxSubjcet";
             this.comboBoxSubjcet.Size = new System.Drawing.Size(135, 23);
             this.comboBoxSubjcet.TabIndex = 28;
+            this.comboBoxSubjcet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxSubjcet_KeyPress);
             // 
             // label6
             // 
@@ -253,6 +255,7 @@
             this.comboBoxTime2.Name = "comboBoxTime2";
             this.comboBoxTime2.Size = new System.Drawing.Size(45, 23);
             this.comboBoxTime2.TabIndex = 41;
+            this.comboBoxTime2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxTime2_KeyPress);
             // 
             // comboBoxTime1
             // 
@@ -274,6 +277,7 @@
             this.comboBoxTime1.Name = "comboBoxTime1";
             this.comboBoxTime1.Size = new System.Drawing.Size(45, 23);
             this.comboBoxTime1.TabIndex = 40;
+            this.comboBoxTime1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxTime1_KeyPress);
             // 
             // label1
             // 
