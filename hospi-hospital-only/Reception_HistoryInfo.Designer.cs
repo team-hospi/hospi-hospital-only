@@ -56,7 +56,7 @@
             this.groupBox1.Size = new System.Drawing.Size(270, 171);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "방문내역 상제";
+            this.groupBox1.Text = "방문내역 상세";
             // 
             // button2
             // 
@@ -90,7 +90,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Reception_HistoryInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ReceptionInfo";
+            this.Text = "이전내역";
             this.Load += new System.EventHandler(this.Reception_HistoryInfo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
