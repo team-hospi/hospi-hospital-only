@@ -196,6 +196,7 @@ namespace hospi_hospital_only
         private void comboBoxMaster_SelectedIndexChanged(object sender, EventArgs e)
         {
             masterID = comboBoxMaster.SelectedIndex;
+            textBoxPW.Clear();
             textBoxPW.Focus();
         }
 
