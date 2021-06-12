@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterMenu));
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.buttonInfomation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -142,6 +143,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MasterMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "관리자 메뉴";

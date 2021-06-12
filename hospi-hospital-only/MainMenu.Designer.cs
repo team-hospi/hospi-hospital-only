@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxReceptionist = new System.Windows.Forms.ComboBox();
             this.buttonReception = new System.Windows.Forms.Button();
@@ -438,6 +439,7 @@
             this.Controls.Add(this.buttonDispose);
             this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "메인 메뉴";

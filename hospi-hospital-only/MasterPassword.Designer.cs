@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterPassword));
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.pwLabel2 = new System.Windows.Forms.Label();
             this.pwLabel1 = new System.Windows.Forms.Label();
@@ -179,6 +180,7 @@
             this.ClientSize = new System.Drawing.Size(369, 213);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MasterPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "관리자 비밀번호 변경";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateReceptionist));
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.buttonHistory = new System.Windows.Forms.Button();
             this.labelID = new System.Windows.Forms.Label();
@@ -231,6 +232,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox11);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateReceptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "접수자 추가/삭제";
