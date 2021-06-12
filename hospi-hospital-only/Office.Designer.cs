@@ -555,6 +555,7 @@
             this.comboBoxCount.Size = new System.Drawing.Size(43, 23);
             this.comboBoxCount.TabIndex = 46;
             this.comboBoxCount.Text = "3";
+            this.comboBoxCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxCount_KeyPress);
             // 
             // label10
             // 
@@ -636,6 +637,7 @@
             this.comboBox1Dose.Size = new System.Drawing.Size(43, 23);
             this.comboBox1Dose.TabIndex = 10;
             this.comboBox1Dose.Text = "1";
+            this.comboBox1Dose.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox1Dose_KeyPress);
             // 
             // label6
             // 
@@ -677,6 +679,7 @@
             this.comboBoxDosingDays.Size = new System.Drawing.Size(43, 23);
             this.comboBoxDosingDays.TabIndex = 7;
             this.comboBoxDosingDays.Text = "3";
+            this.comboBoxDosingDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxDosingDays_KeyPress);
             // 
             // listView1
             // 
