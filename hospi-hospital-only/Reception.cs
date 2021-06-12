@@ -795,28 +795,35 @@ namespace hospi_hospital_only
         private void button20_Click(object sender, EventArgs e)
         {
 
-            if (patientBirth.Text.Length<2)
+            if (patientBirth.Text == "" || patientBirth.Text == " ")
             {
                 MessageBox.Show("생년월일을 입력해주세요.", "알림");
             }
             else
             {
-                String searchValue = patientBirth.Text;
-                int rowIndex = -1;
-                foreach (DataGridViewRow row in DBGrid.Rows)
+                try
                 {
-                    if (row.Cells[2].Value.ToString().Substring(0, 6).Equals(searchValue))
+                    String searchValue = patientBirth.Text;
+                    int rowIndex = -1;
+                    foreach (DataGridViewRow row in DBGrid.Rows)
                     {
-                        rowIndex = row.Index;
-                        break;
+                        if (row.Cells[2].Value.ToString().Substring(0, 6).Equals(searchValue))
+                        {
+                            rowIndex = row.Index;
+                            break;
+                        }
+                        else if (row.Cells[2].Value.ToString().Substring(0, 2).Equals(searchValue))
+                        {
+                            rowIndex = row.Index;
+                            break;
+                        }
                     }
-                    else if (row.Cells[2].Value.ToString().Substring(0, 2).Equals(searchValue))
-                    {
-                        rowIndex = row.Index;
-                        break;
-                    }
+                    DBGrid.Rows[rowIndex].Selected = true;
                 }
-                DBGrid.Rows[rowIndex].Selected = true;
+                catch
+                {
+                    MessageBox.Show("검색 결과가 없습니다.", "알림");
+                }
             }
             
         }
