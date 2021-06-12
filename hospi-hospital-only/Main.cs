@@ -31,6 +31,7 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
+            button6.Enabled = false;
             loginSuccess = false;
 
             dbc.FireConnect();
