@@ -117,7 +117,7 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "모바일 회원 아이디";
+            this.columnHeader6.Text = "모바일 회원 전화번호";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 200;
             // 
