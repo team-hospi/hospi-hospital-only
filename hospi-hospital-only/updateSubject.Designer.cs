@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateSubject));
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.buttonHistory = new System.Windows.Forms.Button();
             this.labelID = new System.Windows.Forms.Label();
@@ -140,6 +141,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.groupBox11);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateSubject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateSubject";
