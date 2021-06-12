@@ -26,18 +26,25 @@ namespace hospi_hospital_only
 
         private void buttonCheck_Click(object sender, EventArgs e)
         {
-            for(int i=0; i<dbc.MasterTable.Rows.Count; i++)
+            if (textBoxName.Text == "" && textBoxName.Text == " ")
             {
-                if(dbc.MasterTable.Rows[i]["masterName"].ToString() == textBoxName.Text)
+                for (int i = 0; i < dbc.MasterTable.Rows.Count; i++)
                 {
-                    MessageBox.Show("관리자명이 중복됩니다. \r\n다른 이름을 입력해주세요.", "알림");
-                    textBoxName.Focus();
-                    return;
+                    if (dbc.MasterTable.Rows[i]["masterName"].ToString() == textBoxName.Text)
+                    {
+                        MessageBox.Show("관리자명이 중복됩니다. \r\n다른 이름을 입력해주세요.", "알림");
+                        textBoxName.Focus();
+                        return;
+                    }
                 }
+                MessageBox.Show("사용 가능한 관리자명입니다.", "알림");
+                buttonCheck.Enabled = false;
+                textBoxPW1.Focus();
             }
-            MessageBox.Show("사용 가능한 관리자명입니다.", "알림");
-            buttonCheck.Enabled = false;
-            textBoxPW1.Focus();
+            else
+            {
+                MessageBox.Show("관리자명을 입력해주세요", "알림");
+            }
         }
 
         private void MasterAdd_Load(object sender, EventArgs e)

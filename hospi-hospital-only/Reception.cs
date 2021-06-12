@@ -433,6 +433,7 @@ namespace hospi_hospital_only
                 dateTimePicker1.Enabled = false;
                 comboBoxTime1.Enabled = false;
                 comboBoxTime2.Enabled = false;
+                timer1.Start();
                 TimeNow();
             }
             else if (checkBox2.Checked == false)
@@ -440,6 +441,7 @@ namespace hospi_hospital_only
                 dateTimePicker1.Enabled = true;
                 comboBoxTime1.Enabled = true;
                 comboBoxTime2.Enabled = true;
+                timer1.Stop();
             }
         }
 
@@ -792,32 +794,31 @@ namespace hospi_hospital_only
         // 수진자 조회 출생년도 검색
         private void button20_Click(object sender, EventArgs e)
         {
-            try
+
+            if (patientBirth.Text.Length<2)
+            {
+                MessageBox.Show("생년월일을 입력해주세요.", "알림");
+            }
+            else
             {
                 String searchValue = patientBirth.Text;
                 int rowIndex = -1;
                 foreach (DataGridViewRow row in DBGrid.Rows)
                 {
-                    if (row.Cells[2].Value.ToString().Substring(0,6).Equals(searchValue))
+                    if (row.Cells[2].Value.ToString().Substring(0, 6).Equals(searchValue))
                     {
                         rowIndex = row.Index;
                         break;
                     }
-                    else if(row.Cells[2].Value.ToString().Substring(0,2).Equals(searchValue))
+                    else if (row.Cells[2].Value.ToString().Substring(0, 2).Equals(searchValue))
                     {
                         rowIndex = row.Index;
                         break;
                     }
                 }
                 DBGrid.Rows[rowIndex].Selected = true;
-                /*dbc.Visitor_BirthName(patientName.Text, patientBirth.Text);
-                dbc.VisitorTable = dbc.DS.Tables["visitor"];
-                DBGrid.DataSource = dbc.VisitorTable.DefaultView;*/
             }
-            catch (DataException DE)
-            {
-                MessageBox.Show(DE.Message);
-            }
+            
         }
 
         // 접수현황 수진자명 검색

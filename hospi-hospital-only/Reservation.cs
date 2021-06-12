@@ -15,6 +15,7 @@ namespace hospi_hospital_only
         Security security = new Security();
 
         int SelectRow;
+        bool listviewSelect = false;
         string hospitalID;
         string comment;
         string status;
@@ -235,6 +236,7 @@ namespace hospi_hospital_only
         private void listViewReserve_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             SelectRow = listViewReserve.SelectedItems[0].Index;
+            listviewSelect = true;
 
             reserveStatus = listViewReserve.Items[SelectRow].SubItems[4].Text;
 
@@ -259,6 +261,7 @@ namespace hospi_hospital_only
         //예약 승인 버튼 클릭이벤트
         private void buttonAccept_Click(object sender, EventArgs e)
         {
+            if(listviewSelect)
             try
             {
                 if (listViewReserve.Items[SelectRow].SubItems[4].Text == "대기")
@@ -338,6 +341,7 @@ namespace hospi_hospital_only
                     
                     //알림 메시지 전송
                     fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + selectDate + " " + FindDay(selectDate) + " "+ selectTime + "] " + " 예약이 확정되었습니다.");
+
                 }
                 else if (listViewReserve.Items[SelectRow].SubItems[4].Text == "승인됨")
                 {
@@ -348,30 +352,41 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show(ex.ToString());
             }
+            else
+            {
+                MessageBox.Show("선택된 예약이 없습니다.", "알림");
+            }
         }
 
         //예약 취소 버튼 클릭 이벤트
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("예약을 취소하시겠습니까?", "예약 취소", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (listviewSelect)
             {
-                
-                ReserveCancel reservecancel = new ReserveCancel();
+                if (MessageBox.Show("예약을 취소하시겠습니까?", "예약 취소", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    ReserveCancel reservecancel = new ReserveCancel();
                     reservecancel.HospitalID = hospitalID;
                     reservecancel.Date = selectDate;
                     reservecancel.Time = selectTime;
                     reservecancel.Status = this.reserveStatus;
 
-                if (reservecancel.ShowDialog() == DialogResult.OK)
-                {
-                    reserve.FireConnect();
-                    reserve.ReserveOpen(hospitalID);
-                    dbc.Delay(400);
-                    ReservationListUpdate(state);
-                    dbc.Visitor_Open();
-                    dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
-                    
+                    if (reservecancel.ShowDialog() == DialogResult.OK)
+                    {
+                        reserve.FireConnect();
+                        reserve.ReserveOpen(hospitalID);
+                        dbc.Delay(400);
+                        ReservationListUpdate(state);
+                        dbc.Visitor_Open();
+                        dbc.VisitorTable = dbc.DS.Tables["visitor"]; // 환자 테이블
+
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("선택된 예약이 없습니다.");
             }
         }
 
