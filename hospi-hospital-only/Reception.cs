@@ -1502,6 +1502,12 @@ namespace hospi_hospital_only
             }
         }
 
+        private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
+
 
         //접수 = 0 그 외 =1
         public void ReceptionListUpdate(int status)

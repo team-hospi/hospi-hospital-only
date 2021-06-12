@@ -290,6 +290,7 @@
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView2_ColumnWidthChanging);
             this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
             // 
             // columnHeader8
@@ -460,6 +461,7 @@
             this.listView4.TabIndex = 42;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
+            this.listView4.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView4_ColumnWidthChanging);
             this.listView4.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView4_MouseDoubleClick);
             // 
             // columnHeader15
@@ -692,6 +694,7 @@
             this.listView1.TabIndex = 13;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView1_ColumnWidthChanging);
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
@@ -780,6 +783,7 @@
             this.listView3.TabIndex = 14;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.View = System.Windows.Forms.View.Details;
+            this.listView3.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView3_ColumnWidthChanging);
             // 
             // columnHeader3
             // 

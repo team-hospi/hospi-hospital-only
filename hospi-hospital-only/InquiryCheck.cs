@@ -335,5 +335,11 @@ namespace hospi_hospital_only
         {
             Dispose();
         }
+
+        private void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
+            e.Cancel = true;
+        }
     }
 }
