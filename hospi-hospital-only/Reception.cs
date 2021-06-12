@@ -869,12 +869,19 @@ namespace hospi_hospital_only
                 if (listView3.Items[i].SubItems[3].Text == textBox3.Text)
                 {
                     listView3.Items[i].BackColor = Color.Yellow;
+                    patientSearch = true;
                 }
                 else
                 {
                     listView3.Items[i].BackColor = Color.White;
                 }
             }
+
+            if (patientSearch == false)
+            {
+                MessageBox.Show("검색 결과가 없습니다.", "알림");
+            }
+            patientSearch = false;
             textBox3.Clear();
         }
         // 수납현황 수진자명 검색 엔터이벤트
@@ -1536,6 +1543,11 @@ namespace hospi_hospital_only
         {
             e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
             e.Cancel = true;
+        }
+
+        private void comboBoxSubjcet_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
 
