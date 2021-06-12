@@ -128,6 +128,7 @@ namespace hospi_hospital_only
         // 접수처
         private void buttonReception_Click(object sender, EventArgs e)
         {
+            
             if (comboBoxReceptionist.Text != "")
             {
                 Reception reception = new Reception();
