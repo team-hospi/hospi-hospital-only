@@ -88,13 +88,13 @@
             // 
             // comboBoxReceptionist
             // 
-            this.comboBoxReceptionist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxReceptionist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxReceptionist.FormattingEnabled = true;
             this.comboBoxReceptionist.Location = new System.Drawing.Point(15, 33);
             this.comboBoxReceptionist.Name = "comboBoxReceptionist";
             this.comboBoxReceptionist.Size = new System.Drawing.Size(150, 23);
             this.comboBoxReceptionist.TabIndex = 33;
+            this.comboBoxReceptionist.Text = "접수자 선택";
+            this.comboBoxReceptionist.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxReceptionist_KeyPress);
             // 
             // buttonReception
             // 
@@ -132,14 +132,14 @@
             // 
             // comboBoxOffice
             // 
-            this.comboBoxOffice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOffice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxOffice.FormattingEnabled = true;
             this.comboBoxOffice.Location = new System.Drawing.Point(15, 33);
             this.comboBoxOffice.Name = "comboBoxOffice";
             this.comboBoxOffice.Size = new System.Drawing.Size(150, 23);
             this.comboBoxOffice.TabIndex = 34;
             this.comboBoxOffice.Tag = "";
+            this.comboBoxOffice.Text = "진료과목 선택";
+            this.comboBoxOffice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxOffice_KeyPress);
             // 
             // groupBox3
             // 

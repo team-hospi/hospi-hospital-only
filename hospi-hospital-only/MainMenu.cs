@@ -109,7 +109,7 @@ namespace hospi_hospital_only
         // 진료실
         private void buttonOffice_Click(object sender, EventArgs e)
         {
-            if (comboBoxOffice.Text != "")
+            if (comboBoxOffice.Text != "" && comboBoxOffice.Text != "진료과목 선택")
             {
                 Office office = new Office();
                 office.SubjectID = comboBoxOffice.Text;
@@ -129,7 +129,7 @@ namespace hospi_hospital_only
         private void buttonReception_Click(object sender, EventArgs e)
         {
             
-            if (comboBoxReceptionist.Text != "")
+            if (comboBoxReceptionist.Text != "" && comboBoxReceptionist.Text != "접수자 선택")
             {
                 Reception reception = new Reception();
                 reception.HospitalID = hospitalID;
@@ -274,6 +274,16 @@ namespace hospi_hospital_only
         {
             AddRadiography radiography = new AddRadiography();
             radiography.ShowDialog();
+        }
+
+        private void comboBoxReceptionist_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void comboBoxOffice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
