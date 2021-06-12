@@ -119,21 +119,22 @@ namespace hospi_hospital_only
         // 카드
         private void button2_Click(object sender, EventArgs e)
         {
-            dbc.Reception_Date(receptionDate, receptionTime, patientID);
-            dbc.ReceptionTable = dbc.DS.Tables["reception"];
-            DataRow upRow = dbc.ReceptionTable.Rows[0];
-
-            upRow.BeginEdit();
-            upRow["payment"] = "카드";
-            upRow["price"] = textBox4.Text;
-            upRow["receptionType"] = 3;
-            upRow.EndEdit();
-            dbc.DBAdapter.Update(dbc.DS, "reception");
-            dbc.DS.AcceptChanges();
+            
 
             DialogResult ok = MessageBox.Show("카드 결제는 별도의 단말에서 진행해주세요. \r\n결제완료 처리 하시겠습니까?", "알림", MessageBoxButtons.YesNo);
             if (ok == DialogResult.Yes)
             {
+                dbc.Reception_Date(receptionDate, receptionTime, patientID);
+                dbc.ReceptionTable = dbc.DS.Tables["reception"];
+                DataRow upRow = dbc.ReceptionTable.Rows[0];
+
+                upRow.BeginEdit();
+                upRow["payment"] = "카드";
+                upRow["price"] = textBox4.Text;
+                upRow["receptionType"] = 3;
+                upRow.EndEdit();
+                dbc.DBAdapter.Update(dbc.DS, "reception");
+                dbc.DS.AcceptChanges();
 
                 PayEnd();
                 Dispose();
@@ -143,21 +144,24 @@ namespace hospi_hospital_only
         // 현금
         private void button1_Click(object sender, EventArgs e)
         {
-            dbc.Reception_Date(receptionDate, receptionTime, patientID);
-            dbc.ReceptionTable = dbc.DS.Tables["reception"];
-            DataRow upRow = dbc.ReceptionTable.Rows[0];
-
-            upRow.BeginEdit();
-            upRow["payment"] = "현금";
-            upRow["price"] = textBox4.Text;
-            upRow["receptionType"] = 3;
-            upRow.EndEdit();
-            dbc.DBAdapter.Update(dbc.DS, "reception");
-            dbc.DS.AcceptChanges();
+            
 
             DialogResult ok = MessageBox.Show("현금으로 결제완료 처리 하시겠습니까?.", "알림", MessageBoxButtons.YesNo);
             if (ok == DialogResult.Yes)
             {
+
+                dbc.Reception_Date(receptionDate, receptionTime, patientID);
+                dbc.ReceptionTable = dbc.DS.Tables["reception"];
+                DataRow upRow = dbc.ReceptionTable.Rows[0];
+
+                upRow.BeginEdit();
+                upRow["payment"] = "현금";
+                upRow["price"] = textBox4.Text;
+                upRow["receptionType"] = 3;
+                upRow.EndEdit();
+                dbc.DBAdapter.Update(dbc.DS, "reception");
+                dbc.DS.AcceptChanges();
+
                 PayEnd();
                 Dispose();
             }
