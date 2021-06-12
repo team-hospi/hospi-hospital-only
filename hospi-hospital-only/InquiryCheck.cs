@@ -217,7 +217,7 @@ namespace hospi_hospital_only
                 item.SubItems.Add(Check);
                 listView1.Items.Add(item);
 
-                this.listView1.ListViewItemSorter = new ListviewItemComparer(1, SortOrder.Ascending);
+                this.listView1.ListViewItemSorter = new ListviewItemComparer(1, SortOrder.Descending);
                 listView1.Sort();
             }
         }
