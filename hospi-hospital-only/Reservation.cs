@@ -13,6 +13,7 @@ namespace hospi_hospital_only
         Reserve reserve = new Reserve();
         ReceptionList reception = new ReceptionList();
         Security security = new Security();
+        Visitor visitor = new Visitor();
 
         int SelectRow;
         bool listviewSelect = false;
@@ -64,6 +65,7 @@ namespace hospi_hospital_only
         {
             reception.FireConnect();
             reserve.FireConnect();
+            visitor.FireConnect();
             reserve.ReserveOpen(hospitalID);
             dbc.Delay(400);
             ReservationListUpdate(state);
@@ -128,7 +130,9 @@ namespace hospi_hospital_only
                     {
                         item.SubItems.Add("승인됨");
                     }
-                    item.SubItems.Add(reserve.list[i].id);
+                    visitor.FindPatient(reserve.list[i].id);
+                    dbc.Delay(100);
+                    item.SubItems.Add(visitor.PatientPhone);
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
@@ -142,8 +146,10 @@ namespace hospi_hospital_only
                     item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                     item.SubItems.Add(reserve.list[i].reservationDate);
                     item.SubItems.Add(reserve.list[i].reservationTime);
-                    item.SubItems.Add("대기");
-                    item.SubItems.Add(reserve.list[i].id);
+                    item.SubItems.Add("대기"); 
+                    visitor.FindPatient(reserve.list[i].id);
+                    dbc.Delay(100);
+                    item.SubItems.Add(visitor.PatientPhone);
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
@@ -158,14 +164,16 @@ namespace hospi_hospital_only
                     item.SubItems.Add(reserve.list[i].reservationDate);
                     item.SubItems.Add(reserve.list[i].reservationTime);
                     item.SubItems.Add("승인됨");
-                    item.SubItems.Add(reserve.list[i].id);
+                    visitor.FindPatient(reserve.list[i].id);
+                    dbc.Delay(100);
+                    item.SubItems.Add(visitor.PatientPhone);
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
                     this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
                     listViewReserve.Sort();
                 }
-                else if (reserve.list[i].reservationDate == DateTime.Now.ToString("yyyy-MM-dd") && reserve.list[i].reservationStatus != 2 && status == 3)
+                else if (reserve.list[i].reservationDate == DateTime.Now.ToString("yyyy-MM-dd") && reserve.list[i].reservationStatus != 2 && reserve.list[i].reservationStatus != -1 && status == 3)
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = reserve.list[i].id;
@@ -180,7 +188,9 @@ namespace hospi_hospital_only
                     {
                         item.SubItems.Add("승인됨");
                     }
-                    item.SubItems.Add(reserve.list[i].id);
+                    visitor.FindPatient(reserve.list[i].id);
+                    dbc.Delay(100);
+                    item.SubItems.Add(visitor.PatientPhone);
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
@@ -489,7 +499,6 @@ namespace hospi_hospital_only
                     {
                         ListViewItem item = new ListViewItem();
                         item.Text = reserve.list[i].id;
-                        item.SubItems.Add((listViewReserve.Items.Count + 1).ToString());
                         item.SubItems.Add(ConvertDate(reserve.list[i].timestamp).ToString("yyyy-MM-dd HH:mm"));
                         item.SubItems.Add(reserve.list[i].reservationDate);
                         item.SubItems.Add(reserve.list[i].reservationTime.Substring(0,2)+" "+ reserve.list[i].reservationTime.Substring(2,1)+" "+ reserve.list[i].reservationTime.Substring(3, 2));
@@ -501,7 +510,9 @@ namespace hospi_hospital_only
                         {
                             item.SubItems.Add("승인됨");
                         }
-                        item.SubItems.Add(reserve.list[i].id);
+                        visitor.FindPatient(reserve.list[i].id);
+                        dbc.Delay(100);
+                        item.SubItems.Add(visitor.PatientPhone);
                         item.SubItems.Add(reserve.list[i].department);
                         listViewReserve.Items.Add(item);
 
