@@ -213,74 +213,148 @@ namespace hospi_hospital_only
             }
         }
 
-        private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox2_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox2.Text != "")
+            {
+                if (Convert.ToInt32(comboBox2.Text) > 59)
+                {
+                    comboBox2.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox4_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox4.Text != "")
+            {
+                if (Convert.ToInt32(comboBox4.Text) > 59)
+                {
+                    comboBox4.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox8_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox8.Text != "")
+            {
+                if (Convert.ToInt32(comboBox8.Text) > 59)
+                {
+                    comboBox8.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox6_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox6.Text != "")
+            {
+                if (Convert.ToInt32(comboBox6.Text) > 59)
+                {
+                    comboBox6.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox9_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox13_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox13.Text != "")
+            {
+                if (Convert.ToInt32(comboBox13.Text) > 59)
+                {
+                    comboBox13.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox8_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox11_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox11.Text != "")
+            {
+                if (Convert.ToInt32(comboBox11.Text) > 59)
+                {
+                    comboBox11.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox7_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox1.Text != "")
+            {
+                if (Convert.ToInt32(comboBox1.Text) > 23)
+                {
+                    comboBox1.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox6_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox3_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox3.Text != "")
+            {
+                if (Convert.ToInt32(comboBox3.Text) > 23)
+                {
+                    comboBox3.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox14_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox9_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox9.Text != "")
+            {
+                if (Convert.ToInt32(comboBox9.Text) > 23)
+                {
+                    comboBox9.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox13_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox7_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox7.Text != "")
+            {
+                if (Convert.ToInt32(comboBox7.Text) > 23)
+                {
+                    comboBox7.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox12_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox14_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBox14.Text != "")
+            {
+                if (Convert.ToInt32(comboBox14.Text) > 23)
+                {
+                    comboBox14.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
 
-        private void comboBox11_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBox12_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
-        }
-
-        private void comboBox5_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void comboBox10_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
+            if (comboBox12.Text != "")
+            {
+                if (Convert.ToInt32(comboBox12.Text) > 23)
+                {
+                    comboBox12.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
     }
 }

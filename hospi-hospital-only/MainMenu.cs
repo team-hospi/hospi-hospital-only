@@ -57,6 +57,7 @@ namespace hospi_hospital_only
                     comboBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
                 }
             }
+            comboBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
 
             // 진료실
             dbc.Subject_Open();
@@ -66,7 +67,10 @@ namespace hospi_hospital_only
                 comboBoxOffice.Items.Add(DBClass.hospidepartment[i]);
             }
 
+            comboBoxOffice.Text = DBClass.hospidepartment[0];
+
             label3.Text = dbc.Hospiname;
+
 
 
             // 공지사항 띄우기

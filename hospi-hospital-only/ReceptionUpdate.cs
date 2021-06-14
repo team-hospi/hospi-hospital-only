@@ -139,11 +139,6 @@ namespace hospi_hospital_only
             }
         }
 
-        private void comboBoxTime2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
         private void comboBoxSubjcet_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -154,9 +149,28 @@ namespace hospi_hospital_only
             e.Handled = true;
         }
 
-        private void comboBoxTime1_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBoxTime2_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = true;
+            if (comboBoxTime2.Text != "")
+            {
+                if (Convert.ToInt32(comboBoxTime2.Text) > 59)
+                {
+                    comboBoxTime2.Text = "00";
+                    MessageBox.Show("0~59 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
+        }
+
+        private void comboBoxTime1_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTime1.Text != "")
+            {
+                if (Convert.ToInt32(comboBoxTime1.Text) > 23)
+                {
+                    comboBoxTime1.Text = "00";
+                    MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
+                }
+            }
         }
     }
 }
