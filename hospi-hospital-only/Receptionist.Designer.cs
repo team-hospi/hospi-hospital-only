@@ -47,7 +47,7 @@
             this.groupBox11.Size = new System.Drawing.Size(323, 110);
             this.groupBox11.TabIndex = 32;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "접수자 설정";
+            this.groupBox11.Text = "접수자 변경";
             // 
             // button2
             // 
@@ -90,7 +90,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Receptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "접수자 설정";
+            this.Text = "접수자 변경";
             this.Load += new System.EventHandler(this.Receptionist_Load);
             this.groupBox11.ResumeLayout(false);
             this.ResumeLayout(false);
