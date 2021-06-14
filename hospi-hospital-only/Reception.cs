@@ -704,9 +704,11 @@ namespace hospi_hospital_only
                     }
                     else if(dbc.VisitorTable.Rows[0][0].ToString() != "")
                     {
+                        dbc.FindDoctor(comboBoxSubjcet.Text);
+                        dbc.SubjectTable = dbc.DS.Tables["Subject"];
                         dbc.countWaiting(comboBoxSubjcet.Text, comboBoxTime1.Text + comboBoxTime2.Text, DateTime.Now.ToString("yy-MM-dd"));
                         dbc.WaitingTable = dbc.DS.Tables["Reception"];
-                        receptionlist.ReceptionAccept(comboBoxSubjcet.Text, dbc.VisitorTable.Rows[0][0].ToString(), patientName.Text, DateTime.Now.ToString("yyyy-MM-dd"), comboBoxTime1.Text + ":" + comboBoxTime2.Text , Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
+                        receptionlist.ReceptionAccept(comboBoxSubjcet.Text, dbc.SubjectTable.Rows[0][0].ToString(), dbc.VisitorTable.Rows[0][0].ToString(), patientName.Text, DateTime.Now.ToString("yyyy-MM-dd"), comboBoxTime1.Text + ":" + comboBoxTime2.Text , Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
                         dbc.Delay(200);
                         dbc.Reception_Open();
                         dbc.ReceptionTable = dbc.DS.Tables["Reception"];
@@ -1506,13 +1508,15 @@ namespace hospi_hospital_only
                     dbc.Delay(200);
                     dbc4.countWaiting(reserve.list[i].department, reserve.list[i].reservationTime.Substring(0, 2) + reserve.list[i].reservationTime.Substring(3, 2), reserve.list[i].reservationDate.Substring(2, 8));
                     dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
+                    dbc.FindDoctor(reserve.list[i].department);
+                    dbc.SubjectTable = dbc.DS.Tables["Subject"];
                     try
                     {
-                        receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
+                        receptionlist.ReceptionAccept(reserve.list[i].department, dbc.SubjectTable.Rows[0][0].ToString(), reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, Convert.ToInt32(dbc4.WaitingTable.Rows[0][0].ToString()));
                     }
                     catch
                     {
-                        receptionlist.ReceptionAccept(reserve.list[i].department, reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, waitingIsNull);
+                        receptionlist.ReceptionAccept(reserve.list[i].department, dbc.SubjectTable.Rows[0][0].ToString(), reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, waitingIsNull);
                     }
 
                     reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);

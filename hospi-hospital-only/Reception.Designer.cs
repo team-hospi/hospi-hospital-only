@@ -198,7 +198,7 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "내원일자";
-            this.columnHeader8.Width = 70;
+            this.columnHeader8.Width = 90;
             // 
             // columnHeader9
             // 

@@ -294,7 +294,9 @@ namespace hospi_hospital_only
                             dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
                             dbc.ReceptionTable = dbc.DS.Tables["Reception"];
 
-                            reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
+                                dbc.FindDoctor(listViewReserve.Items[SelectRow].SubItems[6].Text);
+                                dbc.SubjectTable = dbc.DS.Tables["Subject"];
+                            reception.ReceptionAccept(selectdepartment, dbc.SubjectTable.Rows[0][0].ToString(), selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
 
                             dbc.Delay(200);
 
@@ -322,7 +324,10 @@ namespace hospi_hospital_only
                             dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
                             dbc.ReceptionTable = dbc.DS.Tables["Reception"];
 
-                            reception.ReceptionAccept(selectdepartment, selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
+                                dbc.FindDoctor(listViewReserve.Items[SelectRow].SubItems[6].Text);
+                                dbc.SubjectTable = dbc.DS.Tables["Subject"];
+
+                                reception.ReceptionAccept(selectdepartment, dbc.SubjectTable.Rows[0][0].ToString(), selectid, textBoxName.Text, selectDate, selectTime, Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]));
 
                             dbc.Delay(200);
 
