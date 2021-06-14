@@ -47,7 +47,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ddddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,13 +62,16 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -236,25 +238,15 @@
             this.columnHeader4.Text = "today";
             this.columnHeader4.Width = 0;
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label3);
-            this.groupBox8.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox8.Location = new System.Drawing.Point(349, 27);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(250, 43);
-            this.groupBox8.TabIndex = 41;
-            this.groupBox8.TabStop = false;
-            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(6, 15);
+            this.label3.Location = new System.Drawing.Point(6, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(237, 19);
+            this.label3.Size = new System.Drawing.Size(183, 19);
             this.label3.TabIndex = 39;
             this.label3.Text = "병원명 표시 라벨";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -341,9 +333,9 @@
             // 
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(114, 27);
+            this.groupBox3.Location = new System.Drawing.Point(315, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(229, 43);
+            this.groupBox3.Size = new System.Drawing.Size(229, 58);
             this.groupBox3.TabIndex = 42;
             this.groupBox3.TabStop = false;
             // 
@@ -353,7 +345,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(217, 19);
             this.label1.TabIndex = 39;
@@ -377,17 +369,38 @@
             this.label2.TabIndex = 43;
             this.label2.Text = "Hospi";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.DoubleClick += new System.EventHandler(this.label2_DoubleClick);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(605, 38);
+            this.button1.Location = new System.Drawing.Point(8, 21);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 27);
+            this.button1.Size = new System.Drawing.Size(129, 27);
             this.button1.TabIndex = 43;
             this.button1.Text = "종 료";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.button1);
+            this.groupBox5.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox5.Location = new System.Drawing.Point(550, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(149, 58);
+            this.groupBox5.TabIndex = 42;
+            this.groupBox5.TabStop = false;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox8.Location = new System.Drawing.Point(114, 12);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(195, 58);
+            this.groupBox8.TabIndex = 44;
+            this.groupBox8.TabStop = false;
             // 
             // MainMenu
             // 
@@ -395,12 +408,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 325);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
@@ -414,10 +427,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,7 +446,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox comboBoxReceptionist;
         private System.Windows.Forms.ComboBox comboBoxOffice;
-        private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -458,5 +471,7 @@
         private System.Windows.Forms.ToolStripMenuItem 끝내기XToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox8;
     }
 }

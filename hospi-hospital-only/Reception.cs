@@ -1558,6 +1558,12 @@ namespace hospi_hospital_only
             e.Handled = true;
         }
 
+        private void 끝내기XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
+
+
 
         //접수 = 0 그 외 =1
         public void ReceptionListUpdate(int status)
