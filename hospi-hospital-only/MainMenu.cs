@@ -42,9 +42,8 @@ namespace hospi_hospital_only
             dbc.Delay(400);
             // 날짜정보
             string date = DateTime.Now.ToString("yyyy-MM-dd ddd요일 ", cultures);
-            string time = DateTime.Now.ToString("tt hh:mm", cultures);
-            labelDate.Text = date;
-            labelTime.Text = time;
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            label1.Text = date + " " + time;
             timer1.Start();
             // 접수처
             dbc.Receptionist_Open();
@@ -92,18 +91,6 @@ namespace hospi_hospital_only
                     listView2.Items.Add(items);
                 }
             }
-        }
-
-        private void buttonDispose_Click(object sender, EventArgs e)
-        {
-            Dispose();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            string time = DateTime.Now.ToString("tt hh:mm", cultures);
-            labelTime.Text = time;
-
         }
 
         // 진료실
@@ -199,8 +186,8 @@ namespace hospi_hospital_only
 
         private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
-            e.NewWidth = listView2.Columns[e.ColumnIndex].Width;
-            e.Cancel = true;
+           //e.NewWidth = listView2.Columns[e.ColumnIndex].Width;
+           // e.Cancel = true;
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -272,6 +259,46 @@ namespace hospi_hospital_only
         {
             AddRadiography radiography = new AddRadiography();
             radiography.ShowDialog();
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string date = DateTime.Now.ToString("yyyy-MM-dd ddd요일 ", cultures);
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            label1.Text = date + " " + time;
+        }
+
+        private void 관리자계정관리MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
+
+        private void 운영정보설정SToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button3_Click(sender, e);
+        }
+
+        private void 과목및접수자편집EToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setting2_Click(sender, e);
+        }
+
+        private void 공지사항등록DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setting1_Click(sender, e);
+        }
+
+        private void ddddToolStripMenuItem_Click(object sender, EventArgs e) { }
+
+        private void 끝내기XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
