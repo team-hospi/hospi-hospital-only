@@ -108,9 +108,12 @@ namespace hospi_hospital_only
 
             string path = folderBrowserDialog.SelectedPath;
 
-            Properties.Settings.Default.SaveLocation = path;
-            Properties.Settings.Default.Save();
-            textBox1.Text = Properties.Settings.Default.SaveLocation;
+            if(path != "")
+            {
+                Properties.Settings.Default.SaveLocation = path;
+                Properties.Settings.Default.Save();
+                textBox1.Text = Properties.Settings.Default.SaveLocation;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

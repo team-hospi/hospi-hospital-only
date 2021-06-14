@@ -311,6 +311,11 @@ namespace hospi_hospital_only
         {
             e.Handled = true;
         }
+
+        private void label2_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hospi  ver1.0", "버전 정보");
+        }
     }
 }
 
