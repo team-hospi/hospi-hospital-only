@@ -45,5 +45,10 @@ namespace hospi_hospital_only
                 MessageBox.Show(DE.Message);
             }
         }
+
+        private void buttonFinish_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }

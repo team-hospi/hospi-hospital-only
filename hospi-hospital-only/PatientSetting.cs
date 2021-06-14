@@ -220,60 +220,37 @@ namespace hospi_hospital_only
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (button1.Text == "변경 시작" && patientName.Text != "")
+            if (textBoxB1.Text.Length == 6 && textBoxB2.Text.Length == 7)
             {
-                textBoxB1.ReadOnly = false;
-                textBoxB2.ReadOnly = false;
-                phone1.ReadOnly = false;
-                phone2.ReadOnly = false;
-                phone3.ReadOnly = false;
-                textBoxADDR.ReadOnly = false;
-                button1.Text = "변경 완료";
+                dbc.Visitor_Select(textBoxChartNum.Text);
+                dbc.VisitorTable = dbc.DS.Tables["visitor"];
+                DataRow upRow = dbc.VisitorTable.Rows[0];
+                upRow.BeginEdit();
+                upRow["PatientName"] = patientName.Text;
+                upRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0, 1) + security.AESEncrypt128(textBoxB2.Text.Substring(1, 6), DBClass.hospiPW);
+
+                upRow["PatientPhone"] = phone1.Text + phone2.Text + phone3.Text;
+                upRow["PatientAddress"] = textBoxADDR.Text;
+
+                upRow.EndEdit();
+                dbc.DBAdapter.Update(dbc.DS, "visitor");
+                dbc.DS.AcceptChanges();
+
+
+                MessageBox.Show("변경이 완료되었습니다.", "알림");
+                Dispose();
             }
-            else if(button1.Text == "변경 완료")
+            else if (textBoxB1.Text.Length != 6 && textBoxB2.Text.Length != 7)
             {
-                if (textBoxB1.Text.Length == 6 && textBoxB2.Text.Length == 7)
-                {
-                    dbc.Visitor_Select(textBoxChartNum.Text);
-                    dbc.VisitorTable = dbc.DS.Tables["visitor"];
-                    DataRow upRow = dbc.VisitorTable.Rows[0];
-                    upRow.BeginEdit();
-                    upRow["PatientName"] = patientName.Text;
-                    upRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0, 1) + security.AESEncrypt128(textBoxB2.Text.Substring(1, 6), DBClass.hospiPW);
-
-                    upRow["PatientPhone"] = phone1.Text + phone2.Text + phone3.Text;
-                    upRow["PatientAddress"] = textBoxADDR.Text;
-
-                    upRow.EndEdit();
-                    dbc.DBAdapter.Update(dbc.DS, "visitor");
-                    dbc.DS.AcceptChanges();
-
-                    SetCancel();
-
-                    MessageBox.Show("변경이 완료되었습니다.", "알림");
-                }
-                else if(textBoxB1.Text.Length != 6 && textBoxB2.Text.Length != 7)
-                {
-                    MessageBox.Show("주민등록번호를 확인해주세요.", "알림");
-                }
+                MessageBox.Show("주민등록번호를 확인해주세요.", "알림");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SetCancel();
+            Dispose();
         }
 
-        public void SetCancel()
-        {
-            textBoxB1.ReadOnly = true;
-            textBoxB2.ReadOnly = true;
-            phone1.ReadOnly = true;
-            phone2.ReadOnly = true;
-            phone3.ReadOnly = true;
-            textBoxADDR.ReadOnly = true;
-            button1.Text = "변경 시작";
-        }
 
         private void patientName_KeyDown(object sender, KeyEventArgs e)
         {
