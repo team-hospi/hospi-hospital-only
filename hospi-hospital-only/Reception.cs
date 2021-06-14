@@ -1549,7 +1549,7 @@ namespace hospi_hospital_only
 
         private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
-            e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
+            e.NewWidth = listView2.Columns[e.ColumnIndex].Width;
             e.Cancel = true;
         }
 
@@ -1557,6 +1557,12 @@ namespace hospi_hospital_only
         {
             e.Handled = true;
         }
+
+        private void 끝내기XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+        }
+
 
 
         //접수 = 0 그 외 =1
