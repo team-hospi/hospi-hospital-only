@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxB2 = new System.Windows.Forms.TextBox();
             this.phone3 = new System.Windows.Forms.TextBox();
@@ -50,8 +50,8 @@
             this.patientBirth = new System.Windows.Forms.TextBox();
             this.button20 = new System.Windows.Forms.Button();
             this.DBGrid = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
@@ -86,7 +86,6 @@
             // 
             this.textBoxB2.Location = new System.Drawing.Point(208, 83);
             this.textBoxB2.Name = "textBoxB2";
-            this.textBoxB2.ReadOnly = true;
             this.textBoxB2.Size = new System.Drawing.Size(94, 23);
             this.textBoxB2.TabIndex = 21;
             this.textBoxB2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -95,7 +94,6 @@
             // 
             this.phone3.Location = new System.Drawing.Point(240, 112);
             this.phone3.Name = "phone3";
-            this.phone3.ReadOnly = true;
             this.phone3.Size = new System.Drawing.Size(62, 23);
             this.phone3.TabIndex = 20;
             this.phone3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -104,7 +102,6 @@
             // 
             this.phone2.Location = new System.Drawing.Point(175, 112);
             this.phone2.Name = "phone2";
-            this.phone2.ReadOnly = true;
             this.phone2.Size = new System.Drawing.Size(63, 23);
             this.phone2.TabIndex = 19;
             this.phone2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -114,7 +111,6 @@
             this.textBoxADDR.Location = new System.Drawing.Point(110, 141);
             this.textBoxADDR.Multiline = true;
             this.textBoxADDR.Name = "textBoxADDR";
-            this.textBoxADDR.ReadOnly = true;
             this.textBoxADDR.Size = new System.Drawing.Size(192, 57);
             this.textBoxADDR.TabIndex = 18;
             // 
@@ -157,7 +153,7 @@
             this.button9.Location = new System.Drawing.Point(225, 23);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(77, 25);
-            this.button9.TabIndex = 3;
+            this.button9.TabIndex = 2;
             this.button9.Text = "조회";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
@@ -167,7 +163,7 @@
             this.patientName.Location = new System.Drawing.Point(110, 24);
             this.patientName.Name = "patientName";
             this.patientName.Size = new System.Drawing.Size(109, 23);
-            this.patientName.TabIndex = 3;
+            this.patientName.TabIndex = 1;
             this.patientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.patientName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.patientName_KeyDown);
             // 
@@ -175,7 +171,6 @@
             // 
             this.phone1.Location = new System.Drawing.Point(110, 112);
             this.phone1.Name = "phone1";
-            this.phone1.ReadOnly = true;
             this.phone1.Size = new System.Drawing.Size(63, 23);
             this.phone1.TabIndex = 7;
             this.phone1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -196,7 +191,6 @@
             // 
             this.textBoxB1.Location = new System.Drawing.Point(110, 83);
             this.textBoxB1.Name = "textBoxB1";
-            this.textBoxB1.ReadOnly = true;
             this.textBoxB1.Size = new System.Drawing.Size(94, 23);
             this.textBoxB1.TabIndex = 5;
             this.textBoxB1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -219,7 +213,7 @@
             this.textBoxChartNum.Name = "textBoxChartNum";
             this.textBoxChartNum.ReadOnly = true;
             this.textBoxChartNum.Size = new System.Drawing.Size(109, 23);
-            this.textBoxChartNum.TabIndex = 1;
+            this.textBoxChartNum.TabIndex = 10;
             this.textBoxChartNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label20
@@ -241,9 +235,9 @@
             this.groupBox5.Controls.Add(this.button20);
             this.groupBox5.Controls.Add(this.DBGrid);
             this.groupBox5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox5.Location = new System.Drawing.Point(356, 12);
+            this.groupBox5.Location = new System.Drawing.Point(335, 12);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(317, 209);
+            this.groupBox5.Size = new System.Drawing.Size(317, 171);
             this.groupBox5.TabIndex = 28;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "환자 조회";
@@ -265,7 +259,7 @@
             this.patientBirth.Location = new System.Drawing.Point(106, 24);
             this.patientBirth.Name = "patientBirth";
             this.patientBirth.Size = new System.Drawing.Size(125, 23);
-            this.patientBirth.TabIndex = 32;
+            this.patientBirth.TabIndex = 3;
             this.patientBirth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button20
@@ -274,7 +268,7 @@
             this.button20.Location = new System.Drawing.Point(237, 23);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(65, 25);
-            this.button20.TabIndex = 31;
+            this.button20.TabIndex = 4;
             this.button20.Text = "조회";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
@@ -288,14 +282,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -309,43 +303,46 @@
             this.DBGrid.ShowCellToolTips = false;
             this.DBGrid.ShowEditingIcon = false;
             this.DBGrid.ShowRowErrors = false;
-            this.DBGrid.Size = new System.Drawing.Size(290, 144);
+            this.DBGrid.Size = new System.Drawing.Size(290, 105);
             this.DBGrid.TabIndex = 252;
             this.DBGrid.TabStop = false;
             this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
             // 
-            // button1
+            // button17
             // 
-            this.button1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(12, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 47);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "변경 시작";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button17.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button17.Location = new System.Drawing.Point(454, 189);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(198, 32);
+            this.button17.TabIndex = 31;
+            this.button17.Text = "변경 완료";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // button3
             // 
-            this.button2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(187, 227);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 47);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "취소";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Location = new System.Drawing.Point(335, 189);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 32);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "취 소";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button2_Click);
             // 
             // PatientSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 286);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(685, 231);
+            this.ControlBox = false;
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button17);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PatientSetting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "환자 정보 설정";
             this.Load += new System.EventHandler(this.PatientSetting_Load);
             this.groupBox4.ResumeLayout(false);
@@ -380,7 +377,7 @@
         private System.Windows.Forms.TextBox patientBirth;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.DataGridView DBGrid;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button3;
     }
 }

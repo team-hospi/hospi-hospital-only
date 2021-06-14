@@ -35,12 +35,16 @@
             this.buttonOffice = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxOffice = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.setting2 = new System.Windows.Forms.Label();
-            this.buttonDispose = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ddddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.listView2 = new System.Windows.Forms.ListView();
             this.번호 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.제목 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,29 +53,22 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.setting1 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.labelTime = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.inquirycount = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.관리자메뉴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.관리자계정관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.운영정보설정SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.과목및접수자편집EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.공지사항등록DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.끝내기XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -79,9 +76,9 @@
             this.groupBox1.Controls.Add(this.comboBoxReceptionist);
             this.groupBox1.Controls.Add(this.buttonReception);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(16, 41);
+            this.groupBox1.Location = new System.Drawing.Point(12, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(263, 77);
+            this.groupBox1.Size = new System.Drawing.Size(263, 62);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "접수과";
@@ -89,7 +86,7 @@
             // comboBoxReceptionist
             // 
             this.comboBoxReceptionist.FormattingEnabled = true;
-            this.comboBoxReceptionist.Location = new System.Drawing.Point(15, 33);
+            this.comboBoxReceptionist.Location = new System.Drawing.Point(15, 26);
             this.comboBoxReceptionist.Name = "comboBoxReceptionist";
             this.comboBoxReceptionist.Size = new System.Drawing.Size(150, 23);
             this.comboBoxReceptionist.TabIndex = 33;
@@ -98,7 +95,7 @@
             // buttonReception
             // 
             this.buttonReception.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonReception.Location = new System.Drawing.Point(171, 32);
+            this.buttonReception.Location = new System.Drawing.Point(171, 25);
             this.buttonReception.Name = "buttonReception";
             this.buttonReception.Size = new System.Drawing.Size(79, 25);
             this.buttonReception.TabIndex = 1;
@@ -109,7 +106,7 @@
             // buttonOffice
             // 
             this.buttonOffice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonOffice.Location = new System.Drawing.Point(171, 32);
+            this.buttonOffice.Location = new System.Drawing.Point(171, 25);
             this.buttonOffice.Name = "buttonOffice";
             this.buttonOffice.Size = new System.Drawing.Size(79, 25);
             this.buttonOffice.TabIndex = 0;
@@ -122,9 +119,9 @@
             this.groupBox2.Controls.Add(this.comboBoxOffice);
             this.groupBox2.Controls.Add(this.buttonOffice);
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(285, 41);
+            this.groupBox2.Location = new System.Drawing.Point(281, 76);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(263, 77);
+            this.groupBox2.Size = new System.Drawing.Size(263, 62);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "진료실";
@@ -132,33 +129,19 @@
             // comboBoxOffice
             // 
             this.comboBoxOffice.FormattingEnabled = true;
-            this.comboBoxOffice.Location = new System.Drawing.Point(15, 33);
+            this.comboBoxOffice.Location = new System.Drawing.Point(15, 26);
             this.comboBoxOffice.Name = "comboBoxOffice";
             this.comboBoxOffice.Size = new System.Drawing.Size(150, 23);
             this.comboBoxOffice.TabIndex = 34;
             this.comboBoxOffice.Text = "진료과목 선택";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.groupBox6);
-            this.groupBox3.Controls.Add(this.setting2);
-            this.groupBox3.Controls.Add(this.groupBox1);
-            this.groupBox3.Controls.Add(this.groupBox2);
-            this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(19, 274);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(729, 141);
-            this.groupBox3.TabIndex = 31;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "메뉴 선택";
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox6.Location = new System.Drawing.Point(554, 41);
+            this.groupBox6.Location = new System.Drawing.Point(550, 76);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(158, 77);
+            this.groupBox6.Size = new System.Drawing.Size(149, 62);
             this.groupBox6.TabIndex = 35;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "의료 영상실";
@@ -166,46 +149,102 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(17, 32);
+            this.button2.Location = new System.Drawing.Point(8, 22);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 25);
+            this.button2.Size = new System.Drawing.Size(129, 27);
             this.button2.TabIndex = 42;
             this.button2.Text = "촬영실";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // setting2
-            // 
-            this.setting2.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.setting2.Location = new System.Drawing.Point(696, 10);
-            this.setting2.Name = "setting2";
-            this.setting2.Size = new System.Drawing.Size(27, 25);
-            this.setting2.TabIndex = 38;
-            this.setting2.Text = "⚙";
-            this.setting2.Click += new System.EventHandler(this.setting2_Click);
-            // 
-            // buttonDispose
-            // 
-            this.buttonDispose.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonDispose.Location = new System.Drawing.Point(754, 381);
-            this.buttonDispose.Name = "buttonDispose";
-            this.buttonDispose.Size = new System.Drawing.Size(140, 34);
-            this.buttonDispose.TabIndex = 2;
-            this.buttonDispose.Text = "종료";
-            this.buttonDispose.UseVisualStyleBackColor = true;
-            this.buttonDispose.Click += new System.EventHandler(this.buttonDispose_Click);
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.listView2);
-            this.groupBox4.Controls.Add(this.setting1);
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox4.Location = new System.Drawing.Point(282, 12);
+            this.groupBox4.Location = new System.Drawing.Point(12, 144);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(612, 256);
+            this.groupBox4.Size = new System.Drawing.Size(687, 173);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "공지사항";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox8.Location = new System.Drawing.Point(349, 27);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(250, 43);
+            this.groupBox8.TabIndex = 41;
+            this.groupBox8.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(6, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(237, 19);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "병원명 표시 라벨";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ddddToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(713, 24);
+            this.menuStrip1.TabIndex = 42;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // ddddToolStripMenuItem
+            // 
+            this.ddddToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.관리자메뉴ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.끝내기XToolStripMenuItem});
+            this.ddddToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ddddToolStripMenuItem.Name = "ddddToolStripMenuItem";
+            this.ddddToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.ddddToolStripMenuItem.Text = "메뉴(&M) ";
+            this.ddddToolStripMenuItem.Click += new System.EventHandler(this.ddddToolStripMenuItem_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox3.Location = new System.Drawing.Point(114, 27);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(229, 43);
+            this.groupBox3.TabIndex = 42;
+            this.groupBox3.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(217, 19);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "0000-00-00 월요일 00:00:00";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // listView2
             // 
@@ -222,11 +261,11 @@
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
             this.listView2.LabelWrap = false;
-            this.listView2.Location = new System.Drawing.Point(16, 38);
+            this.listView2.Location = new System.Drawing.Point(16, 29);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(579, 196);
-            this.listView2.TabIndex = 33;
+            this.listView2.Size = new System.Drawing.Size(659, 127);
+            this.listView2.TabIndex = 34;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
             this.listView2.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView2_ColumnWidthChanging);
@@ -237,24 +276,24 @@
             // 
             this.번호.Text = "No.";
             this.번호.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.번호.Width = 40;
+            this.번호.Width = 48;
             // 
             // 제목
             // 
             this.제목.Text = "제목";
-            this.제목.Width = 343;
+            this.제목.Width = 417;
             // 
             // 게시일
             // 
             this.게시일.Text = "게시자";
             this.게시일.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.게시일.Width = 85;
+            this.게시일.Width = 90;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "게시일";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 85;
+            this.columnHeader2.Width = 90;
             // 
             // columnHeader1
             // 
@@ -271,169 +310,96 @@
             this.columnHeader4.Text = "today";
             this.columnHeader4.Width = 0;
             // 
-            // setting1
+            // 관리자메뉴ToolStripMenuItem
             // 
-            this.setting1.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.setting1.Location = new System.Drawing.Point(579, 10);
-            this.setting1.Name = "setting1";
-            this.setting1.Size = new System.Drawing.Size(27, 25);
-            this.setting1.TabIndex = 38;
-            this.setting1.Text = "⚙";
-            this.setting1.Click += new System.EventHandler(this.setting1_Click);
+            this.관리자메뉴ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.관리자계정관리MToolStripMenuItem,
+            this.운영정보설정SToolStripMenuItem,
+            this.과목및접수자편집EToolStripMenuItem,
+            this.공지사항등록DToolStripMenuItem});
+            this.관리자메뉴ToolStripMenuItem.Name = "관리자메뉴ToolStripMenuItem";
+            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.관리자메뉴ToolStripMenuItem.Text = "관리자 메뉴(&A)";
             // 
-            // groupBox5
+            // 관리자계정관리MToolStripMenuItem
             // 
-            this.groupBox5.Controls.Add(this.labelTime);
-            this.groupBox5.Controls.Add(this.labelDate);
-            this.groupBox5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox5.Location = new System.Drawing.Point(19, 104);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(257, 79);
-            this.groupBox5.TabIndex = 33;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "날짜 정보";
+            this.관리자계정관리MToolStripMenuItem.Name = "관리자계정관리MToolStripMenuItem";
+            this.관리자계정관리MToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.관리자계정관리MToolStripMenuItem.Text = "관리자 계정 관리(&M) ";
+            this.관리자계정관리MToolStripMenuItem.Click += new System.EventHandler(this.관리자계정관리MToolStripMenuItem_Click);
             // 
-            // labelTime
+            // 운영정보설정SToolStripMenuItem
             // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelTime.Location = new System.Drawing.Point(161, 33);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(84, 20);
-            this.labelTime.TabIndex = 35;
-            this.labelTime.Text = "시간 00:00";
+            this.운영정보설정SToolStripMenuItem.Name = "운영정보설정SToolStripMenuItem";
+            this.운영정보설정SToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.운영정보설정SToolStripMenuItem.Text = "운영 정보 설정(&S)";
+            this.운영정보설정SToolStripMenuItem.Click += new System.EventHandler(this.운영정보설정SToolStripMenuItem_Click);
             // 
-            // labelDate
+            // 과목및접수자편집EToolStripMenuItem
             // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelDate.Location = new System.Drawing.Point(12, 33);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(143, 20);
-            this.labelDate.TabIndex = 34;
-            this.labelDate.Text = "0000-00-00 가나다";
+            this.과목및접수자편집EToolStripMenuItem.Name = "과목및접수자편집EToolStripMenuItem";
+            this.과목및접수자편집EToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.과목및접수자편집EToolStripMenuItem.Text = "과목 및 접수자 편집(&E)";
+            this.과목및접수자편집EToolStripMenuItem.Click += new System.EventHandler(this.과목및접수자편집EToolStripMenuItem_Click);
             // 
-            // button3
+            // 공지사항등록DToolStripMenuItem
             // 
-            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(16, 60);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 30);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "병원 정보 설정";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.공지사항등록DToolStripMenuItem.Name = "공지사항등록DToolStripMenuItem";
+            this.공지사항등록DToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.공지사항등록DToolStripMenuItem.Text = "공지사항 등록(&D)";
+            this.공지사항등록DToolStripMenuItem.Click += new System.EventHandler(this.공지사항등록DToolStripMenuItem_Click);
             // 
-            // groupBox7
+            // toolStripMenuItem1
             // 
-            this.groupBox7.Controls.Add(this.inquirycount);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Controls.Add(this.button4);
-            this.groupBox7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox7.Location = new System.Drawing.Point(19, 189);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(257, 79);
-            this.groupBox7.TabIndex = 36;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "접수된 문의";
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
-            // inquirycount
+            // 끝내기XToolStripMenuItem
             // 
-            this.inquirycount.Location = new System.Drawing.Point(96, 33);
-            this.inquirycount.Name = "inquirycount";
-            this.inquirycount.ReadOnly = true;
-            this.inquirycount.Size = new System.Drawing.Size(58, 23);
-            this.inquirycount.TabIndex = 37;
-            this.inquirycount.Text = "0";
-            this.inquirycount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.끝내기XToolStripMenuItem.Name = "끝내기XToolStripMenuItem";
+            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.끝내기XToolStripMenuItem.Text = "끝내기(&X)";
+            this.끝내기XToolStripMenuItem.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
             // 
-            // label6
+            // label2
             // 
-            this.label6.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(15, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 23);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "신규 문의";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(155, 32);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 25);
-            this.button4.TabIndex = 35;
-            this.button4.Text = "문의 확인";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label3);
-            this.groupBox8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox8.Location = new System.Drawing.Point(19, 12);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(257, 86);
-            this.groupBox8.TabIndex = 41;
-            this.groupBox8.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Viner Hand ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(26, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(215, 58);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "병원명 표시 라벨";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.button3);
-            this.groupBox9.Controls.Add(this.button1);
-            this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox9.Location = new System.Drawing.Point(754, 274);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(140, 101);
-            this.groupBox9.TabIndex = 36;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "관리자 메뉴";
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Algerian", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(7, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 43);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Hospi";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(16, 24);
+            this.button1.Location = new System.Drawing.Point(605, 38);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 30);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "관리자 계정 관리";
+            this.button1.Size = new System.Drawing.Size(94, 27);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "종 료";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 428);
+            this.ClientSize = new System.Drawing.Size(713, 325);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.buttonDispose);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -441,16 +407,14 @@
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -460,35 +424,34 @@
         private System.Windows.Forms.Button buttonOffice;
         private System.Windows.Forms.Button buttonReception;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button buttonDispose;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox comboBoxReceptionist;
         private System.Windows.Forms.ComboBox comboBoxOffice;
-        private System.Windows.Forms.Label setting2;
-        private System.Windows.Forms.Label setting1;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ddddToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ColumnHeader 번호;
         private System.Windows.Forms.ColumnHeader 제목;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label labelDate;
-        private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox inquirycount;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ColumnHeader 게시일;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ToolStripMenuItem 관리자메뉴ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 관리자계정관리MToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 운영정보설정SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 과목및접수자편집EToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 공지사항등록DToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 끝내기XToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
