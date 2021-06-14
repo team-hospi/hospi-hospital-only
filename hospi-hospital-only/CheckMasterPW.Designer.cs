@@ -57,6 +57,7 @@
             // 
             // comboBoxMaster
             // 
+            this.comboBoxMaster.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaster.FormattingEnabled = true;
             this.comboBoxMaster.Location = new System.Drawing.Point(100, 31);
             this.comboBoxMaster.Name = "comboBoxMaster";

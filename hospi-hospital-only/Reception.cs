@@ -1549,7 +1549,7 @@ namespace hospi_hospital_only
 
         private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
-            e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
+            e.NewWidth = listView2.Columns[e.ColumnIndex].Width;
             e.Cancel = true;
         }
 

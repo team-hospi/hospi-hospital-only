@@ -255,7 +255,7 @@
             this.comboBoxTime2.Name = "comboBoxTime2";
             this.comboBoxTime2.Size = new System.Drawing.Size(45, 23);
             this.comboBoxTime2.TabIndex = 41;
-            this.comboBoxTime2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxTime2_KeyPress);
+            this.comboBoxTime2.TextChanged += new System.EventHandler(this.comboBoxTime2_TextChanged);
             // 
             // comboBoxTime1
             // 
@@ -277,7 +277,7 @@
             this.comboBoxTime1.Name = "comboBoxTime1";
             this.comboBoxTime1.Size = new System.Drawing.Size(45, 23);
             this.comboBoxTime1.TabIndex = 40;
-            this.comboBoxTime1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxTime1_KeyPress);
+            this.comboBoxTime1.TextChanged += new System.EventHandler(this.comboBoxTime1_TextChanged);
             // 
             // label1
             // 
