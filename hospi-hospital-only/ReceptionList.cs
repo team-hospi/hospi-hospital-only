@@ -72,13 +72,13 @@ namespace hospi_hospital_only
             }
         }
         //예약 접수
-        public void ReceptionAccept(string depart, string id, string name, string Date,string Time, int number)
+        public void ReceptionAccept(string depart, string doctor, string id, string name, string Date,string Time, int number)
         {
             CollectionReference coll = fs.Collection("receptionList");
             Dictionary<string, object> data1 = new Dictionary<string, object>()
             {
                 {"department", depart },
-                {"doctor","의사이름" },
+                {"doctor", doctor },
                 {"hospitalId", DBClass.hospiID },
                 {"hospitalName", DBClass.hospiname },
                 {"id", id },
