@@ -132,6 +132,7 @@
             this.buttonFinish.TabIndex = 1;
             this.buttonFinish.Text = "종료";
             this.buttonFinish.UseVisualStyleBackColor = true;
+            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
             // 
             // UpdateSubject
             // 
