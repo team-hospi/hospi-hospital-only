@@ -345,7 +345,7 @@ namespace hospi_hospital_only
                                 .AddText("HOSPI")
                                 .AddText("새로운 예약 신청이 있습니다.")
                                 .Show();
-
+                            break;
                         }
                     }
                 }
