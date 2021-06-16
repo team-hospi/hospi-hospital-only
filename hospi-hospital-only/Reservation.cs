@@ -136,7 +136,7 @@ namespace hospi_hospital_only
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
-                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "desc");
                     listViewReserve.Sort();
                 }
                 else if (reserve.list[i].reservationStatus == ReserveWait && status == 1)
@@ -153,7 +153,7 @@ namespace hospi_hospital_only
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
-                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "desc");
                     listViewReserve.Sort();
                 }
                 else if(reserve.list[i].reservationStatus == ReserveAccepted && status ==2)
@@ -170,7 +170,7 @@ namespace hospi_hospital_only
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
-                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "desc");
                     listViewReserve.Sort();
                 }
                 else if (reserve.list[i].reservationDate == DateTime.Now.ToString("yyyy-MM-dd") && reserve.list[i].reservationStatus != 2 && reserve.list[i].reservationStatus != -1 && status == 3)
@@ -194,7 +194,7 @@ namespace hospi_hospital_only
                     item.SubItems.Add(reserve.list[i].department);
                     listViewReserve.Items.Add(item);
 
-                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "asc");
+                    this.listViewReserve.ListViewItemSorter = new ListviewItemComparer(1, "desc");
                     listViewReserve.Sort();
                 }
             }
