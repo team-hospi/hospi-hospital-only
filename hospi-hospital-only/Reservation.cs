@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -363,9 +364,9 @@ namespace hospi_hospital_only
                     MessageBox.Show("이미 접수가 완료된 예약입니다", "알림");
                 }
             }
-            catch(Exception ex)
+            catch(DbException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("이미 승인된 예약입니다.");
             }
             else
             {

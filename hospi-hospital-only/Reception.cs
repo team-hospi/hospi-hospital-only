@@ -920,9 +920,13 @@ namespace hospi_hospital_only
                         dbc3.ReceptionTable.PrimaryKey = PrimaryKey;
                         DataRow delRow = dbc3.ReceptionTable.Rows.Find(listViewIndexID1);
                         int rowCount = dbc3.ReceptionTable.Rows.Count; // 삭제전 전체 row 갯수
+                        receptionlist.FindDocument(DBClass.hospiID, DateTime.Now.ToString("yyyy-MM-dd"), listView1.Items[SelectRow].SubItems[1].Text.Substring(0, 2) + ":" + listView1.Items[SelectRow].SubItems[1].Text.Substring(5, 2), listView1.Items[SelectRow].SubItems[5].Text);
+                        dbc.Delay(200);
                         delRow.Delete();
                         int receptionID = Convert.ToInt32(listViewIndexID1);
                         // listViewIndexID1 을 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
+
+                        
 
                         //  열 하나가 삭제될 경우 열의 인덱스가 삭제 대상보다 높은경우 모두 -1 해줌
                         // ex) 10개열 테이블에서 7번열 삭제시 8ㅡ>7 / 9-ㅡ>8 / 10ㅡ>9
@@ -937,9 +941,14 @@ namespace hospi_hospital_only
                             receptionID += 1;
 
                         }
+
                         dbc3.DBAdapter.Update(dbc3.DS, "reception");
                         dbc3.DS.AcceptChanges();
 
+
+                        
+                        receptionlist.Delete_Reception();
+                        dbc.Delay(200);
 
                         ReceptionListUpdate(1);
 
