@@ -1376,7 +1376,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
-                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                             dbc.Delay(200);
 
 
@@ -1442,7 +1442,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
-                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                             dbc.Delay(300);
 
 
@@ -1544,7 +1544,7 @@ namespace hospi_hospital_only
                         receptionlist.ReceptionAccept(reserve.list[i].department, dbc.SubjectTable.Rows[0][0].ToString(), reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, waitingIsNull);
                     }
 
-                    reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                    reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                     dbc4.Delay(200);
                 }
             }

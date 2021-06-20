@@ -84,6 +84,7 @@
             this.listViewReserve.UseCompatibleStateImageBehavior = false;
             this.listViewReserve.View = System.Windows.Forms.View.Details;
             this.listViewReserve.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listViewReserve_ColumnWidthChanging);
+            this.listViewReserve.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewReserve_MouseClick);
             this.listViewReserve.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewReserve_MouseDoubleClick);
             // 
             // columnHeader1
