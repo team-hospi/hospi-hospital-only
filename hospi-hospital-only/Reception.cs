@@ -1290,9 +1290,6 @@ namespace hospi_hospital_only
                     button13_Click(sender, e);
                 }
             }
-            button21.Enabled = true;
-            button2_Click(sender, e); // 진료대기버튼
-            button8_Click(sender, e); // 수납대기버튼
 
             dbc2.Reception_Update(date, 1);
             dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
@@ -1300,6 +1297,13 @@ namespace hospi_hospital_only
             dbc2.Reception_Update(date, 4);
             dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
             receptionCount1.Text = receptionCount1.Text + "\r\n진료보류 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
+
+            dbc2.Reception_Update(date, 2);
+            dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
+            receptionCount2.Text = "수납대기 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
+            dbc2.Reception_Update(date, 3);
+            dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
+            receptionCount2.Text = receptionCount2.Text + "\r\n수납완료 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
         }
 
      
