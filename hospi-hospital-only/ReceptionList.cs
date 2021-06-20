@@ -132,8 +132,16 @@ namespace hospi_hospital_only
 
         public void Delete_Reception()
         {
-            DocumentReference docref = fs.Collection("receptionList").Document(documentName);
-            docref.DeleteAsync();
+            try 
+            {
+                DocumentReference docref = fs.Collection("receptionList").Document(documentName);
+                docref.DeleteAsync();
+            }
+            catch
+            {
+
+            }
+            
         }
 
 
