@@ -491,12 +491,11 @@ namespace hospi_hospital_only
         // 수납대기 버튼
         private void button8_Click(object sender, EventArgs e)
         {
+            button15.Text = "수납";
             ButtonClearR();
             button8.Text = "▶ " + button8.Text + " ◀";
             listViewModeR = 1;
 
-            button14.Text = "수납";
-            button14.Enabled = true ;
             // 접수로드 (2 = 수납대기)
             ReceptionUpdate(2);
             prescriptionType = 1;
@@ -505,11 +504,10 @@ namespace hospi_hospital_only
         // 수납완료 버튼
         private void button13_Click(object sender, EventArgs e)
         {
+            button15.Text = "처방 확인";
             ButtonClearR();
             button13.Text = "▶ " + button13.Text + " ◀";
             listViewModeR = 2;
-
-            button14.Enabled = false;
 
             // 접수로드 (3 = 수납완료)
             ReceptionUpdate(3);
