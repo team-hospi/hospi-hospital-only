@@ -679,7 +679,6 @@ namespace hospi_hospital_only
                             MessageBox.Show("접수 완료.", "알림");
                             TextBoxClear();
                             patientName.Clear();
-                            comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
                             DBGrid.DataSource = null;
                             DBGrid.Rows.Clear();
                             DBGrid.Columns.Clear();
@@ -695,6 +694,8 @@ namespace hospi_hospital_only
 
                             ReceptionListUpdate(0);
 
+
+                            comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
                         }
                         catch(Exception ex)
                         {
@@ -1593,7 +1594,7 @@ namespace hospi_hospital_only
             if (status == 0)
             {
                 updatewait = 1;
-                receptionlist.TodayReceptionOpen(hospitalID, comboBoxSubjcet.Text);
+                receptionlist.TodayReceptionOpen(DBClass.hospiID, comboBoxSubjcet.Text);
                 dbc.Delay(100);
                 for (int i = 0; i < receptionlist.list.Count; i++)
                 {
@@ -1601,8 +1602,11 @@ namespace hospi_hospital_only
                     dbc4.countWaiting(comboBoxSubjcet.Text , receptionlist.list[i].receptionTime.Substring(0, 2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
                     dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
 
+
+                    
                     receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, comboBoxSubjcet.Text);
                     dbc.Delay(100);
+                    MessageBox.Show(receptionlist.documentName);
                     try
                     {
                         receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
