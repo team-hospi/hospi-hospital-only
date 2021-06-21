@@ -74,7 +74,7 @@ namespace hospi_hospital_only
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
                 DateTime dt = DateTime.Now;
-                long ss = Convert.ToInt64(dt.AddSeconds(-5).ToString("yyyyMMddHHmmss"));
+                long ss = Convert.ToInt64(dt.AddSeconds(-3).ToString("yyyyMMddHHmmss"));
                 foreach (DocumentChange change in snapshot.Changes)
                 {
                     if (change.ChangeType.ToString() == "Added")
