@@ -1115,7 +1115,7 @@ namespace hospi_hospital_only
         {
             if(listView2.SelectedItems.Count > 0)
             {
-                for(int i=0; i<listView2.Items.Count-1; i++)
+                for(int i=0; i<listView2.Items.Count; i++)
                 {
                     if(listView2.Items[i].Selected == true)
                     {
