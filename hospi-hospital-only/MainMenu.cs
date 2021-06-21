@@ -217,7 +217,22 @@ namespace hospi_hospital_only
         {
             CheckMasterPW checkMaserPW = new CheckMasterPW();
             checkMaserPW.FormNum = 6;
-            checkMaserPW.Show();
+            checkMaserPW.ShowDialog();
+
+            comboBoxReceptionist.Items.Clear();
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
+                int length = name.Length;
+                if (name.Substring(length - 1) != ")")
+                {
+                    comboBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
+                }
+            }
+            comboBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
+
         }
 
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
