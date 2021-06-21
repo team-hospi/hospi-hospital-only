@@ -166,30 +166,16 @@ namespace hospi_hospital_only
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                         // AGE
                         int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                        try
-                        {
-                            string secureCode = security.AESDecrypt128(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7), DBClass.hospiPW);
 
-                            if (secureCode.Substring(0, 1) == "1" || secureCode.Substring(0, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (secureCode.Substring(0, 1) == "3" || secureCode.Substring(0, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                        }
-                        catch
+
+
+                        if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "0")
                         {
-                            if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                            else { item.SubItems.Add(""); }
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
+                        }
+                        else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "5")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
                         }
 
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
@@ -224,31 +210,17 @@ namespace hospi_hospital_only
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                         // Age
                         int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                        try
-                        {
-                            string secureCode = security.AESDecrypt128(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7), DBClass.hospiPW);
 
-                            if (secureCode.Substring(0, 1) == "1" || secureCode.Substring(0, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (secureCode.Substring(0, 1) == "3" || secureCode.Substring(0, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                        }
-                        catch
+
+                        if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "0")
                         {
-                            if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                            else { item.SubItems.Add(""); }
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
                         }
+                        else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "5")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
+                        }
+
 
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][5].ToString());
