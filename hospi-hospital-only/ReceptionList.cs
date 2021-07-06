@@ -93,15 +93,22 @@ namespace hospi_hospital_only
 
         async public void watingNumberUpdate(int waitingNumber)
         {
-            DocumentReference docref = fs.Collection("receptionList").Document(documentName);
-            Dictionary<string, object> data = new Dictionary<string, object>()
+            try
+            {
+                DocumentReference docref = fs.Collection("receptionList").Document(documentName);
+                Dictionary<string, object> data = new Dictionary<string, object>()
             {
                 {"waitingNumber", waitingNumber},
             };
-            DocumentSnapshot snap = await docref.GetSnapshotAsync();
-            if (snap.Exists)
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists)
+                {
+                    await docref.UpdateAsync(data);
+                }
+            }
+            catch
             {
-                await docref.UpdateAsync(data);
+
             }
         }
 
@@ -125,8 +132,16 @@ namespace hospi_hospital_only
 
         public void Delete_Reception()
         {
-            DocumentReference docref = fs.Collection("receptionList").Document(documentName);
-            docref.DeleteAsync();
+            try 
+            {
+                DocumentReference docref = fs.Collection("receptionList").Document(documentName);
+                docref.DeleteAsync();
+            }
+            catch
+            {
+
+            }
+            
         }
 
 

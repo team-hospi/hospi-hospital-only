@@ -71,7 +71,14 @@ namespace hospi_hospital_only
                     LoginLabel.Visible = false;
                     dbc.FindDocument(textBoxHospitalID.Text);
                     mainmenu.HospitalID = textBoxHospitalID.Text;
-                    mainmenu.ShowDialog();
+                    try
+                    {
+                        mainmenu.ShowDialog();
+                    }
+                    catch
+                    {
+
+                    }
                     textBoxPW.Clear();
 
                 }

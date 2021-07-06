@@ -166,30 +166,16 @@ namespace hospi_hospital_only
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                         // AGE
                         int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                        try
-                        {
-                            string secureCode = security.AESDecrypt128(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7), DBClass.hospiPW);
 
-                            if (secureCode.Substring(0, 1) == "1" || secureCode.Substring(0, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (secureCode.Substring(0, 1) == "3" || secureCode.Substring(0, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                        }
-                        catch
+
+
+                        if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "0")
                         {
-                            if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                            else { item.SubItems.Add(""); }
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
+                        }
+                        else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "5")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
                         }
 
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
@@ -224,31 +210,17 @@ namespace hospi_hospital_only
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][2].ToString());
                         // Age
                         int year = Convert.ToInt32(DateTime.Now.ToString("yyyy"));
-                        try
-                        {
-                            string secureCode = security.AESDecrypt128(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7), DBClass.hospiPW);
 
-                            if (secureCode.Substring(0, 1) == "1" || secureCode.Substring(0, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (secureCode.Substring(0, 1) == "3" || secureCode.Substring(0, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                        }
-                        catch
+
+                        if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "0")
                         {
-                            if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "1" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "2")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
-                            }
-                            else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4")
-                            {
-                                item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
-                            }
-                            else { item.SubItems.Add(""); }
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1899).ToString());
                         }
+                        else if (dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "3" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "4" || dbc3.ReceptionTable.Rows[i][3].ToString().Substring(7, 1) == "5")
+                        {
+                            item.SubItems.Add((year - Convert.ToInt32(dbc3.ReceptionTable.Rows[i][3].ToString().Substring(0, 2)) - 1999).ToString());
+                        }
+
 
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][4].ToString());
                         item.SubItems.Add(dbc3.ReceptionTable.Rows[i][5].ToString());
@@ -491,12 +463,11 @@ namespace hospi_hospital_only
         // 수납대기 버튼
         private void button8_Click(object sender, EventArgs e)
         {
+            button15.Text = "수납";
             ButtonClearR();
             button8.Text = "▶ " + button8.Text + " ◀";
             listViewModeR = 1;
 
-            button14.Text = "수납";
-            button14.Enabled = true ;
             // 접수로드 (2 = 수납대기)
             ReceptionUpdate(2);
             prescriptionType = 1;
@@ -505,11 +476,10 @@ namespace hospi_hospital_only
         // 수납완료 버튼
         private void button13_Click(object sender, EventArgs e)
         {
+            button15.Text = "처방 확인";
             ButtonClearR();
             button13.Text = "▶ " + button13.Text + " ◀";
             listViewModeR = 2;
-
-            button14.Enabled = false;
 
             // 접수로드 (3 = 수납완료)
             ReceptionUpdate(3);
@@ -681,7 +651,6 @@ namespace hospi_hospital_only
                             MessageBox.Show("접수 완료.", "알림");
                             TextBoxClear();
                             patientName.Clear();
-                            comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
                             DBGrid.DataSource = null;
                             DBGrid.Rows.Clear();
                             DBGrid.Columns.Clear();
@@ -697,6 +666,8 @@ namespace hospi_hospital_only
 
                             ReceptionListUpdate(0);
 
+
+                            comboBoxSubjcet.Text = comboBoxSubjcet.Items[0].ToString();
                         }
                         catch(Exception ex)
                         {
@@ -920,9 +891,13 @@ namespace hospi_hospital_only
                         dbc3.ReceptionTable.PrimaryKey = PrimaryKey;
                         DataRow delRow = dbc3.ReceptionTable.Rows.Find(listViewIndexID1);
                         int rowCount = dbc3.ReceptionTable.Rows.Count; // 삭제전 전체 row 갯수
+                        receptionlist.FindDocument(DBClass.hospiID, DateTime.Now.ToString("yyyy-MM-dd"), listView1.Items[SelectRow].SubItems[1].Text.Substring(0, 2) + ":" + listView1.Items[SelectRow].SubItems[1].Text.Substring(5, 2), listView1.Items[SelectRow].SubItems[5].Text);
+                        dbc.Delay(200);
                         delRow.Delete();
                         int receptionID = Convert.ToInt32(listViewIndexID1);
                         // listViewIndexID1 을 증감시킬경우 for문에 영향을 주므로 변수를 따로 지정해서 사용
+
+                        
 
                         //  열 하나가 삭제될 경우 열의 인덱스가 삭제 대상보다 높은경우 모두 -1 해줌
                         // ex) 10개열 테이블에서 7번열 삭제시 8ㅡ>7 / 9-ㅡ>8 / 10ㅡ>9
@@ -937,9 +912,14 @@ namespace hospi_hospital_only
                             receptionID += 1;
 
                         }
+
                         dbc3.DBAdapter.Update(dbc3.DS, "reception");
                         dbc3.DS.AcceptChanges();
 
+
+                        
+                        receptionlist.Delete_Reception();
+                        dbc.Delay(200);
 
                         ReceptionListUpdate(1);
 
@@ -1135,7 +1115,7 @@ namespace hospi_hospital_only
         {
             if(listView2.SelectedItems.Count > 0)
             {
-                for(int i=0; i<listView2.Items.Count-1; i++)
+                for(int i=0; i<listView2.Items.Count; i++)
                 {
                     if(listView2.Items[i].Selected == true)
                     {
@@ -1283,6 +1263,20 @@ namespace hospi_hospital_only
                     button13_Click(sender, e);
                 }
             }
+
+            dbc2.Reception_Update(date, 1);
+            dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
+            receptionCount1.Text = "진료대기 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
+            dbc2.Reception_Update(date, 4);
+            dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
+            receptionCount1.Text = receptionCount1.Text + "\r\n진료보류 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
+
+            dbc2.Reception_Update(date, 2);
+            dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
+            receptionCount2.Text = "수납대기 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
+            dbc2.Reception_Update(date, 3);
+            dbc2.ReceptionTable = dbc2.DS.Tables["reception"];
+            receptionCount2.Text = receptionCount2.Text + "\r\n수납완료 : " + dbc2.ReceptionTable.Rows.Count.ToString("00");
         }
 
      
@@ -1355,7 +1349,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
-                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                             dbc.Delay(200);
 
 
@@ -1421,7 +1415,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
-                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                             dbc.Delay(300);
 
 
@@ -1523,7 +1517,7 @@ namespace hospi_hospital_only
                         receptionlist.ReceptionAccept(reserve.list[i].department, dbc.SubjectTable.Rows[0][0].ToString(), reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, waitingIsNull);
                     }
 
-                    reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate);
+                    reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                     dbc4.Delay(200);
                 }
             }
@@ -1572,7 +1566,7 @@ namespace hospi_hospital_only
             if (status == 0)
             {
                 updatewait = 1;
-                receptionlist.TodayReceptionOpen(hospitalID, comboBoxSubjcet.Text);
+                receptionlist.TodayReceptionOpen(DBClass.hospiID, comboBoxSubjcet.Text);
                 dbc.Delay(100);
                 for (int i = 0; i < receptionlist.list.Count; i++)
                 {
@@ -1580,8 +1574,11 @@ namespace hospi_hospital_only
                     dbc4.countWaiting(comboBoxSubjcet.Text , receptionlist.list[i].receptionTime.Substring(0, 2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
                     dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
 
+
+                    
                     receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, comboBoxSubjcet.Text);
                     dbc.Delay(100);
+                    MessageBox.Show(receptionlist.documentName);
                     try
                     {
                         receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));

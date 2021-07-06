@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -261,8 +262,8 @@ namespace hospi_hospital_only
 
             dbc.Delay(200);
             textBoxName.Text = reserve.patientName;
-            //문서찾기(병원id, 시간, 환자id, 날짜)
-            reserve.FindDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[3].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[2].Text);
+            //문서찾기(병원id, 시간, 환자id, 날짜, 진료과)
+            reserve.FindDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[3].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[2].Text, listViewReserve.Items[SelectRow].SubItems[6].Text);
             dbc.Delay(50);
             reserve.FindReserveDocument(hospitalID, listViewReserve.Items[SelectRow].SubItems[6].Text);
             TextBoxComment.Text = reserve.comment;
@@ -363,9 +364,9 @@ namespace hospi_hospital_only
                     MessageBox.Show("이미 접수가 완료된 예약입니다", "알림");
                 }
             }
-            catch(Exception ex)
+            catch(DbException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("이미 승인된 예약입니다.");
             }
             else
             {
@@ -557,7 +558,7 @@ namespace hospi_hospital_only
 
                 newRow["ReceptionInfo"] = TextBoxComment.Text;
                 newRow["ReceptionType"] = 1;
-                reserve.FindDocument(hospitalID, selectTime, selectid, selectDate);
+                reserve.FindDocument(hospitalID, selectTime, selectid, selectDate, selectdepartment);
                 dbc.Delay(200);
                 newRow["ReceptionCode"] = Reserve.documentName;
                 dbc.ReceptionTable.Rows.Add(newRow);
@@ -596,6 +597,11 @@ namespace hospi_hospital_only
         private void button6_Click(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void listViewReserve_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

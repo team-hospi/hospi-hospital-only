@@ -212,9 +212,18 @@ namespace hospi_hospital_only
                     ws.Cells[6, 25] = "  " + dbc.HospiTell;
                     ws.Cells[7, 25] = "  " + dbc.HospiTell;
                     ws.Cells[22, 5] = "교부일로부터 (    7    )일간";
+
                     for (int i = 0; i < DBGrid.Rows.Count; i++)
                     {
-                        ws.Cells[10 + i, 1] = "  " + DBGrid.Rows[i].Cells[0].FormattedValue.ToString();
+                        string mediName = "  " + DBGrid.Rows[i].Cells[0].FormattedValue.ToString();
+                        for (int k = 0; k < mediName.Length; k++)
+                        {
+                            if (mediName.Substring(k, 1) == "(")
+                            {
+                                mediName = mediName.Substring(0, k);
+                            }
+                        }
+                        ws.Cells[10 + i, 1] = mediName;
                         ws.Cells[10 + i, 17] = "  " + DBGrid.Rows[i].Cells[1].FormattedValue.ToString();
                         ws.Cells[10 + i, 20] = "  " + DBGrid.Rows[i].Cells[2].FormattedValue.ToString();
                         ws.Cells[10 + i, 23] = "  " + DBGrid.Rows[i].Cells[3].FormattedValue.ToString();

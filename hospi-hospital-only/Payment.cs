@@ -200,9 +200,6 @@ namespace hospi_hospital_only
                     prescription.PrescriptionAdd(subjectName, dbc.MobileTable.Rows[0][0].ToString(), dbc.PrescriptionTable.Rows[0][0].ToString(), Medicine);
                 }
                 dbc.Delay(200);
-                reception.FindDocument(DBClass.hospiID, "20"+receptionDate, receptionTime.Substring(0,2) + ":" + receptionTime.Substring(2,2), subjectName);
-                dbc.Delay(200);
-                reception.Delete_Reception();
                 
 
             }

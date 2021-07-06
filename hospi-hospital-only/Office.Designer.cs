@@ -52,9 +52,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.labelPresctiptionEnd = new System.Windows.Forms.Label();
             this.buttonNextReception = new System.Windows.Forms.Button();
             this.buttonReceptionEnd = new System.Windows.Forms.Button();
+            this.labelPresctiptionEnd = new System.Windows.Forms.Label();
             this.buttonReceptionList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -102,11 +102,11 @@
             this.labelGenderAge = new System.Windows.Forms.Label();
             this.textBoxReceptionCount = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxSubjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -357,20 +357,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // labelPresctiptionEnd
-            // 
-            this.labelPresctiptionEnd.AutoSize = true;
-            this.labelPresctiptionEnd.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelPresctiptionEnd.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelPresctiptionEnd.ForeColor = System.Drawing.Color.Green;
-            this.labelPresctiptionEnd.Location = new System.Drawing.Point(124, 282);
-            this.labelPresctiptionEnd.Name = "labelPresctiptionEnd";
-            this.labelPresctiptionEnd.Size = new System.Drawing.Size(167, 32);
-            this.labelPresctiptionEnd.TabIndex = 42;
-            this.labelPresctiptionEnd.Text = "처방등록 완료";
-            this.labelPresctiptionEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelPresctiptionEnd.Visible = false;
-            // 
             // buttonNextReception
             // 
             this.buttonNextReception.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -393,6 +379,20 @@
             this.buttonReceptionEnd.Text = "진료 완료";
             this.buttonReceptionEnd.UseVisualStyleBackColor = true;
             this.buttonReceptionEnd.Click += new System.EventHandler(this.buttonReceptionEnd_Click);
+            // 
+            // labelPresctiptionEnd
+            // 
+            this.labelPresctiptionEnd.AutoSize = true;
+            this.labelPresctiptionEnd.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelPresctiptionEnd.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelPresctiptionEnd.ForeColor = System.Drawing.Color.Green;
+            this.labelPresctiptionEnd.Location = new System.Drawing.Point(124, 282);
+            this.labelPresctiptionEnd.Name = "labelPresctiptionEnd";
+            this.labelPresctiptionEnd.Size = new System.Drawing.Size(167, 32);
+            this.labelPresctiptionEnd.TabIndex = 42;
+            this.labelPresctiptionEnd.Text = "처방등록 완료";
+            this.labelPresctiptionEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelPresctiptionEnd.Visible = false;
             // 
             // buttonReceptionList
             // 
@@ -467,6 +467,7 @@
             this.buttonMedicienSearch.TabIndex = 40;
             this.buttonMedicienSearch.Text = "검색";
             this.buttonMedicienSearch.UseVisualStyleBackColor = true;
+            this.buttonMedicienSearch.Click += new System.EventHandler(this.buttonMedicienSearch_Click);
             // 
             // textBox4
             // 
@@ -884,6 +885,15 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "진료과목";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(146, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(91, 23);
+            this.textBox1.TabIndex = 31;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // textBoxSubjectName
             // 
             this.textBoxSubjectName.Location = new System.Drawing.Point(15, 28);
@@ -921,15 +931,6 @@
             this.groupBox12.TabIndex = 43;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "진료 소견";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(146, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(91, 23);
-            this.textBox1.TabIndex = 31;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Office
             // 
