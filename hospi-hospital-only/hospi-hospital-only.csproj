@@ -113,6 +113,12 @@
     <Compile Include="DBClass.cs" />
     <Compile Include="FBKey.cs" />
     <Compile Include="Fcm.cs" />
+    <Compile Include="FindRadiography.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindRadiography.Designer.cs">
+      <DependentUpon>FindRadiography.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospital_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     <EmbeddedResource Include="CheckUpdateMode.resx">
       <DependentUpon>CheckUpdateMode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FindRadiography.resx">
+      <DependentUpon>FindRadiography.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hospital_SignUp.resx">
       <DependentUpon>Hospital_SignUp.cs</DependentUpon>
     </EmbeddedResource>
@@ -411,6 +420,7 @@
     <EmbeddedResource Include="updateSubject.resx">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -421,9 +431,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\BaseFileResource.xls" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BouncyCastle">

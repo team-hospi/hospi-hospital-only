@@ -563,7 +563,7 @@ namespace hospi_hospital_only
 
                 ReceptionTypeChange();
 
-                
+                button5.Enabled = false;
             }
         }
 

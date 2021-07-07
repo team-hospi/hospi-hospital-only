@@ -1557,6 +1557,24 @@ namespace hospi_hospital_only
             button1_Click(sender, e);
         }
 
+        private void ButtonRadioGraphy_Click(object sender, EventArgs e)
+        {
+            dbc.Image_Open(prescriptionArr[0], dateTimePicker2.Value.ToString("yy-MM-dd"));
+            dbc.ImageTable = dbc.DS.Tables["Image"];
+            if(dbc.ImageTable.Rows.Count == 0)
+            {
+                MessageBox.Show("해당 환자의 의료 영상이 존재하지 않습니다.", "알림");
+            }
+            else if (dbc.ImageTable.Rows.Count > 0)
+            {
+                FindRadiography findRadiography = new FindRadiography();
+                findRadiography.ChartNum = prescriptionArr[0];
+                findRadiography.PatientName = prescriptionArr[3];
+                findRadiography.Date = dateTimePicker2.Value.ToString("yy-MM-dd");
+                findRadiography.ShowDialog();
+            }
+        }
+
 
 
         //접수 = 0 그 외 =1
