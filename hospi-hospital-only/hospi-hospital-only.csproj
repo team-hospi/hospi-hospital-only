@@ -303,7 +303,6 @@
     </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="Visitor.cs" />
-    <Content Include="Hospi.ico" />
     <Content Include="HospiIcon.ico" />
     <Content Include="Resources\Licence.txt" />
     <EmbeddedResource Include="CheckMasterPW.resx">
