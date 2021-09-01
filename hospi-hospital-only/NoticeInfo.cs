@@ -64,15 +64,9 @@ namespace hospi_hospital_only
         // 수정
         private void button2_Click(object sender, EventArgs e)
         {
-            CheckMasterPW checkMasterPW = new CheckMasterPW();
-            checkMasterPW.FormNum = 3;
-            checkMasterPW.NoticeWriter = textBoxWriter.Text;
-            checkMasterPW.ShowDialog();
 
             int passwordOK = 1;
             // checkMasterPW 에서 로그인 성공시 checkMasterPW.PasswordOK = 1;
-            if (passwordOK == checkMasterPW.PasswordOK)
-            {
                 textBoxTitle.ReadOnly = false;
                 textBoxInfo.ReadOnly = false;
                 textBoxEndDate.Visible = false;
@@ -89,7 +83,6 @@ namespace hospi_hospital_only
                 button1.Location = p;
                 button3.Location = p;
 
-            }
             update = 1;
         }
 

@@ -63,17 +63,18 @@ namespace hospi_hospital_only
 
                 this.Visible = false;
 
-                MainMenu mainmenu = new MainMenu();
+                StaffLogin staffLogin = new StaffLogin();
+
                 if (loginSuccess == true)
                 {
                     loginSuccess = true;
                     button6.Enabled = true;
                     LoginLabel.Visible = false;
                     dbc.FindDocument(textBoxHospitalID.Text);
-                    mainmenu.HospitalID = textBoxHospitalID.Text;
+                    staffLogin.HospitalID = textBoxHospitalID.Text;
                     try
                     {
-                        mainmenu.ShowDialog();
+                        staffLogin.ShowDialog();
                     }
                     catch
                     {

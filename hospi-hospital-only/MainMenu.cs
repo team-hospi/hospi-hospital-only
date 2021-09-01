@@ -21,6 +21,7 @@ namespace hospi_hospital_only
         Inquiry inquiry = new Inquiry();
         int indexNum;
         string noticeID;
+        string staffId;
 
         public MainMenu()
         {
@@ -28,7 +29,11 @@ namespace hospi_hospital_only
             dbc.FireConnect();
             inquiry.FireConnect();
         }
-
+        public string StaffId
+        {
+            get { return staffId; }
+            set { staffId = value; }
+        }
         public string HospitalID
         {
             get { return hospitalID; }
@@ -94,6 +99,12 @@ namespace hospi_hospital_only
                 {
                     listView2.Items.Add(items);
                 }
+
+                // 관리자메뉴 접근권한 판별
+                if(staffId != "master")
+                {
+                    관리자메뉴ToolStripMenuItem.Visible = false;
+                }
             }
         }
 
@@ -141,52 +152,12 @@ namespace hospi_hospital_only
             Dispose();
         }
 
-        // 병원설정변경
-        private void button3_Click(object sender, EventArgs e)
-        {
-            CheckMasterPW checkMasterPW = new CheckMasterPW();
-            checkMasterPW.HospitalID = hospitalID;
-            checkMasterPW.FormNum = 1;
-            checkMasterPW.ShowDialog();
-        }
-
         // 문의확인
         private void button4_Click(object sender, EventArgs e)
         {
             InquiryCheck inquiry = new InquiryCheck();
             inquiry.HospitalID = hospitalID;
             inquiry.ShowDialog();
-        }
-
-        // 공지사항 톱니바퀴 클릭
-        private void setting1_Click(object sender, EventArgs e)
-        {
-            CheckMasterPW checkMasterPW = new CheckMasterPW();
-            checkMasterPW.HospitalID = hospitalID;
-            checkMasterPW.FormNum = 2;
-            checkMasterPW.ShowDialog();
-
-            listView2.Items.Clear();
-            dbc.Notice_Open();
-            dbc.NoticeTable = dbc.DS.Tables["Notice"];
-
-            for (int i = 0; i < dbc.NoticeTable.Rows.Count; i++)
-            {
-                ListViewItem items = new ListViewItem();
-                items.Text = (listView2.Items.Count + 1).ToString();
-                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeTitle"].ToString());
-                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeWriter"].ToString());
-                string startDate = "20" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(0, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(2, 2) + "-" + dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString().Substring(4, 2);
-                items.SubItems.Add(startDate);
-                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeID"].ToString());
-                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString());
-                items.SubItems.Add(dbc.NoticeTable.Rows[i]["NoticeStartDate"].ToString());
-
-                if (Convert.ToInt32(dbc.NoticeTable.Rows[i]["NoticeEndDate"].ToString()) > Convert.ToInt32(DateTime.Now.ToString("yyMMdd")))
-                {
-                    listView2.Items.Add(items);
-                }
-            }
         }
 
         private void listView2_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
@@ -202,37 +173,6 @@ namespace hospi_hospital_only
                 noticeID = listView2.Items[listView2.FocusedItem.Index].SubItems[4].Text.ToString();
             }
             
-        }
-
-        // 관리자 메뉴 버튼
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CheckMasterPW checkMasterPW = new CheckMasterPW();
-            checkMasterPW.FormNum = 4;
-            checkMasterPW.ShowDialog();
-        }
-
-        // 접수자, 과목 수정 톱니바퀴
-        private void setting2_Click(object sender, EventArgs e)
-        {
-            CheckMasterPW checkMaserPW = new CheckMasterPW();
-            checkMaserPW.FormNum = 6;
-            checkMaserPW.ShowDialog();
-
-            comboBoxReceptionist.Items.Clear();
-            dbc.Receptionist_Open();
-            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
-            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
-            {
-                string name = dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString();
-                int length = name.Length;
-                if (name.Substring(length - 1) != ")")
-                {
-                    comboBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
-                }
-            }
-            comboBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
-
         }
 
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -289,25 +229,6 @@ namespace hospi_hospital_only
             label1.Text = date + " " + time;
         }
 
-        private void 관리자계정관리MToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            button1_Click(sender, e);
-        }
-
-        private void 운영정보설정SToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            button3_Click(sender, e);
-        }
-
-        private void 과목및접수자편집EToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            setting2_Click(sender, e);
-        }
-
-        private void 공지사항등록DToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            setting1_Click(sender, e);
-        }
 
         private void ddddToolStripMenuItem_Click(object sender, EventArgs e) { }
 
@@ -334,6 +255,12 @@ namespace hospi_hospital_only
         private void label2_DoubleClick(object sender, EventArgs e)
         {
             MessageBox.Show("Hospi  ver1.0", "버전 정보");
+        }
+
+        private void 관리자메뉴ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StaffInfo staffInfo = new StaffInfo();
+            staffInfo.ShowDialog();
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -100,6 +100,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ButtonRadioGraphy = new System.Windows.Forms.Button();
             this.listView3 = new System.Windows.Forms.ListView();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -132,12 +133,9 @@
             this.문의ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.문의확인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.병원정보설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.접수자변경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.끝내기XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.ButtonRadioGraphy = new System.Windows.Forms.Button();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -511,14 +509,14 @@
             this.DBGrid.CausesValidation = false;
             this.DBGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.DBGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DBGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EnableHeadersVisualStyles = false;
             this.DBGrid.Location = new System.Drawing.Point(12, 54);
@@ -959,6 +957,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "수납 현황";
             // 
+            // ButtonRadioGraphy
+            // 
+            this.ButtonRadioGraphy.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ButtonRadioGraphy.Location = new System.Drawing.Point(162, 302);
+            this.ButtonRadioGraphy.Name = "ButtonRadioGraphy";
+            this.ButtonRadioGraphy.Size = new System.Drawing.Size(143, 37);
+            this.ButtonRadioGraphy.TabIndex = 46;
+            this.ButtonRadioGraphy.Text = "의료 영상";
+            this.ButtonRadioGraphy.UseVisualStyleBackColor = true;
+            this.ButtonRadioGraphy.Click += new System.EventHandler(this.ButtonRadioGraphy_Click);
+            // 
             // listView3
             // 
             this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1254,37 +1263,21 @@
             // 설정ToolStripMenuItem
             // 
             this.설정ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.병원정보설정ToolStripMenuItem,
-            this.접수자변경ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.끝내기XToolStripMenuItem});
             this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
             this.설정ToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.설정ToolStripMenuItem.Text = " 설정(&S) ";
             // 
-            // 병원정보설정ToolStripMenuItem
-            // 
-            this.병원정보설정ToolStripMenuItem.Name = "병원정보설정ToolStripMenuItem";
-            this.병원정보설정ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.병원정보설정ToolStripMenuItem.Text = "병원 정보 설정(&I)";
-            this.병원정보설정ToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정ToolStripMenuItem_Click);
-            // 
-            // 접수자변경ToolStripMenuItem
-            // 
-            this.접수자변경ToolStripMenuItem.Name = "접수자변경ToolStripMenuItem";
-            this.접수자변경ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.접수자변경ToolStripMenuItem.Text = "접수자 변경(&E)";
-            this.접수자변경ToolStripMenuItem.Click += new System.EventHandler(this.접수자변경ToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(163, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // 끝내기XToolStripMenuItem
             // 
             this.끝내기XToolStripMenuItem.Name = "끝내기XToolStripMenuItem";
-            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.끝내기XToolStripMenuItem.Text = "끝내기(&X)";
             this.끝내기XToolStripMenuItem.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
             // 
@@ -1300,17 +1293,6 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ButtonRadioGraphy
-            // 
-            this.ButtonRadioGraphy.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ButtonRadioGraphy.Location = new System.Drawing.Point(162, 302);
-            this.ButtonRadioGraphy.Name = "ButtonRadioGraphy";
-            this.ButtonRadioGraphy.Size = new System.Drawing.Size(143, 37);
-            this.ButtonRadioGraphy.TabIndex = 46;
-            this.ButtonRadioGraphy.Text = "의료 영상";
-            this.ButtonRadioGraphy.UseVisualStyleBackColor = true;
-            this.ButtonRadioGraphy.Click += new System.EventHandler(this.ButtonRadioGraphy_Click);
             // 
             // Reception
             // 
@@ -1455,8 +1437,6 @@
         private System.Windows.Forms.ToolStripMenuItem 문의ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 문의확인ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 병원정보설정ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 접수자변경ToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeader21;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;

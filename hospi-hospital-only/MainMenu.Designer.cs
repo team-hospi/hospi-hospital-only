@@ -49,12 +49,9 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ddddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.관리자메뉴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.관리자계정관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.운영정보설정SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.과목및접수자편집EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.공지사항등록DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.공지사항등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.끝내기XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -257,7 +254,7 @@
             this.menuStrip1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ddddToolStripMenuItem});
+            this.ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -266,66 +263,41 @@
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // ddddToolStripMenuItem
+            // ToolStripMenuItem
             // 
-            this.ddddToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.관리자메뉴ToolStripMenuItem,
+            this.공지사항등록ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.끝내기XToolStripMenuItem});
-            this.ddddToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ddddToolStripMenuItem.Name = "ddddToolStripMenuItem";
-            this.ddddToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.ddddToolStripMenuItem.Text = "메뉴(&M) ";
-            this.ddddToolStripMenuItem.Click += new System.EventHandler(this.ddddToolStripMenuItem_Click);
+            this.ToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ToolStripMenuItem.Name = "ToolStripMenuItem";
+            this.ToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.ToolStripMenuItem.Text = "메뉴(&M) ";
+            this.ToolStripMenuItem.Click += new System.EventHandler(this.ddddToolStripMenuItem_Click);
             // 
             // 관리자메뉴ToolStripMenuItem
             // 
-            this.관리자메뉴ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.관리자계정관리MToolStripMenuItem,
-            this.운영정보설정SToolStripMenuItem,
-            this.과목및접수자편집EToolStripMenuItem,
-            this.공지사항등록DToolStripMenuItem});
             this.관리자메뉴ToolStripMenuItem.Name = "관리자메뉴ToolStripMenuItem";
-            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.관리자메뉴ToolStripMenuItem.Text = "관리자 메뉴(&A)";
+            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.관리자메뉴ToolStripMenuItem.Text = "직원 관리(&A)";
+            this.관리자메뉴ToolStripMenuItem.Click += new System.EventHandler(this.관리자메뉴ToolStripMenuItem_Click);
             // 
-            // 관리자계정관리MToolStripMenuItem
+            // 공지사항등록ToolStripMenuItem
             // 
-            this.관리자계정관리MToolStripMenuItem.Name = "관리자계정관리MToolStripMenuItem";
-            this.관리자계정관리MToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.관리자계정관리MToolStripMenuItem.Text = "관리자 계정 관리(&M) ";
-            this.관리자계정관리MToolStripMenuItem.Click += new System.EventHandler(this.관리자계정관리MToolStripMenuItem_Click);
-            // 
-            // 운영정보설정SToolStripMenuItem
-            // 
-            this.운영정보설정SToolStripMenuItem.Name = "운영정보설정SToolStripMenuItem";
-            this.운영정보설정SToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.운영정보설정SToolStripMenuItem.Text = "운영 정보 설정(&S)";
-            this.운영정보설정SToolStripMenuItem.Click += new System.EventHandler(this.운영정보설정SToolStripMenuItem_Click);
-            // 
-            // 과목및접수자편집EToolStripMenuItem
-            // 
-            this.과목및접수자편집EToolStripMenuItem.Name = "과목및접수자편집EToolStripMenuItem";
-            this.과목및접수자편집EToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.과목및접수자편집EToolStripMenuItem.Text = "과목 및 접수자 편집(&E)";
-            this.과목및접수자편집EToolStripMenuItem.Click += new System.EventHandler(this.과목및접수자편집EToolStripMenuItem_Click);
-            // 
-            // 공지사항등록DToolStripMenuItem
-            // 
-            this.공지사항등록DToolStripMenuItem.Name = "공지사항등록DToolStripMenuItem";
-            this.공지사항등록DToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.공지사항등록DToolStripMenuItem.Text = "공지사항 등록(&D)";
-            this.공지사항등록DToolStripMenuItem.Click += new System.EventHandler(this.공지사항등록DToolStripMenuItem_Click);
+            this.공지사항등록ToolStripMenuItem.Name = "공지사항등록ToolStripMenuItem";
+            this.공지사항등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.공지사항등록ToolStripMenuItem.Text = "공지사항 등록(&H)";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(151, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // 끝내기XToolStripMenuItem
             // 
             this.끝내기XToolStripMenuItem.Name = "끝내기XToolStripMenuItem";
-            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.끝내기XToolStripMenuItem.Text = "끝내기(&X)";
             this.끝내기XToolStripMenuItem.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
             // 
@@ -450,7 +422,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ddddToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
@@ -463,15 +435,12 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ToolStripMenuItem 관리자메뉴ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 관리자계정관리MToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 운영정보설정SToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 과목및접수자편집EToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 공지사항등록DToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 끝내기XToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.ToolStripMenuItem 공지사항등록ToolStripMenuItem;
     }
 }

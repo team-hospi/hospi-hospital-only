@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace hospi_hospital_only
 {
-    public partial class MasterAdd : Form
+    public partial class StaffAdd : Form
     {
         DBClass dbc = new DBClass();
+        string staffId;
 
-        public MasterAdd()
+        public string StaffId
+        {
+            get { return staffId; }
+            set { staffId = value; }
+        }
+
+        public StaffAdd()
         {
             InitializeComponent();
         }
@@ -26,36 +33,36 @@ namespace hospi_hospital_only
 
         private void buttonCheck_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text == "" && textBoxName.Text == " ")
+            if (textBoxId.Text != "" && textBoxId.Text != " ")
             {
-                for (int i = 0; i < dbc.MasterTable.Rows.Count; i++)
+                for (int i = 0; i < dbc.StaffTable.Rows.Count; i++)
                 {
-                    if (dbc.MasterTable.Rows[i]["masterName"].ToString() == textBoxName.Text)
+                    if (dbc.StaffTable.Rows[i]["staffId"].ToString() == textBoxId.Text)
                     {
-                        MessageBox.Show("관리자명이 중복됩니다. \r\n다른 이름을 입력해주세요.", "알림");
-                        textBoxName.Focus();
+                        MessageBox.Show("ID가 중복됩니다. \r\n다른 ID를 입력해주세요.", "알림");
+                        textBoxId.Focus();
                         return;
                     }
                 }
-                MessageBox.Show("사용 가능한 관리자명입니다.", "알림");
+                MessageBox.Show("사용 가능한 ID입니다.", "알림");
                 buttonCheck.Enabled = false;
                 textBoxPW1.Focus();
             }
             else
             {
-                MessageBox.Show("관리자명을 입력해주세요", "알림");
+                MessageBox.Show("ID를 입력해주세요", "알림");
             }
         }
 
         private void MasterAdd_Load(object sender, EventArgs e)
         {
-            dbc.Master_Open();
-            dbc.MasterTable = dbc.DS.Tables["master"];
+            dbc.Staff_open();
+            dbc.StaffTable = dbc.DS.Tables["staff"];
         }
 
         private void textBoxName_Enter(object sender, EventArgs e)
         {
-            textBoxName.SelectAll();
+            textBoxId.SelectAll();
         }
 
         private void textBoxPW1_TextChanged(object sender, EventArgs e)
@@ -100,25 +107,27 @@ namespace hospi_hospital_only
         {
             if (buttonCheck.Enabled == true)
             {
-                MessageBox.Show("관리자명 중복확인을 먼저 진행해주세요.", "알림:");
+                MessageBox.Show("ID 중복확인을 먼저 진행해주세요.", "알림:");
             }
             else
             {
                 if (pwLabel1.Visible == true && pwLabel2.Visible == true)
                 {
-                    DialogResult ok = MessageBox.Show("신규 관리자를 등록하시겠습니까?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult ok = MessageBox.Show("신규 ID를 등록하시겠습니까?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (ok == DialogResult.Yes)
                     {
-                        DataRow newRow = dbc.MasterTable.NewRow();
-                        newRow["MasterID"] = dbc.MasterTable.Rows.Count;
-                        newRow["MasterName"] = textBoxName.Text;
-                        newRow["MasterPassword"] = textBoxPW1.Text;
+                        DataRow newRow = dbc.StaffTable.NewRow();
+                        newRow["staffId"] = textBoxId.Text;
+                        newRow["staffPw"] = textBoxPW1.Text;
+                        newRow["staffNm"] = textBoxName.Text;
+                        newRow["docYn"] = "N";
+                        newRow["useYn"] = "Y";
 
-                        dbc.MasterTable.Rows.Add(newRow);
-                        dbc.DBAdapter.Update(dbc.DS, "Master");
+                        dbc.StaffTable.Rows.Add(newRow);
+                        dbc.DBAdapter.Update(dbc.DS, "staff");
                         dbc.DS.AcceptChanges();
 
-                        MessageBox.Show("관리자명 : " + textBoxName.Text + "\r\n등록이 완료되었습니다.", "알림");
+                        MessageBox.Show("ID : " + textBoxId.Text + "\r\n등록이 완료되었습니다.", "알림");
                         Dispose();
                     }
                 }

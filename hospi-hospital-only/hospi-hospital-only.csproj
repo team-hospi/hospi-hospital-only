@@ -98,12 +98,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckMasterPW.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CheckMasterPW.Designer.cs">
-      <DependentUpon>CheckMasterPW.cs</DependentUpon>
-    </Compile>
     <Compile Include="CheckUpdateMode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,35 +144,17 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="MasterAdd.cs">
+    <Compile Include="StaffAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MasterAdd.Designer.cs">
-      <DependentUpon>MasterAdd.cs</DependentUpon>
+    <Compile Include="StaffAdd.Designer.cs">
+      <DependentUpon>StaffAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="MasterDelete.cs">
+    <Compile Include="StaffInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MasterDelete.Designer.cs">
-      <DependentUpon>MasterDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MasterInfomation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MasterInfomation.Designer.cs">
-      <DependentUpon>MasterInfomation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MasterMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MasterMenu.Designer.cs">
-      <DependentUpon>MasterMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MasterPassword.Designer.cs">
-      <DependentUpon>MasterPassword.cs</DependentUpon>
+    <Compile Include="StaffInfo.Designer.cs">
+      <DependentUpon>StaffInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Notice.cs">
       <SubType>Form</SubType>
@@ -289,6 +265,12 @@
     </Compile>
     <Compile Include="Security.cs" />
     <Compile Include="SignUp.cs" />
+    <Compile Include="StaffLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffLogin.Designer.cs">
+      <DependentUpon>StaffLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateMedicine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,9 +293,6 @@
     <Compile Include="Visitor.cs" />
     <Content Include="HospiIcon.ico" />
     <Content Include="Resources\Licence.txt" />
-    <EmbeddedResource Include="CheckMasterPW.resx">
-      <DependentUpon>CheckMasterPW.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CheckUpdateMode.resx">
       <DependentUpon>CheckUpdateMode.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,20 +314,11 @@
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MasterAdd.resx">
-      <DependentUpon>MasterAdd.cs</DependentUpon>
+    <EmbeddedResource Include="StaffAdd.resx">
+      <DependentUpon>StaffAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MasterDelete.resx">
-      <DependentUpon>MasterDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MasterInfomation.resx">
-      <DependentUpon>MasterInfomation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MasterMenu.resx">
-      <DependentUpon>MasterMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MasterPassword.resx">
-      <DependentUpon>MasterPassword.cs</DependentUpon>
+    <EmbeddedResource Include="StaffInfo.resx">
+      <DependentUpon>StaffInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notice.resx">
       <DependentUpon>Notice.cs</DependentUpon>
@@ -410,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchAddress.resx">
       <DependentUpon>SearchAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffLogin.resx">
+      <DependentUpon>StaffLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateMedicine.resx">
       <DependentUpon>UpdateMedicine.cs</DependentUpon>

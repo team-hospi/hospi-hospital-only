@@ -83,7 +83,7 @@ namespace hospi_hospital_only
         DataSet dS;
         MySqlCommandBuilder myCommandBuilder;
         DataTable hospitalTable, visitorTable, subjectTable, receptionTable, receptionistTable, medicineTable,
-                        prescriptionTable, noticeTable, watingTable, masterTable, mobileTable, imageTable;
+                        prescriptionTable, noticeTable, watingTable, masterTable, mobileTable, imageTable, staffTable;
         FirestoreDb fs;
 
         private static string Sname = ConfigurationManager.AppSettings["DBAddress"];
@@ -176,6 +176,11 @@ namespace hospi_hospital_only
         {
             get { return imageTable; }
             set { imageTable = value; }
+        }
+        public DataTable StaffTable
+        {
+            get { return staffTable; }
+            set { staffTable = value; }
         }
 
         //Firestore 연결
@@ -911,6 +916,23 @@ namespace hospi_hospital_only
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
                 DBAdapter.Fill(dS, "master");
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        // Staff user 확인
+        public void Staff_open()
+        {
+            try
+            {
+                commandString = "select * from staff order by useYn DESC";
+                DBAdapter = new MySqlDataAdapter(commandString, connectionString);
+                MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
+                dS = new DataSet();
+                DBAdapter.Fill(dS, "staff");
             }
             catch (DataException DE)
             {

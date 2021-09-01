@@ -486,14 +486,6 @@ namespace hospi_hospital_only
             prescriptionType = 2;
         }
 
-        // 병원정보설정 버튼
-        private void button16_Click(object sender, EventArgs e)
-        {
-            CheckMasterPW checkMasterPW = new CheckMasterPW();
-            checkMasterPW.HospitalID = hospitalID;
-            checkMasterPW.FormNum = 1;
-            checkMasterPW.ShowDialog();
-        }
 
         // 접수된 예약 버튼
         private void button10_Click(object sender, EventArgs e)
@@ -1465,26 +1457,6 @@ namespace hospi_hospital_only
             InquiryCheck inquiry = new InquiryCheck();
             inquiry.HospitalID = hospitalID;
             inquiry.ShowDialog();
-        }
-
-        private void 병원정보설정ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CheckMasterPW checkMasterPW = new CheckMasterPW();
-            checkMasterPW.HospitalID = hospitalID;
-            checkMasterPW.FormNum = 1;
-            checkMasterPW.ShowDialog();
-        }
-
-        private void 접수자변경ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // 접수자 변경 메뉴 
-            Receptionist receptionist = new Receptionist();
-            receptionist.ReceptionistName = textBoxReceptionist.Text;
-            receptionist.ShowDialog();
-            textBoxReceptionist.Text = receptionist.ReceptionistName;
-
-            dbc.Receptionist_Open();
-            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
         }
 
         private void 환자정보수정ToolStripMenuItem_Click(object sender, EventArgs e)
