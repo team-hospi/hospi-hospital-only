@@ -119,9 +119,9 @@ namespace hospi_hospital_only
             }
         }
 
-        private void DBGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void DBGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            DBGrid.Rows[e.RowIndex].Cells[4].Value = true;
         }
     }
 }

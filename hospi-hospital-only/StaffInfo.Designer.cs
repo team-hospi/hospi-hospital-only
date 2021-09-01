@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCount = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
             this.SuspendLayout();
@@ -63,8 +64,8 @@
             this.DBGrid.RowTemplate.Height = 23;
             this.DBGrid.Size = new System.Drawing.Size(447, 265);
             this.DBGrid.TabIndex = 40;
+            this.DBGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellClick);
             this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
-            this.DBGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellValueChanged);
             // 
             // button1
             // 
@@ -108,12 +109,23 @@
             this.textBoxCount.Text = "00";
             this.textBoxCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Location = new System.Drawing.Point(532, 177);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(143, 27);
+            this.button2.TabIndex = 48;
+            this.button2.Text = "check";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // StaffInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 362);
+            this.ClientSize = new System.Drawing.Size(738, 362);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -136,5 +148,6 @@
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView DBGrid;
+        private System.Windows.Forms.Button button2;
     }
 }
