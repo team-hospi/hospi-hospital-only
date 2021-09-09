@@ -113,13 +113,18 @@ namespace hospi_hospital_only
         {
             if (comboBoxOffice.Text != "" && comboBoxOffice.Text != "진료과목 선택")
             {
-                Office office = new Office();
-                office.SubjectID = comboBoxOffice.Text;
+                if (CheckDocYn())
+                {
+                    Office office = new Office();
+                    office.SubjectID = comboBoxOffice.Text;
+                    office.Show();
 
-                office.Show();
-
-
-                comboBoxOffice.Text = "진료과목 선택";
+                    comboBoxOffice.Text = "진료과목 선택";
+                }
+                else
+                {
+                    MessageBox.Show("접근권한이 없습니다.", "알림");
+                }
             }
             else
             {
@@ -261,6 +266,23 @@ namespace hospi_hospital_only
         {
             StaffInfo staffInfo = new StaffInfo();
             staffInfo.ShowDialog();
+        }
+
+        private bool CheckDocYn()
+        {
+            dbc.Staff_open();
+            dbc.StaffTable = dbc.DS.Tables["staff"];
+
+            bool docYn = false;
+
+            foreach(DataRow dr in dbc.StaffTable.Rows)
+            {
+                if(staffId == dr["staffId"].ToString() && dr["DocYn"].ToString() == "Y")
+                {
+                    docYn = true;
+                }
+            }
+            return docYn;
         }
     }
 }

@@ -76,7 +76,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(227, 32);
             this.button2.TabIndex = 38;
-            this.button2.Text = "회원 가입";
+            this.button2.Text = "직원 등록";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

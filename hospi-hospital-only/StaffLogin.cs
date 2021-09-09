@@ -42,24 +42,48 @@ namespace hospi_hospital_only
         {
             dbc.Staff_open();
             dbc.StaffTable = dbc.DS.Tables["staff"];
+
             bool login = false;
-            foreach(DataRow dr in dbc.StaffTable.Rows)
+
+            for (int i = 0; i < dbc.StaffTable.Rows.Count; i++)
             {
-                if(dr["useYn"].ToString() == "Y")
+                if (dbc.StaffTable.Rows[i]["useYn"].ToString() == "Y")
                 {
-                    if (dr["staffId"].ToString() == textBoxStaffId.Text)
+                    if (dbc.StaffTable.Rows[i]["staffId"].ToString() == textBoxStaffId.Text)
                     {
-                        if (dr["staffPw"].ToString() == textBoxPW.Text)
+                        if (dbc.StaffTable.Rows[i]["staffPw"].ToString() == textBoxPW.Text)
                         {
                             login = true;
 
                             MainMenu mainMenu = new MainMenu();
                             mainMenu.HospitalID = hospitalID;
-                            mainMenu.StaffId = dr["staffId"].ToString();
+                            mainMenu.StaffId = dbc.StaffTable.Rows[i]["staffId"].ToString();
 
                             this.Visible = false;
                             mainMenu.ShowDialog();
+                            this.Visible = true;
 
+                        }
+                        else if (dbc.StaffTable.Rows[i]["staffPw"].ToString() == string.Empty)
+                        {
+                            login = true;
+
+                            DataRow upRow = null;
+                            upRow = dbc.StaffTable.Rows[i];
+                            upRow.BeginEdit();
+                            upRow["staffPW"] = textBoxPW.Text;
+                            upRow.EndEdit();
+                            dbc.DBAdapter.Update(dbc.DS, "staff");
+                            dbc.DS.AcceptChanges();
+
+                            MessageBox.Show("신규 비밀번호 설정 완료!", "알림");
+
+                            MainMenu mainMenu = new MainMenu();
+                            mainMenu.HospitalID = hospitalID;
+                            mainMenu.StaffId = dbc.StaffTable.Rows[i]["staffId"].ToString();
+
+                            this.Visible = false;
+                            mainMenu.ShowDialog();
                             this.Visible = true;
                         }
                     }

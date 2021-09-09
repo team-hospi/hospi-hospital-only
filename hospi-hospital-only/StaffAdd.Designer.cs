@@ -30,51 +30,73 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffAdd));
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.pwLabel2 = new System.Windows.Forms.Label();
-            this.pwLabel1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxPW2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxPW1 = new System.Windows.Forms.TextBox();
             this.buttonCheck = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
             this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.label2);
             this.groupBox9.Controls.Add(this.textBoxName);
             this.groupBox9.Controls.Add(this.label22);
             this.groupBox9.Controls.Add(this.button1);
             this.groupBox9.Controls.Add(this.button4);
-            this.groupBox9.Controls.Add(this.pwLabel2);
-            this.groupBox9.Controls.Add(this.pwLabel1);
-            this.groupBox9.Controls.Add(this.label3);
-            this.groupBox9.Controls.Add(this.textBoxPW2);
-            this.groupBox9.Controls.Add(this.label2);
-            this.groupBox9.Controls.Add(this.textBoxPW1);
             this.groupBox9.Controls.Add(this.buttonCheck);
             this.groupBox9.Controls.Add(this.label1);
             this.groupBox9.Controls.Add(this.textBoxId);
             this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox9.Location = new System.Drawing.Point(12, 12);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(370, 234);
+            this.groupBox9.Size = new System.Drawing.Size(417, 186);
             this.groupBox9.TabIndex = 38;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "신규 직원 등록";
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(115, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(224, 19);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "※ 첫 로그인시 비밀번호가 생성됩니다.";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(115, 42);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(211, 23);
+            this.textBoxName.TabIndex = 1;
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label22.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label22.Location = new System.Drawing.Point(13, 41);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(96, 23);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "이 름";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(13, 182);
+            this.button1.Location = new System.Drawing.Point(13, 133);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 32);
+            this.button1.Size = new System.Drawing.Size(96, 37);
             this.button1.TabIndex = 6;
             this.button1.Text = "취 소";
             this.button1.UseVisualStyleBackColor = true;
@@ -83,84 +105,18 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(115, 182);
+            this.button4.Location = new System.Drawing.Point(115, 133);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(243, 32);
+            this.button4.Size = new System.Drawing.Size(289, 37);
             this.button4.TabIndex = 5;
-            this.button4.Text = "등록 하기";
+            this.button4.Text = "완 료";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // pwLabel2
-            // 
-            this.pwLabel2.AutoSize = true;
-            this.pwLabel2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pwLabel2.ForeColor = System.Drawing.Color.ForestGreen;
-            this.pwLabel2.Location = new System.Drawing.Point(286, 145);
-            this.pwLabel2.Name = "pwLabel2";
-            this.pwLabel2.Size = new System.Drawing.Size(23, 21);
-            this.pwLabel2.TabIndex = 50;
-            this.pwLabel2.Text = "✓";
-            this.pwLabel2.Visible = false;
-            // 
-            // pwLabel1
-            // 
-            this.pwLabel1.AutoSize = true;
-            this.pwLabel1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pwLabel1.ForeColor = System.Drawing.Color.ForestGreen;
-            this.pwLabel1.Location = new System.Drawing.Point(286, 116);
-            this.pwLabel1.Name = "pwLabel1";
-            this.pwLabel1.Size = new System.Drawing.Size(23, 21);
-            this.pwLabel1.TabIndex = 49;
-            this.pwLabel1.Text = "✓";
-            this.pwLabel1.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(13, 143);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 23);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "비밀번호 확인";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxPW2
-            // 
-            this.textBoxPW2.Location = new System.Drawing.Point(115, 143);
-            this.textBoxPW2.Name = "textBoxPW2";
-            this.textBoxPW2.PasswordChar = '●';
-            this.textBoxPW2.Size = new System.Drawing.Size(165, 23);
-            this.textBoxPW2.TabIndex = 4;
-            this.textBoxPW2.TextChanged += new System.EventHandler(this.textBoxPW2_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(13, 114);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 23);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "비밀번호";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxPW1
-            // 
-            this.textBoxPW1.Location = new System.Drawing.Point(115, 114);
-            this.textBoxPW1.Name = "textBoxPW1";
-            this.textBoxPW1.PasswordChar = '●';
-            this.textBoxPW1.Size = new System.Drawing.Size(165, 23);
-            this.textBoxPW1.TabIndex = 3;
-            this.textBoxPW1.TextChanged += new System.EventHandler(this.textBoxPW1_TextChanged);
             // 
             // buttonCheck
             // 
             this.buttonCheck.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCheck.Location = new System.Drawing.Point(286, 67);
+            this.buttonCheck.Location = new System.Drawing.Point(332, 67);
             this.buttonCheck.Name = "buttonCheck";
             this.buttonCheck.Size = new System.Drawing.Size(72, 25);
             this.buttonCheck.TabIndex = 3;
@@ -177,42 +133,23 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 23);
             this.label1.TabIndex = 42;
-            this.label1.Text = "ID";
+            this.label1.Text = "아이디";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxId
             // 
             this.textBoxId.Location = new System.Drawing.Point(115, 69);
             this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(165, 23);
+            this.textBoxId.Size = new System.Drawing.Size(211, 23);
             this.textBoxId.TabIndex = 2;
             this.textBoxId.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             this.textBoxId.Enter += new System.EventHandler(this.textBoxName_Enter);
-            // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22.Location = new System.Drawing.Point(13, 41);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(96, 23);
-            this.label22.TabIndex = 51;
-            this.label22.Text = "이 름";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(115, 42);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(165, 23);
-            this.textBoxName.TabIndex = 1;
             // 
             // StaffAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 258);
+            this.ClientSize = new System.Drawing.Size(439, 210);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -232,16 +169,11 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxId;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxPW2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxPW1;
         private System.Windows.Forms.Button buttonCheck;
-        private System.Windows.Forms.Label pwLabel2;
-        private System.Windows.Forms.Label pwLabel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label2;
     }
 }

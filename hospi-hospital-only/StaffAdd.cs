@@ -39,14 +39,13 @@ namespace hospi_hospital_only
                 {
                     if (dbc.StaffTable.Rows[i]["staffId"].ToString() == textBoxId.Text)
                     {
-                        MessageBox.Show("ID가 중복됩니다. \r\n다른 ID를 입력해주세요.", "알림");
+                        MessageBox.Show("사용중인 ID입니다.. \r\n다른 ID를 입력해주세요.", "알림");
                         textBoxId.Focus();
                         return;
                     }
                 }
                 MessageBox.Show("사용 가능한 ID입니다.", "알림");
                 buttonCheck.Enabled = false;
-                textBoxPW1.Focus();
             }
             else
             {
@@ -65,37 +64,6 @@ namespace hospi_hospital_only
             textBoxId.SelectAll();
         }
 
-        private void textBoxPW1_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPW1.Text.Length >= 4)
-            {
-                pwLabel1.Visible = true;
-            }
-            else if (textBoxPW1.Text.Length < 4)
-            {
-                pwLabel1.Visible = false;
-            }
-            if (textBoxPW2.Text == textBoxPW1.Text && textBoxPW2.Text.Length >= 4)
-            {
-                pwLabel2.Visible = true;
-            }
-            else if (textBoxPW2.Text != textBoxPW1.Text || textBoxPW2.Text.Length < 4)
-            {
-                pwLabel2.Visible = false;
-            }
-        }
-
-        private void textBoxPW2_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPW2.Text == textBoxPW1.Text)
-            {
-                pwLabel2.Visible = true;
-            }
-            else if (textBoxPW2.Text != textBoxPW1.Text)
-            {
-                pwLabel2.Visible = false;
-            }
-        }
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
@@ -111,27 +79,21 @@ namespace hospi_hospital_only
             }
             else
             {
-                if (pwLabel1.Visible == true && pwLabel2.Visible == true)
-                {
-                    DialogResult ok = MessageBox.Show("신규 ID를 등록하시겠습니까?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (ok == DialogResult.Yes)
-                    {
-                        DataRow newRow = dbc.StaffTable.NewRow();
-                        newRow["staffId"] = textBoxId.Text;
-                        newRow["staffPw"] = textBoxPW1.Text;
-                        newRow["staffNm"] = textBoxName.Text;
-                        newRow["docYn"] = "N";
-                        newRow["useYn"] = "Y";
+                    DataRow newRow = dbc.StaffTable.NewRow();
+                    newRow["staffId"] = textBoxId.Text;
+                    newRow["staffPw"] = string.Empty;
+                    newRow["staffNm"] = textBoxName.Text;
+                    newRow["docYn"] = "N";
+                    newRow["useYn"] = "Y";
 
-                        dbc.StaffTable.Rows.Add(newRow);
-                        dbc.DBAdapter.Update(dbc.DS, "staff");
-                        dbc.DS.AcceptChanges();
+                    dbc.StaffTable.Rows.Add(newRow);
+                    dbc.DBAdapter.Update(dbc.DS, "staff");
+                    dbc.DS.AcceptChanges();
 
-                        MessageBox.Show("ID : " + textBoxId.Text + "\r\n등록이 완료되었습니다.", "알림");
-                        Dispose();
-                    }
-                }
+                    MessageBox.Show("ID : " + textBoxId.Text + "\r\n등록이 완료되었습니다.", "알림");
+                    Dispose();
             }
         }
+
     }
 }

@@ -24,7 +24,11 @@ namespace hospi_hospital_only
             dbc.Staff_open();
             dbc.StaffTable = dbc.DS.Tables["staff"];
 
+            dbc.Subject_Open();
+            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
+
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+
             checkBoxColumn.HeaderText = "PW초기화";
 
             DBGrid.Columns.Add("staffId", "ID");
@@ -71,12 +75,11 @@ namespace hospi_hospital_only
 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
-
         }
 
         private void DBGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 2 )
+            if (e.ColumnIndex == 2)
             {
                 if (DBGrid.Rows[e.RowIndex].Cells[2].Value.ToString() == "Y")
                 {
@@ -87,17 +90,17 @@ namespace hospi_hospital_only
                     DBGrid.Rows[e.RowIndex].Cells[2].Value = "Y";
                 }
 
-                if(DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor == Color.Empty)
+                if (DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor == Color.Empty)
                 {
                     DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor = Color.Red;
                 }
-                else if(DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor == Color.Red)
+                else if (DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor == Color.Red)
                 {
                     DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor = Color.Empty;
                 }
             }
 
-            if (e.ColumnIndex == 3 )
+            if (e.ColumnIndex == 3)
             {
                 if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "Y")
                 {
@@ -121,7 +124,91 @@ namespace hospi_hospital_only
 
         private void DBGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DBGrid.Rows[e.RowIndex].Cells[4].Value = true;
+            if (e.ColumnIndex == 4) // PW초기화
+            {
+                bool isChecked = Convert.ToBoolean(DBGrid.Rows[e.RowIndex].Cells[4].Value);
+
+                switch (isChecked)
+                {
+                    case true:
+                        DBGrid.Rows[e.RowIndex].Cells[4].Value = false;
+                        break;
+                    case false:
+                        DBGrid.Rows[e.RowIndex].Cells[4].Value = true;
+                        break;
+                }
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)    //저장
+        {
+            DialogResult ok = MessageBox.Show("저장하시겠습니까?", "알림", MessageBoxButtons.YesNo);
+
+            if (ok == DialogResult.Yes)
+            {
+                dbc.Staff_open();
+                dbc.StaffTable = dbc.DS.Tables["staff"];
+
+                UpdateStaffSetting();
+
+                Dispose();
+            }
+        }
+
+        private void UpdateStaffSetting()
+        {
+            DataRow upRow = null;
+            bool isChecked;
+            string ynValue;
+
+            foreach (DataGridViewRow dRow in DBGrid.Rows)
+            {
+                // 패스워드 초기화
+                isChecked = Convert.ToBoolean(dRow.Cells[4].Value);
+                {
+                    if (isChecked == true)
+                    {
+                        upRow = dbc.StaffTable.Rows[dRow.Index];
+                        upRow.BeginEdit();
+                        upRow["staffPW"] = string.Empty;
+                        upRow.EndEdit();
+                        dbc.DBAdapter.Update(dbc.DS, "staff");
+                        dbc.DS.AcceptChanges();
+                    }
+                }
+
+                // 의사유무 변경
+                if (dRow.Cells[2].Style.ForeColor == Color.Red)
+                {
+                    if (dRow.Cells[2].Value.ToString() == "Y")
+                        ynValue = "Y";
+                    else
+                        ynValue = "N";
+
+                    upRow = dbc.StaffTable.Rows[dRow.Index];
+                    upRow.BeginEdit();
+                    upRow["docYn"] = ynValue;
+                    upRow.EndEdit();
+                    dbc.DBAdapter.Update(dbc.DS, "staff");
+                    dbc.DS.AcceptChanges();
+                }
+
+                // 사용유무 변경
+                if (dRow.Cells[3].Style.ForeColor == Color.Red)
+                {
+                    if (dRow.Cells[3].Value.ToString() == "Y")
+                        ynValue = "Y";
+                    else
+                        ynValue = "N";
+
+                    upRow = dbc.StaffTable.Rows[dRow.Index];
+                    upRow.BeginEdit();
+                    upRow["useYn"] = ynValue;
+                    upRow.EndEdit();
+                    dbc.DBAdapter.Update(dbc.DS, "staff");
+                    dbc.DS.AcceptChanges();
+                }
+            }
         }
     }
 }
