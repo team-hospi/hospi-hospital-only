@@ -14,6 +14,20 @@ namespace hospi_hospital_only
     [FirestoreData]
     public partial class Hospital_SignUp : Form
     {
+        string productKey;
+        string productKeyForSchema;
+
+        public string ProductKey
+        {
+            get { return productKey; }
+            set { productKey = value; }
+        }
+        public string ProductKeyForSchema
+        {
+            get { return productKeyForSchema; }
+            set { productKeyForSchema = value; }
+        }
+
         [FirestoreProperty]
         public string id { get; set; }
         [FirestoreProperty]
@@ -29,8 +43,6 @@ namespace hospi_hospital_only
         Boolean status;
         List<string> department = new List<string>();
 
-        private static string FBdir = "hospi-edcf9-firebase-adminsdk-e07jk-ddc733ff42.json";
-
         FirestoreDb fs;
 
         public Hospital_SignUp()
@@ -41,7 +53,7 @@ namespace hospi_hospital_only
         private void Hospital_SignUp_Load(object sender, EventArgs e)
         {
             this.ActiveControl = textBoxHospitalID;
-            FireConnect();
+            dbc.FireConnect();
             dbc.Delay(400);
 
         }
@@ -67,16 +79,6 @@ namespace hospi_hospital_only
                 }
             }
         }
-
-        //Firestore 연결
-        public void FireConnect()
-        {
-            string path = AppDomain.CurrentDomain.BaseDirectory + @FBdir;
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
-            fs = FirestoreDb.Create("hospi-edcf9");
-        }
-
 
         //ID 체크
         public async void Check(string hospitalID)
@@ -337,6 +339,46 @@ namespace hospi_hospital_only
             textBoxAddAddress.Text = "";
 
             textBoxAddAddress.Focus();
+        }
+
+        private bool CreateSchema(string SchemaName)    // 스키마, 테이블 생성
+        {
+            bool success = false;
+            try
+            {
+                DBClass dbc = new DBClass();
+
+                dbc.CreateSchema(SchemaName);
+                for (int i = 1; i <= 12; i++)
+                {
+                    dbc.CreateTableStructure(i, SchemaName);
+                }
+
+                success = true;
+                MessageBox.Show("생성 완료", "알림");
+                Dispose();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            return success;
+        }
+
+        private void SaveProductKey(string ProductKey, string ProductKeyValue)
+        {
+            Properties.Settings.Default.ProductKey = ProductKey;
+            Properties.Settings.Default.ProductKeyValue = ProductKeyValue;
+            Properties.Settings.Default.Save();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (CreateSchema(productKeyForSchema) == true)
+            {
+                SaveProductKey(productKey, productKeyForSchema);
+            }
         }
     }
 }

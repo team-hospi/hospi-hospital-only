@@ -34,5 +34,29 @@ namespace hospi_hospital_only.Properties {
                 this["SaveLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProductKey {
+            get {
+                return ((string)(this["ProductKey"]));
+            }
+            set {
+                this["ProductKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProductKeyValue {
+            get {
+                return ((string)(this["ProductKeyValue"]));
+            }
+            set {
+                this["ProductKeyValue"] = value;
+            }
+        }
     }
 }

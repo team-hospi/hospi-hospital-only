@@ -16,9 +16,20 @@ namespace hospi_hospital_only
         static void Main()
         {
             SetDefaultConfigEncryption(true);
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+
+            if (Properties.Settings.Default.ProductKey != string.Empty)
+            {
+                DBClass.DBname = Properties.Settings.Default.ProductKeyValue;
+                Application.Run(new StaffLogin());
+            }
+            else
+            {
+                DBClass.DBname = "hospi";
+                Application.Run(new Main());
+            }
         }
 
         private static void SetDefaultConfigEncryption(bool encrypt)

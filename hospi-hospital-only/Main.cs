@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace hospi_hospital_only
 {
@@ -20,6 +21,19 @@ namespace hospi_hospital_only
         {
             InitializeComponent();
             this.ActiveControl = textBoxHospitalID;
+
+            token1.GotFocus += new EventHandler(textBox_GotFocus);
+            token2.GotFocus += new EventHandler(textBox_GotFocus);
+            token3.GotFocus += new EventHandler(textBox_GotFocus);
+            token4.GotFocus += new EventHandler(textBox_GotFocus);
+        }
+
+        private void textBox_GotFocus(object sender, EventArgs e)
+        {
+            Dispatcher.CurrentDispatcher.BeginInvoke(
+                DispatcherPriority.ContextIdle,
+                new Action(delegate { (sender as TextBox).SelectAll(); })
+            );
         }
 
         public void TextBoxClear() // 로그인 정보 불일치시 ID,PW 텍스트박스 비워주고 포커스
@@ -186,12 +200,99 @@ namespace hospi_hospital_only
 
         private void Main_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        #region 토큰 텍스트박스 이벤트
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(token1.Text.Length == 5)
+            {
+                token2.Focus();
+            }
+        }
+
+        private void token2_TextChanged(object sender, EventArgs e)
+        {
+            if (token2.Text.Length == 5)
+            {
+                token3.Focus();
+            }
+        }
+
+        private void token3_TextChanged(object sender, EventArgs e)
+        {
+            if (token3.Text.Length == 5)
+            {
+                token4.Focus();
+            }
+        }
+
+        private void token4_TextChanged(object sender, EventArgs e)
+        {
+            if (token4.Text.Length == 5)
+            {
+                button2.Focus();
+            }
+        }
+        #endregion
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            string productKey = token1.Text + "-" + token2.Text + "-" + token3.Text + "-" + token4.Text;
+
+            dbc.SelectProductKey(productKey);
+            dbc.ProductKeyTable = dbc.DS.Tables["payment"];
+
+            if (productKey.Length != 23)
+            {
+                MessageBox.Show("인증키의 형식이 잘못되었습니다.", "알림");
+            }
+            else
+            {
+                if (dbc.ProductKeyTable.Rows.Count == 1)
+                {
+                    // 인증키 정보 보내고 병원가입폼 띄움
+                    string productKeyForSchema = token1.Text + token2.Text + token3.Text + token4.Text;
+
+                    Hospital_SignUp hospital_Sign = new Hospital_SignUp();
+                    hospital_Sign.ProductKeyForSchema = productKeyForSchema;    //스키마 저장용
+                    hospital_Sign.ProductKey = productKey;    // '-' 포함된 변수용
+                    hospital_Sign.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("MySQL에 토근 없음");
+                }
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // 테스트용 토큰정보 넣기
+            token1.Text = "57C8J";
+            token2.Text = "NS1TJ";
+            token3.Text = "GC7PR";
+            token4.Text = "GWWZ0";
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            // 토큰 인증상태 확인
+            if(Properties.Settings.Default.ProductKey == string.Empty)
+            {
+                MessageBox.Show("인증키 저장되지 않음", "알림");
+            }
+            else
+            {
+                MessageBox.Show("인증키 저장됨", "알림");
+            }
+           
         }
     }
 }

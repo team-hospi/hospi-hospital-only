@@ -13,6 +13,8 @@ using MySqlDataAdapter = MySqlConnector.MySqlDataAdapter;
 using MySqlCommandBuilder = MySqlConnector.MySqlCommandBuilder;
 using System.IO;
 using System.Configuration;
+using MySqlConnection = MySql.Data.MySqlClient.MySqlConnection;
+using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
 
 namespace hospi_hospital_only
 {
@@ -83,13 +85,18 @@ namespace hospi_hospital_only
         DataSet dS;
         MySqlCommandBuilder myCommandBuilder;
         DataTable hospitalTable, visitorTable, subjectTable, receptionTable, receptionistTable, medicineTable,
-                        prescriptionTable, noticeTable, watingTable, masterTable, mobileTable, imageTable, staffTable;
+                        prescriptionTable, noticeTable, watingTable, masterTable, mobileTable, imageTable, staffTable, productKeyTable;
         FirestoreDb fs;
 
         private static string Sname = ConfigurationManager.AppSettings["DBAddress"];
         public static string DBname;
         private static string sqlid = ConfigurationManager.AppSettings["DBId"];
         private static string pass = ConfigurationManager.AppSettings["DBPwd"];
+
+        public string DBName
+        {
+            get { return DBname; }
+        }
 
         // 프로퍼티
         public MySqlDataAdapter DBAdapter
@@ -106,6 +113,11 @@ namespace hospi_hospital_only
         {
             get { return dS; }
             set { dS = value; }
+        }
+        public DataTable ProductKeyTable
+        {
+            get { return productKeyTable; }
+            set { productKeyTable = value; }
         }
         public DataTable HospitalTable
         {
@@ -200,14 +212,14 @@ namespace hospi_hospital_only
                     di.Create();
                     Utils.FtpDownload(keyFileName, filePath);
                 }
-                
+
                 fbKey.DecryptFile();
                 path = fbKey.TempKeyFilePath;
                 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
                 fs = FirestoreDb.Create("hospi-edcf9");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 fbKey.DeleteTemp();
@@ -467,7 +479,7 @@ namespace hospi_hospital_only
         {
             try
             {
-                commandString = "select * from visitor where patientID ="+patientId;
+                commandString = "select * from visitor where patientID =" + patientId;
                 DBAdapter = new MySqlDataAdapter(commandString, connectionString);
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
@@ -623,7 +635,7 @@ namespace hospi_hospital_only
         {
             try
             {
-                commandString = "select receptionID, receptionType from reception where receptionDate like '%" + receptionDate + "%' and subjectName like '%" + subjectName + "%' and patientID =" + patientID+" order by receptionID DESC";
+                commandString = "select receptionID, receptionType from reception where receptionDate like '%" + receptionDate + "%' and subjectName like '%" + subjectName + "%' and patientID =" + patientID + " order by receptionID DESC";
 
 
                 DBAdapter = new MySqlDataAdapter(commandString, connectionString);
@@ -777,7 +789,7 @@ namespace hospi_hospital_only
         {
             try
             {
-                commandString = "select medicineName,medicineperiod, medicinedosage from prescription where patientID = " +patientID+" and receptionDate like '%"+receptionDate+"%' and receptionTime = "+receptionTime;
+                commandString = "select medicineName,medicineperiod, medicinedosage from prescription where patientID = " + patientID + " and receptionDate like '%" + receptionDate + "%' and receptionTime = " + receptionTime;
                 DBAdapter = new MySqlDataAdapter(commandString, connectionString);
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
@@ -805,7 +817,7 @@ namespace hospi_hospital_only
                 MessageBox.Show(DE.Message);
             }
         }
-        
+
         //대기인원 확인
         public void countWaiting(string department, string time, string Date)
         {
@@ -938,8 +950,8 @@ namespace hospi_hospital_only
             {
                 MessageBox.Show(DE.Message);
             }
-        }
 
+        }
         //모바일 앱 사용자 구분
         public void Mobile_Use(int patientID)
         {
@@ -1053,6 +1065,186 @@ namespace hospi_hospital_only
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
                 DBAdapter.Fill(dS, "Subject");
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        public void SelectProductKey(string productKey)
+        {
+            try
+            {
+                commandString = "select productKey from hospi.payment where productKey = '" + productKey + "'";
+                DBAdapter = new MySqlDataAdapter(commandString, connectionString);
+                MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
+                dS = new DataSet();
+                DBAdapter.Fill(dS, "payment");
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        public void CreateSchema(string schemaName)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+
+                commandString = "create database " + schemaName + " default character set utf8";
+                MySqlCommand comm = new MySqlCommand(commandString, conn);
+
+                comm.ExecuteNonQuery();
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        public void CreateTableStructure(int newTableIndex, string schemaName)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+
+                StringBuilder sb = new StringBuilder();
+                switch (newTableIndex)
+                {
+                    case 1:
+                        sb.AppendLine(" CREATE TABLE "+ schemaName+".`staff` (         ");
+                        sb.AppendLine("   `staffId` varchar(10) NOT NULL,                         ");
+                        sb.AppendLine("   `staffPw` varchar(20) DEFAULT NULL,               ");
+                        sb.AppendLine("   `staffNm` varchar(10) NOT NULL,                         ");
+                        sb.AppendLine("   `docYn` varchar(1) NOT NULL,                           ");
+                        sb.AppendLine("   `useYn` varchar(1) NOT NULL,                           ");
+                        sb.AppendLine("   PRIMARY KEY (`staffId`))                                    ");
+                        break;
+
+                    case 2:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`receptionist` (                                                                                     ");
+                        sb.AppendLine("   `RECEPTIONISTCODE` int NOT NULL,                                                                                                      ");
+                        sb.AppendLine("   `RECEPTIONISTNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,      ");
+                        sb.AppendLine("   PRIMARY KEY (`RECEPTIONISTCODE`))                                                                                                  ");
+                        break;
+
+                    case 3:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`treatment` (                                                                               ");
+                        sb.AppendLine("   `TREATMENTDATE` date NOT NULL,                                                                                                 ");
+                        sb.AppendLine("   `SUBJECT` int NOT NULL,                                                                                                                   ");
+                        sb.AppendLine("   `TREATMENTINFO` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,   ");
+                        sb.AppendLine("   `PRESCRIPTIONCODE` int NOT NULL,                                                                                              ");
+                        sb.AppendLine("   PRIMARY KEY (`TREATMENTDATE`))                                                                                                ");
+                        break;
+
+                    case 4:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`visitor` (                                                                                                 ");
+                        sb.AppendLine("   `PATIENTID` int NOT NULL,                                                                                                                              ");
+                        sb.AppendLine("   `PATIENTNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                       ");
+                        sb.AppendLine("   `PATIENTBIRTHCODE` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,          ");
+                        sb.AppendLine("   `PATIENTPHONE` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                    ");
+                        sb.AppendLine("   `PATIENTADDRESS` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,              ");
+                        sb.AppendLine("   `MEMBERID` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                    ");
+                        sb.AppendLine("   `PATIENTMEMO` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,            ");
+                        sb.AppendLine("   PRIMARY KEY (`PATIENTID`),                                                                                                                          ");
+                        sb.AppendLine("   UNIQUE KEY `MEMBERID_UNIQUE` (`MEMBERID`))                                                                                    ");
+                        break;
+
+                    case 5:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`hospitaltype` (                                                                                            ");
+                        sb.AppendLine("   `HOSPITALTYPE` int NOT NULL,                                                                                                                          ");
+                        sb.AppendLine("   `HOSPITALTYPENAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,       ");
+                        sb.AppendLine("   PRIMARY KEY (`HOSPITALTYPE`))                                                                                                                     ");
+                        break;
+
+                    case 6:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`subjectname` (                                                                                ");
+                        sb.AppendLine("   `SUBJECTCODE` int NOT NULL,                                                                                                              ");
+                        sb.AppendLine("   `SUBJECTNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,              ");
+                        sb.AppendLine("   `DOCTORNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,               ");
+                        sb.AppendLine("   PRIMARY KEY (`SUBJECTCODE`))                                                                                                          ");
+                        break;
+
+                    case 7:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`notice` ( ");
+                        sb.AppendLine("   `NoticeID` int NOT NULL,                                 ");
+                        sb.AppendLine("   `NoticeTitle` varchar(200) NOT NULL,             ");
+                        sb.AppendLine("   `NoticeInfo` varchar(200) NOT NULL,              ");
+                        sb.AppendLine("   `NoticeStartDate` varchar(45) NOT NULL,       ");
+                        sb.AppendLine("   `NoticeEndDate` varchar(45) NOT NULL,        ");
+                        sb.AppendLine("   `NoticeWriter` varchar(45) NOT NULL,             ");
+                        sb.AppendLine("   PRIMARY KEY (`NoticeID`))                             ");
+                        break;
+
+                    case 8:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`image` (   ");
+                        sb.AppendLine("   `ImageID` int NOT NULL,                                    ");
+                        sb.AppendLine("   `PatientID` int NOT NULL,                                   ");
+                        sb.AppendLine("   `ImageDate` varchar(45) NOT NULL,                 ");
+                        sb.AppendLine("   `ImageSource` longblob NOT NULL,                  ");
+                        sb.AppendLine("   PRIMARY KEY (`ImageID`))                               ");
+                        break;
+
+                    case 9:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`reception` (                                                                                                                                             ");
+                        sb.AppendLine("   `RECEPTIONID` int NOT NULL,                                                                                                                                                                        ");
+                        sb.AppendLine("   `PATIENTID` int NOT NULL,                                                                                                                                                                              ");
+                        sb.AppendLine("   `RECEPTIONTIME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                                                                  ");
+                        sb.AppendLine("   `RECEPTIONDATE` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                                                                 ");
+                        sb.AppendLine("   `SUBJECTNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                                                                     ");
+                        sb.AppendLine("   `RECEPTIONISTCODE` int NOT NULL,                                                                                                                                                           ");
+                        sb.AppendLine("   `RECEPTIONINFO` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                                                        ");
+                        sb.AppendLine("   `RECEPTIONTYPE` int NOT NULL,                                                                                                                                                                  ");
+                        sb.AppendLine("   `RECEPTIONAPP` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                                                            ");
+                        sb.AppendLine("   `payment` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                                                                          ");
+                        sb.AppendLine("   `price` int DEFAULT NULL,                                                                                                                                                                                ");
+                        sb.AppendLine("   `RECEPTIONCODE` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                                                        ");
+                        sb.AppendLine("   PRIMARY KEY (`RECEPTIONID`),                                                                                                                                                                   ");
+                        sb.AppendLine("   UNIQUE KEY `RECEPTIONCODE_UNIQUE` (`RECEPTIONCODE`),                                                                                                            ");
+                        sb.AppendLine("   KEY `SUBJECTCODE` (`SUBJECTNAME`),                                                                                                                                                    ");
+                        sb.AppendLine("   KEY `RECEPTIONISTCODE` (`RECEPTIONISTCODE`),                                                                                                                                ");
+                        sb.AppendLine("   CONSTRAINT `reception_ibfk_2` FOREIGN KEY (`RECEPTIONISTCODE`) REFERENCES `receptionist` (`RECEPTIONISTCODE`))      ");
+                        break;
+
+                    case 10:
+                        sb.AppendLine(" CREATE TABLE " + schemaName + ".`prescription` (                                                                                      ");
+                        sb.AppendLine("   `PRESCRIPTIONID` int NOT NULL,                                                                                                                ");
+                        sb.AppendLine("   `PATIENTID` int NOT NULL,                                                                                                                            ");
+                        sb.AppendLine("   `RECEPTIONDATE` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                ");
+                        sb.AppendLine("   `RECEPTIONTIME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,                 ");
+                        sb.AppendLine("   `MEDICINEID` int NOT NULL,                                                                                                                          ");
+                        sb.AppendLine("   `MEDICINEPERIOD` int NOT NULL,                                                                                                                ");
+                        sb.AppendLine("   `MEDICINEDOSAGE` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,              ");
+                        sb.AppendLine("   `MEDICINENAME` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,        ");
+                        sb.AppendLine("   `OPINION` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                      ");
+                        sb.AppendLine("   `COUNT` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,                          ");
+                        sb.AppendLine("   PRIMARY KEY (`PRESCRIPTIONID`))                                                                                                            ");
+                        break;
+
+                    case 11:
+                        sb.AppendLine(" insert into " + schemaName + ".staff              ");
+                        sb.AppendLine(" (staffId, staffPw, staffNm, docYn, useYn)       ");
+                        sb.AppendLine(" values                                                             ");
+                        sb.AppendLine(" ('master', 'master', 'master', 'Y', 'Y')                ");
+                        break;
+
+                    case 12:
+                        sb.AppendLine(" insert into " + schemaName + ".receptionist   ");
+                        sb.AppendLine(" (RECEPTIONISTCODE, RECEPTIONISTNAME)       ");
+                        sb.AppendLine(" values                                                             ");
+                        sb.AppendLine(" (1, '관리자')                                                       ");
+                        break;
+                }
+
+                commandString = sb.ToString();
+                MySqlCommand comm = new MySqlCommand(commandString, conn);
+
+                comm.ExecuteNonQuery();
             }
             catch (DataException DE)
             {

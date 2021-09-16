@@ -33,6 +33,11 @@ namespace hospi_hospital_only
             textBoxStaffId.Text = staffAdd.StaffId;
         }
 
+        private void StaffLogin_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show(dbc.DBName);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -66,25 +71,20 @@ namespace hospi_hospital_only
                         }
                         else if (dbc.StaffTable.Rows[i]["staffPw"].ToString() == string.Empty)
                         {
-                            login = true;
+                            MessageBox.Show("신규 비밀번호 생성화면으로 이동합니다.", "알림");
+                            StaffCreatePW staffCreatePW = new StaffCreatePW();
+                            staffCreatePW.Pw = textBoxPW.Text;
+                            staffCreatePW.StaffID = dbc.StaffTable.Rows[i]["staffID"].ToString();
 
-                            DataRow upRow = null;
-                            upRow = dbc.StaffTable.Rows[i];
-                            upRow.BeginEdit();
-                            upRow["staffPW"] = textBoxPW.Text;
-                            upRow.EndEdit();
-                            dbc.DBAdapter.Update(dbc.DS, "staff");
-                            dbc.DS.AcceptChanges();
+                            staffCreatePW.ShowDialog();
 
-                            MessageBox.Show("신규 비밀번호 설정 완료!", "알림");
+                            if (staffCreatePW.CreateYn == "Y")
+                            {
+                                textBoxPW.Clear();
+                                login = true;
 
-                            MainMenu mainMenu = new MainMenu();
-                            mainMenu.HospitalID = hospitalID;
-                            mainMenu.StaffId = dbc.StaffTable.Rows[i]["staffId"].ToString();
-
-                            this.Visible = false;
-                            mainMenu.ShowDialog();
-                            this.Visible = true;
+                                MessageBox.Show("생성하신 비밀번호로 로그인 해주세요.", "알림");
+                            }
                         }
                     }
                 }
@@ -99,5 +99,20 @@ namespace hospi_hospital_only
                 button6_Click(sender, e);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ProductKey = string.Empty;
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("인증정보 삭제됨", "알림");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("인증키 : " + Properties.Settings.Default.ProductKey);
+        }
+
+ 
     }
 }

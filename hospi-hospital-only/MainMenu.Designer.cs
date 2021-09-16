@@ -61,6 +61,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.병원정보설정WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -266,6 +267,7 @@
             // ToolStripMenuItem
             // 
             this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.병원정보설정WToolStripMenuItem,
             this.관리자메뉴ToolStripMenuItem,
             this.공지사항등록ToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -374,6 +376,13 @@
             this.groupBox8.TabIndex = 44;
             this.groupBox8.TabStop = false;
             // 
+            // 병원정보설정WToolStripMenuItem
+            // 
+            this.병원정보설정WToolStripMenuItem.Name = "병원정보설정WToolStripMenuItem";
+            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.병원정보설정WToolStripMenuItem.Text = "병원 정보 설정(&W)";
+            this.병원정보설정WToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정WToolStripMenuItem_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -442,5 +451,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ToolStripMenuItem 공지사항등록ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 병원정보설정WToolStripMenuItem;
     }
 }

@@ -150,6 +150,12 @@
     <Compile Include="StaffAdd.Designer.cs">
       <DependentUpon>StaffAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffCreatePW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffCreatePW.Designer.cs">
+      <DependentUpon>StaffCreatePW.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffAdd.resx">
       <DependentUpon>StaffAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffCreatePW.resx">
+      <DependentUpon>StaffCreatePW.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffInfo.resx">
       <DependentUpon>StaffInfo.cs</DependentUpon>

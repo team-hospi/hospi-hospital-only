@@ -104,6 +104,7 @@ namespace hospi_hospital_only
                 if(staffId != "master")
                 {
                     관리자메뉴ToolStripMenuItem.Visible = false;
+                    병원정보설정WToolStripMenuItem.Visible = false;
                 }
             }
         }
@@ -283,6 +284,12 @@ namespace hospi_hospital_only
                 }
             }
             return docYn;
+        }
+
+        private void 병원정보설정WToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hospital_Setting hs = new Hospital_Setting();
+            hs.ShowDialog();
         }
     }
 }
