@@ -45,6 +45,8 @@ namespace hospi_hospital_only
                     DialogResult ok = MessageBox.Show("정보 수정을 완료 하시겠습니까?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (ok == DialogResult.Yes)
                     {
+                        dbc.FindDocument(DBClass.hospiID);
+                        dbc.Delay(200);
                         DBClass.hospiweekday_open = comboBox1.Text + ":" + comboBox2.Text;
                         DBClass.hospiweekday_close = comboBox3.Text + ":" + comboBox4.Text;
                         DBClass.hospisaturday_open = comboBox9.Text + ":" + comboBox8.Text;
