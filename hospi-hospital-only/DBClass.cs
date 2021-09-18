@@ -26,6 +26,8 @@ namespace hospi_hospital_only
         [FirestoreProperty]
         public string pw { get; set; }
         [FirestoreProperty]
+        public string token { get; set; }
+        [FirestoreProperty]
         public string address { get; set; }
         [FirestoreProperty]
         public string[] department { get; set; }
@@ -57,7 +59,6 @@ namespace hospi_hospital_only
         public string weekdayOpen { get; set; }
 
         public static string hospiID;
-        public static string hospiPW;
         public static string hospiaddress;
         public static string[] hospidepartment;
         public static string hospiholiday_close;
@@ -73,7 +74,7 @@ namespace hospi_hospital_only
         public static Boolean hospitoday_reservation;
         public static string hospiweekday_close;
         public static string hospiweekday_open;
-
+        public static string hospiToken;
 
         public static string documentname;
 
@@ -96,6 +97,7 @@ namespace hospi_hospital_only
         public string DBName
         {
             get { return DBname; }
+            set { DBname = value; }
         }
 
         // 프로퍼티
@@ -228,25 +230,7 @@ namespace hospi_hospital_only
             fbKey.DeleteTemp();
         }
 
-        //firestore login
-        public async void FireLogin(string pw)
-        {
-            hospiID = "";
-            hospiPW = "";
-            Query qref = fs.Collection("hospitalAccountList").WhereEqualTo("pw", pw);
-            QuerySnapshot snap = await qref.GetSnapshotAsync();
-
-            foreach (DocumentSnapshot docsnap in snap)
-            {
-                DBClass fp = docsnap.ConvertTo<DBClass>();
-
-
-                hospiID = fp.id;
-                hospiPW = fp.pw;
-            }
-        }
-
-        //병원 정보 검색
+        //병원 문서이름 검색
         public async void FindDocument(string hospitalID)
         {
             Query qref = fs.Collection("hospitals").WhereEqualTo("id", hospitalID);
@@ -316,6 +300,7 @@ namespace hospi_hospital_only
 
                     if (docsnap.Exists)
                     {
+                        DBname = fp.id;
                         hospiID = fp.id;
                         hospiaddress = fp.address;
                         hospidepartment = fp.department;

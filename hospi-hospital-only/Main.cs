@@ -16,6 +16,7 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         private bool loginSuccess;
+        string productKey;
 
         public Main()
         {
@@ -49,9 +50,6 @@ namespace hospi_hospital_only
             loginSuccess = false;
 
             dbc.FireConnect();
-
-            
-            dbc.FireLogin(dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text));
 
 
             if (textBoxHospitalID.Text == "")
@@ -137,7 +135,8 @@ namespace hospi_hospital_only
                 }
                 LoginLabel.Text += ".";
 
-                if (DBClass.hospiPW == dbc.SHA256Hash(textBoxPW.Text, textBoxHospitalID.Text))
+                
+                if (DBClass.hospiID == productKey)
                 {
                     loginSuccess = true;
                     break;
@@ -243,12 +242,12 @@ namespace hospi_hospital_only
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            string productKey = token1.Text + "-" + token2.Text + "-" + token3.Text + "-" + token4.Text;
+            productKey = token1.Text + token2.Text + token3.Text + token4.Text;
 
             dbc.SelectProductKey(productKey);
             dbc.ProductKeyTable = dbc.DS.Tables["payment"];
 
-            if (productKey.Length != 23)
+            if (productKey.Length != 20)
             {
                 MessageBox.Show("인증키의 형식이 잘못되었습니다.", "알림");
             }
@@ -256,13 +255,57 @@ namespace hospi_hospital_only
             {
                 if (dbc.ProductKeyTable.Rows.Count == 1)
                 {
-                    // 인증키 정보 보내고 병원가입폼 띄움
-                    string productKeyForSchema = token1.Text + token2.Text + token3.Text + token4.Text;
+                    try
+                    {
+                        dbc.FireConnect();
+                        dbc.Delay(200);
+                        dbc.Hospital_Open(productKey);
+                        dbc.Delay(200);
+                        button6.Enabled = false;
+                        LoginLabel.Visible = true;
+                        Thread rTh = new Thread(Login);
+                        rTh.Start();
+                        dbc.Delay(3000);
 
-                    Hospital_SignUp hospital_Sign = new Hospital_SignUp();
-                    hospital_Sign.ProductKeyForSchema = productKeyForSchema;    //스키마 저장용
-                    hospital_Sign.ProductKey = productKey;    // '-' 포함된 변수용
-                    hospital_Sign.ShowDialog();
+                        StaffLogin staffLogin = new StaffLogin();
+
+                        if (loginSuccess == true)
+                        {
+
+                            button6.Enabled = true;
+                            LoginLabel.Visible = false;
+                            dbc.FindDocument(DBClass.hospiID);
+                            staffLogin.HospitalID = DBClass.hospiID;
+                            try
+                            {
+                                SaveProductKey(productKey);
+                                
+                                staffLogin.ShowDialog();
+                                Dispose();
+                            }
+                            catch
+                            {
+
+                            }
+                        }
+                        else if (loginSuccess == false)
+                        {
+
+                            MessageBox.Show("등록을 위해 병원 정보를 입력해주세요.", "알림");
+                            // 인증키 정보 보내고 병원가입폼 띄움
+
+                            Hospital_SignUp hospital_Sign = new Hospital_SignUp();
+                            hospital_Sign.ProductKeyForSchema = productKey;    //스키마 저장용
+                            hospital_Sign.ShowDialog();
+                            Dispose();
+                        }
+
+                        rTh.Abort();
+                    }
+                    catch
+                    {
+                        
+                    }
                 }
                 else
                 {
@@ -270,6 +313,12 @@ namespace hospi_hospital_only
                 }
             }
 
+        }
+
+        private void SaveProductKey(string ProductKeyValue)
+        {
+            Properties.Settings.Default.ProductKey = ProductKeyValue;
+            Properties.Settings.Default.Save();
         }
 
         private void button4_Click(object sender, EventArgs e)

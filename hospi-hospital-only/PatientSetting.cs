@@ -59,7 +59,7 @@ namespace hospi_hospital_only
                     {
                         try
                         {
-                            DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], dbc.VisitorTable.Rows[i][2].ToString().Substring(0, 8) + security.AESDecrypt128(dbc.VisitorTable.Rows[i][2].ToString().Substring(8), DBClass.hospiPW));
+                            DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], dbc.VisitorTable.Rows[i][2].ToString().Substring(0, 8) + security.AESDecrypt128(dbc.VisitorTable.Rows[i][2].ToString().Substring(8), DBClass.hospiID));
                         }
                         catch
                         {
@@ -164,7 +164,7 @@ namespace hospi_hospital_only
                 textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0, 6);
                 if (vRow["patientBirthCode"].ToString().Length > 9)
                 {
-                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1) + security.AESDecrypt128(vRow["patientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
+                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1) + security.AESDecrypt128(vRow["patientBirthCode"].ToString().Substring(8), DBClass.hospiID);
                 }
                 else
                 {
@@ -227,7 +227,7 @@ namespace hospi_hospital_only
                 DataRow upRow = dbc.VisitorTable.Rows[0];
                 upRow.BeginEdit();
                 upRow["PatientName"] = patientName.Text;
-                upRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0, 1) + security.AESEncrypt128(textBoxB2.Text.Substring(1, 6), DBClass.hospiPW);
+                upRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0, 1) + security.AESEncrypt128(textBoxB2.Text.Substring(1, 6), DBClass.hospiID);
 
                 upRow["PatientPhone"] = phone1.Text + phone2.Text + phone3.Text;
                 upRow["PatientAddress"] = textBoxADDR.Text;

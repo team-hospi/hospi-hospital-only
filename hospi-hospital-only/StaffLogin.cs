@@ -23,6 +23,7 @@ namespace hospi_hospital_only
 
         public StaffLogin()
         {
+            
             InitializeComponent();
         }
 
@@ -35,6 +36,11 @@ namespace hospi_hospital_only
 
         private void StaffLogin_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(Properties.Settings.Default.ProductKey);
+            dbc.FireConnect();
+            dbc.Delay(200);
+            dbc.Hospital_Open(Properties.Settings.Default.ProductKey);
+            dbc.Delay(200);
             MessageBox.Show(dbc.DBName);
         }
 
@@ -45,6 +51,7 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(DBClass.hospiID);
             dbc.Staff_open();
             dbc.StaffTable = dbc.DS.Tables["staff"];
 

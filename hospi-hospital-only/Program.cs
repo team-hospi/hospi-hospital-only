@@ -22,7 +22,7 @@ namespace hospi_hospital_only
 
             if (Properties.Settings.Default.ProductKey != string.Empty)
             {
-                DBClass.DBname = Properties.Settings.Default.ProductKeyValue;
+                DBClass.DBname = Properties.Settings.Default.ProductKey;
                 Application.Run(new StaffLogin());
             }
             else

@@ -87,16 +87,6 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.pwLabel1 = new System.Windows.Forms.Label();
-            this.pwLabel2 = new System.Windows.Forms.Label();
-            this.IDCheck = new System.Windows.Forms.Button();
-            this.textBoxPw2 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBoxHospitalID = new System.Windows.Forms.TextBox();
-            this.textBoxPw1 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
             this.textBoxAddAddress = new System.Windows.Forms.TextBox();
@@ -113,7 +103,6 @@
             this.textBoxHospitalName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -121,14 +110,13 @@
             this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(319, 681);
+            this.button3.Location = new System.Drawing.Point(164, 639);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(250, 32);
             this.button3.TabIndex = 64;
@@ -139,7 +127,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(319, 643);
+            this.button2.Location = new System.Drawing.Point(164, 601);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(250, 32);
             this.button2.TabIndex = 63;
@@ -154,7 +142,7 @@
             this.groupBox2.Controls.Add(this.EndState);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(319, 471);
+            this.groupBox2.Location = new System.Drawing.Point(319, 483);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(250, 100);
             this.groupBox2.TabIndex = 69;
@@ -723,7 +711,7 @@
             this.groupBox9.Controls.Add(this.textBoxEtc);
             this.groupBox9.Controls.Add(this.buttonSubjectAdd);
             this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox9.Location = new System.Drawing.Point(15, 595);
+            this.groupBox9.Location = new System.Drawing.Point(15, 465);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(298, 118);
             this.groupBox9.TabIndex = 74;
@@ -796,7 +784,7 @@
             this.groupBox6.Controls.Add(this.checkBox2);
             this.groupBox6.Controls.Add(this.checkBox1);
             this.groupBox6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox6.Location = new System.Drawing.Point(16, 441);
+            this.groupBox6.Location = new System.Drawing.Point(16, 311);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(298, 148);
             this.groupBox6.TabIndex = 73;
@@ -923,120 +911,6 @@
             this.checkBox1.Text = "가정의학과";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.pwLabel1);
-            this.groupBox5.Controls.Add(this.pwLabel2);
-            this.groupBox5.Controls.Add(this.IDCheck);
-            this.groupBox5.Controls.Add(this.textBoxPw2);
-            this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Controls.Add(this.label23);
-            this.groupBox5.Controls.Add(this.textBoxHospitalID);
-            this.groupBox5.Controls.Add(this.textBoxPw1);
-            this.groupBox5.Controls.Add(this.label25);
-            this.groupBox5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox5.Location = new System.Drawing.Point(15, 77);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(298, 128);
-            this.groupBox5.TabIndex = 72;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "로그인 정보";
-            // 
-            // pwLabel1
-            // 
-            this.pwLabel1.AutoSize = true;
-            this.pwLabel1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pwLabel1.ForeColor = System.Drawing.Color.Red;
-            this.pwLabel1.Location = new System.Drawing.Point(255, 57);
-            this.pwLabel1.Name = "pwLabel1";
-            this.pwLabel1.Size = new System.Drawing.Size(20, 21);
-            this.pwLabel1.TabIndex = 47;
-            this.pwLabel1.Text = "X";
-            // 
-            // pwLabel2
-            // 
-            this.pwLabel2.AutoSize = true;
-            this.pwLabel2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.pwLabel2.ForeColor = System.Drawing.Color.Red;
-            this.pwLabel2.Location = new System.Drawing.Point(255, 87);
-            this.pwLabel2.Name = "pwLabel2";
-            this.pwLabel2.Size = new System.Drawing.Size(20, 21);
-            this.pwLabel2.TabIndex = 46;
-            this.pwLabel2.Text = "X";
-            // 
-            // IDCheck
-            // 
-            this.IDCheck.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IDCheck.Location = new System.Drawing.Point(242, 27);
-            this.IDCheck.Name = "IDCheck";
-            this.IDCheck.Size = new System.Drawing.Size(44, 25);
-            this.IDCheck.TabIndex = 2;
-            this.IDCheck.Text = "확인";
-            this.IDCheck.UseVisualStyleBackColor = true;
-            this.IDCheck.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // textBoxPw2
-            // 
-            this.textBoxPw2.Location = new System.Drawing.Point(108, 86);
-            this.textBoxPw2.Name = "textBoxPw2";
-            this.textBoxPw2.PasswordChar = '●';
-            this.textBoxPw2.Size = new System.Drawing.Size(132, 23);
-            this.textBoxPw2.TabIndex = 4;
-            this.textBoxPw2.TextChanged += new System.EventHandler(this.textBoxPw2_TextChanged);
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.Location = new System.Drawing.Point(14, 86);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(88, 23);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "PW 확인";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label23
-            // 
-            this.label23.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label23.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label23.Location = new System.Drawing.Point(14, 27);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(88, 23);
-            this.label23.TabIndex = 2;
-            this.label23.Text = "ID";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxHospitalID
-            // 
-            this.textBoxHospitalID.Location = new System.Drawing.Point(108, 28);
-            this.textBoxHospitalID.Name = "textBoxHospitalID";
-            this.textBoxHospitalID.Size = new System.Drawing.Size(132, 23);
-            this.textBoxHospitalID.TabIndex = 1;
-            this.textBoxHospitalID.TextChanged += new System.EventHandler(this.textBoxHospitalID_TextChanged);
-            // 
-            // textBoxPw1
-            // 
-            this.textBoxPw1.Location = new System.Drawing.Point(108, 57);
-            this.textBoxPw1.Name = "textBoxPw1";
-            this.textBoxPw1.PasswordChar = '●';
-            this.textBoxPw1.Size = new System.Drawing.Size(132, 23);
-            this.textBoxPw1.TabIndex = 3;
-            this.textBoxPw1.TextChanged += new System.EventHandler(this.textBoxPw1_TextChanged);
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label25.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.Location = new System.Drawing.Point(14, 57);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(88, 23);
-            this.label25.TabIndex = 0;
-            this.label25.Text = "PW";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label26);
@@ -1054,7 +928,7 @@
             this.groupBox4.Controls.Add(this.textBoxHospitalName);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox4.Location = new System.Drawing.Point(15, 207);
+            this.groupBox4.Location = new System.Drawing.Point(15, 77);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(298, 227);
             this.groupBox4.TabIndex = 66;
@@ -1209,23 +1083,11 @@
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(319, 595);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 32);
-            this.button5.TabIndex = 75;
-            this.button5.Text = "스키마테스트";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // Hospital_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 726);
-            this.Controls.Add(this.button5);
+            this.ClientSize = new System.Drawing.Size(581, 681);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
@@ -1235,7 +1097,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1257,8 +1118,6 @@
             this.groupBox9.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -1325,16 +1184,6 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label pwLabel1;
-        private System.Windows.Forms.Label pwLabel2;
-        private System.Windows.Forms.Button IDCheck;
-        private System.Windows.Forms.TextBox textBoxPw2;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBoxHospitalID;
-        private System.Windows.Forms.TextBox textBoxPw1;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBoxTell3;
         private System.Windows.Forms.TextBox textBoxTell2;
@@ -1351,6 +1200,5 @@
         private System.Windows.Forms.TextBox textBoxAddAddress;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBoxAdCode;
-        private System.Windows.Forms.Button button5;
     }
 }

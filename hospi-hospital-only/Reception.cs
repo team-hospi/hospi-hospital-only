@@ -270,7 +270,7 @@ namespace hospi_hospital_only
                 textBoxB1.Text = vRow["patientBirthCode"].ToString().Substring(0,6);
                 if (vRow["patientBirthCode"].ToString().Length > 9)
                 {
-                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1) + security.AESDecrypt128(vRow["patientBirthCode"].ToString().Substring(8), DBClass.hospiPW);
+                    textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1) + security.AESDecrypt128(vRow["patientBirthCode"].ToString().Substring(8), DBClass.hospiID);
                 }
                 else
                 {
@@ -534,7 +534,7 @@ namespace hospi_hospital_only
                     {
                         try
                         {
-                            DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], dbc.VisitorTable.Rows[i][2].ToString().Substring(0, 8) + security.AESDecrypt128(dbc.VisitorTable.Rows[i][2].ToString().Substring(8), DBClass.hospiPW));
+                            DBGrid.Rows.Add(dbc.VisitorTable.Rows[i][0], dbc.VisitorTable.Rows[i][1], dbc.VisitorTable.Rows[i][2].ToString().Substring(0, 8) + security.AESDecrypt128(dbc.VisitorTable.Rows[i][2].ToString().Substring(8), DBClass.hospiID));
                         }
                         catch
                         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,8 @@ namespace hospi_hospital_only
     [FirestoreData]
     public partial class Hospital_SignUp : Form
     {
-        string productKey;
         string productKeyForSchema;
 
-        public string ProductKey
-        {
-            get { return productKey; }
-            set { productKey = value; }
-        }
         public string ProductKeyForSchema
         {
             get { return productKeyForSchema; }
@@ -44,6 +39,7 @@ namespace hospi_hospital_only
         List<string> department = new List<string>();
 
         FirestoreDb fs;
+        private string path;
 
         public Hospital_SignUp()
         {
@@ -52,32 +48,10 @@ namespace hospi_hospital_only
 
         private void Hospital_SignUp_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = textBoxHospitalID;
-            dbc.FireConnect();
+            this.ActiveControl = textBoxHospitalName;
+            FireConnect();
             dbc.Delay(400);
 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            
-            // DB 조회후 중복되지 않을경우 iDCheck 값 1로 변경
-            if (textBoxHospitalID.Text == "" && textBoxHospitalID.Text == " ")
-            {
-                MessageBox.Show("ID를 입력해주세요", "알림");
-                textBoxHospitalID.Focus();
-            }
-            else
-            {
-                
-                Check(textBoxHospitalID.Text);
-                dbc.Delay(1000);
-                if (iDCheck == 1)
-                {
-                    MessageBox.Show("사용 가능한 ID입니다!", "알림");
-                    IDCheck.BackColor = Color.Green;
-                }
-            }
         }
 
         //ID 체크
@@ -99,19 +73,6 @@ namespace hospi_hospital_only
                     break;
                 }
             }
-        }
-
-
-        //ID추가
-        public void IdAdd(string hospitalID, string pass)
-        {
-            CollectionReference coll = fs.Collection("hospitalAccountList");
-            Dictionary<string, object> data1 = new Dictionary<string, object>()
-            {
-                {"id", hospitalID},
-                {"pw", pass }
-            };
-            coll.AddAsync(data1);
         }
 
         //과 추가
@@ -171,7 +132,7 @@ namespace hospi_hospital_only
                 {"holidayClose", HoliClose1.Text + ":" + HoliClose2.Text },
                 {"holidayOpen",  holiOpen1.Text + ":" + holiOpen2.Text},
                 {"holidayStatus", holistate},
-                {"id", textBoxHospitalID.Text},
+                {"id", productKeyForSchema},
                 {"kind", HospitalType.Text},
                 {"lunchTime", lunch1.Text + ":" + lunch2.Text },
                 {"name", textBoxHospitalName.Text},
@@ -195,7 +156,7 @@ namespace hospi_hospital_only
                 {"holidayClose", HoliClose1.Text + ":" + HoliClose2.Text },
                 {"holidayOpen",  holiOpen1.Text + ":" + holiOpen2.Text},
                 {"holidayStatus", holistate},
-                {"id", textBoxHospitalID.Text},
+                {"id", productKeyForSchema},
                 {"kind", HospitalType.Text},
                 {"lunchTime", lunch1.Text + ":" + lunch2.Text },
                 {"name", textBoxHospitalName.Text},
@@ -209,47 +170,6 @@ namespace hospi_hospital_only
                 {"weekdayOpen", DayOpen1.Text + ":" + DayOpen2.Text}
                 };
                 coll.AddAsync(data1);
-            }
-        }
-
-        //PW1
-        private void textBoxPw1_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPw1.Text.Length >= 4)
-            {
-                pwLabel1.Text = "✓";
-                pwLabel1.ForeColor = Color.Green;
-            }
-            else if (textBoxPw1.Text.Length < 4)
-            {
-                pwLabel1.Text = "X";
-                pwLabel1.ForeColor = Color.Red;
-            }
-
-            if (textBoxPw1.Text != textBoxPw2.Text)
-            {
-                pwLabel2.Text = "X";
-                pwLabel2.ForeColor = Color.Red;
-            }
-            else if (textBoxPw1.Text == textBoxPw2.Text)
-            {
-                pwLabel2.Text = "✓";
-                pwLabel2.ForeColor = Color.Green;
-            }
-        }
-
-        //PW2
-        private void textBoxPw2_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPw2.Text == textBoxPw1.Text && pwLabel1.Text == "✓")
-            {
-                pwLabel2.Text = "✓";
-                pwLabel2.ForeColor = Color.Green;
-            }
-            else if (textBoxPw2.Text != textBoxPw1.Text || pwLabel1.Text == "X")
-            {
-                pwLabel2.Text = "X";
-                pwLabel2.ForeColor = Color.Red;
             }
         }
 
@@ -275,10 +195,6 @@ namespace hospi_hospital_only
         //등록완료 버튼
         private void button2_Click(object sender, EventArgs e)
         {
-
-            // iDCheck 값이 중복확인후 1로 변경되어야 진행
-            if (iDCheck == 1 && pwLabel1.Text == "✓" && pwLabel2.Text == "✓")
-            {
                 //병원정보 확인
                 if (textBoxHospitalName.Text != "" && HospitalType.Text != "" && textBoxTell1.Text != "" && textBoxTell2.Text != "" && textBoxTell3.Text != "" && textBoxHospitalAddress.Text != "")
                 {
@@ -295,12 +211,17 @@ namespace hospi_hospital_only
                             }
                             else
                             {
-                                SHApw = dbc.SHA256Hash(textBoxPw1.Text, textBoxHospitalID.Text);
+                                if (CreateSchema(productKeyForSchema) == true)
+                                {
+                                    SaveProductKey(productKeyForSchema);
+                                }
 
-                                IdAdd(textBoxHospitalID.Text, SHApw);
+                                StaffLogin staffLogin = new StaffLogin();
+                                staffLogin.HospitalID = DBClass.hospiID;
+
                                 dbc.Delay(200);
                                 AddHospital();
-                                MessageBox.Show("회원가입이 완료되었습니다.", "알림");
+                                MessageBox.Show("회원가입이 완료되었습니다. %n 다시 실행해주세요!", "알림");
                                 Dispose();
                             }
                         }
@@ -309,16 +230,9 @@ namespace hospi_hospital_only
                     else { MessageBox.Show("영업시간을 확인해주세요.", "알림"); }
                 }
                 else { MessageBox.Show("병원정보를 확인해주세요.", " 알림"); }
-            }
-            else { MessageBox.Show("아이디 혹은 패스워드를 확인해주세요.", " 알림"); }
+            
         }
 
-        //ID텍스트 박스 변경시
-        private void textBoxHospitalID_TextChanged(object sender, EventArgs e)
-        {
-            iDCheck = 0;
-            IDCheck.BackColor = SystemColors.Control;
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -355,8 +269,6 @@ namespace hospi_hospital_only
                 }
 
                 success = true;
-                MessageBox.Show("생성 완료", "알림");
-                Dispose();
             }
             catch(Exception e)
             {
@@ -366,19 +278,49 @@ namespace hospi_hospital_only
             return success;
         }
 
-        private void SaveProductKey(string ProductKey, string ProductKeyValue)
+        private void SaveProductKey(string ProductKeyValue)
         {
-            Properties.Settings.Default.ProductKey = ProductKey;
-            Properties.Settings.Default.ProductKeyValue = ProductKeyValue;
+            Properties.Settings.Default.ProductKey = ProductKeyValue;
             Properties.Settings.Default.Save();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (CreateSchema(productKeyForSchema) == true)
+            
+        }
+
+
+        //Firestore 연결
+        public void FireConnect()
+        {
+            FBKey fbKey = new FBKey();
+
+            try
             {
-                SaveProductKey(productKey, productKeyForSchema);
+                string keyFileName = "service-account.hos";
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Hospi\";
+
+                DirectoryInfo di = new DirectoryInfo(filePath);
+                FileInfo fileInfo = new FileInfo(filePath + keyFileName);
+                if (!fileInfo.Exists)
+                {
+                    di.Create();
+                    Utils.FtpDownload(keyFileName, filePath);
+                }
+
+                fbKey.DecryptFile();
+                path = fbKey.TempKeyFilePath;
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+                fs = FirestoreDb.Create("hospi-edcf9");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                fbKey.DeleteTemp();
+            }
+
+            fbKey.DeleteTemp();
         }
     }
 }
