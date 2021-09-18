@@ -21,7 +21,7 @@ namespace hospi_hospital_only
         public Main()
         {
             InitializeComponent();
-            this.ActiveControl = textBoxHospitalID;
+            this.ActiveControl = token1;
 
             token1.GotFocus += new EventHandler(textBox_GotFocus);
             token2.GotFocus += new EventHandler(textBox_GotFocus);
@@ -36,79 +36,6 @@ namespace hospi_hospital_only
                 new Action(delegate { (sender as TextBox).SelectAll(); })
             );
         }
-
-        public void TextBoxClear() // 로그인 정보 불일치시 ID,PW 텍스트박스 비워주고 포커스
-        {
-            textBoxHospitalID.Clear();
-            textBoxPW.Clear();
-            textBoxHospitalID.Focus();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            button6.Enabled = false;
-            loginSuccess = false;
-
-            dbc.FireConnect();
-
-
-            if (textBoxHospitalID.Text == "")
-            {
-                MessageBox.Show("아이디를 입력하세요.", "알림");
-                textBoxHospitalID.Focus();
-                button6.Enabled = true;
-            }
-            else if (textBoxPW.Text == "")
-            {
-                MessageBox.Show("비밀번호를 입력하세요.", "알림");
-                textBoxPW.Focus();
-                button6.Enabled = true;
-            }
-            else
-            {
-                DBClass.DBname = textBoxHospitalID.Text;
-                button6.Enabled = false;
-                LoginLabel.Visible = true;
-                Thread rTh = new Thread(Login);
-                rTh.Start();
-                dbc.Delay(3000);
-
-                this.Visible = false;
-
-                StaffLogin staffLogin = new StaffLogin();
-
-                if (loginSuccess == true)
-                {
-                    loginSuccess = true;
-                    button6.Enabled = true;
-                    LoginLabel.Visible = false;
-                    dbc.FindDocument(textBoxHospitalID.Text);
-                    staffLogin.HospitalID = textBoxHospitalID.Text;
-                    try
-                    {
-                        staffLogin.ShowDialog();
-                    }
-                    catch
-                    {
-
-                    }
-                    textBoxPW.Clear();
-
-                }
-                else if (loginSuccess == false)
-                {
-                    button6.Enabled = true;
-                    LoginLabel.Visible = false;
-                    MessageBox.Show("로그인정보 불일치", "알림");
-                    TextBoxClear();
-                }
-
-                rTh.Abort();
-            }
-
-            this.Visible = true;
-        }
-
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -154,14 +81,6 @@ namespace hospi_hospital_only
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MainMenu mm = new MainMenu();
-            this.Visible = false;
-            mm.HospitalID = textBoxHospitalID.Text;
-            mm.ShowDialog();
-            this.Visible = true;
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -181,15 +100,6 @@ namespace hospi_hospital_only
             
             
             MessageBox.Show(dd.ToString());
-        }
-
-        // 엔터이벤트
-        private void textBoxPW_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button6_Click(sender, e);
-            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -261,7 +171,6 @@ namespace hospi_hospital_only
                         dbc.Delay(200);
                         dbc.Hospital_Open(productKey);
                         dbc.Delay(200);
-                        button6.Enabled = false;
                         LoginLabel.Visible = true;
                         Thread rTh = new Thread(Login);
                         rTh.Start();
@@ -272,7 +181,6 @@ namespace hospi_hospital_only
                         if (loginSuccess == true)
                         {
 
-                            button6.Enabled = true;
                             LoginLabel.Visible = false;
                             dbc.FindDocument(DBClass.hospiID);
                             staffLogin.HospitalID = DBClass.hospiID;
