@@ -22,6 +22,8 @@ namespace hospi_hospital_only
         int indexNum;
         string noticeID;
         string staffId;
+        bool disposeAll = false;
+        DataTable dtDoc;
 
         public MainMenu()
         {
@@ -39,6 +41,16 @@ namespace hospi_hospital_only
             get { return hospitalID; }
             set { hospitalID = value; }
         }
+        public bool DisposeAll
+        {
+            get { return disposeAll; }
+            set { disposeAll = value; }
+        }
+        public DataTable DtDoc
+        {
+            get { return dtDoc; }
+            set { dtDoc = value; }
+        }
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
@@ -50,8 +62,23 @@ namespace hospi_hospital_only
             string time = DateTime.Now.ToString("HH:mm:ss");
             label1.Text = date + " " + time;
             timer1.Start();
+
+            // 관리자메뉴 접근권한 판별
+            if (staffId != "master")
+            {
+                관리자메뉴ToolStripMenuItem.Enabled = false;
+                병원정보설정WToolStripMenuItem.Enabled = false;
+                인증센터RToolStripMenuItem.Enabled = false;
+            }
+
+            if (DBClass.noticeYn == false)
+            {
+                공지사항등록ToolStripMenuItem.Enabled = false;
+            }
+
             // 접수처
-            dbc.Receptionist_Open();
+            textBoxReceptionist.Text = DBClass.staffName;
+           /* dbc.Receptionist_Open();
             dbc.ReceptionistTable = dbc.DS.Tables["receptionist"];
             for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
             {
@@ -62,7 +89,7 @@ namespace hospi_hospital_only
                     comboBoxReceptionist.Items.Add(dbc.ReceptionistTable.Rows[i]["receptionistName"]);
                 }
             }
-            comboBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();
+            comboBoxReceptionist.Text = dbc.ReceptionistTable.Rows[0]["receptionistName"].ToString();*/
 
             // 진료실
             dbc.Subject_Open();
@@ -76,9 +103,13 @@ namespace hospi_hospital_only
 
             label3.Text = dbc.Hospiname;
 
+            // 공지사항
+            SetNotice();
+        }
 
-
-            // 공지사항 띄우기
+        // 공지사항 띄우기
+        private void SetNotice()
+        {
             listView2.Items.Clear();
             dbc.Notice_Open();
             dbc.NoticeTable = dbc.DS.Tables["Notice"];
@@ -99,33 +130,28 @@ namespace hospi_hospital_only
                 {
                     listView2.Items.Add(items);
                 }
-
-                // 관리자메뉴 접근권한 판별
-                if(staffId != "master")
-                {
-                    관리자메뉴ToolStripMenuItem.Visible = false;
-                    병원정보설정WToolStripMenuItem.Visible = false;
-                }
             }
         }
-
+        
         // 진료실
         private void buttonOffice_Click(object sender, EventArgs e)
         {
             if (comboBoxOffice.Text != "" && comboBoxOffice.Text != "진료과목 선택")
             {
-                if (DBClass.docYn)
+                for(int i=0; i< dtDoc.Rows.Count; i++)
                 {
-                    Office office = new Office();
-                    office.SubjectID = comboBoxOffice.Text;
-                    office.Show();
+                    if (dtDoc.Rows[i]["subjectName"].ToString() == comboBoxOffice.Text)
+                    {
+                        Office office = new Office();
+                        office.SubjectID = comboBoxOffice.Text;
+                        office.Show();
 
-                    comboBoxOffice.Text = "진료과목 선택";
+                        comboBoxOffice.Text = "진료과목 선택";
+
+                        return;
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("접근권한이 없습니다.", "알림");
-                }
+                MessageBox.Show("접근 권한이 없습니다.", "알림");
             }
             else
             {
@@ -136,21 +162,11 @@ namespace hospi_hospital_only
         // 접수처
         private void buttonReception_Click(object sender, EventArgs e)
         {
-            
-            if (comboBoxReceptionist.Text != "" && comboBoxReceptionist.Text != "접수자 선택")
-            {
-                Reception reception = new Reception();
-                reception.HospitalID = hospitalID;
-                reception.ReceptionistName = comboBoxReceptionist.Text;
+            Reception reception = new Reception();
+            reception.HospitalID = hospitalID;
+            reception.ReceptionistName = textBoxReceptionist.Text;
 
-                reception.Show();
-
-                comboBoxReceptionist.Text = "접수자 선택";
-            }
-            else
-            {
-                MessageBox.Show("접수자를 선택해주세요.", "알림");
-            }
+            reception.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -278,15 +294,33 @@ namespace hospi_hospital_only
         {
             string token = Properties.Settings.Default.ProductKey;
             string tokenVal = token.Substring(0, 4) + "-" +token.Substring(4, 4) + "-" + token.Substring(8, 4) + "-" + token.Substring(12, 4) + "-" + token.Substring(16, 4);
-            MessageBox.Show("인증키 : " + tokenVal);
+            MessageBox.Show("인증키 : " + tokenVal, "인증키 정보");
         }
 
         private void 인증키삭제ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ProductKey = string.Empty;
-            Properties.Settings.Default.Save();
+            DialogResult ok = MessageBox.Show("인증정보를 삭제합니다.", "주의", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (ok == DialogResult.Yes)
+            {
+                Properties.Settings.Default.ProductKey = string.Empty;
+                Properties.Settings.Default.Save();
 
-            MessageBox.Show("인증정보 삭제됨", "알림");
+                MessageBox.Show("인증정보가 삭제되어 종료됩니다.", "알림");
+
+                disposeAll = true;
+                Dispose();
+            }
+        }
+
+        private void 공지사항등록ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Notice notice = new Notice();
+            notice.Writer = DBClass.staffName;
+
+            notice.ShowDialog();
+
+            if (notice.Result)
+                SetNotice();
         }
     }
 }

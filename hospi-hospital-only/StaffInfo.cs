@@ -34,6 +34,7 @@ namespace hospi_hospital_only
             DBGrid.Columns.Add("staffId", "ID");
             DBGrid.Columns.Add("staffNm", "직원명");
             DBGrid.Columns.Add("docYn", "의사여부");
+            DBGrid.Columns.Add("noticeYn", "공지권한");
             DBGrid.Columns.Add("useYn", "사용여부");
             DBGrid.Columns.Add(checkBoxColumn);
             DBGrid.Columns[0].Width = 120;
@@ -41,8 +42,10 @@ namespace hospi_hospital_only
             DBGrid.Columns[2].Width = 65;
             DBGrid.Columns[3].Width = 65;
             DBGrid.Columns[4].Width = 70;
+            DBGrid.Columns[5].Width = 70;
             DBGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DBGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DBGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             DBGrid.CurrentCell = null;
             DBGrid.AllowUserToAddRows = false;
@@ -56,7 +59,7 @@ namespace hospi_hospital_only
 
             foreach (DataRow dr in dbc.StaffTable.Rows)
             {
-                DBGrid.Rows.Add(dr[0], dr[2], dr[3], dr[4]);
+                DBGrid.Rows.Add(dr[0], dr[2], dr[3], dr[5], dr[4]);
             }
 
             DBGrid.RowHeadersVisible = false;
@@ -120,21 +123,42 @@ namespace hospi_hospital_only
                     DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Empty;
                 }
             }
+
+            if (e.ColumnIndex == 4)
+            {
+                if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "Y")
+                {
+                    DBGrid.Rows[e.RowIndex].Cells[3].Value = "N";
+                }
+                else if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "N")
+                {
+                    DBGrid.Rows[e.RowIndex].Cells[3].Value = "Y";
+                }
+
+                if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Empty)
+                {
+                    DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Red;
+                }
+                else if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Red)
+                {
+                    DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Empty;
+                }
+            }
         }
 
         private void DBGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4) // PW초기화
+            if (e.ColumnIndex == 5) // PW초기화
             {
-                bool isChecked = Convert.ToBoolean(DBGrid.Rows[e.RowIndex].Cells[4].Value);
+                bool isChecked = Convert.ToBoolean(DBGrid.Rows[e.RowIndex].Cells[5].Value);
 
                 switch (isChecked)
                 {
                     case true:
-                        DBGrid.Rows[e.RowIndex].Cells[4].Value = false;
+                        DBGrid.Rows[e.RowIndex].Cells[5].Value = false;
                         break;
                     case false:
-                        DBGrid.Rows[e.RowIndex].Cells[4].Value = true;
+                        DBGrid.Rows[e.RowIndex].Cells[5].Value = true;
                         break;
                 }
             }
@@ -164,7 +188,7 @@ namespace hospi_hospital_only
             foreach (DataGridViewRow dRow in DBGrid.Rows)
             {
                 // 패스워드 초기화
-                isChecked = Convert.ToBoolean(dRow.Cells[4].Value);
+                isChecked = Convert.ToBoolean(dRow.Cells[5].Value);
                 {
                     if (isChecked == true)
                     {
@@ -194,9 +218,9 @@ namespace hospi_hospital_only
                 }
 
                 // 사용유무 변경
-                if (dRow.Cells[3].Style.ForeColor == Color.Red)
+                if (dRow.Cells[4].Style.ForeColor == Color.Red)
                 {
-                    if (dRow.Cells[3].Value.ToString() == "Y")
+                    if (dRow.Cells[4].Value.ToString() == "Y")
                         ynValue = "Y";
                     else
                         ynValue = "N";
@@ -208,7 +232,29 @@ namespace hospi_hospital_only
                     dbc.DBAdapter.Update(dbc.DS, "staff");
                     dbc.DS.AcceptChanges();
                 }
+
+                // 공지권한 변경
+                if (dRow.Cells[3].Style.ForeColor == Color.Red)
+                {
+                    if (dRow.Cells[3].Value.ToString() == "Y")
+                        ynValue = "Y";
+                    else
+                        ynValue = "N";
+
+                    upRow = dbc.StaffTable.Rows[dRow.Index];
+                    upRow.BeginEdit();
+                    upRow["noticeYn"] = ynValue;
+                    upRow.EndEdit();
+                    dbc.DBAdapter.Update(dbc.DS, "staff");
+                    dbc.DS.AcceptChanges();
+                }
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DoctorNameSetting a = new DoctorNameSetting();
+            a.ShowDialog();
         }
     }
 }

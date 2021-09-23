@@ -64,15 +64,24 @@ namespace hospi_hospital_only
                         {
                             login = true;
 
-                            SetStaffString(dbc.StaffTable.Rows[i]);
+                            dbc.Subject_Open();
+                            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
+
+                            DataTable tmpTable = SetStaffString(dbc.StaffTable.Rows[i], dbc.SubjectTable);
 
                             MainMenu mainMenu = new MainMenu();
                             mainMenu.HospitalID = hospitalID;
+                            mainMenu.DtDoc = tmpTable;
                             mainMenu.StaffId = dbc.StaffTable.Rows[i]["staffId"].ToString();
 
                             this.Visible = false;
                             mainMenu.ShowDialog();
                             this.Visible = true;
+
+                            if (mainMenu.DisposeAll)
+                            {
+                                Dispose();
+                            }
 
                         }
                         else if (dbc.StaffTable.Rows[i]["staffPw"].ToString() == string.Empty)
@@ -98,14 +107,35 @@ namespace hospi_hospital_only
             if(login == false) { MessageBox.Show("아이디와 패스워드를 확인해주세요", "알림"); }
         }
 
-        private void SetStaffString(DataRow dr)
+        private DataTable SetStaffString(DataRow drStaff, DataTable dtSubject)
         {
-            DBClass.staffId = dr["staffId"].ToString();
-            DBClass.staffName = dr["staffNm"].ToString();
-            if (dr["docYn"].ToString() == "Y")
+            DBClass.staffId = drStaff["staffId"].ToString();
+            DBClass.staffName = drStaff["staffNm"].ToString();
+            if (drStaff["docYn"].ToString() == "Y")
                 DBClass.docYn = true;
-            if (dr["noticeYn"].ToString() == "Y")
+            if (drStaff["noticeYn"].ToString() == "Y")
                 DBClass.noticeYn = true;
+
+            DataTable dtDoc = new DataTable();
+            dtDoc.Columns.Add("subjectName");
+
+            if(DBClass.staffId == "master")
+            {
+                for (int i = 0; i < dtSubject.Rows.Count; i++)
+                        dtDoc.Rows.Add(dtSubject.Rows[i]["subjectName"].ToString());
+            }
+            else
+            {
+                for (int i = 0; i < dtSubject.Rows.Count; i++)
+                {
+                    if (dtSubject.Rows[i]["doctorName"].ToString() == DBClass.staffName)
+                    {
+                        dtDoc.Rows.Add(dtSubject.Rows[i]["subjectName"].ToString());
+                    }
+                }
+            }
+
+            return dtDoc;
         }
 
         private void textBoxPW_KeyDown(object sender, KeyEventArgs e)
@@ -115,6 +145,19 @@ namespace hospi_hospital_only
                 button6_Click(sender, e);
             }
         }
+        private void button6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button6_Click(sender, e);
+            }
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ProductKey = "";
+            Properties.Settings.Default.ProductKeyValue = "";
+            Properties.Settings.Default.Save();
+        }
     }
 }

@@ -31,7 +31,10 @@ namespace hospi_hospital_only
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,10 +43,7 @@ namespace hospi_hospital_only
             this.token2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.token1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,26 @@ namespace hospi_hospital_only
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button4.Location = new System.Drawing.Point(413, 29);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(107, 23);
+            this.button4.TabIndex = 48;
+            this.button4.Text = "테스트용 토큰";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(387, 15);
+            this.label6.TabIndex = 47;
+            this.label6.Text = "라이센스 인증이 필요합니다. 발급받은 20자리 인증키를 입력해주세요.";
+            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -79,6 +99,17 @@ namespace hospi_hospital_only
             this.button2.Text = "확인";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(341, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(179, 28);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "종 료";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label5
             // 
@@ -166,17 +197,6 @@ namespace hospi_hospital_only
             this.token1.TabIndex = 38;
             this.token1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(341, 109);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 28);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "종 료";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -189,26 +209,6 @@ namespace hospi_hospital_only
             this.label1.TabIndex = 39;
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(413, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(107, 23);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "테스트용 토큰";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(387, 15);
-            this.label6.TabIndex = 47;
-            this.label6.Text = "라이센스 인증이 필요합니다. 발급받은 20자리 인증키를 입력해주세요.";
             // 
             // LoginLabel
             // 

@@ -37,6 +37,7 @@
             this.textBoxStaffId = new System.Windows.Forms.TextBox();
             this.labelID = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,12 +144,25 @@
             this.button6.Text = "접 속";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button6_KeyDown);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Location = new System.Drawing.Point(247, 16);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(96, 32);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "인증삭제";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // StaffLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 301);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "StaffLogin";
@@ -171,5 +185,6 @@
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

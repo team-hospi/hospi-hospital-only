@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffInfo));
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.DBGrid = new System.Windows.Forms.DataGridView();
@@ -39,21 +40,33 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.button3);
             this.groupBox9.Controls.Add(this.button1);
             this.groupBox9.Controls.Add(this.button2);
             this.groupBox9.Controls.Add(this.DBGrid);
             this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox9.Location = new System.Drawing.Point(12, 12);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(487, 429);
+            this.groupBox9.Size = new System.Drawing.Size(583, 429);
             this.groupBox9.TabIndex = 39;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "직원리스트";
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Location = new System.Drawing.Point(17, 389);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(171, 30);
+            this.button3.TabIndex = 49;
+            this.button3.Text = "담당의사 설정";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(286, 389);
+            this.button1.Location = new System.Drawing.Point(382, 389);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(182, 30);
             this.button1.TabIndex = 47;
@@ -64,7 +77,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(98, 389);
+            this.button2.Location = new System.Drawing.Point(194, 389);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(182, 30);
             this.button2.TabIndex = 48;
@@ -80,7 +93,7 @@
             this.DBGrid.Name = "DBGrid";
             this.DBGrid.ReadOnly = true;
             this.DBGrid.RowTemplate.Height = 23;
-            this.DBGrid.Size = new System.Drawing.Size(451, 351);
+            this.DBGrid.Size = new System.Drawing.Size(547, 351);
             this.DBGrid.TabIndex = 40;
             this.DBGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellClick);
             this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
@@ -89,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 450);
+            this.ClientSize = new System.Drawing.Size(607, 450);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -110,5 +123,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView DBGrid;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

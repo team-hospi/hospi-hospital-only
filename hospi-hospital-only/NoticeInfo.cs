@@ -15,6 +15,7 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         string noticeID;
         int update;     // 수정 진행시 1
+        string writer;
 
         public string NoticeID
         {
@@ -53,6 +54,7 @@ namespace hospi_hospital_only
                 textBoxEndDate.Text = endDate;
             }
 
+            writer = dbc.NoticeTable.Rows[0]["NoticeWriter"].ToString();
         }
 
         // 종료
@@ -64,9 +66,10 @@ namespace hospi_hospital_only
         // 수정
         private void button2_Click(object sender, EventArgs e)
         {
-
-            int passwordOK = 1;
-            // checkMasterPW 에서 로그인 성공시 checkMasterPW.PasswordOK = 1;
+            if(writer == DBClass.staffName || DBClass.staffId == "master")
+            {
+                int passwordOK = 1;
+                // checkMasterPW 에서 로그인 성공시 checkMasterPW.PasswordOK = 1;
                 textBoxTitle.ReadOnly = false;
                 textBoxInfo.ReadOnly = false;
                 textBoxEndDate.Visible = false;
@@ -83,7 +86,12 @@ namespace hospi_hospital_only
                 button1.Location = p;
                 button3.Location = p;
 
-            update = 1;
+                update = 1;
+            }
+            else
+            {
+                MessageBox.Show("공지사항은 작성자 또는 관리자만 수정할 수 있습니다.", "알림");
+            }
         }
 
         // 취소 버튼 (Visible false)

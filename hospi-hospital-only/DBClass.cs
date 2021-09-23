@@ -83,6 +83,7 @@ namespace hospi_hospital_only
         public static bool docYn = false;
         public static bool noticeYn = false;
 
+
         string path;
 
         string connectionString = "Server =" + Sname + "; Database =" + DBname + "; Uid =" + sqlid + "; Pwd =" + pass + ";";
@@ -389,6 +390,22 @@ namespace hospi_hospital_only
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
                 DBAdapter.Fill(dS, "SubjectName");
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        public void Subject_DocName()
+        {
+            try
+            {
+                commandString = " select staffNm from staff where docYn = 'Y' ";
+                DBAdapter = new MySqlDataAdapter(commandString, connectionString);
+                MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
+                dS = new DataSet();
+                DBAdapter.Fill(dS, "docNm");
             }
             catch (DataException DE)
             {
@@ -1157,7 +1174,7 @@ namespace hospi_hospital_only
                         sb.AppendLine(" CREATE TABLE " + schemaName + ".`subjectname` (                                                                                ");
                         sb.AppendLine("   `SUBJECTCODE` int NOT NULL,                                                                                                              ");
                         sb.AppendLine("   `SUBJECTNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,              ");
-                        sb.AppendLine("   `DOCTORNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,               ");
+                        sb.AppendLine("   `DOCTORNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci,                                  ");
                         sb.AppendLine("   PRIMARY KEY (`SUBJECTCODE`))                                                                                                          ");
                         break;
 
@@ -1221,7 +1238,7 @@ namespace hospi_hospital_only
                         sb.AppendLine(" insert into " + schemaName + ".staff                          ");
                         sb.AppendLine(" (staffId, staffPw, staffNm, docYn, useYn, noticeYn)   ");
                         sb.AppendLine(" values                                                                         ");
-                        sb.AppendLine(" ('master', 'master', 'master', 'Y', 'Y', 'Y')                      ");
+                        sb.AppendLine(" ('master', 'master', '관리자', 'Y', 'Y', 'Y')                      ");
                         break;
 
                     case 12:
@@ -1236,6 +1253,34 @@ namespace hospi_hospital_only
                 MySqlCommand comm = new MySqlCommand(commandString, conn);
 
                 comm.ExecuteNonQuery();
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        // mySQL 과목명 추가 (의사명 null)
+        public void InsertSubjectName(string schemaName, DataTable subjectDt)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                conn.Open();
+
+                for(int i=1; i<=subjectDt.Rows.Count; i++)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine(" insert into " + schemaName + ".subjectName           ");
+                    sb.AppendLine(" (subjectCode, subjectName, doctorName)               ");
+                    sb.AppendLine(" values                                                                       ");
+                    sb.AppendFormat(" ( '{0}', '{1}', null )", i.ToString(), subjectDt.Rows[i - 1][0]);
+
+                    commandString = sb.ToString();
+                    MySqlCommand comm = new MySqlCommand(commandString, conn);
+
+                    comm.ExecuteNonQuery();
+                }
             }
             catch (DataException DE)
             {

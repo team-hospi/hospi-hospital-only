@@ -105,6 +105,12 @@
       <DependentUpon>CheckUpdateMode.cs</DependentUpon>
     </Compile>
     <Compile Include="DBClass.cs" />
+    <Compile Include="DoctorNameSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorNameSetting.Designer.cs">
+      <DependentUpon>DoctorNameSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBKey.cs" />
     <Compile Include="Fcm.cs" />
     <Compile Include="FindRadiography.cs">
@@ -301,6 +307,9 @@
     <Content Include="Resources\Licence.txt" />
     <EmbeddedResource Include="CheckUpdateMode.resx">
       <DependentUpon>CheckUpdateMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorNameSetting.resx">
+      <DependentUpon>DoctorNameSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FindRadiography.resx">
       <DependentUpon>FindRadiography.cs</DependentUpon>

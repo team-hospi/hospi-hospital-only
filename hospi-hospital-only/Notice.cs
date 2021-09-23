@@ -14,11 +14,17 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         string writer;
+        bool result = false;
 
         public string Writer
         {
             get { return writer; }
             set { writer = value; }
+        }
+        public bool Result
+        {
+            get { return result; }
+            set { result = value; }
         }
 
         public Notice()
@@ -107,6 +113,7 @@ namespace hospi_hospital_only
                         dbc.DBAdapter.Update(dbc.DS, "Notice");
                         dbc.DS.AcceptChanges();
 
+                        result = true;  // 작성완료 리턴하여 초기화하기위함
                         Dispose();
                     }
                     catch (DataException DE)
