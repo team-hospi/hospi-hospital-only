@@ -56,9 +56,9 @@ namespace hospi_hospital_only
                 ++cnt;
                 Thread.Sleep(200);
                 CheckForIllegalCrossThreadCalls = false;
-                if (LoginLabel.Text == "로그인 중...")
+                if (LoginLabel.Text == "인증 진행중...")
                 {
-                    LoginLabel.Text = "로그인 중";
+                    LoginLabel.Text = "인증 진행중";
                 }
                 LoginLabel.Text += ".";
 
@@ -238,19 +238,6 @@ namespace hospi_hospital_only
             token4.Text = "GWWZ0";
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            // 토큰 인증상태 확인
-            if(Properties.Settings.Default.ProductKey == string.Empty)
-            {
-                MessageBox.Show("인증키 저장되지 않음", "알림");
-            }
-            else
-            {
-                MessageBox.Show("인증키 저장됨", "알림");
-            }
-           
-        }
     }
 }
 

@@ -50,6 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.병원정보설정WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.관리자메뉴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공지사항등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -61,7 +62,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.병원정보설정WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.인증센터RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.인증키확인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.인증키삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -270,13 +274,21 @@
             this.병원정보설정WToolStripMenuItem,
             this.관리자메뉴ToolStripMenuItem,
             this.공지사항등록ToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.인증센터RToolStripMenuItem,
             this.toolStripMenuItem1,
             this.끝내기XToolStripMenuItem});
             this.ToolStripMenuItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ToolStripMenuItem.Name = "ToolStripMenuItem";
             this.ToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.ToolStripMenuItem.Text = "메뉴(&M) ";
-            this.ToolStripMenuItem.Click += new System.EventHandler(this.ddddToolStripMenuItem_Click);
+            // 
+            // 병원정보설정WToolStripMenuItem
+            // 
+            this.병원정보설정WToolStripMenuItem.Name = "병원정보설정WToolStripMenuItem";
+            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.병원정보설정WToolStripMenuItem.Text = "병원 정보 설정(&W)";
+            this.병원정보설정WToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정WToolStripMenuItem_Click);
             // 
             // 관리자메뉴ToolStripMenuItem
             // 
@@ -376,12 +388,33 @@
             this.groupBox8.TabIndex = 44;
             this.groupBox8.TabStop = false;
             // 
-            // 병원정보설정WToolStripMenuItem
+            // 인증센터RToolStripMenuItem
             // 
-            this.병원정보설정WToolStripMenuItem.Name = "병원정보설정WToolStripMenuItem";
-            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.병원정보설정WToolStripMenuItem.Text = "병원 정보 설정(&W)";
-            this.병원정보설정WToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정WToolStripMenuItem_Click);
+            this.인증센터RToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.인증키확인ToolStripMenuItem,
+            this.인증키삭제ToolStripMenuItem});
+            this.인증센터RToolStripMenuItem.Name = "인증센터RToolStripMenuItem";
+            this.인증센터RToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.인증센터RToolStripMenuItem.Text = "인증센터(&R)";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // 인증키확인ToolStripMenuItem
+            // 
+            this.인증키확인ToolStripMenuItem.Name = "인증키확인ToolStripMenuItem";
+            this.인증키확인ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.인증키확인ToolStripMenuItem.Text = "인증키 확인(&S)";
+            this.인증키확인ToolStripMenuItem.Click += new System.EventHandler(this.인증키확인ToolStripMenuItem_Click);
+            // 
+            // 인증키삭제ToolStripMenuItem
+            // 
+            this.인증키삭제ToolStripMenuItem.Name = "인증키삭제ToolStripMenuItem";
+            this.인증키삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.인증키삭제ToolStripMenuItem.Text = "인증키 삭제(&D)";
+            this.인증키삭제ToolStripMenuItem.Click += new System.EventHandler(this.인증키삭제ToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -452,5 +485,9 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ToolStripMenuItem 공지사항등록ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 병원정보설정WToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem 인증센터RToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 인증키확인ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 인증키삭제ToolStripMenuItem;
     }
 }

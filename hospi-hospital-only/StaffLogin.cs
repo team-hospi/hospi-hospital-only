@@ -36,12 +36,10 @@ namespace hospi_hospital_only
 
         private void StaffLogin_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(Properties.Settings.Default.ProductKey);
             dbc.FireConnect();
             dbc.Delay(200);
             dbc.Hospital_Open(Properties.Settings.Default.ProductKey);
             dbc.Delay(200);
-            MessageBox.Show(dbc.DBName);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,7 +49,6 @@ namespace hospi_hospital_only
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(DBClass.hospiID);
             dbc.Staff_open();
             dbc.StaffTable = dbc.DS.Tables["staff"];
 
@@ -107,19 +104,5 @@ namespace hospi_hospital_only
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.ProductKey = string.Empty;
-            Properties.Settings.Default.Save();
-
-            MessageBox.Show("인증정보 삭제됨", "알림");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("인증키 : " + Properties.Settings.Default.ProductKey);
-        }
-
- 
     }
 }

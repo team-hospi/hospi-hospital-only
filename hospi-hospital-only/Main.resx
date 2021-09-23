@@ -117,24 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label6.Text" xml:space="preserve">
-    <value>1. 테스트용 토큰 자동 입력 (mysql에 존재하는 키 지정해둠)
-2. 입력버튼 클릭
-3. 병원정보 입력하지않고 스키마생성버튼 클릭
-4. 토큰명으로 스키마생성되고 테이블 차례로 생성됨
-(스키마 이름에 '-' 안들어가서 제외하고 20자 영+숫자 구성함)
-
-[생성 후]
-5. 병원회원가입 + 스키마생성이후 인증상태 저장하는 세팅값 지정된상태
-6. 종료 후 재시작하면 StaffLogin 폼 띄우도록 설정함
-7. StaffLogin 폼에서 인증상태 삭제하고 재실행하면 현재폼으로 돌아옴
-
-[수정해야할것]
-1. 모든 직원정보를 staff테이블에 저장하기때문에 receptionist 테이블 삭제 및 코드수정
-
-[오류]
-1. 스키마, 테이블 생성 후 로그인시 subject, receptionist 등등 데이터가 하나도 없어서 참조오류 발생</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

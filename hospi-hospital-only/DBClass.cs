@@ -1212,10 +1212,10 @@ namespace hospi_hospital_only
                         break;
 
                     case 11:
-                        sb.AppendLine(" insert into " + schemaName + ".staff              ");
-                        sb.AppendLine(" (staffId, staffPw, staffNm, docYn, useYn)       ");
-                        sb.AppendLine(" values                                                             ");
-                        sb.AppendLine(" ('master', 'master', 'master', 'Y', 'Y')                ");
+                        sb.AppendLine(" insert into " + schemaName + ".staff                          ");
+                        sb.AppendLine(" (staffId, staffPw, staffNm, docYn, useYn, noticeYn)   ");
+                        sb.AppendLine(" values                                                                         ");
+                        sb.AppendLine(" ('master', 'master', 'master', 'Y', 'Y', 'Y')                      ");
                         break;
 
                     case 12:

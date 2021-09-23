@@ -43,7 +43,6 @@ namespace hospi_hospital_only
         private void MainMenu_Load(object sender, EventArgs e)
         {
             //병원 정보 불러오기
-            MessageBox.Show(DBClass.hospiID);
             dbc.Hospital_Open(DBClass.hospiID);
             dbc.Delay(400);
             // 날짜정보
@@ -237,7 +236,6 @@ namespace hospi_hospital_only
         }
 
 
-        private void ddddToolStripMenuItem_Click(object sender, EventArgs e) { }
 
         private void 끝내기XToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -291,6 +289,21 @@ namespace hospi_hospital_only
         {
             Hospital_Setting hs = new Hospital_Setting();
             hs.ShowDialog();
+        }
+
+        private void 인증키확인ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string token = Properties.Settings.Default.ProductKey;
+            string tokenVal = token.Substring(0, 4) + "-" +token.Substring(4, 4) + "-" + token.Substring(8, 4) + "-" + token.Substring(12, 4) + "-" + token.Substring(16, 4);
+            MessageBox.Show("인증키 : " + tokenVal);
+        }
+
+        private void 인증키삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ProductKey = string.Empty;
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("인증정보 삭제됨", "알림");
         }
     }
 }
