@@ -78,6 +78,11 @@ namespace hospi_hospital_only
 
         public static string documentname;
 
+        public static string staffId;
+        public static string staffName;
+        public static bool docYn = false;
+        public static bool noticeYn = false;
+
         string path;
 
         string connectionString = "Server =" + Sname + "; Database =" + DBname + "; Uid =" + sqlid + "; Pwd =" + pass + ";";
@@ -1105,9 +1110,10 @@ namespace hospi_hospital_only
                         sb.AppendLine(" CREATE TABLE "+ schemaName+".`staff` (         ");
                         sb.AppendLine("   `staffId` varchar(10) NOT NULL,                         ");
                         sb.AppendLine("   `staffPw` varchar(20) DEFAULT NULL,               ");
-                        sb.AppendLine("   `staffNm` varchar(10) NOT NULL,                         ");
+                        sb.AppendLine("   `staffNm` varchar(10) NOT NULL,                        ");
                         sb.AppendLine("   `docYn` varchar(1) NOT NULL,                           ");
                         sb.AppendLine("   `useYn` varchar(1) NOT NULL,                           ");
+                        sb.AppendLine("   `noticeYn` varchar(1) NOT NULL,                        ");
                         sb.AppendLine("   PRIMARY KEY (`staffId`))                                    ");
                         break;
 

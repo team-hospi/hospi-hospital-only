@@ -64,6 +64,8 @@ namespace hospi_hospital_only
                         {
                             login = true;
 
+                            SetStaffString(dbc.StaffTable.Rows[i]);
+
                             MainMenu mainMenu = new MainMenu();
                             mainMenu.HospitalID = hospitalID;
                             mainMenu.StaffId = dbc.StaffTable.Rows[i]["staffId"].ToString();
@@ -94,6 +96,16 @@ namespace hospi_hospital_only
                 }
             }
             if(login == false) { MessageBox.Show("아이디와 패스워드를 확인해주세요", "알림"); }
+        }
+
+        private void SetStaffString(DataRow dr)
+        {
+            DBClass.staffId = dr["staffId"].ToString();
+            DBClass.staffName = dr["staffNm"].ToString();
+            if (dr["docYn"].ToString() == "Y")
+                DBClass.docYn = true;
+            if (dr["noticeYn"].ToString() == "Y")
+                DBClass.noticeYn = true;
         }
 
         private void textBoxPW_KeyDown(object sender, KeyEventArgs e)

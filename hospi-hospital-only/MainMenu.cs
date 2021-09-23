@@ -114,7 +114,7 @@ namespace hospi_hospital_only
         {
             if (comboBoxOffice.Text != "" && comboBoxOffice.Text != "진료과목 선택")
             {
-                if (CheckDocYn())
+                if (DBClass.docYn)
                 {
                     Office office = new Office();
                     office.SubjectID = comboBoxOffice.Text;
@@ -266,23 +266,6 @@ namespace hospi_hospital_only
         {
             StaffInfo staffInfo = new StaffInfo();
             staffInfo.ShowDialog();
-        }
-
-        private bool CheckDocYn()
-        {
-            dbc.Staff_open();
-            dbc.StaffTable = dbc.DS.Tables["staff"];
-
-            bool docYn = false;
-
-            foreach(DataRow dr in dbc.StaffTable.Rows)
-            {
-                if(staffId == dr["staffId"].ToString() && dr["DocYn"].ToString() == "Y")
-                {
-                    docYn = true;
-                }
-            }
-            return docYn;
         }
 
         private void 병원정보설정WToolStripMenuItem_Click(object sender, EventArgs e)
