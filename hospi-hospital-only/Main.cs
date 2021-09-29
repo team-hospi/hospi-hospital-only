@@ -255,6 +255,8 @@ namespace hospi_hospital_only
                         if (str.Length == 5 || str.Length == 11 || str.Length == 17)
                             str += "-";
                     }
+                    if (str.Length > 23)
+                        str = str.Substring(0,23);
                     token1.Clear();
                     token1.AppendText(str);
                 }
