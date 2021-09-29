@@ -137,7 +137,7 @@ namespace hospi_hospital_only
         private void ReserveCancel_Load(object sender, EventArgs e)
         {
             reserve.FireConnect();
-            reserve.ReserveOpen(hospitalID);
+            reserve.ReserveOpen();
             dbc.Delay(400);
             
         }

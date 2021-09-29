@@ -47,10 +47,10 @@ namespace hospi_hospital_only
         }
 
 
-        public async void checkinquiry(string hospitalid)
+        public async void checkinquiry()
         {
             int i = 0;
-            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalid);
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -66,7 +66,7 @@ namespace hospi_hospital_only
             count = i;
         }
 
-        public void UpdateWait(string hospitalid)
+        public void UpdateWait()
         {
             CollectionReference citiesRef = fs.Collection("inquiryList");
             Query query = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("checkedAnswer", false);

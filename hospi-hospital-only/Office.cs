@@ -223,6 +223,11 @@ namespace hospi_hospital_only
                 dbc.FindDoctor(subjectID);
                 dbc.SubjectTable = dbc.DS.Tables["subject"];
                 textBox1.Text = dbc.SubjectTable.Rows[0][0].ToString();
+                if (textBox1.Text == "")
+                {
+                    MessageBox.Show("담당 의사 설정이 안되어있습니다! \n담당 의사 설정 후 접속해주세요");
+                    this.Dispose();
+                }
 
                 dbc.Reception_Office(dateTimePicker1.Value.ToString("yy-MM-dd"), subjectID);
                 dbc.ReceptionTable = dbc.DS.Tables["reception"];
@@ -542,7 +547,7 @@ namespace hospi_hospital_only
                     button6.Enabled = false;
                     if (mobileUse)
                     {
-                        reserve.EndDocument(DBClass.hospiID, textBoxSubjectName.Text, mobileID, DateTime.Now.ToString("yyyy-MM-dd"), receptionTime.ToString().Substring(0, 2) + ":" + receptionTime.ToString().Substring(2, 2));
+                        reserve.EndDocument(textBoxSubjectName.Text, mobileID, DateTime.Now.ToString("yyyy-MM-dd"), receptionTime.ToString().Substring(0, 2) + ":" + receptionTime.ToString().Substring(2, 2));
                         dbc.Delay(200);
                         reserve.ReserveEnd();
                     }
@@ -554,7 +559,7 @@ namespace hospi_hospital_only
             {
                 if (mobileUse)
                 {
-                    reserve.EndDocument(DBClass.hospiID, textBoxSubjectName.Text, mobileID, DateTime.Now.ToString("yyyy-MM-dd"), receptionTime.ToString().Substring(0, 2) + ":" + receptionTime.ToString().Substring(2, 2));
+                    reserve.EndDocument(textBoxSubjectName.Text, mobileID, DateTime.Now.ToString("yyyy-MM-dd"), receptionTime.ToString().Substring(0, 2) + ":" + receptionTime.ToString().Substring(2, 2));
                     dbc.Delay(200);
                     reserve.ReserveEnd();
                 }

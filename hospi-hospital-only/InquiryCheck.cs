@@ -87,7 +87,7 @@ namespace hospi_hospital_only
             async public void InquiryOpen()
         {
             list.Clear();
-            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalID);
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -181,7 +181,7 @@ namespace hospi_hospital_only
         //문서 이름찾기
         async public void FindDocument()
         {
-            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalID);
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -274,7 +274,7 @@ namespace hospi_hospital_only
         async void ListAnswer()
         {
 
-            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", hospitalID);
+            Query qref = fs.Collection("inquiryList").WhereEqualTo("hospitalId", DBClass.hospiID);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {

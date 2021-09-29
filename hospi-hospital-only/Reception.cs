@@ -351,11 +351,11 @@ namespace hospi_hospital_only
                 // 병원정보 가져오고 과목명 comboBox에 추가
                 dbc.Reception_Open();
                 dbc.Hospital_Open(hospitalID);
-                reserve.TodayReserveOpen(hospitalID);
+                reserve.TodayReserveOpen();
                 dbc.Delay(400);
-                inquiry.UpdateWait(hospitalID);
-                reserve.ReserveCancelWait(hospitalID);
-                reserve.ReserveUpdateWait(hospitalID);
+                inquiry.UpdateWait();
+                reserve.ReserveCancelWait();
+                reserve.ReserveUpdateWait();
                 //dbc.HospitalTable = dbc.DS.Tables["hospital"];
                 //DataRow subjectRow = dbc.HospitalTable.Rows[0];
                 dbc.Receptionist_Open();
@@ -607,6 +607,10 @@ namespace hospi_hospital_only
             else if (textBoxPurpose.Text == "")
             {
                 MessageBox.Show("내원 목적이 작성되지 않았습니다.", "알림");
+            }
+            else if (textBoxB2.TextLength != 7)
+            {
+                MessageBox.Show("환자정보를 수정해주세요.", "알림");
             }
             else
             {
@@ -1341,7 +1345,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
-                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
+                            reserve.FindDocument(reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                             dbc.Delay(200);
 
 
@@ -1407,7 +1411,7 @@ namespace hospi_hospital_only
 
                             newRow["ReceptionInfo"] = reserve.list[i].symptom;
                             newRow["ReceptionType"] = 1;
-                            reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
+                            reserve.FindDocument(reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                             dbc.Delay(300);
 
 
@@ -1489,7 +1493,7 @@ namespace hospi_hospital_only
                         receptionlist.ReceptionAccept(reserve.list[i].department, dbc.SubjectTable.Rows[0][0].ToString(), reserve.list[i].id, reserve.patientName, receptionDate,receptionTime, waitingIsNull);
                     }
 
-                    reserve.FindDocument(hospitalID, reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
+                    reserve.FindDocument(reserve.list[i].reservationTime, reserve.list[i].id, reserve.list[i].reservationDate, reserve.list[i].department);
                     dbc4.Delay(200);
                 }
             }

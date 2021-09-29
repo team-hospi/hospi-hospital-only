@@ -94,10 +94,10 @@ namespace hospi_hospital_only
             fs = FirestoreDb.Create("hospi-edcf9");
         }
 
-        async public void ReserveOpen(string hospitalID)
+        async public void ReserveOpen()
         {
             list.Clear();
-            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalID);
+            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -112,10 +112,10 @@ namespace hospi_hospital_only
         }
 
         //당일 예약 땡겨오기
-        async public void TodayReserveOpen(string hospitalID)
+        async public void TodayReserveOpen()
         {
             list.Clear();
-            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalID);
+            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -167,9 +167,9 @@ namespace hospi_hospital_only
         }
 
         //문서 이름찾기
-        async public void FindDocument(string hospitalID, string time, string id, string Date, string department)
+        async public void FindDocument(string time, string id, string Date, string department)
         {
-            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalID).WhereEqualTo("reservationTime", time).WhereEqualTo("id", id).WhereEqualTo("reservationDate", Date).WhereEqualTo("department", department);
+            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("reservationTime", time).WhereEqualTo("id", id).WhereEqualTo("reservationDate", Date).WhereEqualTo("department", department);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -186,9 +186,9 @@ namespace hospi_hospital_only
         }
 
 
-        async public void EndDocument(string hospitalID, string department, string id, string Date, string Time)
+        async public void EndDocument(string department, string id, string Date, string Time)
         {
-            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalID).WhereEqualTo("department", department).WhereEqualTo("id", id).WhereEqualTo("reservationDate", Date).WhereEqualTo("reservationTime", Time);
+            Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("department", department).WhereEqualTo("id", id).WhereEqualTo("reservationDate", Date).WhereEqualTo("reservationTime", Time);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -201,9 +201,9 @@ namespace hospi_hospital_only
         }
 
         //예약 시간 문서이름 찾기
-        async public void FindReserveDocument(string hospitalID, string department)
+        async public void FindReserveDocument(string department)
         {
-            Query qref = fs.Collection("reservedList").WhereEqualTo("hospitalId", hospitalID).WhereEqualTo("department", department);
+            Query qref = fs.Collection("reservedList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("department", department);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {
@@ -320,17 +320,17 @@ namespace hospi_hospital_only
             docref.UpdateAsync(data);
         }
 
-        public void ReserveUpdateWait(string hospitalid)
+        public void ReserveUpdateWait()
         {
             CollectionReference citiesRef = fs.Collection("reservationList");
-            Query query = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalid).WhereEqualTo("reservationStatus", 0);
+            Query query = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("reservationStatus", 0);
 
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
                 DateTime dt = DateTime.Now;
                 long ss = Convert.ToInt64(dt.AddSeconds(-3).ToString("yyyyMMddHHmmss"));
 
-                Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalid);
+                Query qref = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID);
                 QuerySnapshot snap = await qref.GetSnapshotAsync();
                 foreach (DocumentSnapshot docsnap in snap)
                 {
@@ -353,10 +353,10 @@ namespace hospi_hospital_only
             });
         }
 
-        public void ReserveCancelWait(string hospitalid)
+        public void ReserveCancelWait()
         {
             CollectionReference citiesRef = fs.Collection("reservationList");
-            Query query = fs.Collection("reservationList").WhereEqualTo("hospitalId", hospitalid);
+            Query query = fs.Collection("reservationList").WhereEqualTo("hospitalId", DBClass.hospiID);
 
             FirestoreChangeListener listener = query.Listen(async snapshot =>
             {
