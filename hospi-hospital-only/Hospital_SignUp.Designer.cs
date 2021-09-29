@@ -103,7 +103,6 @@
             this.textBoxHospitalName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -772,7 +771,6 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button5);
             this.groupBox6.Controls.Add(this.checkBox12);
             this.groupBox6.Controls.Add(this.checkBox11);
             this.groupBox6.Controls.Add(this.checkBox10);
@@ -1085,16 +1083,6 @@
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(20, 122);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 32);
-            this.button5.TabIndex = 75;
-            this.button5.Text = "등록완료";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // Hospital_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1212,6 +1200,5 @@
         private System.Windows.Forms.TextBox textBoxAddAddress;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBoxAdCode;
-        private System.Windows.Forms.Button button5;
     }
 }
