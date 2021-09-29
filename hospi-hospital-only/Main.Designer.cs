@@ -35,12 +35,6 @@ namespace hospi_hospital_only
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.token4 = new System.Windows.Forms.TextBox();
-            this.token3 = new System.Windows.Forms.TextBox();
-            this.token2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.token1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,12 +48,6 @@ namespace hospi_hospital_only
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.token4);
-            this.groupBox1.Controls.Add(this.token3);
-            this.groupBox1.Controls.Add(this.token2);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.token1);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -111,69 +99,6 @@ namespace hospi_hospital_only
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(350, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(12, 12);
-            this.label5.TabIndex = 45;
-            this.label5.Text = "-";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(263, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(12, 12);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "-";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(176, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(12, 12);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "-";
-            // 
-            // token4
-            // 
-            this.token4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.token4.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.token4.Location = new System.Drawing.Point(362, 65);
-            this.token4.MaxLength = 5;
-            this.token4.Name = "token4";
-            this.token4.Size = new System.Drawing.Size(75, 23);
-            this.token4.TabIndex = 42;
-            this.token4.TextChanged += new System.EventHandler(this.token4_TextChanged);
-            // 
-            // token3
-            // 
-            this.token3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.token3.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.token3.Location = new System.Drawing.Point(275, 65);
-            this.token3.MaxLength = 5;
-            this.token3.Name = "token3";
-            this.token3.Size = new System.Drawing.Size(75, 23);
-            this.token3.TabIndex = 41;
-            this.token3.TextChanged += new System.EventHandler(this.token3_TextChanged);
-            // 
-            // token2
-            // 
-            this.token2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.token2.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.token2.Location = new System.Drawing.Point(188, 65);
-            this.token2.MaxLength = 5;
-            this.token2.Name = "token2";
-            this.token2.Size = new System.Drawing.Size(75, 23);
-            this.token2.TabIndex = 40;
-            this.token2.TextChanged += new System.EventHandler(this.token2_TextChanged);
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -191,11 +116,13 @@ namespace hospi_hospital_only
             this.token1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.token1.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.token1.Location = new System.Drawing.Point(101, 65);
-            this.token1.MaxLength = 5;
+            this.token1.MaxLength = 23;
             this.token1.Name = "token1";
-            this.token1.Size = new System.Drawing.Size(75, 23);
+            this.token1.Size = new System.Drawing.Size(336, 23);
             this.token1.TabIndex = 38;
+            this.token1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.token1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.token1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.token1_KeyUp);
             // 
             // label1
             // 
@@ -248,12 +175,6 @@ namespace hospi_hospital_only
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox token1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox token4;
-        private System.Windows.Forms.TextBox token3;
-        private System.Windows.Forms.TextBox token2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
