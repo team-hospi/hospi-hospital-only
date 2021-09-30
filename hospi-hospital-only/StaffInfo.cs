@@ -17,15 +17,6 @@ namespace hospi_hospital_only
         public StaffInfo()
         {
             InitializeComponent();
-        }
-
-        private void MasterInfomation_Load(object sender, EventArgs e)
-        {
-            dbc.Staff_open();
-            dbc.StaffTable = dbc.DS.Tables["staff"];
-
-            dbc.Subject_Open();
-            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
 
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
 
@@ -47,6 +38,13 @@ namespace hospi_hospital_only
             DBGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DBGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            DBGrid.DefaultCellStyle.SelectionBackColor = Color.White;
+            DBGrid.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            DBGrid.Columns[2].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+            DBGrid.Columns[3].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+            DBGrid.Columns[4].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+
             DBGrid.CurrentCell = null;
             DBGrid.AllowUserToAddRows = false;
             DBGrid.AllowUserToResizeRows = false;
@@ -57,12 +55,24 @@ namespace hospi_hospital_only
                 item.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            DBGrid.RowHeadersVisible = false;
+        }
+
+        private void MasterInfomation_Load(object sender, EventArgs e)
+        {
+            dbc.Staff_open();
+            dbc.StaffTable = dbc.DS.Tables["staff"];
+
+            dbc.Subject_Open();
+            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
+
+            
             foreach (DataRow dr in dbc.StaffTable.Rows)
             {
                 DBGrid.Rows.Add(dr[0], dr[2], dr[3], dr[5], dr[4]);
             }
 
-            DBGrid.RowHeadersVisible = false;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -96,10 +106,12 @@ namespace hospi_hospital_only
                 if (DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor == Color.Empty)
                 {
                     DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor = Color.Red;
+                    DBGrid.Rows[e.RowIndex].Cells[2].Style.SelectionForeColor = Color.Red;
                 }
                 else if (DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor == Color.Red)
                 {
                     DBGrid.Rows[e.RowIndex].Cells[2].Style.ForeColor = Color.Empty;
+                    DBGrid.Rows[e.RowIndex].Cells[2].Style.SelectionForeColor = Color.Black;
                 }
             }
 
@@ -117,31 +129,35 @@ namespace hospi_hospital_only
                 if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Empty)
                 {
                     DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Red;
+                    DBGrid.Rows[e.RowIndex].Cells[3].Style.SelectionForeColor = Color.Red;
                 }
                 else if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Red)
                 {
                     DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Empty;
+                    DBGrid.Rows[e.RowIndex].Cells[3].Style.SelectionForeColor = Color.Black;
                 }
             }
 
             if (e.ColumnIndex == 4)
             {
-                if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "Y")
+                if (DBGrid.Rows[e.RowIndex].Cells[4].Value.ToString() == "Y")
                 {
-                    DBGrid.Rows[e.RowIndex].Cells[3].Value = "N";
+                    DBGrid.Rows[e.RowIndex].Cells[4].Value = "N";
                 }
-                else if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "N")
+                else if (DBGrid.Rows[e.RowIndex].Cells[4].Value.ToString() == "N")
                 {
-                    DBGrid.Rows[e.RowIndex].Cells[3].Value = "Y";
+                    DBGrid.Rows[e.RowIndex].Cells[4].Value = "Y";
                 }
 
-                if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Empty)
+                if (DBGrid.Rows[e.RowIndex].Cells[4].Style.ForeColor == Color.Empty)
                 {
-                    DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Red;
+                    DBGrid.Rows[e.RowIndex].Cells[4].Style.ForeColor = Color.Red;
+                    DBGrid.Rows[e.RowIndex].Cells[4].Style.SelectionForeColor = Color.Red;
                 }
-                else if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Red)
+                else if (DBGrid.Rows[e.RowIndex].Cells[4].Style.ForeColor == Color.Red)
                 {
-                    DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Empty;
+                    DBGrid.Rows[e.RowIndex].Cells[4].Style.ForeColor = Color.Empty;
+                    DBGrid.Rows[e.RowIndex].Cells[4].Style.SelectionForeColor = Color.Black;
                 }
             }
         }
@@ -253,8 +269,13 @@ namespace hospi_hospital_only
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DoctorNameSetting a = new DoctorNameSetting();
-            a.ShowDialog();
+
+        }
+
+        private void btnDocSet_Click(object sender, EventArgs e)
+        {
+            DoctorNameSetting docNameSetting = new DoctorNameSetting();
+            docNameSetting.ShowDialog();
         }
     }
 }

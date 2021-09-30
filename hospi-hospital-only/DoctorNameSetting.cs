@@ -14,10 +14,52 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         string subjectNo;   // 과목기본키
+        bool isUpdated = false;
+
+        public bool IsUpdated
+        {
+            get { return isUpdated; }
+            set { isUpdated = value; }
+        }
 
         public DoctorNameSetting()
         {
             InitializeComponent();
+
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.HeaderText = "담당과목 해제";
+
+            DBGrid.Columns.Add("subjectCode", "과목번호");
+            DBGrid.Columns.Add("subjectName", "과목명");
+            DBGrid.Columns.Add("doctorName", "담당의사");
+            DBGrid.Columns.Add(checkBoxColumn);
+            DBGrid.Columns[0].Width = 70;
+            DBGrid.Columns[1].Width = 150;
+            DBGrid.Columns[2].Width = 100;
+            DBGrid.Columns[3].Width = 100;
+            DBGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DBGrid.DefaultCellStyle.SelectionBackColor = Color.White;
+            DBGrid.DefaultCellStyle.SelectionForeColor = Color.Black;
+            DBGrid.EnableHeadersVisualStyles = false;
+            DBGrid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            DBGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+
+            DBGrid.Columns[0].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+            DBGrid.Columns[1].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+            DBGrid.Columns[2].DefaultCellStyle.SelectionBackColor = Color.Yellow;
+
+            DBGrid.CurrentCell = null;
+            DBGrid.AllowUserToAddRows = false;
+            DBGrid.AllowUserToResizeRows = false;
+            DBGrid.AllowUserToResizeColumns = false;
+
+            foreach (DataGridViewColumn item in DBGrid.Columns)
+            {
+                item.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            DBGrid.RowHeadersVisible = false;
         }
 
         private void SetDBGrid()
@@ -34,32 +76,7 @@ namespace hospi_hospital_only
 
         private void DoctorNameSetting_Load(object sender, EventArgs e)
         {
-            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
-            checkBoxColumn.HeaderText = "담당과목 해제";
-
-            DBGrid.Columns.Add("subjectCode", "과목번호");
-            DBGrid.Columns.Add("subjectName", "과목명");
-            DBGrid.Columns.Add("doctorName", "담당의사");
-            DBGrid.Columns.Add(checkBoxColumn);
-            DBGrid.Columns[0].Width = 70;
-            DBGrid.Columns[1].Width = 150;
-            DBGrid.Columns[2].Width = 100;
-            DBGrid.Columns[3].Width = 100;
-            DBGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            DBGrid.CurrentCell = null;
-            DBGrid.AllowUserToAddRows = false;
-            DBGrid.AllowUserToResizeRows = false;
-            DBGrid.AllowUserToResizeColumns = false;
-
-            foreach (DataGridViewColumn item in DBGrid.Columns)
-            {
-                item.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
             SetDBGrid();
-
-            DBGrid.RowHeadersVisible = false;
 
             SetComboBox();
         }
@@ -95,6 +112,7 @@ namespace hospi_hospital_only
             subjectNo = DBGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             Dispose();
@@ -103,10 +121,21 @@ namespace hospi_hospital_only
         // 저장
         private void button2_Click(object sender, EventArgs e)
         {
-            UpdateSubejctSetting();
-            InsertDocName();
-            SetDBGrid();
-            SetComboBox();
+            try
+            {
+                UpdateSubejctSetting();
+                InsertDocName();
+                SetDBGrid();
+                SetComboBox();
+
+                isUpdated = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("오류발생 저장되지않았습니다.", "오류");
+            }
+
+
         }
 
         private void InsertDocName()

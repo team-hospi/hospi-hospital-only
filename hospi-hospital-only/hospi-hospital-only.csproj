@@ -283,6 +283,18 @@
     <Compile Include="StaffLogin.Designer.cs">
       <DependentUpon>StaffLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubjectAddUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubjectAddUpdate.Designer.cs">
+      <DependentUpon>SubjectAddUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubjectSetting.Designer.cs">
+      <DependentUpon>SubjectSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateMedicine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +412,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffLogin.resx">
       <DependentUpon>StaffLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubjectAddUpdate.resx">
+      <DependentUpon>SubjectAddUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubjectSetting.resx">
+      <DependentUpon>SubjectSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateMedicine.resx">
       <DependentUpon>UpdateMedicine.cs</DependentUpon>

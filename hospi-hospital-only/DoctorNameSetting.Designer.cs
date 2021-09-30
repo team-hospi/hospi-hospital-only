@@ -48,7 +48,7 @@
             this.groupBox9.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox9.Location = new System.Drawing.Point(12, 12);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(494, 180);
+            this.groupBox9.Size = new System.Drawing.Size(494, 288);
             this.groupBox9.TabIndex = 40;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "담당의사 정보";
@@ -58,10 +58,12 @@
             this.DBGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DBGrid.Location = new System.Drawing.Point(18, 32);
+            this.DBGrid.MultiSelect = false;
             this.DBGrid.Name = "DBGrid";
             this.DBGrid.ReadOnly = true;
             this.DBGrid.RowTemplate.Height = 23;
-            this.DBGrid.Size = new System.Drawing.Size(458, 137);
+            this.DBGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DBGrid.Size = new System.Drawing.Size(458, 245);
             this.DBGrid.TabIndex = 41;
             this.DBGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellClick);
             this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
@@ -97,7 +99,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 198);
+            this.groupBox1.Location = new System.Drawing.Point(12, 306);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(494, 124);
             this.groupBox1.TabIndex = 42;
@@ -143,7 +145,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 330);
+            this.ClientSize = new System.Drawing.Size(522, 442);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox9);
             this.Name = "DoctorNameSetting";
