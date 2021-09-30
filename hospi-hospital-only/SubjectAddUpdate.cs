@@ -16,7 +16,6 @@ namespace hospi_hospital_only
         string addOrUpdate = string.Empty;
         string subjectName = string.Empty;
         DataTable tmpTable = new DataTable();
-        DBClass dbc = new DBClass();
 
         public bool IsChanged
         {

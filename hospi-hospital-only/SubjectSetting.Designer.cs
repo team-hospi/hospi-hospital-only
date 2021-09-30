@@ -35,12 +35,14 @@
             this.btnDocSet = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.DBGrid = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.label1);
             this.groupBox9.Controls.Add(this.button2);
             this.groupBox9.Controls.Add(this.btnSave);
             this.groupBox9.Controls.Add(this.btnAddSubject);
@@ -121,7 +123,20 @@
             this.DBGrid.RowTemplate.Height = 23;
             this.DBGrid.Size = new System.Drawing.Size(442, 351);
             this.DBGrid.TabIndex = 40;
+            this.DBGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellClick);
             this.DBGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DBGrid_CellDoubleClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(474, 266);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "변경 저장 후 설정";
+            this.label1.Visible = false;
             // 
             // SubjectSetting
             // 
@@ -135,6 +150,7 @@
             this.Text = "진료과 관리";
             this.Load += new System.EventHandler(this.SubjectSetting_Load);
             this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -149,5 +165,6 @@
         private System.Windows.Forms.Button btnDocSet;
         private System.Windows.Forms.Button btnAddSubject;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }

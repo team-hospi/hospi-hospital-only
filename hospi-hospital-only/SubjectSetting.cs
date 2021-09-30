@@ -33,6 +33,8 @@ namespace hospi_hospital_only
             DBGrid.AllowUserToResizeRows = false;
             DBGrid.AllowUserToResizeColumns = false;
 
+            DBGrid.DefaultCellStyle.ForeColor = Color.Red;
+
             DBGrid.DefaultCellStyle.SelectionBackColor = Color.White;
             DBGrid.DefaultCellStyle.SelectionForeColor = Color.Black;
 
@@ -64,13 +66,24 @@ namespace hospi_hospital_only
             if (ok == DialogResult.Yes)
             {
                 UpdateSubjectSetting();
-                Dispose();
+                DBGrid.Rows.Clear();
+                setSubjectGrid();
+
+                label1.Visible = false;
+                btnDocSet.Enabled = true;
+                SetColor();
             }
         }
 
         private void SubjectSetting_Load(object sender, EventArgs e)
         {
+            dbc.Subject_Open();
+            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
+
+            tmpSubjectTable = dbc.SubjectTable.Copy();
+
             setSubjectGrid();
+            SetColor();
         }
 
         private void btnDocSet_Click(object sender, EventArgs e)
@@ -92,17 +105,20 @@ namespace hospi_hospital_only
             subjectAdd.TmpTable = tmpSubjectTable;
             subjectAdd.ShowDialog();
 
-            DataTable tmpTable = subjectAdd.TmpTable;
+            tmpSubjectTable = subjectAdd.TmpTable;
 
             if (subjectAdd.IsChanged)
             {
                 DBGrid.Rows.Clear();
-                foreach (DataRow dr in tmpTable.Rows)
+                foreach (DataRow dr in tmpSubjectTable.Rows)
                 {
                     DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
                 }
                 DBGrid.CurrentCell = DBGrid.Rows[DBGrid.Rows.Count - 1].Cells[1];
             }
+
+            EnableDocSet();
+            SetColor();
         }
 
         private void DBGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -116,7 +132,10 @@ namespace hospi_hospital_only
             {
                 ChangeSubjectName(e);
                 DBGrid.CurrentCell = DBGrid.Rows[e.RowIndex].Cells[1];
+                SetColor();
             }
+
+            EnableDocSet();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -148,7 +167,18 @@ namespace hospi_hospital_only
                 MessageBox.Show("이름을 변경하실 진료과를 선택해주세요", "알림");
             }
 
+            EnableDocSet();
+            SetColor();
         }
+
+        private void DBGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DBGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor == Color.Black)
+                DBGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionForeColor = Color.Black;
+            else 
+                DBGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.SelectionForeColor = Color.Red;
+        }
+
         /// <summary>
         /// 메서드 -----------------------------------------------------------------------------------------------------------------------------------
         /// </summary>
@@ -164,11 +194,6 @@ namespace hospi_hospital_only
         // 폼로드시 db에서 테이블가져오기
         private void setSubjectGrid()
         {
-            dbc.Subject_Open();
-            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-
-            tmpSubjectTable = dbc.SubjectTable;
-
             foreach (DataRow dr in dbc.SubjectTable.Rows)
             {
                 DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
@@ -177,45 +202,35 @@ namespace hospi_hospital_only
 
         private void UpdateUseYn(DataGridViewCellEventArgs e)
         {
+            DataRow upRow;
+
             if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "Y")
             {
                 DBGrid.Rows[e.RowIndex].Cells[3].Value = "N";
+                upRow = tmpSubjectTable.Rows[e.RowIndex];
+                upRow.BeginEdit();
+                upRow["useYn"] = "N";
+                upRow.EndEdit();
             }
             else if (DBGrid.Rows[e.RowIndex].Cells[3].Value.ToString() == "N")
             {
                 DBGrid.Rows[e.RowIndex].Cells[3].Value = "Y";
+                upRow = tmpSubjectTable.Rows[e.RowIndex];
+                upRow.BeginEdit();
+                upRow["useYn"] = "Y";
+                upRow.EndEdit();
             }
 
-            if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Empty)
+            if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Black)
             {
                 DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Red;
                 DBGrid.Rows[e.RowIndex].Cells[3].Style.SelectionForeColor = Color.Red;
             }
             else if (DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor == Color.Red)
             {
-                DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Empty;
+                DBGrid.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Black;
                 DBGrid.Rows[e.RowIndex].Cells[3].Style.SelectionForeColor = Color.Black;
             }
-
-            string ynValue;
-            DataRow upRow;
-
-            foreach (DataGridViewRow dRow in DBGrid.Rows)
-            {
-                if (dRow.Cells[3].Style.ForeColor == Color.Red)
-                {
-                    if (dRow.Cells[3].Value.ToString() == "Y")
-                        ynValue = "Y";
-                    else
-                        ynValue = "N";
-
-                    upRow = tmpSubjectTable.Rows[dRow.Index];
-                    upRow.BeginEdit();
-                    upRow["useYn"] = ynValue;
-                    upRow.EndEdit();
-                }
-            }
-
         }
 
         private void ChangeSubjectName(DataGridViewCellEventArgs e)
@@ -237,6 +252,43 @@ namespace hospi_hospital_only
                 }
             }
         }
+
+        private void SetColor()
+        {
+            for(int i=0; i<dbc.SubjectTable.Rows.Count; i++)
+            {
+                for(int j=0; j<dbc.SubjectTable.Columns.Count; j++)
+                {
+                    if(dbc.SubjectTable.Rows[i][j].ToString() == tmpSubjectTable.Rows[i][j].ToString())
+                    {
+                        DBGrid.Rows[i].Cells[j].Style.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        DBGrid.Rows[i].Cells[j].Style.SelectionForeColor = Color.Red;
+                    }
+                }
+            }
+
+            if(tmpSubjectTable.Rows.Count > dbc.SubjectTable.Rows.Count)
+            {
+                for (int i = tmpSubjectTable.Rows.Count - 1; i >= dbc.SubjectTable.Rows.Count; i--)
+                {
+                    for (int j = 0; j < dbc.SubjectTable.Columns.Count; j++)
+                    {
+                        DBGrid.Rows[i].Cells[j].Style.SelectionForeColor = Color.Red;
+                    }
+                }
+            }
+        }
+
+        private void EnableDocSet()
+        {
+            btnDocSet.Enabled = false;
+            label1.Visible = true;
+        }
+
+        
     }
 }
     
