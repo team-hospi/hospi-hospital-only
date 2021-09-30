@@ -301,7 +301,6 @@
     <Compile Include="UpdateSubject.Designer.cs">
       <DependentUpon>UpdateSubject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils.cs" />
     <Compile Include="Visitor.cs" />
     <Content Include="HospiIcon.ico" />
     <Content Include="Resources\Licence.txt" />

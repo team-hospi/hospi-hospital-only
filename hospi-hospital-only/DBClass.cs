@@ -92,7 +92,7 @@ namespace hospi_hospital_only
         DataSet dS;
         MySqlCommandBuilder myCommandBuilder;
         DataTable hospitalTable, visitorTable, subjectTable, receptionTable, receptionistTable, medicineTable,
-                        prescriptionTable, noticeTable, watingTable, masterTable, mobileTable, imageTable, staffTable, productKeyTable;
+                        prescriptionTable, noticeTable, watingTable, masterTable, mobileTable, imageTable, staffTable, productKeyTable, downloadUrlTable;
         FirestoreDb fs;
 
         private static string Sname = ConfigurationManager.AppSettings["DBAddress"];
@@ -203,6 +203,12 @@ namespace hospi_hospital_only
             set { staffTable = value; }
         }
 
+        public DataTable DownloadUrlTable
+        {
+            get { return downloadUrlTable; }
+            set { downloadUrlTable = value; }
+        }
+
         //Firestore 연결
         public void FireConnect()
         {
@@ -210,18 +216,7 @@ namespace hospi_hospital_only
 
             try
             {
-                string keyFileName = "service-account.hos";
-                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Hospi\";
-
-                DirectoryInfo di = new DirectoryInfo(filePath);
-                FileInfo fileInfo = new FileInfo(filePath + keyFileName);
-                if (!fileInfo.Exists)
-                {
-                    di.Create();
-                    Utils.FtpDownload(keyFileName, filePath);
-                }
-
-                fbKey.DecryptFile();
+                fbKey.DownloadFile();
                 path = fbKey.TempKeyFilePath;
                 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
@@ -1088,6 +1083,23 @@ namespace hospi_hospital_only
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
                 DBAdapter.Fill(dS, "payment");
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
+        public void GetDownloadURL(string FileName)
+        {
+            try
+            {
+                commandString = "Use hospi; "
+                    + "SELECT url FROM downloadurl where filename='" + FileName + "'";
+                DBAdapter = new MySqlDataAdapter(commandString, connectionString);
+                MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
+                dS = new DataSet();
+                DBAdapter.Fill(dS, "DownloadUrl");
             }
             catch (DataException DE)
             {

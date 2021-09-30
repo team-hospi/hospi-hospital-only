@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,6 @@ namespace hospi_hospital_only
 {
     class FBKey
     {
-        private string password = ConfigurationManager.AppSettings["FBKeyPwd"]; // 비밀번호
-        private string encyptKeyPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Hospi\service-account.hos";
         private string tempFolderPath;
         private string tempKeyFilePath;
         private string tempFileName;
@@ -53,49 +53,17 @@ namespace hospi_hospital_only
             }
         }
 
-        public void DecryptFile()
+        public void DownloadFile()
         {
-            try
-            {
-                FileStream fsCrypt = new FileStream(encyptKeyPath, FileMode.Open);
+            string fileName = "FBKey";
 
-                Aes aes = Aes.Create();
+            DBClass dbc = new DBClass();
+            dbc.GetDownloadURL(fileName);
+            dbc.DownloadUrlTable = dbc.DS.Tables["downloadUrl"];
+            string url = dbc.DownloadUrlTable.Rows[0][0].ToString();
 
-                byte[] iv = new byte[aes.IV.Length];
-                int numBytesToRead = aes.IV.Length;
-                int numBytesRead = 0;
-                while (numBytesToRead > 0)
-                {
-                    int n = fsCrypt.Read(iv, numBytesRead, numBytesToRead);
-                    if (n == 0) break;
-
-                    numBytesRead += n;
-                    numBytesToRead -= n;
-                }
-
-                //byte[] key = Encoding.UTF8.GetBytes(password);
-                SHA256Managed sha256Managed = new SHA256Managed();
-                byte[] encryptBytes = sha256Managed.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                CryptoStream cs = new CryptoStream(fsCrypt,
-                aes.CreateDecryptor(encryptBytes, iv),
-                CryptoStreamMode.Read);
-
-                FileStream fsOut = new FileStream(tempKeyFilePath, FileMode.Create);
-
-                int data;
-                while ((data = cs.ReadByte()) != -1)
-                    fsOut.WriteByte((byte)data);
-
-                fsOut.Close();
-                cs.Close();
-                fsCrypt.Close();
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("DecryptFile: " + e.Message);
-            }
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile(url, tempKeyFilePath);
         }
 
         public void DeleteTemp()

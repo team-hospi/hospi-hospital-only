@@ -35,7 +35,7 @@ namespace hospi_hospital_only
         public void FireConnect()
         {
             FBKey fbKey = new FBKey();
-            fbKey.DecryptFile();
+            fbKey.DownloadFile();
             path = fbKey.TempKeyFilePath;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 

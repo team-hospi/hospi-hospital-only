@@ -326,18 +326,7 @@ namespace hospi_hospital_only
 
             try
             {
-                string keyFileName = "service-account.hos";
-                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Hospi\";
-
-                DirectoryInfo di = new DirectoryInfo(filePath);
-                FileInfo fileInfo = new FileInfo(filePath + keyFileName);
-                if (!fileInfo.Exists)
-                {
-                    di.Create();
-                    Utils.FtpDownload(keyFileName, filePath);
-                }
-
-                fbKey.DecryptFile();
+                fbKey.DownloadFile();
                 path = fbKey.TempKeyFilePath;
                 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
