@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxReceptionist = new System.Windows.Forms.TextBox();
             this.buttonReception = new System.Windows.Forms.Button();
             this.buttonOffice = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -51,6 +52,7 @@
             this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.병원정보설정WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.관리자메뉴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.진료과관리SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공지사항등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.인증센터RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +67,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBoxReceptionist = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -87,6 +88,15 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "접수과";
+            // 
+            // textBoxReceptionist
+            // 
+            this.textBoxReceptionist.Location = new System.Drawing.Point(14, 26);
+            this.textBoxReceptionist.Name = "textBoxReceptionist";
+            this.textBoxReceptionist.ReadOnly = true;
+            this.textBoxReceptionist.Size = new System.Drawing.Size(150, 23);
+            this.textBoxReceptionist.TabIndex = 2;
+            this.textBoxReceptionist.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonReception
             // 
@@ -263,6 +273,7 @@
             this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.병원정보설정WToolStripMenuItem,
             this.관리자메뉴ToolStripMenuItem,
+            this.진료과관리SToolStripMenuItem,
             this.공지사항등록ToolStripMenuItem,
             this.toolStripSeparator1,
             this.인증센터RToolStripMenuItem,
@@ -286,6 +297,13 @@
             this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.관리자메뉴ToolStripMenuItem.Text = "직원 관리(&A)";
             this.관리자메뉴ToolStripMenuItem.Click += new System.EventHandler(this.관리자메뉴ToolStripMenuItem_Click);
+            // 
+            // 진료과관리SToolStripMenuItem
+            // 
+            this.진료과관리SToolStripMenuItem.Name = "진료과관리SToolStripMenuItem";
+            this.진료과관리SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.진료과관리SToolStripMenuItem.Text = "진료과 관리(&S)";
+            this.진료과관리SToolStripMenuItem.Click += new System.EventHandler(this.진료과관리SToolStripMenuItem_Click);
             // 
             // 공지사항등록ToolStripMenuItem
             // 
@@ -311,14 +329,14 @@
             // 인증키확인ToolStripMenuItem
             // 
             this.인증키확인ToolStripMenuItem.Name = "인증키확인ToolStripMenuItem";
-            this.인증키확인ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.인증키확인ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.인증키확인ToolStripMenuItem.Text = "인증키 확인(&S)";
             this.인증키확인ToolStripMenuItem.Click += new System.EventHandler(this.인증키확인ToolStripMenuItem_Click);
             // 
             // 인증키삭제ToolStripMenuItem
             // 
             this.인증키삭제ToolStripMenuItem.Name = "인증키삭제ToolStripMenuItem";
-            this.인증키삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.인증키삭제ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.인증키삭제ToolStripMenuItem.Text = "인증키 삭제(&D)";
             this.인증키삭제ToolStripMenuItem.Click += new System.EventHandler(this.인증키삭제ToolStripMenuItem_Click);
             // 
@@ -407,15 +425,6 @@
             this.groupBox8.TabIndex = 44;
             this.groupBox8.TabStop = false;
             // 
-            // textBoxReceptionist
-            // 
-            this.textBoxReceptionist.Location = new System.Drawing.Point(14, 26);
-            this.textBoxReceptionist.Name = "textBoxReceptionist";
-            this.textBoxReceptionist.ReadOnly = true;
-            this.textBoxReceptionist.Size = new System.Drawing.Size(150, 23);
-            this.textBoxReceptionist.TabIndex = 2;
-            this.textBoxReceptionist.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -490,5 +499,6 @@
         private System.Windows.Forms.ToolStripMenuItem 인증키확인ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 인증키삭제ToolStripMenuItem;
         private System.Windows.Forms.TextBox textBoxReceptionist;
+        private System.Windows.Forms.ToolStripMenuItem 진료과관리SToolStripMenuItem;
     }
 }

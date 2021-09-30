@@ -1175,6 +1175,7 @@ namespace hospi_hospital_only
                         sb.AppendLine("   `SUBJECTCODE` int NOT NULL,                                                                                                              ");
                         sb.AppendLine("   `SUBJECTNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,              ");
                         sb.AppendLine("   `DOCTORNAME` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci,                                  ");
+                        sb.AppendLine("   `USEYN` varchar(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci,                                                  ");
                         sb.AppendLine("   PRIMARY KEY (`SUBJECTCODE`))                                                                                                          ");
                         break;
 

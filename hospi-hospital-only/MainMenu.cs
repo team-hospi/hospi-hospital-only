@@ -69,6 +69,7 @@ namespace hospi_hospital_only
                 관리자메뉴ToolStripMenuItem.Enabled = false;
                 병원정보설정WToolStripMenuItem.Enabled = false;
                 인증센터RToolStripMenuItem.Enabled = false;
+                진료과관리SToolStripMenuItem.Enabled = false;
             }
 
             if (DBClass.noticeYn == false)
@@ -290,6 +291,12 @@ namespace hospi_hospital_only
             hs.ShowDialog();
         }
 
+        private void 진료과관리SToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SubjectSetting subjectSetting = new SubjectSetting();
+            subjectSetting.ShowDialog();
+        }
+
         private void 인증키확인ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string token = Properties.Settings.Default.ProductKey;
@@ -322,6 +329,8 @@ namespace hospi_hospital_only
             if (notice.Result)
                 SetNotice();
         }
+
+        
     }
 }
 
