@@ -375,6 +375,28 @@ namespace hospi_hospital_only
             }
         }
 
+        //파이어스토어 진료과 업데이트
+        public async void HospitalSubject_Update()
+        {
+            try
+            {
+                DocumentReference docref = fs.Collection("hospitals").Document(documentname);
+                Dictionary<string, object> data = new Dictionary<string, object>()
+                {
+                    {"department", hospidepartment }
+                };
+                DocumentSnapshot snap = await docref.GetSnapshotAsync();
+                if (snap.Exists)
+                {
+                    await docref.UpdateAsync(data);
+                }
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
+        }
+
         // 병원 과목정보 조회용
         public void Subject_Open()
         {

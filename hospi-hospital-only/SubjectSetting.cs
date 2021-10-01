@@ -14,7 +14,7 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         DataTable tmpSubjectTable = new DataTable();
-
+        List<string> depart = new List<string>();
         public SubjectSetting()
         {
             InitializeComponent();
@@ -65,7 +65,11 @@ namespace hospi_hospital_only
 
             if (ok == DialogResult.Yes)
             {
+                SubjectAdd(); // 진료과(depart)List에 사용여부Y로 표기된 진료과 저장
+                dbc.HospitalSubject_Update(); // 진료과 파이어베이스에 업데이트
+                dbc.Delay(200);
                 UpdateSubjectSetting();
+                
                 DBGrid.Rows.Clear();
                 setSubjectGrid();
 
@@ -79,9 +83,10 @@ namespace hospi_hospital_only
         {
             dbc.Subject_Open();
             dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-
+            dbc.FireConnect();
             tmpSubjectTable = dbc.SubjectTable.Copy();
-
+            dbc.Delay(200);
+            dbc.FindDocument(DBClass.hospiID);
             setSubjectGrid();
             SetColor();
         }
@@ -288,7 +293,15 @@ namespace hospi_hospital_only
             label1.Visible = true;
         }
 
-        
+        private void SubjectAdd()
+        {
+            for(int i =0; i< DBGrid.Rows.Count; i++)
+            {
+                if (DBGrid.Rows[i].Cells[3].Value.ToString() == "Y")
+                    depart.Add(DBGrid.Rows[i].Cells[1].Value.ToString());
+            }
+            DBClass.hospidepartment = depart.ToArray();
+        }
     }
 }
     
