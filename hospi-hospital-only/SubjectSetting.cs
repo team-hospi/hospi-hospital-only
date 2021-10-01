@@ -67,7 +67,6 @@ namespace hospi_hospital_only
             {
                 SubjectAdd(); // 진료과(depart)List에 사용여부Y로 표기된 진료과 저장
                 dbc.HospitalSubject_Update(); // 진료과 파이어베이스에 업데이트
-                dbc.Delay(200);
                 UpdateSubjectSetting();
                 
                 DBGrid.Rows.Clear();
@@ -301,6 +300,7 @@ namespace hospi_hospital_only
                     depart.Add(DBGrid.Rows[i].Cells[1].Value.ToString());
             }
             DBClass.hospidepartment = depart.ToArray();
+            depart.Clear();
         }
     }
 }

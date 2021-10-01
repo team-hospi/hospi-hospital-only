@@ -85,6 +85,7 @@ namespace hospi_hospital_only
                     newRow["staffNm"] = textBoxName.Text;
                     newRow["docYn"] = "N";
                     newRow["useYn"] = "Y";
+                    newRow["noticeYn"] = "N";
 
                     dbc.StaffTable.Rows.Add(newRow);
                     dbc.DBAdapter.Update(dbc.DS, "staff");
