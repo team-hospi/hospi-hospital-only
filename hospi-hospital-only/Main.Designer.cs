@@ -145,6 +145,7 @@ namespace hospi_hospital_only
             this.LoginLabel.Size = new System.Drawing.Size(69, 12);
             this.LoginLabel.TabIndex = 40;
             this.LoginLabel.Text = "인증 진행중";
+            this.LoginLabel.Visible = false;
             // 
             // Main
             // 

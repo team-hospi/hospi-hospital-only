@@ -300,7 +300,7 @@ namespace hospi_hospital_only
         private void 인증키확인ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string token = Properties.Settings.Default.ProductKey;
-            string tokenVal = token.Substring(0, 4) + "-" +token.Substring(4, 4) + "-" + token.Substring(8, 4) + "-" + token.Substring(12, 4) + "-" + token.Substring(16, 4);
+            string tokenVal = token.Substring(0, 5) + "-" +token.Substring(5, 5) + "-" + token.Substring(10, 5) + "-" + token.Substring(15, 5);
             MessageBox.Show("인증키 : " + tokenVal, "인증키 정보");
         }
 

@@ -68,7 +68,7 @@ namespace hospi_hospital_only
                 SubjectAdd(); // 진료과(depart)List에 사용여부Y로 표기된 진료과 저장
                 dbc.HospitalSubject_Update(); // 진료과 파이어베이스에 업데이트
                 UpdateSubjectSetting();
-                
+
                 DBGrid.Rows.Clear();
                 setSubjectGrid();
 
@@ -80,10 +80,7 @@ namespace hospi_hospital_only
 
         private void SubjectSetting_Load(object sender, EventArgs e)
         {
-            dbc.Subject_Open();
-            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
             dbc.FireConnect();
-            tmpSubjectTable = dbc.SubjectTable.Copy();
             dbc.Delay(200);
             dbc.FindDocument(DBClass.hospiID);
             setSubjectGrid();
@@ -198,6 +195,11 @@ namespace hospi_hospital_only
         // 폼로드시 db에서 테이블가져오기
         private void setSubjectGrid()
         {
+            dbc.Subject_Open();
+            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
+
+            tmpSubjectTable = dbc.SubjectTable;
+
             foreach (DataRow dr in dbc.SubjectTable.Rows)
             {
                 DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
