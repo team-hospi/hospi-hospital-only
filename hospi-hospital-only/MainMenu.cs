@@ -145,8 +145,9 @@ namespace hospi_hospital_only
                     {
                         Office office = new Office();
                         office.SubjectID = comboBoxOffice.Text;
+                        buttonOffice.Enabled = false;
                         office.Show();
-
+                        buttonOffice.Enabled = true;
                         comboBoxOffice.Text = "진료과목 선택";
 
                         return;
@@ -166,8 +167,10 @@ namespace hospi_hospital_only
             Reception reception = new Reception();
             reception.HospitalID = hospitalID;
             reception.ReceptionistName = textBoxReceptionist.Text;
+            buttonReception.Enabled = false;
 
             reception.Show();
+            buttonReception.Enabled = true;
         }
 
         private void label2_Click(object sender, EventArgs e)
