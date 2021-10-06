@@ -15,6 +15,8 @@ namespace hospi_hospital_only
         DBClass dbc = new DBClass();
         int receptionID; //  접수번호
         string selectedSybjectName;
+        ReceptionList receptionlist = new ReceptionList();
+        int waitingIsNull = 0;
 
         public int ReceptionID
         {
@@ -37,7 +39,7 @@ namespace hospi_hospital_only
         {
             // 폼 로드시 포커스
             this.ActiveControl = button1;
-
+            receptionlist.FireConnect();
             // 접수DB
             dbc.Reception_Open();
             dbc.ReceptionTable = dbc.DS.Tables["reception"];
@@ -125,6 +127,8 @@ namespace hospi_hospital_only
                 upRow.EndEdit();
                 dbc.DBAdapter.Update(dbc.DS, "reception");
                 dbc.DS.AcceptChanges();
+                ReceptionWaitUpdate();
+                dbc.Delay(100);
 
                 MessageBox.Show("수정이 완료되었습니다.", "알림");
                 Dispose();
@@ -170,6 +174,30 @@ namespace hospi_hospital_only
                     comboBoxTime1.Text = "00";
                     MessageBox.Show("0~23 사이의 숫자만 입력할 수 있습니다.");
                 }
+            }
+        }
+        
+        public void ReceptionWaitUpdate()
+        {
+            receptionlist.TodayReceptionOpen(DBClass.hospiID, comboBoxSubjcet.Text);
+            dbc.Delay(100);
+            for (int i = 0; i < receptionlist.list.Count; i++)
+            {
+
+                dbc.countWaiting(comboBoxSubjcet.Text, receptionlist.list[i].receptionTime.Substring(0, 2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
+                dbc.WaitingTable = dbc.DS.Tables["Reception"];
+
+                receptionlist.FindDocument(receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].department);
+                dbc.Delay(200);
+                try
+                {
+                    receptionlist.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
+                }
+                catch
+                {
+                    receptionlist.watingNumberUpdate(waitingIsNull);
+                }
+                dbc.Delay(100);
             }
         }
     }
