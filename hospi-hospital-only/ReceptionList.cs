@@ -113,10 +113,10 @@ namespace hospi_hospital_only
         }
 
         //문서 이름찾기
-        async public void FindDocument(string hospitalId, string receptionDate, string receptionTime, string department)
+        async public void FindDocument(string receptionDate, string receptionTime, string department)
         {
             documentName = null;
-            Query qref = fs.Collection("receptionList").WhereEqualTo("hospitalId", hospitalId).WhereEqualTo("receptionDate", receptionDate).WhereEqualTo("receptionTime", receptionTime).WhereEqualTo("department", department);
+            Query qref = fs.Collection("receptionList").WhereEqualTo("hospitalId", DBClass.hospiID).WhereEqualTo("receptionDate", receptionDate).WhereEqualTo("receptionTime", receptionTime).WhereEqualTo("department", department);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
             foreach (DocumentSnapshot docsnap in snap)
             {

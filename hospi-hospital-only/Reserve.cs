@@ -407,7 +407,7 @@ namespace hospi_hospital_only
                                         dbc.DS.AcceptChanges();
                                         reception.FireConnect();
                                         dbc.Delay(200);
-                                        reception.FindDocument(DBClass.hospiID, fp.reservationDate, fp.reservationTime, fp.department);
+                                        reception.FindDocument(fp.reservationDate, fp.reservationTime, fp.department);
                                         dbc.Delay(200);
                                         reception.Delete_Reception();
 

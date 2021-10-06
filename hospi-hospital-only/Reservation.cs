@@ -309,7 +309,7 @@ namespace hospi_hospital_only
                                 dbc.countWaiting(reception.list[i].department, reception.list[i].receptionTime, DateTime.Now.ToString("yy-MM-dd"));
                                 dbc.WaitingTable = dbc.DS.Tables["Reception"];
 
-                                reception.FindDocument(hospitalID, reception.today, reception.list[i].receptionTime, reception.list[i].department);
+                                reception.FindDocument(reception.today, reception.list[i].receptionTime, reception.list[i].department);
                                 dbc.Delay(100);
                                 reception.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
                                 dbc.Delay(100);
@@ -340,7 +340,7 @@ namespace hospi_hospital_only
                                 dbc.countWaiting(reception.list[i].department, reception.list[i].receptionTime, DateTime.Now.ToString("yy-MM-dd"));
                                 dbc.WaitingTable = dbc.DS.Tables["Reception"];
 
-                                reception.FindDocument(hospitalID, reception.today, reception.list[i].receptionTime, reception.list[i].department);
+                                reception.FindDocument(reception.today, reception.list[i].receptionTime, reception.list[i].department);
                                 dbc.Delay(100);
                                 reception.watingNumberUpdate(Convert.ToInt32(dbc.WaitingTable.Rows[0][0]));
                                 dbc.Delay(100);

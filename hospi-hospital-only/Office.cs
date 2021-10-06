@@ -332,7 +332,7 @@ namespace hospi_hospital_only
                         receptionID = Convert.ToInt32(rRow["receptionID"]);
                         if (dbc.MobileTable.Rows[0][0].ToString() != "")
                         {
-                            reception.FindDocument(DBClass.hospiID, "20" + rRow["receptionDate"].ToString(), rRow["receptionTime"].ToString().Substring(0, 2) + ":" + rRow["receptionTime"].ToString().Substring(2, 2), textBoxSubjectName.Text);
+                            reception.FindDocument("20" + rRow["receptionDate"].ToString(), rRow["receptionTime"].ToString().Substring(0, 2) + ":" + rRow["receptionTime"].ToString().Substring(2, 2), textBoxSubjectName.Text);
                             dbc.Delay(200);
                             reception.Delete_Reception();
                         }
@@ -771,7 +771,7 @@ namespace hospi_hospital_only
                 dbc.countWaiting(textBoxSubjectName.Text, reception.list[i].receptionTime.Substring(0, 2) + reception.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
                 dbc.WaitingTable = dbc.DS.Tables["Reception"];
 
-                reception.FindDocument(DBClass.hospiID, reception.list[i].receptionDate, reception.list[i].receptionTime, reception.list[i].department);
+                reception.FindDocument(reception.list[i].receptionDate, reception.list[i].receptionTime, reception.list[i].department);
                 dbc.Delay(100);
                 try
                 {

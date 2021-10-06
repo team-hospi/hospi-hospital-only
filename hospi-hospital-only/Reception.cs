@@ -276,6 +276,7 @@ namespace hospi_hospital_only
                 {
                     textBoxB2.Text = vRow["patientBirthCode"].ToString().Substring(7, 1);
                 }
+                GenderAgeLabel();
                 phone1.Text = vRow["patientPhone"].ToString().Substring(0, 3);
                 phone2.Text = vRow["patientPhone"].ToString().Substring(3, 4);
                 phone3.Text = vRow["patientPhone"].ToString().Substring(7, 4);
@@ -887,7 +888,7 @@ namespace hospi_hospital_only
                         dbc3.ReceptionTable.PrimaryKey = PrimaryKey;
                         DataRow delRow = dbc3.ReceptionTable.Rows.Find(listViewIndexID1);
                         int rowCount = dbc3.ReceptionTable.Rows.Count; // 삭제전 전체 row 갯수
-                        receptionlist.FindDocument(DBClass.hospiID, DateTime.Now.ToString("yyyy-MM-dd"), listView1.Items[SelectRow].SubItems[1].Text.Substring(0, 2) + ":" + listView1.Items[SelectRow].SubItems[1].Text.Substring(5, 2), listView1.Items[SelectRow].SubItems[5].Text);
+                        receptionlist.FindDocument(DateTime.Now.ToString("yyyy-MM-dd"), listView1.Items[SelectRow].SubItems[1].Text.Substring(0, 2) + ":" + listView1.Items[SelectRow].SubItems[1].Text.Substring(5, 2), listView1.Items[SelectRow].SubItems[5].Text);
                         dbc.Delay(200);
                         delRow.Delete();
                         int receptionID = Convert.ToInt32(listViewIndexID1);
@@ -1570,9 +1571,8 @@ namespace hospi_hospital_only
 
 
                     
-                    receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, comboBoxSubjcet.Text);
-                    dbc.Delay(100);
-                    MessageBox.Show(receptionlist.documentName);
+                    receptionlist.FindDocument(receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, comboBoxSubjcet.Text);
+                    dbc.Delay(200);
                     try
                     {
                         receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
@@ -1595,8 +1595,8 @@ namespace hospi_hospital_only
                     dbc4.countWaiting(listView1.Items[SelectRow].SubItems[5].Text, receptionlist.list[i].receptionTime.Substring(0, 2) + receptionlist.list[i].receptionTime.Substring(3, 2), DateTime.Now.ToString("yy-MM-dd"));
                     dbc4.WaitingTable = dbc4.DS.Tables["Reception"];
 
-                    receptionlist.FindDocument(hospitalID, receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].department);
-                    dbc.Delay(100);
+                    receptionlist.FindDocument(receptionlist.list[i].receptionDate, receptionlist.list[i].receptionTime, receptionlist.list[i].department);
+                    dbc.Delay(200);
                     try
                     {
                         receptionlist.watingNumberUpdate(Convert.ToInt32(dbc4.WaitingTable.Rows[0][0]));
