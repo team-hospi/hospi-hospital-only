@@ -25,6 +25,7 @@ namespace hospi_hospital_only
         public Main()
         {
             InitializeComponent();
+            dbc.FireConnect();
             //this.ActiveControl = token1;
 
             //token1.GotFocus += new EventHandler(textBox_GotFocus);
@@ -67,13 +68,15 @@ namespace hospi_hospital_only
             {
 
                 ++cnt;
+                
                 Thread.Sleep(200);
                 CheckForIllegalCrossThreadCalls = false;
+                LoginLabel.Text += ".";
                 if (LoginLabel.Text == "인증 진행중...")
                 {
                     LoginLabel.Text = "인증 진행중";
                 }
-                LoginLabel.Text += ".";
+                
 
                 
                 if (DBClass.hospiID == productKey)
@@ -157,8 +160,7 @@ namespace hospi_hospital_only
                     {
                         try
                         {
-                            dbc.FireConnect();
-                            dbc.Delay(200);
+                            
                             dbc.Hospital_Open(productKey);
                             dbc.Delay(200);
                             LoginLabel.Visible = true;
@@ -195,7 +197,6 @@ namespace hospi_hospital_only
                                 Hospital_SignUp hospital_Sign = new Hospital_SignUp();
                                 hospital_Sign.ProductKeyForSchema = productKey;    //스키마 저장용
                                 hospital_Sign.ShowDialog();
-                                Dispose();
                             }
 
                             rTh.Abort();

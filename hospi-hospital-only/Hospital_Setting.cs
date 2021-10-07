@@ -94,7 +94,6 @@ namespace hospi_hospital_only
             // DB오픈
             dbc.Hospital_Open(hospitalID);
 
-            textBox1.Text = DBClass.hospiID;
             textBox2.Text = DBClass.hospiname;
             textBox3.Text = DBClass.hospikind;
             textBox4.Text = DBClass.hospiaddress;

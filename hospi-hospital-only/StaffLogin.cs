@@ -60,7 +60,7 @@ namespace hospi_hospital_only
                 {
                     if (dbc.StaffTable.Rows[i]["staffId"].ToString() == textBoxStaffId.Text)
                     {
-                        if (dbc.StaffTable.Rows[i]["staffPw"].ToString() == textBoxPW.Text)
+                        if (dbc.StaffTable.Rows[i]["staffPw"].ToString() == textBoxPW.Text && textBoxPW.Text != "")
                         {
                             login = true;
 
