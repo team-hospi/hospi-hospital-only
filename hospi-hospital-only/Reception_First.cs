@@ -14,9 +14,20 @@ namespace hospi_hospital_only
     {
         DBClass dbc = new DBClass();
         Security security = new Security();
+        Reserve reserve = new Reserve();
+        ReceptionList reception = new ReceptionList();
+        Fcm fcm = new Fcm();
         int hospitalID; // 병원코드
         string visitorName; // 수진자명번호 ( Reception 폼으로 넘겨줌 )
-
+        string mobileID;
+        bool isreserve;
+        string tel;
+        string name;
+        string time;
+        string date;
+        string subject;
+        string receptionist;
+        string comment;
         public Reception_First()
         {
             InitializeComponent();
@@ -29,16 +40,80 @@ namespace hospi_hospital_only
             set { visitorName = value; }
         }
 
+        // 예약에서 넘어올 때 모바일ID를 받음
+        public string MobileID
+        {
+            get { return mobileID; }
+            set { mobileID = value; }
+        }
+
+        // 어디서 넘어왔는지 저장(초진,예약초진)
+        public bool IsReserve
+        {
+            get { return isreserve; }
+            set { isreserve = value; }
+        }
+        public string Tel
+        {
+            get { return tel; }
+            set { tel = value; }
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string Time
+        {
+            get { return time; }
+            set { time = value; }
+        }
+
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+        public string Subject
+        {
+            get { return subject; }
+            set { subject = value; }
+        }
+        public string Receptionist
+        {
+            get { return receptionist; }
+            set { receptionist = value; }
+        }
+        public string Comment
+        {
+            get { return comment; }
+            set { comment = value; }
+        }
         private void Receipt_First_Load(object sender, EventArgs e)
         {
              // 폼 로드시 수신자명 포커스
             this.ActiveControl = textBox1;
-
+            reserve.FireConnect();
+            reception.FireConnect();
+            dbc.Receptionist_Open();
+            dbc.ReceptionistTable = dbc.DS.Tables["receptionist"]; // 접수자 테이블
             // 차트번호 DB오픈
             dbc.Visitor_Chart();
             dbc.VisitorTable = dbc.DS.Tables["visitor"];
             DataRow chartRow = dbc.VisitorTable.Rows[0];
             textBox2.Text = (Convert.ToInt32(chartRow["count(*)"])+1).ToString();
+            if(isreserve)
+            {
+                phone1.Enabled = false;
+                phone2.Enabled = false;
+                phone3.Enabled = false;
+                textBox1.Enabled = false;
+                textBox1.Text = name;
+                phone1.Text = tel.Substring(0, 3);
+                phone2.Text = tel.Substring(4, 4);
+                phone3.Text = tel.Substring(9, 4);
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -76,10 +151,17 @@ namespace hospi_hospital_only
                         newRow["PatientBirthCode"] = textBoxB1.Text + "-" + textBoxB2.Text.Substring(0,1)+security.AESEncrypt128(textBoxB2.Text.Substring(1), DBClass.hospiID);
                         newRow["PatientPhone"] = phone1.Text + phone2.Text + phone3.Text;
                         newRow["PatientAddress"] = textBoxADD.Text;
-
+                        if(isreserve)
+                        {
+                            newRow["MemberID"] = mobileID;
+                        }
                         dbc.VisitorTable.Rows.Add(newRow);
                         dbc.DBAdapter.Update(dbc.DS, "visitor");
                         dbc.DS.AcceptChanges();
+                        if(isreserve)
+                        {
+                            ReceptionAdd();
+                        }
                     }
                     catch (DataException DE)
                     {
@@ -157,6 +239,50 @@ namespace hospi_hospital_only
             {
                 e.Handled = true;
             }
+        }
+
+        //예약 -> 접수 등록
+        public void ReceptionAdd()
+        {
+
+            dbc.Reception_Open();
+            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+            DataRow newRow = dbc.ReceptionTable.NewRow();
+            newRow["ReceptionID"] = dbc.ReceptionTable.Rows.Count + 1;
+            
+            newRow["PATIENTID"] = Convert.ToInt32(textBox2.Text);
+
+
+            newRow["ReceptionTime"] = time.Substring(0, 2) + time.Substring(3, 2);
+            newRow["ReceptionDate"] = date.Substring(2, 8);
+            newRow["SubjectName"] = subject;
+            for (int i = 0; i < dbc.ReceptionistTable.Rows.Count; i++)
+            {
+                if (dbc.ReceptionistTable.Rows[i]["receptionistName"].ToString() == receptionist)
+                {
+                    newRow["ReceptionistCode"] = i + 1;
+                }
+            }
+
+            newRow["ReceptionInfo"] = comment;
+            newRow["ReceptionType"] = 1;
+            reserve.FindDocument(Time, mobileID, date, subject);
+            dbc.Delay(200);
+            newRow["ReceptionCode"] = Reserve.documentName;
+            dbc.ReceptionTable.Rows.Add(newRow);
+            dbc.DBAdapter.Update(dbc.DS, "Reception");
+            dbc.DS.AcceptChanges();
+
+            reserve.ReserveOpen();
+            dbc.Delay(200);
+
+            reserve.ReserveAccept();
+            dbc.Delay(200);
+            MessageBox.Show("예약이 접수되었습니다.", "알림");
+
+
+            //알림 메시지 전송
+            //fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + selectDate + " " + FindDay(selectDate) + " " + selectTime + "] " + " 예약이 확정되었습니다.");
         }
     }
 }

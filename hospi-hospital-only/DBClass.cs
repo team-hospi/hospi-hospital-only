@@ -993,7 +993,23 @@ namespace hospi_hospital_only
             }
 
         }
+        //모바일 앱 사용자 전화번호로 구분
+        public void Mobile_UseWithPhone(string patientTel)
+        {
+            try
+            {
+                commandString = "select patientID, memberID from visitor where PatientPhone =" + patientTel;
+                DBAdapter = new MySqlDataAdapter(commandString, connectionString);
+                MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
+                dS = new DataSet();
+                DBAdapter.Fill(dS, "Visitor");
+            }
+            catch (DataException DE)
+            {
+                MessageBox.Show(DE.Message);
+            }
 
+        }
         //의사 소견 찾기
         public void FindOpinion(int patientID, string Date, string Time)
         {

@@ -103,6 +103,7 @@
             this.textBoxHospitalName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -1083,11 +1084,22 @@
             this.label1.Text = "Hospi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(488, 48);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(81, 26);
+            this.button5.TabIndex = 75;
+            this.button5.Text = "시연용";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_2);
+            // 
             // Hospital_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 681);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
@@ -1200,5 +1212,6 @@
         private System.Windows.Forms.TextBox textBoxAddAddress;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBoxAdCode;
+        private System.Windows.Forms.Button button5;
     }
 }

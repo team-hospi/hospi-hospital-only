@@ -345,5 +345,15 @@ namespace hospi_hospital_only
         {
 
         }
+
+        private void button5_Click_2(object sender, EventArgs e)
+        {
+            textBoxHospitalName.Text = "부천대학병원";
+            HospitalType.Text = "대학";
+            textBoxTell1.Text = "010";
+            textBoxTell2.Text = "1234";
+            textBoxTell3.Text = "5678";
+            
+        }
     }
 }
