@@ -56,6 +56,23 @@ namespace hospi_hospital_only
 
         private void button1_Click(object sender, EventArgs e)
         {
+            for(int j=0; j<DBGrid.Rows.Count; j++)
+            {
+                for(int i=0;i<DBGrid.Columns.Count; i++)
+                {
+                    if(DBGrid.Rows[j].Cells[i].Style.ForeColor == Color.Red)
+                    {
+                        DialogResult ok = MessageBox.Show("변경사항이 존재합니다. \r저장하지않고 종료하시겠습니까?", "알림", MessageBoxButtons.YesNo);
+                        {
+                            if (ok == DialogResult.Yes)
+                            {
+                                Dispose();
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
             Dispose();
         }
 
@@ -80,6 +97,10 @@ namespace hospi_hospital_only
 
         private void SubjectSetting_Load(object sender, EventArgs e)
         {
+            dbc.Subject_Open();
+            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
+            tmpSubjectTable = dbc.SubjectTable.Copy();
+
             dbc.FireConnect();
             dbc.Delay(200);
             dbc.FindDocument(DBClass.hospiID);
@@ -116,9 +137,10 @@ namespace hospi_hospital_only
                     DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
                 }
                 DBGrid.CurrentCell = DBGrid.Rows[DBGrid.Rows.Count - 1].Cells[1];
+
+                EnableDocSet();
             }
 
-            EnableDocSet();
             SetColor();
         }
 
@@ -135,8 +157,6 @@ namespace hospi_hospital_only
                 DBGrid.CurrentCell = DBGrid.Rows[e.RowIndex].Cells[1];
                 SetColor();
             }
-
-            EnableDocSet();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -161,14 +181,14 @@ namespace hospi_hospital_only
                         DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
                     }
                     DBGrid.CurrentCell = DBGrid.Rows[rowIndex].Cells[1];
+
+                    EnableDocSet();
                 }
             }
             else
             {
                 MessageBox.Show("이름을 변경하실 진료과를 선택해주세요", "알림");
             }
-
-            EnableDocSet();
             SetColor();
         }
 
@@ -187,20 +207,20 @@ namespace hospi_hospital_only
         // 변경사항 최종 업데이트 (진료과 추가, 진료과명 변경, 사용여부 변경)
         private void UpdateSubjectSetting()
         {
-            dbc.SubjectTable = tmpSubjectTable;
-            dbc.DBAdapter.Update(dbc.DS, "subjectName");
-            dbc.DS.AcceptChanges();
+            DataSet ds = new DataSet();
+            ds.Tables.Add(tmpSubjectTable);
+
+            DBClass dbc2 = new DBClass();
+            dbc2.Subject_Open();
+            dbc2.DS = ds;
+            dbc2.DBAdapter.Update(dbc2.DS.Tables[0]);
+            dbc2.DS.AcceptChanges();
         }
 
         // 폼로드시 db에서 테이블가져오기
         private void setSubjectGrid()
         {
-            dbc.Subject_Open();
-            dbc.SubjectTable = dbc.DS.Tables["subjectName"];
-
-            tmpSubjectTable = dbc.SubjectTable;
-
-            foreach (DataRow dr in dbc.SubjectTable.Rows)
+            foreach (DataRow dr in tmpSubjectTable.Rows)
             {
                 DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
             }
@@ -256,6 +276,9 @@ namespace hospi_hospital_only
                 {
                     DBGrid.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
                 }
+
+                EnableDocSet();
+
             }
         }
 

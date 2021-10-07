@@ -74,6 +74,7 @@
             this.txtSubjectName.Name = "txtSubjectName";
             this.txtSubjectName.Size = new System.Drawing.Size(184, 23);
             this.txtSubjectName.TabIndex = 51;
+            this.txtSubjectName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSubjectName_KeyDown);
             // 
             // label2
             // 

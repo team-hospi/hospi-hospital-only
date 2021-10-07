@@ -63,10 +63,10 @@ namespace hospi_hospital_only
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (addOrUpdate == "ADD")
-                AddNewSubject();
-            else if (addOrUpdate == "UPDATE")
-                UpdateSubjectName();
+                if (addOrUpdate == "ADD")
+                    AddNewSubject();
+                else if (addOrUpdate == "UPDATE")
+                    UpdateSubjectName();
         }
 
         /// <summary>
@@ -127,6 +127,18 @@ namespace hospi_hospital_only
                         Dispose();
                     }
                 }
+            }
+        }
+
+        private void txtSubjectName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnSave.Focus();
+            }
+            else if(e.KeyCode == Keys.Escape)
+            {
+                Dispose();
             }
         }
     }
