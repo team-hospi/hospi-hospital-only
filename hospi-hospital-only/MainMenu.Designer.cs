@@ -287,35 +287,35 @@
             // 병원정보설정WToolStripMenuItem
             // 
             this.병원정보설정WToolStripMenuItem.Name = "병원정보설정WToolStripMenuItem";
-            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.병원정보설정WToolStripMenuItem.Text = "병원 정보 설정(&W)";
             this.병원정보설정WToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정WToolStripMenuItem_Click);
             // 
             // 관리자메뉴ToolStripMenuItem
             // 
             this.관리자메뉴ToolStripMenuItem.Name = "관리자메뉴ToolStripMenuItem";
-            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.관리자메뉴ToolStripMenuItem.Text = "직원 관리(&A)";
             this.관리자메뉴ToolStripMenuItem.Click += new System.EventHandler(this.관리자메뉴ToolStripMenuItem_Click);
             // 
             // 진료과관리SToolStripMenuItem
             // 
             this.진료과관리SToolStripMenuItem.Name = "진료과관리SToolStripMenuItem";
-            this.진료과관리SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.진료과관리SToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.진료과관리SToolStripMenuItem.Text = "진료과 관리(&S)";
             this.진료과관리SToolStripMenuItem.Click += new System.EventHandler(this.진료과관리SToolStripMenuItem_Click);
             // 
             // 공지사항등록ToolStripMenuItem
             // 
             this.공지사항등록ToolStripMenuItem.Name = "공지사항등록ToolStripMenuItem";
-            this.공지사항등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.공지사항등록ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.공지사항등록ToolStripMenuItem.Text = "공지사항 등록(&H)";
             this.공지사항등록ToolStripMenuItem.Click += new System.EventHandler(this.공지사항등록ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
             // 
             // 인증센터RToolStripMenuItem
             // 
@@ -323,7 +323,7 @@
             this.인증키확인ToolStripMenuItem,
             this.인증키삭제ToolStripMenuItem});
             this.인증센터RToolStripMenuItem.Name = "인증센터RToolStripMenuItem";
-            this.인증센터RToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.인증센터RToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.인증센터RToolStripMenuItem.Text = "인증센터(&R)";
             // 
             // 인증키확인ToolStripMenuItem
@@ -343,12 +343,12 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
             // 
             // 끝내기XToolStripMenuItem
             // 
             this.끝내기XToolStripMenuItem.Name = "끝내기XToolStripMenuItem";
-            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.끝내기XToolStripMenuItem.Text = "끝내기(&X)";
             this.끝내기XToolStripMenuItem.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
             // 

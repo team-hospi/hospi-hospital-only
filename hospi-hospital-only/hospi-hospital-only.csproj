@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>HospiIcon.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -315,6 +315,7 @@
     </Compile>
     <Compile Include="Visitor.cs" />
     <Content Include="HospiIcon.ico" />
+    <Content Include="icon.ico" />
     <Content Include="Resources\Licence.txt" />
     <EmbeddedResource Include="CheckUpdateMode.resx">
       <DependentUpon>CheckUpdateMode.cs</DependentUpon>
