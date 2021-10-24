@@ -193,7 +193,7 @@ namespace hospi_hospital_only
 
                                 MessageBox.Show("등록을 위해 병원 정보를 입력해주세요.", "알림");
                                 // 인증키 정보 보내고 병원가입폼 띄움
-
+                                DBClass.hospiID = productKey;
                                 Hospital_SignUp hospital_Sign = new Hospital_SignUp();
                                 hospital_Sign.ProductKeyForSchema = productKey;    //스키마 저장용
                                 hospital_Sign.ShowDialog();
