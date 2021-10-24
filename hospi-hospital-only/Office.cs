@@ -38,6 +38,13 @@ namespace hospi_hospital_only
         bool mobileUse;
         string mobileID;
         bool pohwa;
+        string loginID;
+
+        public string LoginID
+        {
+            get { return loginID; }
+            set { loginID = value; }
+        }
 
         public string SubjectID
         {
@@ -223,10 +230,10 @@ namespace hospi_hospital_only
                 dbc.FindDoctor(subjectID);
                 dbc.SubjectTable = dbc.DS.Tables["subject"];
                 textBox1.Text = dbc.SubjectTable.Rows[0][0].ToString();
-                if (textBox1.Text == "")
+                if (loginID != "관리자" && textBox1.Text == string.Empty)
                 {
-                    MessageBox.Show("담당 의사 설정이 안되어있습니다! \n담당 의사 설정 후 접속해주세요");
-                    this.Dispose();
+                        MessageBox.Show("담당 의사 설정이 안되어있습니다! \n담당 의사 설정 후 접속해주세요");
+                        this.Dispose();
                 }
 
                 dbc.Reception_Office(dateTimePicker1.Value.ToString("yy-MM-dd"), subjectID);

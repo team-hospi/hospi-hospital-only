@@ -67,6 +67,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.웹사이트이동HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -275,6 +277,8 @@
             this.관리자메뉴ToolStripMenuItem,
             this.진료과관리SToolStripMenuItem,
             this.공지사항등록ToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.웹사이트이동HToolStripMenuItem,
             this.toolStripSeparator1,
             this.인증센터RToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -287,35 +291,35 @@
             // 병원정보설정WToolStripMenuItem
             // 
             this.병원정보설정WToolStripMenuItem.Name = "병원정보설정WToolStripMenuItem";
-            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.병원정보설정WToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.병원정보설정WToolStripMenuItem.Text = "병원 정보 설정(&W)";
             this.병원정보설정WToolStripMenuItem.Click += new System.EventHandler(this.병원정보설정WToolStripMenuItem_Click);
             // 
             // 관리자메뉴ToolStripMenuItem
             // 
             this.관리자메뉴ToolStripMenuItem.Name = "관리자메뉴ToolStripMenuItem";
-            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.관리자메뉴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.관리자메뉴ToolStripMenuItem.Text = "직원 관리(&A)";
             this.관리자메뉴ToolStripMenuItem.Click += new System.EventHandler(this.관리자메뉴ToolStripMenuItem_Click);
             // 
             // 진료과관리SToolStripMenuItem
             // 
             this.진료과관리SToolStripMenuItem.Name = "진료과관리SToolStripMenuItem";
-            this.진료과관리SToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.진료과관리SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.진료과관리SToolStripMenuItem.Text = "진료과 관리(&S)";
             this.진료과관리SToolStripMenuItem.Click += new System.EventHandler(this.진료과관리SToolStripMenuItem_Click);
             // 
             // 공지사항등록ToolStripMenuItem
             // 
             this.공지사항등록ToolStripMenuItem.Name = "공지사항등록ToolStripMenuItem";
-            this.공지사항등록ToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.공지사항등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.공지사항등록ToolStripMenuItem.Text = "공지사항 등록(&H)";
             this.공지사항등록ToolStripMenuItem.Click += new System.EventHandler(this.공지사항등록ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // 인증센터RToolStripMenuItem
             // 
@@ -323,32 +327,32 @@
             this.인증키확인ToolStripMenuItem,
             this.인증키삭제ToolStripMenuItem});
             this.인증센터RToolStripMenuItem.Name = "인증센터RToolStripMenuItem";
-            this.인증센터RToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.인증센터RToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.인증센터RToolStripMenuItem.Text = "인증센터(&R)";
             // 
             // 인증키확인ToolStripMenuItem
             // 
             this.인증키확인ToolStripMenuItem.Name = "인증키확인ToolStripMenuItem";
-            this.인증키확인ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.인증키확인ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.인증키확인ToolStripMenuItem.Text = "인증키 확인(&S)";
             this.인증키확인ToolStripMenuItem.Click += new System.EventHandler(this.인증키확인ToolStripMenuItem_Click);
             // 
             // 인증키삭제ToolStripMenuItem
             // 
             this.인증키삭제ToolStripMenuItem.Name = "인증키삭제ToolStripMenuItem";
-            this.인증키삭제ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.인증키삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.인증키삭제ToolStripMenuItem.Text = "인증키 삭제(&D)";
             this.인증키삭제ToolStripMenuItem.Click += new System.EventHandler(this.인증키삭제ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // 끝내기XToolStripMenuItem
             // 
             this.끝내기XToolStripMenuItem.Name = "끝내기XToolStripMenuItem";
-            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.끝내기XToolStripMenuItem.Text = "끝내기(&X)";
             this.끝내기XToolStripMenuItem.Click += new System.EventHandler(this.끝내기XToolStripMenuItem_Click);
             // 
@@ -425,6 +429,18 @@
             this.groupBox8.TabIndex = 44;
             this.groupBox8.TabStop = false;
             // 
+            // 웹사이트이동HToolStripMenuItem
+            // 
+            this.웹사이트이동HToolStripMenuItem.Name = "웹사이트이동HToolStripMenuItem";
+            this.웹사이트이동HToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.웹사이트이동HToolStripMenuItem.Text = "제품 문의(&H)";
+            this.웹사이트이동HToolStripMenuItem.Click += new System.EventHandler(this.웹사이트이동HToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -500,5 +516,7 @@
         private System.Windows.Forms.ToolStripMenuItem 인증키삭제ToolStripMenuItem;
         private System.Windows.Forms.TextBox textBoxReceptionist;
         private System.Windows.Forms.ToolStripMenuItem 진료과관리SToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 웹사이트이동HToolStripMenuItem;
     }
 }

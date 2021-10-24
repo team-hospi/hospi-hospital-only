@@ -1298,6 +1298,16 @@ namespace hospi_hospital_only
                         sb.AppendLine(" values                                                             ");
                         sb.AppendLine(" (1, '관리자')                                                       ");
                         break;
+
+                    case 13:
+                        Security security = new Security();
+                        string birthCode = "970102-1" + security.AESEncrypt128("234567", DBClass.hospiID);
+
+                        sb.AppendLine(" insert into " + schemaName + ".visitor  ");
+                        sb.AppendLine(" (PATIENTID, PATIENTNAME, PATIENTBIRTHCODE, PATIENTPHONE, PATIENTADDRESS )       ");
+                        sb.AppendLine(" values                                                             ");
+                        sb.AppendLine(" (1, '테스트','" + birthCode + "', '01099995252', '인천광역시 중구 중산동' )  ");
+                        break;
                 }
 
                 commandString = sb.ToString();
@@ -1326,6 +1336,7 @@ namespace hospi_hospital_only
                     sb.AppendLine(" (subjectCode, subjectName, doctorName)               ");
                     sb.AppendLine(" values                                                                       ");
                     sb.AppendFormat(" ( '{0}', '{1}', null )", i.ToString(), subjectDt.Rows[i - 1][0]);
+
 
                     commandString = sb.ToString();
                     MySqlCommand comm = new MySqlCommand(commandString, conn);

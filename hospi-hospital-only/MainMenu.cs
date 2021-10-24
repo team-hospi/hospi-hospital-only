@@ -145,6 +145,7 @@ namespace hospi_hospital_only
                     {
                         Office office = new Office();
                         office.SubjectID = comboBoxOffice.Text;
+                        office.LoginID = textBoxReceptionist.Text;
                         buttonOffice.Enabled = false;
                         office.Show();
                         buttonOffice.Enabled = true;
@@ -333,7 +334,10 @@ namespace hospi_hospital_only
                 SetNotice();
         }
 
-        
+        private void 웹사이트이동HToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://hospi.azurewebsites.net/Support/Inquiry");
+        }
     }
 }
 

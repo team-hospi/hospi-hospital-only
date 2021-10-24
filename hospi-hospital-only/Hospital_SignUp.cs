@@ -291,7 +291,7 @@ namespace hospi_hospital_only
                 DataTable dt = GetSubject();
 
                 dbc.CreateSchema(SchemaName);
-                for (int i = 1; i <= 12; i++)
+                for (int i = 1; i <= 14; i++)
                 {
                     dbc.CreateTableStructure(i, SchemaName);
                 }
