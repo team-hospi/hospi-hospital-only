@@ -54,27 +54,6 @@ namespace hospi_hospital_only
 
         }
 
-        //ID 체크
-        public async void Check(string hospitalID)
-        {
-            Query qref = fs.Collection("hospitalAccountList").WhereEqualTo("id", hospitalID);
-            QuerySnapshot snap = await qref.GetSnapshotAsync();
-
-
-            iDCheck = 1;
-
-            foreach (DocumentSnapshot docsnap in snap)
-            {
-                DBClass fp = docsnap.ConvertTo<DBClass>();
-                if (fp.id == hospitalID)
-                {
-                    MessageBox.Show("중복된 ID가 있습니다!", "알림");
-                    iDCheck = 0;
-                    break;
-                }
-            }
-        }
-
         //과 추가
         public void AddDepartment()
         {
@@ -219,9 +198,11 @@ namespace hospi_hospital_only
                             StaffLogin staffLogin = new StaffLogin();
                             staffLogin.HospitalID = DBClass.hospiID;
 
-                            dbc.Delay(200);
+                            
                             AddHospital();
-                            MessageBox.Show("회원가입이 완료되었습니다. \n 다시 실행해주세요!", "알림");
+                            dbc.Delay(200);
+                            MessageBox.Show("병원 등록이 완료되었습니다", "알림");
+                            staffLogin.ShowDialog();
                             Dispose();
                         }
                     }
@@ -353,7 +334,25 @@ namespace hospi_hospital_only
             textBoxTell1.Text = "010";
             textBoxTell2.Text = "1234";
             textBoxTell3.Text = "5678";
-            
+            DayOpen1.Text = "08";
+            DayOpen2.Text = "00";
+            DayClose1.Text = "17";
+            DayClose2.Text = "30";
+            EndOpen1.Text = "08";
+            EndOpen2.Text = "00";
+            EndClose1.Text = "13";
+            EndClose2.Text = "00";
+            lunch1.Text = "12";
+            lunch2.Text = "00";
+            holiOpen1.Text = "08";
+            holiOpen2.Text = "00";
+            HoliClose1.Text = "13";
+            HoliClose2.Text = "00";
+            EndState.Text = "개원";
+            HoliState.Text = "휴원";
+            checkBox1.Checked = true;
+            checkBox2.Checked = true;
+            checkBox3.Checked = true;
         }
     }
 }

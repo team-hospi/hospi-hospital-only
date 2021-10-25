@@ -150,6 +150,7 @@
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="StaffAdd.cs">
       <SubType>Form</SubType>
     </Compile>
