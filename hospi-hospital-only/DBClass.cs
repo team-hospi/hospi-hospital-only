@@ -964,7 +964,8 @@ namespace hospi_hospital_only
         {
             try
             {
-                commandString = "select * from staff order by useYn DESC";
+                connectionString = "Server =" + Sname + "; Database =" + DBname + "; Uid =" + sqlid + "; Pwd =" + pass + ";";
+                commandString = "select * from staff order by useYn DESC;";
                 DBAdapter = new MySqlDataAdapter(commandString, connectionString);
                 MyCommandBuilder = new MySqlCommandBuilder(DBAdapter);
                 dS = new DataSet();
@@ -1336,7 +1337,6 @@ namespace hospi_hospital_only
                     sb.AppendLine(" (subjectCode, subjectName, doctorName)               ");
                     sb.AppendLine(" values                                                                       ");
                     sb.AppendFormat(" ( '{0}', '{1}', null )", i.ToString(), subjectDt.Rows[i - 1][0]);
-
 
                     commandString = sb.ToString();
                     MySqlCommand comm = new MySqlCommand(commandString, conn);

@@ -102,7 +102,7 @@ namespace hospi_hospital_only
 
 
             CollectionReference coll = fs.Collection("hospitals");
-            if (textBoxAddAddress.Text == "" && textBoxAddAddress.Text == " ")
+            if (textBoxAddAddress.Text == "" || textBoxAddAddress.Text == " ")
             {
                 Dictionary<string, object> data1 = new Dictionary<string, object>()
                 {
@@ -126,7 +126,7 @@ namespace hospi_hospital_only
                 };
                 coll.AddAsync(data1);
             }
-            else if (textBoxAddAddress.Text != "" && textBoxAddAddress.Text != " ")
+            else
             {
                 Dictionary<string, object> data1 = new Dictionary<string, object>()
                 {
@@ -194,13 +194,13 @@ namespace hospi_hospital_only
                             {
                                 SaveProductKey(productKeyForSchema);
                             }
-
                             StaffLogin staffLogin = new StaffLogin();
                             staffLogin.HospitalID = DBClass.hospiID;
 
                             
+
                             AddHospital();
-                            dbc.Delay(200);
+
                             MessageBox.Show("병원 등록이 완료되었습니다", "알림");
                             staffLogin.ShowDialog();
                             Dispose();

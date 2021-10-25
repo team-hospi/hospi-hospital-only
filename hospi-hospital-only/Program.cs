@@ -20,6 +20,10 @@ namespace hospi_hospital_only
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Properties.Settings.Default.ProductKey = "";
+            Properties.Settings.Default.ProductKeyValue = "";
+            Properties.Settings.Default.Save();
+
             if (Properties.Settings.Default.ProductKey != string.Empty)
             {
                 DBClass.DBname = Properties.Settings.Default.ProductKey;
