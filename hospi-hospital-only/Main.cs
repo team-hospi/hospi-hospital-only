@@ -180,6 +180,7 @@ namespace hospi_hospital_only
                                 {
                                     SaveProductKey(productKey);
 
+                                    this.Visible = false;
                                     staffLogin.ShowDialog();
                                     Dispose();
                                 }
