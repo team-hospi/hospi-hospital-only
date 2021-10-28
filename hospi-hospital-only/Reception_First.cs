@@ -28,6 +28,8 @@ namespace hospi_hospital_only
         string subject;
         string receptionist;
         string comment;
+        string doctor;
+        int waiting;
         public Reception_First()
         {
             InitializeComponent();
@@ -85,10 +87,20 @@ namespace hospi_hospital_only
             get { return receptionist; }
             set { receptionist = value; }
         }
+        public string Doctor
+        {
+            get { return doctor; }
+            set { doctor = value; }
+        }
         public string Comment
         {
             get { return comment; }
             set { comment = value; }
+        }
+        public int Waiting
+        {
+            get { return waiting; }
+            set { waiting = value; }
         }
         private void Receipt_First_Load(object sender, EventArgs e)
         {
@@ -278,11 +290,37 @@ namespace hospi_hospital_only
 
             reserve.ReserveAccept();
             dbc.Delay(200);
+            reception.ReceptionAccept(subject, doctor, mobileID, name, date, time, waiting);
             MessageBox.Show("예약이 접수되었습니다.", "알림");
 
 
             //알림 메시지 전송
-            //fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + selectDate + " " + FindDay(selectDate) + " " + selectTime + "] " + " 예약이 확정되었습니다.");
+            fcm.PushNotificationToFCM(DBClass.hospiname, Reserve.UserToken, "[" + date + " " + FindDay(date) + " " + time + "] " + " 예약이 확정되었습니다.");
+        }
+
+        //요일 검색
+        public string FindDay(string Date)
+        {
+            string day = "";
+            DateTime date = new DateTime();
+            date = Convert.ToDateTime(Date);
+
+            if (date.DayOfWeek == DayOfWeek.Monday)
+                day = "(월)";
+            else if (date.DayOfWeek == DayOfWeek.Thursday)
+                day = "(화)";
+            else if (date.DayOfWeek == DayOfWeek.Wednesday)
+                day = "(수)";
+            else if (date.DayOfWeek == DayOfWeek.Thursday)
+                day = "(목)";
+            else if (date.DayOfWeek == DayOfWeek.Friday)
+                day = "(금)";
+            else if (date.DayOfWeek == DayOfWeek.Saturday)
+                day = "(토)";
+            else if (date.DayOfWeek == DayOfWeek.Sunday)
+                day = "(일)";
+
+            return day;
         }
     }
 }

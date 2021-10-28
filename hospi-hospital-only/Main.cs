@@ -196,7 +196,9 @@ namespace hospi_hospital_only
                                 DBClass.hospiID = productKey;
                                 Hospital_SignUp hospital_Sign = new Hospital_SignUp();
                                 hospital_Sign.ProductKeyForSchema = productKey;    //스키마 저장용
+                                this.Visible = false;
                                 hospital_Sign.ShowDialog();
+                                Dispose();
                             }
 
                             rTh.Abort();

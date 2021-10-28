@@ -202,6 +202,7 @@ namespace hospi_hospital_only
                             AddHospital();
 
                             MessageBox.Show("병원 등록이 완료되었습니다", "알림");
+                            this.Visible = false;
                             staffLogin.ShowDialog();
                             Dispose();
                         }

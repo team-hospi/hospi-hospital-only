@@ -434,6 +434,12 @@ namespace hospi_hospital_only
         //초진환자 등록
         public void newPatientAdd()
         {
+            dbc.FindDoctor(listViewReserve.Items[SelectRow].SubItems[6].Text);
+            dbc.SubjectTable = dbc.DS.Tables["Subject"];
+
+            dbc.countWaiting(selectdepartment, selectHour + selectminuit, selectDate.Substring(2, 8));
+            dbc.ReceptionTable = dbc.DS.Tables["Reception"];
+
             Reception_First newPatient = new Reception_First();
             newPatient.MobileID = listViewReserve.Items[SelectRow].SubItems[0].Text;
             newPatient.IsReserve = true;
@@ -444,6 +450,8 @@ namespace hospi_hospital_only
             newPatient.Receptionist = receptionist;
             newPatient.Name = textBoxName.Text;
             newPatient.Comment = TextBoxComment.Text;
+            newPatient.Doctor = dbc.SubjectTable.Rows[0][0].ToString();
+            newPatient.Waiting = Convert.ToInt32(dbc.ReceptionTable.Rows[0][0]);
             newPatient.ShowDialog();
 
         }

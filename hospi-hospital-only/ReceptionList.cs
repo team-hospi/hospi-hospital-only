@@ -78,7 +78,8 @@ namespace hospi_hospital_only
             Dictionary<string, object> data1 = new Dictionary<string, object>()
             {
                 {"department", depart },
-                {"doctor", doctor },
+                //{"doctor", doctor }, => 기본 의사 등록문
+                {"doctor", "히포크라테스" }, // => 시연용 임시값
                 {"hospitalId", DBClass.hospiID },
                 {"hospitalName", DBClass.hospiname },
                 {"id", id },

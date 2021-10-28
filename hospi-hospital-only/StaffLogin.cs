@@ -93,8 +93,9 @@ namespace hospi_hospital_only
                                 staffCreatePW.Pw = textBoxPW.Text;
                                 staffCreatePW.StaffID = dbc.StaffTable.Rows[i]["staffID"].ToString();
 
+                                this.Visible = false;
                                 staffCreatePW.ShowDialog();
-
+                                this.Visible = true;
                                 if (staffCreatePW.CreateYn == "Y")
                                 {
                                     textBoxPW.Clear();
