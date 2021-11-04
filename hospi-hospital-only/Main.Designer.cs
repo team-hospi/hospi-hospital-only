@@ -66,6 +66,7 @@ namespace hospi_hospital_only
             this.button4.TabIndex = 48;
             this.button4.Text = "테스트용 토큰";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label6
