@@ -261,11 +261,11 @@ namespace hospi_hospital_only
             //환자 정보 검색
             reserve.FindPatient(listViewReserve.Items[SelectRow].SubItems[0].Text);
 
-            dbc.Delay(200);
+            dbc.Delay(150);
             textBoxName.Text = reserve.patientName;
             //문서찾기(병원id, 시간, 환자id, 날짜, 진료과)
             reserve.FindDocument(listViewReserve.Items[SelectRow].SubItems[3].Text, listViewReserve.Items[SelectRow].SubItems[0].Text, listViewReserve.Items[SelectRow].SubItems[2].Text, listViewReserve.Items[SelectRow].SubItems[6].Text);
-            dbc.Delay(50);
+            dbc.Delay(100);
             reserve.FindReserveDocument(listViewReserve.Items[SelectRow].SubItems[6].Text);
             TextBoxComment.Text = reserve.comment;
         }
