@@ -28,7 +28,7 @@ namespace hospi_hospital_only
         string listView1Index; // 리스트뷰1 아이템 클릭시 인덱스 저장을 위함
         string medicienID; // 약품번호 저장을 위함
         int receptionID; // 접수번호 저장을 위함 ( 진료완료시 dbc.ReceptionTable 에서 접수번호의 row를 찾아 receptionType를 3으로 수정하기 위함 )
-        int receptionTime; // 접수시간 저장을 위함 ( reception 정보 받아올때 저장해서 처방전에 receptionTime으로 저장 )
+        string receptionTime; // 접수시간 저장을 위함 ( reception 정보 받아올때 저장해서 처방전에 receptionTime으로 저장 )
         int selectedListViewItemIndex; // 이전 진료기록 리스트뷰의 선택 인덱스 저장
         DataTable hisTable; // 수진자 정보 조회시 이전 진료기록을 담은 테이블 ( 이전 진료기록 띄울때 사용하고, 이전 진료기록중 내원목적 확인시에 재사용 )
         int pageNo;
@@ -335,7 +335,7 @@ namespace hospi_hospital_only
                         textBoxPurpose.Text = rRow["receptionInfo"].ToString();
                         textBoxMemo.Text = rRow["patientMemo"].ToString();
                         textBoxReceptionCount.Text = (dbc.ReceptionTable.Rows.Count - 1).ToString();
-                        receptionTime = Convert.ToInt32(rRow["receptionTime"]);
+                        receptionTime = rRow["receptionTime"].ToString();
                         receptionID = Convert.ToInt32(rRow["receptionID"]);
                         if (dbc.MobileTable.Rows[0][0].ToString() != "")
                         {
@@ -393,7 +393,7 @@ namespace hospi_hospital_only
                     textBoxPurpose.Text = rRow["receptionInfo"].ToString();
                     textBoxMemo.Text = rRow["patientMemo"].ToString();
                     textBoxReceptionCount.Text = (dbc.ReceptionTable.Rows.Count - 1).ToString();
-                    receptionTime = Convert.ToInt32(rRow["receptionTime"]);
+                    receptionTime = rRow["receptionTime"].ToString();
                     receptionID = Convert.ToInt32(rRow["receptionID"]);
                     buttonNextReception.Enabled = false;
                     buttonReceptionEnd.Enabled = true;

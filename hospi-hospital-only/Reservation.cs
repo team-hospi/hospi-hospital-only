@@ -298,7 +298,6 @@ namespace hospi_hospital_only
 
                             dbc.Mobile_UseWithPhone(Alltel);
                             dbc.MobileTable = dbc.DS.Tables["Visitor"];
-                            MessageBox.Show(dbc.MobileTable.Rows[0][0].ToString());
 
                             if (dbc.MobileTable.Rows[0][1].ToString() == "")
                             {
