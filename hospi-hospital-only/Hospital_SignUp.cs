@@ -335,9 +335,9 @@ namespace hospi_hospital_only
             textBoxTell1.Text = "010";
             textBoxTell2.Text = "1234";
             textBoxTell3.Text = "5678";
-            DayOpen1.Text = "08";
+            DayOpen1.Text = "01";
             DayOpen2.Text = "00";
-            DayClose1.Text = "17";
+            DayClose1.Text = "23";
             DayClose2.Text = "30";
             EndOpen1.Text = "08";
             EndOpen2.Text = "00";
